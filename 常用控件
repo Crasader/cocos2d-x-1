@@ -1,0 +1,24 @@
+label:
+LabelTTF *label=LabelTTF::create();
+label->setString(“nihaoa ”);
+label->setFontSize(20);
+addChild(label);
+
+－－－－－－－－－－－－－－－－－－－－－－
+输入文本：
+(1) TextFieldTTF *tf=TextFieldTTf::textFieldWithPlaceHolder(“标题”,“字体”，字号);
+addChild(tf);
+
+auto listener =EventLisntenerTouchOneByOne::create();
+
+listener->onTouchBegan=[tf](Touch *t, Event *event)
+{
+if(tf->getBoundingBox().containsPoint(t->getLocation()))
+{tf->attchWithIME();}
+else
+{
+tf->detachWitIME();
+}
+return false;
+};
+Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener,tf);
