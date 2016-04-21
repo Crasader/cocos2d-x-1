@@ -1,5 +1,5 @@
 label:
-LabelTTF *label=LabelTTF::create();
+Label *label=Label::create();
 label->setString(“nihaoa ”);
 label->setFontSize(20);
 addChild(label);
@@ -22,3 +22,88 @@ tf->detachWitIME();
 return false;
 };
 Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener,tf);
+
+
+－－－－－－－－－－－－
+menu：
+创建：
+ auto menu=Menu::create(MenuItemImage::create(“normal.png”,”close.png”,[](Object *ob){log(“selected”)}),NULL);
+addChild(menu);
+
+－－－－－－－－－－－－
+场景切换
+(1)新建一个场景：新建一个C＋＋文件：imagescene，在头文件中:
+class imagescene:public layer{
+public:
+virtual bool init();   
+static Scene *createScene();
+CREATE_FUNC(imagescen);   //创建类必须的宏
+
+};
+(2)在imagescene.cpp中：
+#include “imagescene.hpp”
+bool iamgescene::init(){
+
+Sprite *s=Sprite::create(“helloworld.png”);  //该层里的精灵
+addChild(s);
+
+return true;
+}
+
+Scene* imagescene::createScene(){
+Scene *s=Scene::create();
+imagescene *im=imagescene::create();
+s->addChild(im);
+
+return s
+}
+(3) 在helloworld.cpp中：
+Size siez=Director::getInstance()->getVisibleSize();
+Label *label=Label::create(“show next scene”,”Courier”,20);
+label->setPosition(size.width/2,size.heigh/2);
+addChild(label);
+
+EventListenerTuchOneByOne *listener =EventListenerTouchOneByOne::create();
+listener->onTouchBegan=[label](Touch *t, Event *e)
+{if(label->getBoudingBox().containsPoint(t->getLocation())){
+Director::getInstance()->replaceScene(TransitionFad::create(1,imagescene::createscene()));
+
+}
+return false;
+
+}
+Director::getInstance()->getEventDispatcher()->addEventLinstenerWithSceneGraphPriority(listener,label);
+
+
+——————————————————
+设置动作：
+(1)使用runAction()来执行动作：Lable *label=Label::create(“nihao”,”Courier”,30);
+   label->runAction(MoveTo::create(1,Point(400,400)));
+(2)在runAction内调用Spwan（）来包装多个动作。
+(3) 在runAction内调用Sequence（）来序列多个动作。
+(4)使用 在动作最后使用CallFunc::create([](){   })来侦听动作结束。
+
+——________________
+播放动画：
+(1)将plist及相应png动画文件导入工程；
+（2） 
+auto cache =SpriteFrameCache::getInstance();    //动画缓存
+cache->addSpriteFramesWithFile(“anim.plist”);   //
+Vector<SpriteFrame *> vec;
+char name[15];
+memest(name,0,15);        //png名称变量
+
+for (int i=0;i<20;i++)
+{
+sprintf(name,”anim%04d”,i);
+vec.pushBack(cache->getSpriteFrameByName(name));  //把png名称赋值给vec。
+
+}
+Animation *ani=Animation::createWithSpriteFrame(vec,0.1f);  //配置动画
+Animate *animate=Animate::create(ani);    //执行动画
+
+auto sprite=Sprite::create();
+
+addChild(sprite);
+sprite->setPosition(200,200);
+sprite->runAction(animate);
