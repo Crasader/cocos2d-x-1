@@ -107,3 +107,121 @@ auto sprite=Sprite::create();
 addChild(sprite);
 sprite->setPosition(200,200);
 sprite->runAction(animate);
+
+————————————————————————
+单点动作侦听:创建侦听器
+ auto listener =EventListenerTouchOneByOne::create();
+
+listener->onTouchBegan=[](Touch *t,Event *e){
+if(e->getCurrentTarget()->getBoundingBox().ContainsPoint(t->getLocation())){
+
+…..
+}
+
+return false;    //返回值为false则不执行后续 onTouchMove/onTouchEnd。
+};
+
+Director::getInstance->getEventDispatcher()->addEventListenerWithSceneGaraphPriority(listener,XXX) //xx为触摸侦听的元素
+
+————————————————————————————
+多点触摸：
+auto listener=EventListenerTouchAllAtOnce::create();
+    
+    listener->onTouchesBegan=[](std::vector<Touch *> ts, Event *e){
+    
+        log("aaaa");
+    
+    
+    
+    };
+    
+    
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+
+
+—————————————
+计时器：
+（1）在头文件定义需要计时器调用的函数：
+ void timer(float t);
+(2)在cpp文件中，编写timer内容:
+void HelloWorld::timer(float t){
+log(“<<<<<”);
+}
+
+(3)在cpp的HelloWorld::init()中：
+
+schedule(schedule_seletor(HelloWorld::timer),0.1);   //schedule_seletor宏命令创建间隔0.1秒调用timer函数。
+
+————————————————————————
+用户首选项数据：
+UserDefault::getInstance()->setStringForKey(“data”,”nihao”);  //保存： key:data
+UserDefault::getInstance()->getStringForKey(“data”); //取出
+
+————————————————————————
+文件读写：
+（1）写：
+auto file =FileUtils::getInstance();
+FILE *f = fopen(file->fullPathFromRelativeFile(“data.txt”,file->getWritablePath()).c_str(),”w”);
+fprint(f,”nihao”);
+fclose(f);
+
+(2)读：
+Data d= file->getDataFromFile(file->fullPathFromRelativeFile(“data.txt”,file->getWritablepath()));
+log(“%s”,d.getBytes());
+————————————————————————————————
+plist文件读取：
+FileUtils *fu= FileUtils::getInstance();
+Valuemap vm=fu->getValueMapFromFile(“Property List.plist”);
+
+log(“%s”,vm[“name”].asString().c_str());   // 读取name为key的字符串
+log(“%s”,vm[“arr”].asValueVector.at(1).asString().c_str()); //读取 arr数组里的数据。
+
+——————————————————————————————————
+物理引擎：
+(1)在HelloWorld.h中，增加定义：
+privte:
+cocos2d::Size size=cocos2d::Director::getInstance()->getVisibleSize();
+
+public:
+virtual void onEnter();   //重写onEnter()方法；
+void addEdge();        // 物理引擎边界
+void addBall(float x, float y);   //小球位置
+void addBall(cocos2d::Point Position);   //触摸小球位置
+(2)在HelloWorld.cpp中，增加函数：
+void HelloWorld::onEnter(){
+Layer::onEnter();
+addEdge();
+addBall(size.width/2,size.height/2);
+
+auto listener =EventListenerTouchOneByeOne::create();
+
+listener->onTouchBegan=[this](Touch *t,Event *e){
+this->addBall(t->getLocation());
+return false;
+};
+Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphyPriority(listener,this);
+
+}
+
+void HelloWorld::addEdge(){   //定义物理引擎边界
+auto body=PhysicsBody::createEdgeBox(size);
+auto edgeshape=Node::create();
+edgeshape->getPhysicsBody(body);
+edgeshape->setPosition(size.width/2,size.height/2);
+addChild(edgeshape);
+
+
+void HelloWorld::addBall(Point position)
+{
+addBall(position.x,position.y);
+}
+void HelloWorld::addBall(float x,float y)
+{ auto b=Sprite::create(“ball.png”);
+b->setPosition(x,y);
+b->setPhysicsBody(PhysicsBody::createBox(b->getContentSize()));
+addChild(b);
+
+
+}
+
+}
