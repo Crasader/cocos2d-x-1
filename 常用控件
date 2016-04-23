@@ -206,7 +206,7 @@ Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphyPr
 void HelloWorld::addEdge(){   //定义物理引擎边界
 auto body=PhysicsBody::createEdgeBox(size);
 auto edgeshape=Node::create();
-edgeshape->getPhysicsBody(body);
+edgeshape->setPhysics(body);
 edgeshape->setPosition(size.width/2,size.height/2);
 addChild(edgeshape);
 

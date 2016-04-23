@@ -1,0 +1,50 @@
+p35
+设置锚点： label->setAnchorPoint(Point( , )); 
+锚点为position坐标的相对精灵的位置。
+——————————————————————————————————
+p36
+刷新层：
+(1)在头文件中,重写update函数：
+virtual void update(float dt);
+(2)在cpp文件中:
+bool HelloWorld::init(){
+。。。
+
+this->scheduleUpdate();    //调用update刷新,不使用时需要停止刷新:this->unscheduleUpdate();
+
+}
+
+void HelloWorld::update(float dt)
+{ 
+执行需要刷新的操作
+}
+
+——————————————————————————
+p45
+字符串
+(1)c语言风格： const char * string =“nihao ”;
+(2)c++风格： std::string string=“nihao”;      // .c_str()转换为c的风格。
+(3)cocos: _string *string = _string ::create(“nihao”);   //使用string->getCString()来获取内容。
+
+————————————————————————————
+p53
+Label
+(1) auto label=Label::create(“nihao”,”Courier”,30);
+(2) auto label =Label::createWithTTF(“nihao”,”xxxx.ttf”,20);  //xxx.ttf为字体路经
+(3) auto label =Label::createWithBMFont(“xxxx.fnt”,”nihao”); //xxx.fnt为字体路经
+(4)阴影： label->enableShadow(Color4B(255,255,255,255),Size(4,-4)); //Color4B设置颜色；Size()设置阴影大小。
+（5）颜色: label->setColor(Color3B(255,255,255	))  // Color3B(r,g,b) 或者 Color3b::RED.
+————————————————————————————————
+p60
+设置menu：
+(1)头文件中定义回调函数： void menuItemCallBack(cocos2d::Ref *pSender);
+(2)cpp中定义回调函数：
+void menuItemCallBack(cocos2d::Ref *pSender){
+MenuItem *item=(MenuItem*) pSender;
+item->setPosition()。。。   //item已经指向了menu，对item操作即为对menu操作。
+…
+}
+(3)init方法中：
+MenuItemFont *menu=MenuItemFont::create(“start”,CC_CALLBACK_1(HelloWorld::menuItemCallBack,this)); //传入显示字符和回调函数。  
+Menu *mu=Menu::create(menu ,NULL);     //创建到menu中
+addChild(mu);
