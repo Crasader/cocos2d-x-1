@@ -36,7 +36,7 @@ Label
 （5）颜色: label->setColor(Color3B(255,255,255	))  // Color3B(r,g,b) 或者 Color3b::RED.
 ————————————————————————————————
 p60
-设置menu：
+设置menuItemFont：
 (1)头文件中定义回调函数： void menuItemCallBack(cocos2d::Ref *pSender);
 (2)cpp中定义回调函数：
 void menuItemCallBack(cocos2d::Ref *pSender){
@@ -48,3 +48,107 @@ item->setPosition()。。。   //item已经指向了menu，对item操作即为�
 MenuItemFont *menu=MenuItemFont::create(“start”,CC_CALLBACK_1(HelloWorld::menuItemCallBack,this)); //传入显示字符和回调函数。  
 Menu *mu=Menu::create(menu ,NULL);     //创建到menu中
 addChild(mu);
+
+——————————————————————————————
+p61
+设置MenuItemImage
+(1)头文件中申明回调函数：void MenuItemImageCallBack(Ref * pSender);
+(2)cpp中实现回调函数：
+void HelloWorld::MenuItemImageCallBack(Ref *pSender)
+{   MenuItem *item =(MenuItem*) pSender;
+item-> …….
+}
+(3)init方法中：
+MenuItemImage *menu = MenuItemImage::create(“正常状态图片”,”选择状态图片 ”,CC_CALLBACK_1(HelloWorld::MenuItemImageCallBack,this));
+
+Menu *mu=Menu::create(menu,NULL);
+addChild(mu);
+——————————————————————————————
+p61
+设置MenuItemSprite:
+(1)（2）同上
+（3） Spirte *正常状态的精灵 =Sprite::create(…);
+ Spirte *选择状态的精灵 =Sprite::create(…);
+
+MenuItemSprite *menu=MenuItemSprite::create(正常状态的精灵,选择状态的精灵 ,回调 )
+
+————————————————————————————————————
+p63
+设置开关 MenuItemToggle
+(1)(2) 同上
+(3) MenuItemToggle *menuitemtoggle= MenuItemToggle::createWithCallBack(
+CC_CALLBACK_1(HelloWorld::menucallback,this), MenuItemFont::create(“on”),MenuItemFont::create(“off”),NULL);      //可调用其它的MenuItem函数创建
+Menu *mu=Menu:create(menuitemtoggle,NULL);
+addChild(mu);
+
+————————————————————————————————｛
+p67
+纹理缓存：
+Texture2D *cache= Director::getInstance()->getTextureCache()->addImage(“1.png”); //将图片1.png添加到texture缓存cache。
+auto sth=Sprite::create(); 
+sth->setTexture(cache);  //从cache取出  
+sth->setTextureRect(Rect(100,100,100,100));  //设置需要截取缓存图片的区域。  Rect(x坐标,y坐标,x长度,y长度)
+————————————————————————————————————————
+p71
+精灵帧缓存
+SpriteFrameCache *framecache= SpriteFrameCache::getInstance();  //获取精灵帧缓存
+framecache->addSpriteFramesWithFile(“SpriteSheet.plist”); //添加plist文件到精灵帧缓存
+auto sht=Sprite::createWithSpriteFrameName(“xxx.png”);  //创建精灵
+SpriteFrameCache::getInstance()->removeSpriteFrames(); //释放精灵帧缓存
+
+————————————————————————————————————————
+p79
+通过menu进行场景转换：
+(1)新建一个场景的setting.cpp和setting.hpp文件。（本代码中场景和layer一一对应）
+(2)setting.hpp:
+ #include <cocos2d.h>
+#include <iostream>
+USING_NS_CC;
+
+class setting:public Layer{
+public:
+virtual bool init();  //重写初始化，setting层的自定操作都在初始化里
+static Scene *createscene();   //此语句实际为创建一个包含setting层的场景。
+CREATE_FUNC(setting);
+
+};
+(3)setting.cpp:
+
+Scene *setting::createscene(){     //其它地方调用此方法时，会创建一个包含setting层的场景，并初始化setting层。
+auto scene=Scene::create();
+auto layer=setting::create();
+scene->addChild(layer);
+return scene;
+}
+
+bool setting::init(){
+if(!Layer::init()){return false;}
+
+auto menu=MenuItemToggle::createWithCallBack(CC_CALLBACK_1(setting::calback),this),MenuItemFont::create(“on”),MenuItemFont::create(“off”),NULL);
+Menu *mu=Menu:create(menu,NULL);
+addChild(mu);
+
+return true;
+}
+(4)HelloWorld.cpp:
+
+init(){
+
+auto menu=MenuItemFont::create(“setting”,CC_CALLBACK_1(setting::menucallback),this);  //点击setting按钮跳转
+Menu *mu=Menu::create(menu,NULL);
+addChild(mu);
+}
+
+void HelloWorld::menucallback(Ref *pSender){
+auto sc=setting:createscene();   //创建setting层及场景
+Director::getInstance->pushScene(sc);  //pushScene将目前的层压入栈zhong。 popScene（）可弹出。
+
+}
+
+添加动画效果：
+void HelloWorld::menucallback(Ref *pSender){
+auto sc=setting:createscene();             //创建setting层及场景
+auto resc=TransitionFade::creaete(1,sc);
+Director::getInstance->pushScene(resc);   //pushScene将目前的层压入栈zhong。 popScene（）可弹出。
+
+}
