@@ -145,10 +145,50 @@ Director::getInstance->pushScene(sc);  //pushScene将目前的层压入栈zhong�
 
 }
 
-添加动画效果：
+添加场景过渡动画效果：
 void HelloWorld::menucallback(Ref *pSender){
 auto sc=setting:createscene();             //创建setting层及场景
 auto resc=TransitionFade::creaete(1,sc);
 Director::getInstance->pushScene(resc);   //pushScene将目前的层压入栈zhong。 popScene（）可弹出。
 
 }
+————————————————————————
+p90
+精灵动作：sprite->runAction(MoveBy::create(Point()));
+通过一个层的按钮，来传递参数给另一个层：
+HelloWorld::init(){
+auto menu =MenuItemFont(“flipx”,CC_CALLBACK_1(HelloWorld::callBack,this));
+menu->setTag(123);
+}
+
+void callBack(Ref *pSender )
+{ MenuItem *item=(MenuItem*) pSender;
+auto scene=Scene::create();   //没有调用aciton的createScene是因为要穿入layer的tag。
+auto layer=action::create()
+layer->setTag(itmen->getTag());  //item此时指向menu,通过layer
+scene->addChild(layer);
+。。。。
+}
+
+————————————————
+p100
+动画组合
+ FiniteTimeAction *ac0= (FiniteTimeAction *)sprite->runAction(1);
+FiniteTimeAction *ac1=(FiniteTimeAction *)sprite->runAction(2);
+（1）顺序执行：  FiniteTimeAction *ac=Sequence::create(ac0,ac1,NULL);
+sprite->runAction(ac);
+(2)同时执行:  FiniteTimeAction *ac= Spawn::create(ac0,ac1,NULL);
+(3)重复执行：FiniteTimeAction *ac=Repeat::create(ac0,3);
+(4)调用函数：FiniteTimeAction *acf=CallFunc::create(CC_CALLBACK_0())  //CallFunc无参数
+  FiniteTimeAction *afc=CallFunN::create(CC_CALLBACK_1())  //CallFuncN有1个传递参数
+
+
+————————————————————————————
+p120
+3d特效：
+（1）创建3d特效对象： gridNodeTarget= NodeGrid::create();
+addChild(gridNodeTarget);
+(2)添加3d特效的精灵：
+gridNodeTarget->addChild(sprite);
+(3)执行：
+gridNodeTarget->runAction(Flip3D::create(3.0));   
