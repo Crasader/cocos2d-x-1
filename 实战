@@ -192,3 +192,57 @@ addChild(gridNodeTarget);
 gridNodeTarget->addChild(sprite);
 (3)执行：
 gridNodeTarget->runAction(Flip3D::create(3.0));   
+
+________________________
+p125
+帧动画：
+（1） 创建animation对象：  Animation ＊animation=Animation::create();
+(2)获取每帧的名称： 
+for(i=1;i<=4;i++)
+{ __CString *frameName=__CString::createWithFormat(“h%d.png”,i)
+SpriteFrame *spriteFrame=SpriteFrameCache::getInstance()->getSpriteFrameByName(frameName->getCString());
+animation->addSpriteFrame(spriteFrame);
+
+}
+animation->seDelayPerUnit(0.15)  //每帧播放时间；
+(3)执行animate:
+Animate *animate=Animate::create(animation);
+sprite->runAction(animate)；
+——————————————————————————
+p130
+触摸事件侦听
+auto sprite =Sprite::create(“boxa.png”);  //创建触摸事件的精灵
+    addChild(sprite,1,100); //1为显示权重，100为TAG值
+
+auto listener =EventListenerTouchOneByOne::create(); //创建触摸侦听器
+
+listener->onTouchBegan=[](Touch *t,Event *e){
+
+auto sprite=static_cast<Sprite *>(e->getCurrentTarget());  //将传入的node类型参数转换为sprite类型，即为boxa的精灵
+auto touchPoint=sprite->ConvertToNodeSpace(t->getLocation());//将触摸点坐标转换为boxa为基准的坐标
+Size s=sprite->getContentSize(); //获取boxa的尺寸
+Rect rect=Rect(0,0,s.width,s.height); //获取boxa所在的区域值
+if(rect.containsPoint(touchPoint)){   //判断触摸点是否在boxa的区域
+sprite->runAction(Scale::create(0.5,1.1));  //触摸特效
+return true;   //可继续onTouchMoved操作
+}
+return false;
+};
+
+listener->onTouchMoved=[](Touch *t,Event *e){
+auto sprite=static_cast<Sprite *>(e->getCurrentTarget());
+sprite->setPosition(sprite->getLocation()+t->getDelta());  //移动
+
+};
+
+listener->onTouchEnded=[](Touch *t,Event *e){
+auto sprite=static_cast<Sprite *>(e->getCurrentTarget());  //将传入的node类型参数转换为sprite类型，即为boxa的精灵
+auto touchPoint=sprite->ConvertToNodeSpace(t->getLocation());//将触摸点坐标转换为boxa为基准的坐标
+Size s=sprite->getContentSize(); //获取boxa的尺寸
+Rect rect=Rect(0,0,s.width,s.height); //获取boxa所在的区域值
+if(rect.containsPoint(touchPoint)){   //判断触摸点是否在boxa的区域
+sprite->runAction(Scale::create(0.5,1));  //触摸特效
+}
+};
+
+Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener,boxa); //注册触摸事件 
