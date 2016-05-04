@@ -99,7 +99,7 @@ void HelloWorld::addBar(float dt){
     up_barBody->setVelocity(Point(-100,0));
     up_barBody->setGravityEnable(false);
     up_bar->setPhysicsBody(up_barBody);
-    up_bar->setPosition(size.width/2+110,size.height/2+up_bar->getContentSize().height);
+    up_bar->setPosition(size.width/2+110,size.height/2+up_bar->getContentSize().height+offset);
     barContainer-> addChild(up_bar);
 
     
@@ -111,7 +111,7 @@ void HelloWorld::addBar(float dt){
     down_barBody->setVelocity(Point(-100,0));
     down_barBody->setGravityEnable(false);
     down_bar->setPhysicsBody(down_barBody);
-    down_bar->setPosition(size.width/2+110,size.height/2-up_bar->getContentSize().height/2);
+    down_bar->setPosition(size.width/2+110,size.height/2-up_bar->getContentSize().height/2-offset);
     barContainer->addChild(down_bar);
 
     
@@ -136,20 +136,33 @@ void HelloWorld::addBarContainer(){
 void HelloWorld:: stopGame(){
   unschedule(schedule_selector(HelloWorld::addBar));
     Vector<PhysicsBody *> bodies=bird->getPhysicsBody()->getWorld()->getAllBodies();
-    int i=0;
-    for (i; i<=bodyNumber; i++) {
-        if (bodies.at(i)->getPosition().x<10) {
-            score=score+1;
-            
-            
-                        std::cout<<"score is ::"<<score/2<<std::endl;
+    
 
-        
-            
-            
+    
+    //遍历vector
+    for (const auto& body:bodies) {
+        if (body->getPosition().x<0) {
+            score=score+1;
         }
         
-            }
+        
+        
+    }
+    
+//    int i=0;
+//    for (i; i<=bodyNumber; i++) {
+//        if (bodies.at(i)->getPosition().x<10) {
+//            score=score+1;
+//            
+//            
+//                        std::cout<<"score is ::"<<score/2<<std::endl;
+//
+//        
+//            
+//            
+//        }
+//        
+//            }
     //显示分数的label
     auto label=Label::create("0", "Courier", 50);
     label->setPosition(100,100);
