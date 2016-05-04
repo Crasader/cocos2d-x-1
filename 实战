@@ -80,8 +80,16 @@ p63
 CC_CALLBACK_1(HelloWorld::menucallback,this), MenuItemFont::create(“on”),MenuItemFont::create(“off”),NULL);      //可调用其它的MenuItem函数创建
 Menu *mu=Menu:create(menuitemtoggle,NULL);
 addChild(mu);
+(4)回调函数中识别开关状态：
+void HelloWorld::menucallback(Ref *pSender){
+auto menutoggle=(MenuItemToggle *)pSener;
+if(menutoggle->getSelectedIndex()==1    //getSelectedIndex()值是1则为on
 
-————————————————————————————————｛
+){}
+
+}
+
+————————————————————————————————
 p67
 纹理缓存：
 Texture2D *cache= Director::getInstance()->getTextureCache()->addImage(“1.png”); //将图片1.png添加到texture缓存cache。
@@ -246,3 +254,122 @@ sprite->runAction(Scale::create(0.5,1));  //触摸特效
 };
 
 Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener,boxa); //注册触摸事件 
+____________________________
+p160
+音效
+（1）一般在delegete中预载入音乐文件 
+AppDelegate.h中引入头文件：
+#include “SimpleAudioEngine.h”
+using namespace CocosDenshion;
+
+AppDelegate.cpp aplicationDidFinishLaunching中：
+SimpleAudioEngine::getInstance()->preloadBackgroundMusic(“sound/Jazz.mp3”);
+SimpleAudioEngine::getInstance()->preloadEffect(“sound/Blip.mp3”);
+(2)一般重写层的onEnterTransitionDidFinish()方法来播放背景音乐：
+void HelloWord::onEnterTransitionDidFinish(){
+Layer::onEnterTransitionDidFinish();
+SimpleAudioEngine::getInstance()->playBackgroundMusic(“sound/Jazz.mp3”);}
+(3)一般在cleanup()中终止：
+
+void HelloWorld::cleanup(){
+Layer::cleanup();
+SimpleAudioEngine::getInstance()->stopBackgroundMusic(“sound/Jazz.mp3”);}
+
+}
+——————————————
+p180
+粒子系统
+（1）创建
+auto particle=ParticleFire::create();  //与精灵使用类似
+addChild(paritcle);
+
+(2)自定义with plist
+auto paticle =ParticleSystemQuad::create(“snow.plist”); 
+
+——————————————————————
+p190
+瓦片地图
+（1）头文件中申明：
+private:
+TMXTileMap *tileMap;
+Sprite *player;
+TMXLayer *collidable;
+public:
+virtual bool onTouchBegan(Touch *touch,Event *event); //
+virtual void onTouchEnded(Touch *touch,Event *event);  //在此方法中移动精灵
+(2)cpp中：
+tileMap=TMXTileMap::crete(“Map.tmx”);
+addChild(tileMap);
+
+TMXObjectGroup *group=tileMap->getObjectGroup(“objects”);//获取名为object的group
+ValueMap point = group->getObject(“ninja”); //获取ninja的坐标点
+
+float x=point[“x”].asFloat(); 
+float y=point[“y”].asFloat();
+
+player =Sprite::create(“ninja.png”);
+player->setPosition(Point(x,y));
+addChild(player);
+
+collidable =tileMap->getLayer(“collidable”);  //获取瓦片地图中标记为collidable的碰撞检测层
+collidable->setVisible(false);
+
+setTouchEnabled(true);
+setTouchMode(Touch::Dispatcher::ONE_BY_ONE);
+
+（3）virtual void onTouchEnded(Touch *touch,Event *event){
+auto touchPoint=touch->getLocation();
+touchPoint=this->convertToNodeSpace(touchPoint);   //对应屏幕移动的坐标转换
+auto playerPosition=player->getPosition();
+auto diff =touchPoint-playerPosition;
+if(abs(diff.x)>abs(diff.y)){
+  if(diff.x>0){
+    playerPosition.x+=tileMap->getTileSize().width;
+      
+    }else{
+	playerPosition.x-=tileMap->getTileSize().width;
+}
+else{
+	if(diff.y>0){	
+	playerPosition.y+=tileMap->getTileSize().height;
+}	else{
+	playerPosition.y-=tileMap->getTilzSize().height;
+}
+
+
+}
+
+}
+this->setPlayerPosition(playerPosition);
+this->setCenter(playerPosition);
+}
+
+(4)void HelloWorld::setPlayerPosition(Point p){
+auto tielCoord=this->tileCoordFromPosition(p); //将要移动到的点转化为瓦片坐标
+int Gid= collidable->getTIleGIDAt(tileCoord);  //获取碰撞层的有效瓦片
+if(Gid>0){ return}  // 判断移动点是否包含在碰撞层 
+player->setPosition(p);
+}
+（5）坐标转换：
+Point HelloWrold::tileCoordFromPosition(Point p)
+{int x=p.x/tileMap->getTileSize().width;
+int y =((tileMap->getMapsize().height*tileMap->getTileSize().height)-p.y)/tileMap->getTileSize().height;   //瓦片地图以左上角为原点，y轴需转换一下
+return Point(x,y);
+
+}
+(6)屏幕中心移动：
+void HelloWorld::setCenter(Point p){
+ Size visableSize=Director::getInstance()->getVisibleSize();
+ int x=MAX(p.x, visableSize.width/2);
+ int y=MAX(p.y, visableSize.height/2);
+    
+    
+ x=MIN(x, tileMap->getMapSize().width*tileMap->getTileSize().width-visableSize.width/2);
+ y=MIN(y, tileMap->getMapSize().height*tileMap->getTileSize().height-visableSize.height/2);
+    
+auto size=Point(visableSize.width/2,visableSize.height/2);
+auto diff=size-Point(x,y);       //中心需要移动的坐标；层初始坐标为（0，0）
+this->setPosition(diff);    //HelloWorld层移动
+
+
+}
