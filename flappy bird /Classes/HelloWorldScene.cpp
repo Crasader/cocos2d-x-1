@@ -4,31 +4,28 @@ USING_NS_CC;
 
 Scene* HelloWorld::createScene()
 {
-    // 'scene' is an autorelease object
+   //创建物理场景
     auto scene = Scene::createWithPhysics();
+    
+    //绘制调试框
    // scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
-    // 'layer' is an autorelease object
+  
+    
     auto layer = HelloWorld::create();
-
-    // add layer as a child to scene
     scene->addChild(layer);
-
-    // return the scene
     return scene;
 }
 
-// on "init" you need to initialize your instance
+
 bool HelloWorld::init()
 {
-    //////////////////////////////
-    // 1. super init first
+   
     if ( !Layer::init() )
     {
         return false;
     }
     
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Point origin = Director::getInstance()->getVisibleOrigin();
+
     
     
 
@@ -41,10 +38,12 @@ bool HelloWorld::init()
     setTouchEnabled(true);
     setTouchMode(Touch::DispatchMode::ONE_BY_ONE);
     
+    
+    //每秒调用addBar一次
    schedule(schedule_selector(HelloWorld::addBar), 1);
  
 
-    
+    //碰撞监测
     auto listener =EventListenerPhysicsContact::create();
     listener->onContactBegin = CC_CALLBACK_1(HelloWorld::ContactBegin, this );
     
@@ -65,6 +64,7 @@ void HelloWorld::addBird(){
     addChild(bird);
 
 }
+
 void HelloWorld::initWorld(){
     auto size=Director::getInstance()->getVisibleSize();
     auto edge=PhysicsBody::createEdgeBox(size);
@@ -74,12 +74,12 @@ void HelloWorld::initWorld(){
     addChild(edgeNod);
 
 }
+
 void HelloWorld::addGround(){
     auto backGround=Sprite::create("ground.png");
     auto groundBody=PhysicsBody::createBox (backGround->getContentSize());
     groundBody->setContactTestBitmask(0xFFFFFFFF);
-    //groundBody->setDynamic(false);
-    groundBody->setEnable(false);
+    groundBody->setGravityEnable(false);
     backGround->setPhysicsBody(groundBody);
     backGround->setPosition(backGround->getContentSize().width/2 ,backGround->getContentSize().height/2);
     addChild(backGround);
@@ -87,11 +87,13 @@ void HelloWorld::addGround(){
 
 }
 void HelloWorld::addBar(float dt){
+    
+    //bar的随机偏移量
     offset=-rand()%50;
     
     auto size =Director::getInstance()->getVisibleSize();
     auto up_bar=Sprite::create("up_bar.png");
-    bodyNumber=bodyNumber+2;
+
     
     
     auto up_barBody=PhysicsBody::createBox(up_bar->getContentSize());
@@ -126,6 +128,7 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch *t, cocos2d::Event *e){
     return false;
 }
 
+//创建一个barContainer，以便主函数先添加bar，再添加地板，使得地板遮盖bar。
 void HelloWorld::addBarContainer(){
     barContainer=Sprite::create();
     addChild(barContainer);
@@ -134,12 +137,18 @@ void HelloWorld::addBarContainer(){
 
 
 void HelloWorld:: stopGame(){
+    
+    //停止addBar的更新
   unschedule(schedule_selector(HelloWorld::addBar));
-    Vector<PhysicsBody *> bodies=bird->getPhysicsBody()->getWorld()->getAllBodies();
+    
+//判断得分————————————————————————————————
+    // 获取物理世界的所有刚体，返回值为Vector<PhysicsBody *>
+    auto bodies=bird->getPhysicsBody()->getWorld()->getAllBodies();
     
 
     
-    //遍历vector
+    //遍历vector,找到已经经过小鸟的bar
+    //body为bodies遍历时，每次取出的元素
     for (const auto& body:bodies) {
         if (body->getPosition().x<0) {
             score=score+1;
@@ -148,32 +157,21 @@ void HelloWorld:: stopGame(){
         
         
     }
-    
-//    int i=0;
-//    for (i; i<=bodyNumber; i++) {
-//        if (bodies.at(i)->getPosition().x<10) {
-//            score=score+1;
-//            
-//            
-//                        std::cout<<"score is ::"<<score/2<<std::endl;
-//
-//        
-//            
-//            
-//        }
-//        
-//            }
-    //显示分数的label
+
+    //显示分数的label，必须传入const char*类型
     auto label=Label::create("0", "Courier", 50);
     label->setPosition(100,100);
     label->setColor(Color3B::RED);
     this->addChild(label);
-    CCString *strScore=  CCString::createWithFormat("%d",score/2);
+    
+    //转换为const char＊类型
+    auto strScore=__String::createWithFormat("%d",score/2);
     label->setString(strScore->getCString() );
-    //显示分数的label
+    
+
 
     
-    
+    //终止游戏
     Director::getInstance()->pause();
     
     
@@ -182,26 +180,15 @@ void HelloWorld:: stopGame(){
 
 bool HelloWorld::ContactBegin(cocos2d::PhysicsContact &contact){
     
-    
-            auto spriteA = (Sprite *)contact.getShapeA()->getBody()->getNode();
-            auto spriteB=(Sprite *)contact.getShapeB()->getBody()->getNode();
+    //getNode()返回值为Node类型，需要转换为Sprite类型
+            auto spriteA = static_cast<Sprite *>(contact.getShapeA()->getBody()->getNode());
+            auto spriteB=static_cast<Sprite *>(contact.getShapeB()->getBody()->getNode());
             if (spriteA->getTag() == 123 ||spriteB->getTag() ==123 ){
-         
-            
-                
-          
-                
                 MessageBox("failed", "failed");
-              
-        
-                
                                 stopGame();
                 return false;
             }
     return false;
 }
 
-void HelloWorld::scoreFunc(float dt){
 
-  
-}

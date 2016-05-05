@@ -373,3 +373,56 @@ this->setPosition(diff);    //HelloWorld层移动
 
 
 }
+————————————————
+p270
+UserDefault
+(1)获取数据：
+std::string ret= UserDefault::getInstance()->getStringForKey(“string”);  //UserDefault为单例
+(2)设置数据
+UserDefault::getInstance()->setStringForKey(“string”,”value”);   // 定义项为key
+
+————————————————
+p280
+plist 之_Dictionary
+(1) 
+//创建plist文件
+auto root= _Dictionary::create();
+auto writableFile= FileUtils::getInstance()->getWritablePath();
+auto filePath=writableFile+”Note.plist”;
+//创建plist文件
+（2）
+//准备添加的元素
+auto string=_String::create(“nihao”); 
+auto dict=_Dictionary::create();
+dict->setObject(_String::create(“hahha”),”string”)
+//准备添加的元素
+
+root->setObject(string,”1”);
+root->setObject(dict,”2”);   //添加元素
+
+root->writeToFile(filePath.c_str()); //filePath为string类型，而writeToFile()要求const char类型，需要使用.c_str()转换。
+（3）
+//读取
+auto root=_Dictionary::creatWithContentsOfFile(filePath.c_str()) //读取到已创建的字典
+auto content= static_cast<_String*>( root->objectForKey(“1”))  //key 1对应的为_String 类型，objectForKey（）获取的为Ref类型，需要类型转换。
+
+
+——————————————————
+plist之ValueMap
+(1)
+//创建
+ValueMap root;
+
+auto string=_String::create(“nihao”); 
+auto dict=_Dictionary::create();
+
+root[“1”]=string;
+root[“2”]=dict;   
+FileUtils::getInstance()->writeToFile(root,filePath); 
+(2)//读取
+auto root=FileUtils::getInstance()->getValueMapFormFile(filePath);
+auto string=root[“1”].asString; //root[]读取到的为Value类型，需要转换.asString();
+(3)//删除
+auto root=FileUtils::getInstance()->getValueMapFormFile(filePath);
+root.erase[“1”];
+FileUtils::getInstance()->writeToFile(root,filePath); 
