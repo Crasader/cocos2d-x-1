@@ -426,3 +426,99 @@ auto string=root[“1”].asString; //root[]读取到的为Value类型，需要�
 auto root=FileUtils::getInstance()->getValueMapFormFile(filePath);
 root.erase[“1”];
 FileUtils::getInstance()->writeToFile(root,filePath); 
+————————————————————————————————————
+
+p290
+sqlite的使用：
+
+    sqlite3 *pDB=NULL;
+    char * errMsg=NULL;
+    std::string sqlstr;
+    int result;
+    
+    
+    // 获取地址
+   result=sqlite3_open(fillPaht.c_str(), &pDB);
+    if (result!=SQLITE_OK) {
+        log("open failed");
+        
+    }
+    
+    //新建
+    result=sqlite3_exec(pDB, "create table Mytable_1(ID integer primary key autoincrement, name nvachar(32))", NULL, NULL, &errMsg);
+    if (result!=SQLITE_OK) {
+        log("创建失败, %s",errMsg);
+    }
+    
+      //插入
+   sqlstr="insert into Mytable_1(name) values('你妹')";
+    result=sqlite3_exec(pDB, sqlstr.c_str(), NULL, NULL, &errMsg);
+    if (result!=SQLITE_OK) {
+        log("写入失败 %s",errMsg);
+    }
+    
+    //插入
+    sqlstr="insert into Mytable_1 (ID,name) values(10,'ergou')";
+    result=sqlite3_exec(pDB, sqlstr.c_str(), NULL, NULL, &errMsg);
+    if (result!=SQLITE_OK) {
+      log("写入失败 %s",errMsg);
+    }
+    
+    //更新
+    sqlstr="update Mytable_1 set name='zzz' where ID= 1";
+    result= sqlite3_exec(pDB, sqlstr.c_str(), NULL, NULL, &errMsg);
+    if (result!=SQLITE_OK) {
+        log("写入失败 %s",errMsg);}
+    
+    
+    //删除
+    sqlstr="delete from Mytable_1 where ID=10";
+    result=sqlite3_exec(pDB, sqlstr.c_str(), NULL, NULL, &errMsg);
+    
+    if (result!=SQLITE_OK) {
+        log("delete失败 %s",errMsg);
+    }
+    
+    
+    //查询表是否存在
+    bool isExist;
+    sqlstr="select count(type) from sqlite_master where type='table' and name='Mytable_1'";
+    result=sqlite3_exec(pDB, sqlstr.c_str(), isExisted, &isExist, &errMsg);
+    log("%d",isExist);
+
+    
+//查询记录条数
+    int count;
+    sqlstr="select *from Mytable_1";
+    result=sqlite3_exec(pDB, sqlstr.c_str(), loadRecordCount, &count, &errMsg);
+    log("count is =%d",count);
+
+    //读取一条记录
+    sqlstr="select *from Mytable_1 where ID=1";
+    result =sqlite3_exec(pDB, sqlstr.c_str(),loadRecord, NULL,&errMsg);
+    
+
+
+//回调函数
+int isExisted(void * para,int n_column, char **column_value, char ** column_name)
+{
+    
+    bool *isExisted_=(bool *)para;
+    *isExisted_=(**column_value)!='0';
+    return 0;
+}
+
+
+int loadRecordCount( void * para, int n_column, char ** column_value, char ** column_name )
+{
+    int *count=(int*)para;
+    *count=n_column;
+    return 0;
+}
+
+int loadRecord(void *para,int n_column, char ** column_value,char **column_name    ){
+
+    log("id= %s, name =%s", column_value[0],column_value[1]);
+
+    return 0;
+}
