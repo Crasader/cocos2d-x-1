@@ -22,7 +22,7 @@
 //定义敌人的类型
 typedef enum {
 
-EnemyTypeStone=0,
+    EnemyTypeStone=0,
     EnemyTypeEnemy1,
     EnemyTypeEnemy2,
     EnemyTypePlanet
