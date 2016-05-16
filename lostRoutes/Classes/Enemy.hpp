@@ -44,7 +44,7 @@ public:
     //构造函数
     Enemy(EnemyTypes enemyType);
     
-    //
+    //位置恢复
     void spawn();
     
     //update函数

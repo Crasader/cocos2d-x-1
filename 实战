@@ -207,7 +207,7 @@ p125
 （1） 创建animation对象：  Animation ＊animation=Animation::create();
 (2)获取每帧的名称： 
 for(i=1;i<=4;i++)
-{ __CString *frameName=__CString::createWithFormat(“h%d.png”,i)
+{ __String *frameName=__String::createWithFormat(“h%d.png”,i)
 SpriteFrame *spriteFrame=SpriteFrameCache::getInstance()->getSpriteFrameByName(frameName->getCString());
 animation->addSpriteFrame(spriteFrame);
 
