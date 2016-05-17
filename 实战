@@ -522,3 +522,24 @@ int loadRecord(void *para,int n_column, char ** column_value,char **column_name 
 
     return 0;
 }
+
+————————————————————————————————————————
+//塔防类：tileMap对象点坐标的读取
+TMXObjectGroup *objects=map->getObjectGroup(“key1”); 
+ValueMap point=objects->getObject(“key2”);  //valueMap类型为键－值对类型
+Node *runOfPoints=Node::create(); //新建node对象来设置坐标
+Vector<Node *>pointsVector; //存放取出的坐标点的node类
+
+while(point.begin()!=point.end())  //point在循环时只有一个值，且valuemap类的begin为第一个元素，end为最后一个元素的后一位:It does not point to any element, and thus shall not be dereferenced.故当取到最后一个对象时，下一次循环的while不成立。
+{
+float x=point.at(“x”).asFloat();
+float y=point.at(“y”).asFloat();
+
+runOfPoints->setPosition(Point(x,y));
+
+this->pintsVector.pushBack(runOfPoints);  //压入node类带有位置属性的对象。
+
+point=objects->getObject(“key2++”);
+
+}
+
