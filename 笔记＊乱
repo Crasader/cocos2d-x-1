@@ -1,0 +1,26 @@
+1.
+runAction(Sequence::create(MoveTo::create(),callFunc::create(CC_CALLBACK0(::))),NULL);
+
+
+2.
+Type *a=(Type*)malloc(sizeof(Type));
+free(a);
+
+3.
+CREAT_FUNC(HelloWorldLayer)相当于：
+HelloWorldLayer *HelloWorldLayer::create()
+{
+ HelloWorldLayer *layer= new HelloWorldLayer();
+if(layer && layer->init())
+{
+layer->autorelease();
+return layer;
+
+}
+
+CC_SAFE_DELETE(layer);
+return NULL;
+
+}
+
+
