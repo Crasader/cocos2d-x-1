@@ -60,7 +60,7 @@ void rocker::startRocker(bool _isStopother)
     
     
     auto touchlistener=EventListenerTouchOneByOne::create();
-    touchlistener->setSwallowTouches(false);
+    touchlistener->setSwallowTouches(true);
     touchlistener->onTouchBegan=CC_CALLBACK_2(rocker::onTouchBegan, this);
     touchlistener->onTouchMoved=CC_CALLBACK_2(rocker::onTouchMoved, this);
     touchlistener->onTouchEnded=CC_CALLBACK_2(rocker::onTouchEnded, this);
@@ -134,27 +134,29 @@ void rocker::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event)
     Point point=touch->getLocationInView();
     auto rocker=(Sprite* )this->getChildByTag(tag_rocker);
     
-    float angle=getRad(rockerBGPostion, point);
-    if (sqrt(pow(rockerBGPostion.x-point.x, 2)+pow(rockerBGPostion.y-point.y, 2))>rockerBGR) {
-        rocker->setPosition(ccpAdd(getAnglePosition(rockerBGR, angle), rockerBGPostion));
-    }
-    else
-    {
-            rocker->setPosition(point);
-        }
-    if (angle>=-PI/4 && angle<PI/4) {
-        rockDirection=rocker_left;
-        rockerRun=false;
-    }
-    else if(angle>=PI/4&&angle<3*PI/4)
-    { rockDirection=rocker_up;
-        }
-    else if(angle>=3*PI/4&&angle<PI)
-    { rockDirection=rocker_right;
-        }
-    else if(angle>=-3*PI/4&&angle<-PI/4)
-    { rockDirection=rocker_down;
-        }
+    rockDirection=rocker_right;
+    
+//    float angle=getRad(rockerBGPostion, point);
+//    if (sqrt(pow(rockerBGPostion.x-point.x, 2)+pow(rockerBGPostion.y-point.y, 2))>rockerBGR) {
+//        rocker->setPosition(ccpAdd(getAnglePosition(rockerBGR, angle), rockerBGPostion));
+//    }
+//    else
+//    {
+//            rocker->setPosition(point);
+//        }
+//    if (angle>=-PI/4 && angle<PI/4) {
+//        rockDirection=rocker_left;
+//        rockerRun=false;
+//    }
+//    else if(angle>=PI/4&&angle<3*PI/4)
+//    { rockDirection=rocker_up;
+//        }
+//    else if(angle>=3*PI/4&&angle<PI)
+//    { rockDirection=rocker_right;
+//        }
+//    else if(angle>=-3*PI/4&&angle<-PI/4)
+//    { rockDirection=rocker_down;
+//        }
 }
 
 

@@ -23,7 +23,8 @@ class menuLayer:public Layer
 {
 public:
  
-    CREATE_FUNC(menuLayer);
+   // CREATE_FUNC(menuLayer);
+    static menuLayer* create();
     virtual bool init();
     void gotoGameLayer();
 

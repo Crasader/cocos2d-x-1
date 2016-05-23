@@ -22,13 +22,15 @@ baseRole* baseRole::creatWithProperty(propertyManager *manager)
 }
 
 bool baseRole::init(propertyManager *manager)
-{   property=manager;
+{
+    
+      property=manager;
    
     
     //获取动画
     ArmatureDataManager::getInstance()->addArmatureFileInfo( property->getDataName());
     armature=Armature::create( property->getArmtureName());
-    armature->getAnimation()->play("attack");
+    armature->getAnimation()->play("default");
     this->addChild(armature);
     
     

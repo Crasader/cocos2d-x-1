@@ -14,6 +14,8 @@
 #include "propertyMananger.hpp"
 #include "cocostudio/CocoStudio.h"
 
+class baseFSM;
+
 USING_NS_CC;
 using namespace cocostudio;
 
@@ -22,16 +24,35 @@ typedef enum{
     TYPE_MONSTER=2
 } ROLE_TYPE;
 
+
+typedef enum{
+
+    ROLE_DEFAULT=1,
+    ROLE_ATTACK,
+    ROLE_MOVE,
+    ROLE_DEAD,
+
+}ROLE_STATE;
+
+typedef enum {
+
+    FACE_LEFT,
+    FACE_RIGHT,
+
+}ROLE_FACE;
+
 class baseRole:public Node
 {
 public:
     static baseRole *creatWithProperty(propertyManager *manager);
     bool init(propertyManager *manager);
-    
+    ROLE_STATE state;
+    ROLE_FACE face;
     propertyManager *property;
     
     ROLE_TYPE type;
     CC_SYNTHESIZE(Armature*, armature, armature);
+    CC_SYNTHESIZE(baseFSM*, basefsm, baseFsm);
     
 };
 

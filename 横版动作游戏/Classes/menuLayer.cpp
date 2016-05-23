@@ -8,6 +8,20 @@
 //
 
 #include "menuLayer.hpp"
+
+menuLayer * menuLayer::create()
+{
+    menuLayer *layer=new menuLayer();
+    if (layer&&layer->init()) {
+        
+        layer->autorelease();
+        return layer;
+    }
+    CC_SAFE_DELETE(layer);
+    return nullptr;
+}
+
+
 bool menuLayer::init()
 {
     
