@@ -17,7 +17,7 @@
 	<key>gethitRect</key>
 	<string>{{-40,-40},{80,80}}</string>
 	<key>lockLimit</key>
-	<integer>400</integer>
+	<integer>200</integer>
 	<key>ATKLimit</key>
 	<integer>100</integer>
 	<key>armtureName</key>

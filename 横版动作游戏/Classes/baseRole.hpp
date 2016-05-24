@@ -15,6 +15,7 @@
 #include "cocostudio/CocoStudio.h"
 
 class baseFSM;
+class BaseAi;
 
 USING_NS_CC;
 using namespace cocostudio;
@@ -49,11 +50,15 @@ public:
     ROLE_STATE state;
     ROLE_FACE face;
     propertyManager *property;
-    
+    void changeFace(ROLE_FACE face);
     ROLE_TYPE type;
     CC_SYNTHESIZE(Armature*, armature, armature);
     CC_SYNTHESIZE(baseFSM*, basefsm, baseFsm);
-    
+     CC_SYNTHESIZE(BaseAi*, baseAi, Baseai);
+    void animationEvent(Armature *pArmature,MovementEventType movementevent, const std::string & moventIDstr);
+       virtual void draw(Renderer *renderer, const kmMat4 &transform, bool transformUpdated) override;
+    void onDraw(const kmMat4 &transform, bool transformUpdated);
+    CustomCommand _customCommand;
 };
 
 #endif /* baseRole_hpp */

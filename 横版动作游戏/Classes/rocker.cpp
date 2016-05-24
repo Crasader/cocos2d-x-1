@@ -136,27 +136,27 @@ void rocker::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event)
     
     rockDirection=rocker_right;
     
-//    float angle=getRad(rockerBGPostion, point);
-//    if (sqrt(pow(rockerBGPostion.x-point.x, 2)+pow(rockerBGPostion.y-point.y, 2))>rockerBGR) {
-//        rocker->setPosition(ccpAdd(getAnglePosition(rockerBGR, angle), rockerBGPostion));
-//    }
-//    else
-//    {
-//            rocker->setPosition(point);
-//        }
-//    if (angle>=-PI/4 && angle<PI/4) {
-//        rockDirection=rocker_left;
-//        rockerRun=false;
-//    }
-//    else if(angle>=PI/4&&angle<3*PI/4)
-//    { rockDirection=rocker_up;
-//        }
-//    else if(angle>=3*PI/4&&angle<PI)
-//    { rockDirection=rocker_right;
-//        }
-//    else if(angle>=-3*PI/4&&angle<-PI/4)
-//    { rockDirection=rocker_down;
-//        }
+    float angle=getRad(rockerBGPostion, point);
+    if (sqrt(pow(rockerBGPostion.x-point.x, 2)+pow(rockerBGPostion.y-point.y, 2))>rockerBGR) {
+        rocker->setPosition(ccpAdd(getAnglePosition(rockerBGR, angle), rockerBGPostion));
+    }
+    else
+    {
+            rocker->setPosition(point);
+        }
+    if (angle>=-PI/4 && angle<PI/4) {
+        rockDirection=rocker_left;
+        rockerRun=false;
+    }
+    else if(angle>=PI/4&&angle<3*PI/4)
+    { rockDirection=rocker_up;
+        }
+    else if(angle>=3*PI/4&&angle<PI)
+    { rockDirection=rocker_right;
+        }
+    else if(angle>=-3*PI/4&&angle<-PI/4)
+    { rockDirection=rocker_down;
+        }
 }
 
 

@@ -62,6 +62,7 @@ void baseFSM::changeToAttack()
     if (role->state!=ROLE_ATTACK &&role->state!=ROLE_DEAD) {
         role->state=ROLE_ATTACK;
         role->getarmature()->getAnimation()->play("attack",-1,0);
+   
     }
 
 }
@@ -110,14 +111,14 @@ void baseFSM::changeToLeft()
     if (role->face==FACE_RIGHT) {
         std::string  movent=role->getarmature()->getAnimation()->getCurrentMovementID();
         char *nowMovent=const_cast<char *>(movent.c_str());
-        if (strcmp(nowMovent, "run_back")==0) {
+        if (strcmp(nowMovent, "run_back")!=0) {
             role->getarmature()->getAnimation()->play("run_back");
         }
     }else
     {
         std::string  movent=role->getarmature()->getAnimation()->getCurrentMovementID();
         char *nowMovent=const_cast<char *>(movent.c_str());
-        if (strcmp(nowMovent, "run_front")==0) {
+        if (strcmp(nowMovent, "run_front")!=0) {
             role->getarmature()->getAnimation()->play("run_front");
             
         }

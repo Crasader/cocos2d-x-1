@@ -15,6 +15,7 @@
 #include "propertyMananger.hpp"
 #include "roleController.hpp"
 #include "baseFSM.hpp"
+#include "BaseAi.hpp"
 
 
 gameLayer* gameLayer::create()
@@ -50,6 +51,7 @@ bool gameLayer::init()
     pManager->retain();
     hero=baseRole::creatWithProperty(pManager);
     hero->setPosition(200,400);
+    hero->face=FACE_RIGHT;
     hero->type=static_cast<ROLE_TYPE>(roleMap["Type"].asInt());
     this->addChild(hero,100);
     roleController::getInstance()->heroVec.push_back(hero);
@@ -68,13 +70,14 @@ bool gameLayer::init()
     nManager->setHitRect(RectFromString(mounsterMap["HitRect"].asString()));
     nManager->setHitPoint(nManager->getHitRect().origin);
     nManager->setGetRect(RectFromString(mounsterMap["gethitRect"].asString()));
+      nManager->setSPEED(mounsterMap["speed"].asInt());
     nManager->setGetPoint(nManager->getGetRect().origin);
     
     nManager->retain();
     auto laowang=baseRole::creatWithProperty(nManager);
     laowang->setPosition(600,400);
     laowang->type=static_cast<ROLE_TYPE>(mounsterMap["Type"].asInt());
-    laowang->setRotationSkewY(-180);
+    //laowang->setRotationSkewY(-180);
     this->addChild(laowang,100);
 
   
@@ -88,8 +91,16 @@ bool gameLayer::init()
     basewang->retain();
     laowang->setbaseFsm(basewang);
     
+    BaseAi *ai=BaseAi::createAI(hero);
+    ai->startRoleAi();
+    ai->retain();
+    hero->setBaseai(ai);
     
     
+    BaseAi *ai2=BaseAi::createAI(laowang );
+    ai2->startRoleAi();
+    ai2->retain();
+    laowang->setBaseai(ai2);
     
     //
     mapLayer *mapLayer=mapLayer::create();
