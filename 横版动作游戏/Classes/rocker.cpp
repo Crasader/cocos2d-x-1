@@ -162,6 +162,7 @@ void rocker::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event)
 
 void rocker::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
 {
+    
 
     if (!isCanMove) {
         return;

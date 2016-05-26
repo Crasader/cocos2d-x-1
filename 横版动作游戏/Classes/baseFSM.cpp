@@ -126,3 +126,10 @@ void baseFSM::changeToLeft()
     }
     role->setPosition(role->getPositionX()-role->property->getSPEED(),role->getPositionY());
 }
+
+void baseFSM::shifang()
+{
+
+    role=nullptr;
+    CC_SAFE_RELEASE(this);
+}

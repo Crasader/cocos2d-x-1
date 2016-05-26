@@ -67,6 +67,12 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
+		FF289C011CF53DF300F0911A /* flyText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF289BFF1CF53DF300F0911A /* flyText.cpp */; };
+		FF289C0A1CF69E2E00F0911A /* dataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF289C081CF69E2E00F0911A /* dataManager.cpp */; };
+		FF289C0C1CF69FBE00F0911A /* Tollgate.Json in Resources */ = {isa = PBXBuildFile; fileRef = FF289C0B1CF69FBE00F0911A /* Tollgate.Json */; };
+		FF289C101CF6A01F00F0911A /* niugaoqing.ExportJson in Resources */ = {isa = PBXBuildFile; fileRef = FF289C0D1CF6A01F00F0911A /* niugaoqing.ExportJson */; };
+		FF289C111CF6A01F00F0911A /* niugaoqing0.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF289C0E1CF6A01F00F0911A /* niugaoqing0.plist */; };
+		FF289C121CF6A01F00F0911A /* niugaoqing0.png in Resources */ = {isa = PBXBuildFile; fileRef = FF289C0F1CF6A01F00F0911A /* niugaoqing0.png */; };
 		FFC0CAA31CED52CC00FEDD2A /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FFC0CA9F1CED52CC00FEDD2A /* background.jpg */; };
 		FFC0CAE61CEEAF1900FEDD2A /* SceneManger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFC0CAE41CEEAF1900FEDD2A /* SceneManger.cpp */; };
 		FFC0CAE91CEEAF8300FEDD2A /* menuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFC0CAE71CEEAF8300FEDD2A /* menuLayer.cpp */; };
@@ -283,6 +289,14 @@
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		FF289BFF1CF53DF300F0911A /* flyText.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = flyText.cpp; path = ../Classes/flyText.cpp; sourceTree = "<group>"; };
+		FF289C001CF53DF300F0911A /* flyText.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = flyText.hpp; path = ../Classes/flyText.hpp; sourceTree = "<group>"; };
+		FF289C081CF69E2E00F0911A /* dataManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dataManager.cpp; path = ../Classes/dataManager.cpp; sourceTree = "<group>"; };
+		FF289C091CF69E2E00F0911A /* dataManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = dataManager.hpp; path = ../Classes/dataManager.hpp; sourceTree = "<group>"; };
+		FF289C0B1CF69FBE00F0911A /* Tollgate.Json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Tollgate.Json; sourceTree = "<group>"; };
+		FF289C0D1CF6A01F00F0911A /* niugaoqing.ExportJson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = niugaoqing.ExportJson; sourceTree = "<group>"; };
+		FF289C0E1CF6A01F00F0911A /* niugaoqing0.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = niugaoqing0.plist; sourceTree = "<group>"; };
+		FF289C0F1CF6A01F00F0911A /* niugaoqing0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = niugaoqing0.png; sourceTree = "<group>"; };
 		FFC0CA9F1CED52CC00FEDD2A /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
 		FFC0CAE41CEEAF1900FEDD2A /* SceneManger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SceneManger.cpp; path = ../Classes/SceneManger.cpp; sourceTree = "<group>"; };
 		FFC0CAE51CEEAF1900FEDD2A /* SceneManger.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SceneManger.hpp; path = ../Classes/SceneManger.hpp; sourceTree = "<group>"; };
@@ -383,6 +397,7 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				FF289C051CF69E1D00F0911A /* Data */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				FFC0CAE41CEEAF1900FEDD2A /* SceneManger.cpp */,
@@ -407,6 +422,8 @@
 				FFC0CB1B1CF29EAB00FEDD2A /* baseFSM.hpp */,
 				FFC0CB1F1CF3E3ED00FEDD2A /* BaseAi.cpp */,
 				FFC0CB201CF3E3ED00FEDD2A /* BaseAi.hpp */,
+				FF289BFF1CF53DF300F0911A /* flyText.cpp */,
+				FF289C001CF53DF300F0911A /* flyText.hpp */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -522,6 +539,10 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FF289C0B1CF69FBE00F0911A /* Tollgate.Json */,
+				FF289C0D1CF6A01F00F0911A /* niugaoqing.ExportJson */,
+				FF289C0E1CF6A01F00F0911A /* niugaoqing0.plist */,
+				FF289C0F1CF6A01F00F0911A /* niugaoqing0.png */,
 				FFC0CB111CF2912100FEDD2A /* laowang.ExportJson */,
 				FFC0CB121CF2912100FEDD2A /* laowang0.plist */,
 				FFC0CB131CF2912100FEDD2A /* laowang0.png */,
@@ -537,6 +558,15 @@
 			);
 			name = Resources;
 			path = ../Resources;
+			sourceTree = "<group>";
+		};
+		FF289C051CF69E1D00F0911A /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				FF289C081CF69E2E00F0911A /* dataManager.cpp */,
+				FF289C091CF69E2E00F0911A /* dataManager.hpp */,
+			);
+			name = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -707,12 +737,14 @@
 				FFC0CB091CF00D4400FEDD2A /* hero0.png in Resources */,
 				FFC0CAA31CED52CC00FEDD2A /* background.jpg in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
+				FF289C121CF6A01F00F0911A /* niugaoqing0.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				FFC0CB0E1CF2902100FEDD2A /* laowang.plist in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
+				FF289C111CF6A01F00F0911A /* niugaoqing0.plist in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				FFC0CB161CF2912100FEDD2A /* laowang0.png in Resources */,
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
@@ -724,6 +756,8 @@
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				FFC0CB081CF00D4400FEDD2A /* hero0.plist in Resources */,
 				FFC0CB031CF0084000FEDD2A /* hero.plist in Resources */,
+				FF289C101CF6A01F00F0911A /* niugaoqing.ExportJson in Resources */,
+				FF289C0C1CF69FBE00F0911A /* Tollgate.Json in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				FFC0CB151CF2912100FEDD2A /* laowang0.plist in Resources */,
@@ -764,9 +798,11 @@
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				FFC0CAEC1CEED79B00FEDD2A /* gameLayer.cpp in Sources */,
 				FFC0CAF81CEFEEFF00FEDD2A /* operateLayer.cpp in Sources */,
+				FF289C011CF53DF300F0911A /* flyText.cpp in Sources */,
 				FFC0CB211CF3E3ED00FEDD2A /* BaseAi.cpp in Sources */,
 				FFC0CB191CF299BF00FEDD2A /* roleController.cpp in Sources */,
 				FFC0CB011CF0069800FEDD2A /* propertyMananger.cpp in Sources */,
+				FF289C0A1CF69E2E00F0911A /* dataManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

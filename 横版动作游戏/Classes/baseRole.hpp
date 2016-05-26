@@ -13,7 +13,7 @@
 #include <cocos2d.h>
 #include "propertyMananger.hpp"
 #include "cocostudio/CocoStudio.h"
-
+#include "flyText.hpp"
 class baseFSM;
 class BaseAi;
 
@@ -32,6 +32,7 @@ typedef enum{
     ROLE_ATTACK,
     ROLE_MOVE,
     ROLE_DEAD,
+    ROLE_FREE,
 
 }ROLE_STATE;
 
@@ -49,12 +50,16 @@ public:
     bool init(propertyManager *manager);
     ROLE_STATE state;
     ROLE_FACE face;
+    void shifang();
+    void fallHp(const char *hpCount);
     propertyManager *property;
+    baseRole *locatedRole;
     void changeFace(ROLE_FACE face);
+    Rect getRealRect(baseRole *role,Rect rect);
     ROLE_TYPE type;
     CC_SYNTHESIZE(Armature*, armature, armature);
     CC_SYNTHESIZE(baseFSM*, basefsm, baseFsm);
-     CC_SYNTHESIZE(BaseAi*, baseAi, Baseai);
+    CC_SYNTHESIZE(BaseAi*, baseAi, Baseai);
     void animationEvent(Armature *pArmature,MovementEventType movementevent, const std::string & moventIDstr);
        virtual void draw(Renderer *renderer, const kmMat4 &transform, bool transformUpdated) override;
     void onDraw(const kmMat4 &transform, bool transformUpdated);

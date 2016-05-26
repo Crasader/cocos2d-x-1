@@ -25,6 +25,7 @@ BaseAi * BaseAi::createAI(baseRole *role)
 bool BaseAi::init(baseRole *role)
 {
 
+    
     baserole=role;
 
     return true;
@@ -33,13 +34,18 @@ bool BaseAi::init(baseRole *role)
 void BaseAi::startRoleAi()
 {
 
+    //非node调用schedule函数
     Director::getInstance()->getScheduler()->schedule(schedule_selector(BaseAi::updateFunc), this, (float)1/60, false );
 
-
+    
 
 }
 void BaseAi::stopRoleAi()
-{}
+{
+
+    Director::getInstance()->getScheduler()->unschedule(schedule_selector(BaseAi::updateFunc),this);
+
+}
 
 void BaseAi::updateFunc(float dt)
 {
@@ -77,8 +83,10 @@ void BaseAi::updateFunc(float dt)
     
     else
     {
+        baserole->locatedRole=nullptr;
         return;
     }
+    baserole->locatedRole=roleVec[roleID];
     if (baserole->type ==TYPE_MONSTER)
     {
         Point enemyPos=roleVec[roleID]->getPosition();
@@ -101,3 +109,9 @@ void BaseAi::updateFunc(float dt)
         }
     }
     
+void BaseAi::purge()
+{
+    stopRoleAi();
+    baserole=nullptr;
+    CC_SAFE_RELEASE(this);
+}

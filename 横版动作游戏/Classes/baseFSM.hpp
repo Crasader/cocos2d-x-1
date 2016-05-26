@@ -28,7 +28,7 @@ public:
     void changeToLeft();
     void changeToDead();
     void changeToEnemy();
-    
+    void shifang();
     baseRole *role;
 };
 

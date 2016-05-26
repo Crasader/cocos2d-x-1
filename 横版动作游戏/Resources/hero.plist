@@ -7,7 +7,7 @@
 	<key>HP</key>
 	<integer>10000</integer>
 	<key>ATK</key>
-	<integer>1000</integer>
+	<integer>2000</integer>
 	<key>Type</key>
 	<integer>1</integer>
 	<key>speed</key>

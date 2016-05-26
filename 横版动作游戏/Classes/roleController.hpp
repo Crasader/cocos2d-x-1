@@ -21,7 +21,10 @@ class roleController:public Ref
 public:
     static roleController * getInstance();
     bool init();
+    CC_SYNTHESIZE(int, HeroID, heroid);
     
+    baseRole *getHero();
+    void purge();
 public:
     std::vector<baseRole *>heroVec;
     std::vector<baseRole *>monsterVec;

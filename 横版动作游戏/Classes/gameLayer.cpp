@@ -16,6 +16,7 @@
 #include "roleController.hpp"
 #include "baseFSM.hpp"
 #include "BaseAi.hpp"
+#include "dataManager.hpp"
 
 
 gameLayer* gameLayer::create()
@@ -31,7 +32,59 @@ gameLayer* gameLayer::create()
 
 bool gameLayer::init()
 {
+    dataManager::getInstance()->initWithJsonFile("Tollgate.Json");
+
+    for (int i=0; i<dataManager::getInstance()->getLevelDataByIndex(dataManager::getInstance()->getLevelIndex()).size(); i++)
+    {
+        auto roleMap=FileUtils::getInstance()->getValueMapFromFile(dataManager::getInstance()->_levelDataArry[i]);
+        propertyManager *pManager=propertyManager::create();
+        pManager->setArmtureName(roleMap["armtureName"].asString());
+        pManager->setDataName(roleMap["dataName"].asString());
+        pManager->setHP(roleMap["HP"].asInt());
+        pManager->setID(roleMap["ID"].asInt());
+        pManager->setATK(roleMap["ATK"].asInt());
+        pManager->setLOCKLIMIT(roleMap["lockLimit"].asInt());
+        pManager->setATKLIMIT(roleMap["ATKLimit"].asInt());
+        pManager->setPlayerName(roleMap["PlayerName"].asString());
+        pManager->setHitRect(RectFromString(roleMap["HitRect"].asString()));
+        pManager->setHitPoint(pManager->getHitRect().origin);
+        pManager->setGetRect(RectFromString(roleMap["gethitRect"].asString()));
+        pManager->setGetPoint(pManager->getGetRect().origin);
+        pManager->setSPEED(roleMap["speed"].asInt());
+        
+        pManager->retain();
+        baseRole* hero=baseRole::creatWithProperty(pManager);
+      
+        hero->face=FACE_RIGHT;
+        hero->type=static_cast<ROLE_TYPE>(roleMap["Type"].asInt());
+        this->addChild(hero,100);
+        if (hero->type==TYPE_MONSTER) {
+            roleController::getInstance()->monsterVec.push_back(hero);
+            hero->setPosition(600,400);
+        }
+        else
+        if (hero->type==TYPE_HERO) {
+            roleController::getInstance()->heroVec.push_back(hero);
+             hero->setPosition(200,400);
+
+        }
+        
+        baseFSM *basehero=baseFSM::createFSM(hero);
+        basehero->retain();
+        hero->setbaseFsm(basehero);
+        
+        BaseAi *ai=BaseAi::createAI(hero);
+        ai->startRoleAi();
+        ai->retain();
+        hero->setBaseai(ai);
+
+    }
+    
+    
+    
+    
 //player
+    /*
     auto roleMap=FileUtils::getInstance()->getValueMapFromFile("hero.plist");
     propertyManager *pManager=propertyManager::create();
     pManager->setArmtureName(roleMap["armtureName"].asString());
@@ -102,16 +155,14 @@ bool gameLayer::init()
     ai2->retain();
     laowang->setBaseai(ai2);
     
-    //
-    mapLayer *mapLayer=mapLayer::create();
+*/
     
-    mapLayer->setBackGround("background.jpg");
-    //this->addChild(mapLayer);
+   
     
     operateLayer *operateLayer=operateLayer::create();
-    //this->addChild(operateLayer);
+    this->addChild(operateLayer,1000);
     
-    
+    roleController::getInstance()->setheroid(1);
     
     rocker0=rocker::createRocker("CloseNormal.png", "background.jpg", Point(200,200));
     rocker0->startRocker(true);
@@ -126,7 +177,32 @@ bool gameLayer::init()
 }
 void gameLayer::update(float dt)
 {
-    hero->getbaseFsm()->switchMoveStat(rocker0->rockDirection);
+    //hero->getbaseFsm()->switchMoveStat(rocker0->rockDirection);
+    if (roleController::getInstance()->getHero()!=nullptr) {
+        roleController::getInstance()->getHero()->getbaseFsm()->switchMoveStat(rocker0->rockDirection);
+    }
+    
+    std::vector<baseRole *>::iterator itr=roleController::getInstance()->monsterVec.begin();
+    while (itr!=roleController::getInstance()->monsterVec.end()) {
+        if ((*itr)->state==ROLE_FREE) {
+            (*itr)->shifang();
+            roleController::getInstance()->monsterVec.erase(itr);
+            break;
+        }
+        ++itr;
+    }
+    if (roleController::getInstance()->monsterVec.size()==0) {
 
+        this->purge();
+        
+    
+    }
+}
+void  gameLayer::purge()
+{
+
+    Director::getInstance()->getScheduler()->unschedule(schedule_selector(gameLayer::update), this);
+    roleController::getInstance()->purge();
+    this->removeFromParent();
 
 }

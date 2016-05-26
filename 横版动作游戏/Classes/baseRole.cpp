@@ -38,18 +38,40 @@ bool baseRole::init(propertyManager *manager)
     armature->getAnimation()->play("default");
     this->addChild(armature);
     
-     armature->getAnimation()->setMovementEventCallFunc(CC_CALLBACK_0(baseRole::animationEvent, this,std::placeholders::_1,std::placeholders::_2,std::placeholders::_3));
+  //   armature->getAnimation()->setMovementEventCallFunc(CC_CALLBACK_0(baseRole::animationEvent, this,std::placeholders::_1,std::placeholders::_2,std::placeholders::_3));
     
-    
+    armature->getAnimation()->setMovementEventCallFunc(this, movementEvent_selector(baseRole::animationEvent));
 
     return  true;
 }
+Rect baseRole::getRealRect(baseRole *role, cocos2d::Rect rect)
+{
+
+    Rect realRect=Rect(rect.origin.x+role->getPosition().x, rect.origin.y+role->getPosition().y, rect.size.width, rect.size.height);
+    return realRect;
+
+
+}
+
 void baseRole::animationEvent(Armature *pArmature, MovementEventType movementevent, const std::string &moventIDstr)
 {
 
     const char *movID=moventIDstr.c_str();
     if (strcmp(movID, "attack")==0) {
         if (movementevent==START) {
+            
+            if (locatedRole!=nullptr&& state!=ROLE_DEAD) {
+                if (getRealRect(this, property->getHitRect()).intersectsRect(locatedRole->getRealRect(locatedRole, property->getGetRect()))) {
+                    int atk=property->getATK();
+                    __String *hp=__String::createWithFormat("%d",atk);
+                    locatedRole->fallHp(hp->getCString());
+                    locatedRole->property->setHP(locatedRole->property->getHP()-atk);
+                    if (locatedRole->property->getHP()<=0) {
+                        locatedRole->getBaseai()->stopRoleAi();
+                        locatedRole->getbaseFsm()->changeToDead();
+                    }
+                }
+            }
             
         }
         if (movementevent==COMPLETE) {
@@ -58,7 +80,11 @@ void baseRole::animationEvent(Armature *pArmature, MovementEventType movementeve
     }
 
 
-
+    if (strcmp(movID, "gethit")==0) {
+        if (movementevent==COMPLETE) {
+            armature->runAction(Sequence::create(FadeOut::create(0.5f), CallFunc::create([=](){state=ROLE_FREE;}),NULL));
+        }
+    }
 
 }
 
@@ -88,6 +114,14 @@ void baseRole::onDraw(const kmMat4 &transform, bool transformUpdated)
     kmGLPopMatrix();
 }
 
+void baseRole::fallHp(const char *hpCount)
+{
+    FlyText *flyText=FlyText::create(hpCount);
+    flyText->startAnimation();
+    this->addChild(flyText);
+
+
+}
 void baseRole::changeFace(ROLE_FACE face)
 {
 
@@ -103,5 +137,12 @@ void baseRole::changeFace(ROLE_FACE face)
         this->face=face;
     }
 
+
+}
+void baseRole::shifang()
+{
+    this->getbaseFsm()->shifang();
+    this->getBaseai()->purge();
+    removeFromParent();
 
 }

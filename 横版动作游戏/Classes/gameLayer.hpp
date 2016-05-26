@@ -23,9 +23,9 @@ public:
     static gameLayer* create();
     virtual bool init();
     SceneManager *tsm;
-    baseRole *hero;
+    //baseRole *hero;
     rocker *rocker0;
-
+    void purge();
     void update(float dt);
     
 };
