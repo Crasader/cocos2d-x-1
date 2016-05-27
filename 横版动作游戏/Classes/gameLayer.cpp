@@ -32,7 +32,8 @@ gameLayer* gameLayer::create()
 
 bool gameLayer::init()
 {
-    dataManager::getInstance()->initWithJsonFile("Tollgate.Json");
+    
+ 
 
     for (int i=0; i<dataManager::getInstance()->getLevelDataByIndex(dataManager::getInstance()->getLevelIndex()).size(); i++)
     {
@@ -194,8 +195,12 @@ void gameLayer::update(float dt)
     if (roleController::getInstance()->monsterVec.size()==0) {
 
         this->purge();
-        
-    
+        if (dataManager::getInstance()->getLevelIndex()==2) {
+            return;
+        }
+        dataManager::getInstance()->setLevelIndex(dataManager::getInstance()->getLevelIndex()+1);
+       
+        tsm->toGameScene();
     }
 }
 void  gameLayer::purge()
