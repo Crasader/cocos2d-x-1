@@ -15,10 +15,18 @@ USING_NS_CC;
 
 class rankBirdLayer:public Layer
 {
-    public:
-    
+public:
+    std::string scoreBird[5];
+    Label *labels;
+     GameSceneManager *sceneManager;
+public:
+    virtual bool init();
+    void save(int);
+    void load();
+    void menuCallBack0(Ref *pSender);
+    void menuCallBack1(Ref *pSender);
     CREATE_FUNC(rankBirdLayer);
-    GameSceneManager *sceneManager;
+   
     
 };
 #endif /* RankBirdLayer_hpp */

@@ -20,7 +20,6 @@
 
 void GameSceneManager::createMainScene()
 {
-
     mainScene=Scene::create();
     MainLayer *layer=MainLayer::create();
     layer->sceneManager=this;

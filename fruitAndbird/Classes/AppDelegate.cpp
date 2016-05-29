@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
 #include "GameSceneManager.hpp"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 
@@ -33,6 +34,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
+    glview->setDesignResolutionSize(540, 960, ResolutionPolicy::SHOW_ALL);
     if(!glview) {
         glview = GLViewImpl::create("My Game");
         director->setOpenGLView(glview);
@@ -57,9 +59,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too
 void AppDelegate::applicationDidEnterBackground() {
     Director::getInstance()->stopAnimation();
-
-    // if you use SimpleAudioEngine, it must be pause
-    // SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+    CocosDenshion::SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
 }
 
 // this function will be called when the app is active again

@@ -1,13 +1,12 @@
-1.
+1.runAction的多重包含写法
 runAction(Sequence::create(MoveTo::create(),callFunc::create(CC_CALLBACK0(::))),NULL);
 
 
-2.
+2.内存申请
 Type *a=(Type*)malloc(sizeof(Type));
 free(a);
 
-3.
-CREAT_FUNC(HelloWorldLayer)相当于：
+3.CREAT_FUNC(HelloWorldLayer)相当于：
 HelloWorldLayer *HelloWorldLayer::create()
 {
  HelloWorldLayer *layer= new HelloWorldLayer();
@@ -40,3 +39,27 @@ Layer *Layer::create()
     }
 }
 
+
+//init
+
+bool Layer::init()
+{
+    Director * director = Director::getInstance();
+    setContentSize(director->getWinSize());
+    return true;
+}
+
+
+5.//实现3d水波效果
+effectNode=NodeGrid::create();
+    this->addChild(effectNode,10);
+    Sprite *title=Sprite::create("title.png");
+    title->setPosition(270,800);
+    effectNode->addChild(title,12);
+    Director::getInstance()->setDepthTest(false);
+    effectNode->runAction(RepeatForever::create(Ripple3D::create(2.0f, Size(32,24), Point(270,800), 360, 2, 5)));
+
+6. 随机数产生
+srand((unsigned)time(NULL));//种子,后面可以直接调用rand()产生随机数
+int number=rand()%4;  //产生0-3的随机数
+ 
