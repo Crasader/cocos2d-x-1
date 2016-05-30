@@ -63,3 +63,36 @@ effectNode=NodeGrid::create();
 srand((unsigned)time(NULL));//种子,后面可以直接调用rand()产生随机数
 int number=rand()%4;  //产生0-3的随机数
  
+
+
+7. CheckBox
+(1)头文件
+#include “ui/CocosGUI.h”
+using namespace ui;
+（2）回调
+回调: void callBack(Ref* pSender, CheckBox::EventType type)
+（3）使用：
+CheckBox* checkMusic=CheckBox::create(…);
+checkMusic->setPostion(…);
+checkMusic->setSelectedState(bool ); //设置默认选择状态
+checkMusic->setEventListener(CC_CALLBACK_2());
+回调实现：
+void callBack(Ref* pSender,CheckBox::EventType type)
+{
+switch(type)
+case cocos2d::ui::CheckBox::EventType::SELECTED:
+…..
+
+}
+
+8.裁切精灵
+//设置drawNode模版
+Point pp[4];
+pp[0]=Point(); ….
+DrawNode* shape=DrawNode::create();
+shape->drawPolygon(pp,4,green,1,red);
+//设置clipper
+ClippingNode* clipper=ClippingNode::create();
+clipper->setStencil(shape) 
+clipper->addChild(sprite);
+this->addChild(clipper);

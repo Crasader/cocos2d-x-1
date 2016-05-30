@@ -137,7 +137,7 @@ void GameSceneManager::goToHelpScene()
     helpLayer *layer=helpLayer::create();
     helpScene->addChild(layer);
     layer->sceneManager=this;
-    auto ss=TransitionPageTurn::create(1, aboutScene, false);
+    auto ss=TransitionPageTurn::create(1, helpScene, false);
     Director::getInstance()->replaceScene(ss);
 }
 
