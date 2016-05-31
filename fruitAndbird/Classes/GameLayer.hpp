@@ -16,9 +16,19 @@ USING_NS_CC;
 class gameLayer:public Layer
 {
     
-    public:
+public:
+    virtual bool init();
+    int random();
     CREATE_FUNC(gameLayer);
-    GameSceneManager *sceneManager;
+    void menuCallBack0(Ref* pSender);
+    void menuCallBack1(Ref* pSender);
+    void menuCallBack2(Ref* pSender);
+    void initTitle();
     
+    
+public:
+    Sprite* backGround;
+    GameSceneManager *sceneManager;
+    NodeGrid* effecNode;
 };
 #endif /* GameLayer_hpp */

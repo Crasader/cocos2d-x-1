@@ -15,10 +15,15 @@ USING_NS_CC;
 
 class aboutLayer:public Layer
 {
-   public: 
+public:
     
     CREATE_FUNC(aboutLayer);
     GameSceneManager *sceneManager;
+    
+public:
+    virtual bool init();
+    void menuCallBack(Ref* pSender);
+    
     
 };
 #endif /* AboutLayer_hpp */

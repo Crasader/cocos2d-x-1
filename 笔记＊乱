@@ -96,3 +96,38 @@ ClippingNode* clipper=ClippingNode::create();
 clipper->setStencil(shape) 
 clipper->addChild(sprite);
 this->addChild(clipper);
+
+
+9.
+   //帧动画
+    SpriteFrameCache* sfc=SpriteFrameCache::getInstance();
+    sfc->addSpriteFramesWithFile("bird.plist", "birdP.png");
+    std::string animBird[3]=
+    {
+    
+        "bird1.png",
+        "bird2.png",
+        "bird3.png"
+    
+    };
+    Vector<SpriteFrame*> animFrames;
+    animFrames.pushBack(sfc->getSpriteFrameByName(animBird[0]));
+    animFrames.pushBack(sfc->getSpriteFrameByName(animBird[1]));
+    animFrames.pushBack(sfc->getSpriteFrameByName(animBird[2]));
+    
+    Animation *anim=Animation::createWithSpriteFrames(animFrames,0.1f);
+    animAc=Animate::create(anim);
+    animAc->retain();
+
+
+10. schedule
+Director::getInstance()->getScheduler()->schedule(schedule_selector(birdLayer::update_bird), this, 0.05, false);
+
+11.Scale9Sprite的用法:用于无损拉伸精灵
+(1)头文件：#include “extensions/cocos-ext.h”
+using namespace cocos2d:: extension;
+(2)
+SpriteBatchNode* sprite=SpriteBatchNode::create(“…png”); //用于一次性绘制多个相同对象
+Scale9Sprite* scaleSprite=Scale9Sprite::create(); //可以直接调用Scale9Sprite ::create(“  ”)创建精灵
+scaleSprite->updateWithBatchNode(sprite,Rect(0,0,width,height),false,Rect(capInsets));//
+scaleSprite->setContentSize(Size(width,height));
