@@ -38,6 +38,7 @@ public:
     void initColumn1();
     void initColumn2();
     int random();
+    void replay();
     void menuCallBack0(Ref* pSender);
      void menuCallBack1(Ref* pSender);
      void menuCallBack2(Ref* pSender);
@@ -47,7 +48,7 @@ public:
     void selectedEvent0(Ref * pSender, CheckBox::EventType type);
      void selectedEvent1(Ref * pSender, CheckBox::EventType type);
     bool onTouchBegan0(Touch * touch,Event *event);
-    bool onTouchPause(Touch *touch,Event *event);
+    bool onTouchPause(Ref *pSender);
     void setRunFlag1();
     void setRunFlag2();
     CREATE_FUNC(birdLayer);

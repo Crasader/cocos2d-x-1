@@ -51,9 +51,9 @@ bool gameLayer::init()
     
     
     MenuItemImage* birdItem=MenuItemImage::create("Bird.png", "Bird_off.png", CC_CALLBACK_1(gameLayer::menuCallBack0, this));
-    birdItem->setPosition(Point(visibleSize.width/2-50,visibleSize.height-100));
+    birdItem->setPosition(Point(visibleSize.width/2,visibleSize.height/2));
     MenuItemImage* fruitItem=MenuItemImage::create("Fruit.png", "Fruit_off.png", CC_CALLBACK_1(gameLayer::menuCallBack1, this));
-    fruitItem->setPosition(Point(visibleSize.width/2+50,visibleSize.height-100));
+    fruitItem->setPosition(Point(visibleSize.width/2,visibleSize.height/2-100));
     
     MenuItemImage* menuItem=MenuItemImage::create("menu.png", "menu_off.png", CC_CALLBACK_1(gameLayer::menuCallBack2, this));
     menuItem->setPosition(Point(80,50));
