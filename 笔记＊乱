@@ -131,3 +131,14 @@ SpriteBatchNode* sprite=SpriteBatchNode::create(“…png”); //用于一次性
 Scale9Sprite* scaleSprite=Scale9Sprite::create(); //可以直接调用Scale9Sprite ::create(“  ”)创建精灵
 scaleSprite->updateWithBatchNode(sprite,Rect(0,0,width,height),false,Rect(capInsets));//
 scaleSprite->setContentSize(Size(width,height));
+
+
+11进度条
+#include “cocos-ext.h”
+using namespce cocos2d::extension;
+
+Slider* slider=Slider::create();
+slider->loadBarTexture(“”);
+slider->loadProgressBarTexture(“”);
+slider->setPercent(100);
+

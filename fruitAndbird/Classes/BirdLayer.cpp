@@ -10,6 +10,8 @@
 #include <time.h>
 #include "MainLayer.hpp"
 #include "GameLayer.hpp"
+#include "RankBirdLayer.hpp"
+#include "SimpleAudioEngine.h"
 
 bool birdLayer::init()
 {
@@ -59,10 +61,12 @@ bool birdLayer::init()
     this->addChild(pLabelAtlas,4);
     
     pause=Sprite::create("pause.png");
-    pause->setPosition(Point(32,928));
-    auto menuItem=MenuItemSprite::create(pause, pause, CC_CALLBACK_1(birdLayer::onTouchPause, this));
-
     
+    auto pauseItem=MenuItemSprite::create(pause, pause, CC_CALLBACK_1(birdLayer::onTouchPause, this));
+    pauseItem->setPosition(Point(32,928));
+    auto menu=Menu::create(pauseItem, NULL);
+    menu->setPosition(0,0);
+    this->addChild(menu);
     
     initBird();
     bird=Sprite::create();//----------
@@ -133,7 +137,7 @@ int birdLayer::random()
 
 bool birdLayer::onTouchBegan0(cocos2d::Touch *touch, cocos2d::Event *event)
 {
-    log("111111\n");
+    
     Point birdPosition=bird->getPosition();
     if (gameFlag)
     {
@@ -262,7 +266,7 @@ void birdLayer::update_bird(float dt)
         {
             dieSound();
         }
-        log("碰撞地面");
+        //log("碰撞地面");
         
         gameOver();
     }
@@ -274,7 +278,7 @@ void birdLayer::update_bird(float dt)
         {
             dieSound();
         }
-        log("碰撞柱子");
+        //log("碰撞柱子");
         
         gameOver();
     }
@@ -301,7 +305,7 @@ void birdLayer::update_bird(float dt)
         {
             dieSound();
         }
-        log("碰撞柱子");
+        //log("碰撞柱子");
         
         gameOver();
     }
@@ -315,7 +319,7 @@ void birdLayer::update_bird(float dt)
         {
             dieSound();
         }
-        log("碰撞柱子");
+       // log("碰撞柱子");
         
         gameOver();
     }
@@ -337,11 +341,112 @@ void birdLayer::gameOver()
     
     bird->stopAllActions();
     bird->runAction(Sequence::create(Spawn::createWithTwoActions(MoveTo::create(0.2, Point(birdPosition.x,floorSize.height+birdSize.width/2)),RotateTo::create(0.2, 90)),NULL));
+    
+    
     if (!overFlag)
     {
-        //replay();
+        replay();
     }
 
+}
+void birdLayer::replay()
+{
+
+    
+    
+    overFlag=true;
+    
+    string medal;
+    removeChild(pLabelAtlas);
+    Sprite* over =Sprite::create("gameOver.png");
+    over->setPosition(Point(270,1200));
+    this->addChild(over,10);
+    
+    overRank=Sprite::create("scoreOver.png");
+    overRank->setPosition(Point(270,-100));
+    this->addChild(overRank,10);
+    
+    replayItem=MenuItemImage::create("replay.png", "replay_off.png", CC_CALLBACK_1(birdLayer::menuCallBack0, this));
+    replayItem->setPosition(Point(150,-250));
+    menuItem=MenuItemImage::create("menu.png", "menu_off.png", CC_CALLBACK_1(birdLayer::menuCallBack1, this));
+    menuItem->setPosition(Point(380,-250));
+    
+    Menu* menu=Menu::create(replayItem,menuItem, NULL);
+    menu->setPosition(Point::ZERO);
+    this->addChild(menu,10);
+    
+    
+    rankBirdLayer *rank=rankBirdLayer::create();
+    //实例化了，无法实现rankbirdLayer的读取
+    rank->load();
+    rank->save(count);
+    
+    int i=atoi(rank->scoreBird[0].c_str());
+    string tempScore=StringUtils::format("%d",count);
+    Label * newScore=Label::createWithTTF(tempScore, "FZKATJW.ttf", 50,Size::ZERO,TextHAlignment::LEFT,TextVAlignment::TOP);
+    
+    newScore->setColor(Color3B::YELLOW);
+    newScore->enableOutline(Color4B(187,187,187,255),2);
+    overRank->addChild(newScore);
+    newScore->setPosition(Point(320,130));
+    
+    if (i<count)
+    {
+        Label* ss=Label::createWithTTF(tempScore,"FZKATJW.ttf",50,Size::ZERO,TextHAlignment::LEFT,TextVAlignment::TOP);
+        ss->setColor(Color3B::YELLOW );
+        ss->enableOutline(Color4B(187,187,187,255),2);
+        overRank->addChild(ss);
+        ss->setPosition(Point(320,50));
+        
+    }
+    else
+    {
+    
+        Label* ss=Label::createWithTTF(rank->scoreBird[0], "FZKATJW.ttf", 50,Size::ZERO,TextHAlignment::LEFT,TextVAlignment::TOP ) ;
+        ss->setColor(Color3B::YELLOW);
+        ss->enableOutline(Color4B(187,187,187,255),2);
+        overRank->addChild(ss);
+        ss->setPosition(Point(320,50));
+    }
+    if (count>=atoi(rank->scoreBird[2].c_str()))
+    {
+        medal="third.png";
+        
+        if (count>=atoi(rank->scoreBird[1].c_str()))
+        {
+            medal="slider.png";
+            if (count>=atoi(rank->scoreBird[0].c_str()))
+            {
+                medal="gold.png";
+            }
+        }
+        Sprite* gold=Sprite::create(medal);
+        overRank->addChild(gold);
+        gold->setPosition(Point(90,88));
+    }
+    over->runAction(Sequence::create(
+                                     MoveTo::create(0.2, Point(270,70)),
+                                     CallFunc::create(CC_CALLBACK_0(birdLayer::moveObject, this)),
+                                     NULL));
+    
+    
+    
+    
+}
+void birdLayer::moveObject()
+{
+    overRank->runAction(MoveTo::create(0.6, Point(270,550)));
+    replayItem->runAction(MoveTo::create(0.6, Point(150,380)));
+    menuItem->runAction(MoveTo::create(0.6, Point(380,380)));
+
+}
+void birdLayer::menuCallBack0(cocos2d::Ref *pSender)
+{
+    sceneManager->goToFlappyScene(1);
+}
+void birdLayer::menuCallBack1(cocos2d::Ref *pSender)
+{
+    sceneManager->goToMainScene();
 }
 
 void birdLayer::initColumn1()
@@ -435,7 +540,107 @@ void birdLayer::dieSound()
 {}
 bool birdLayer::onTouchPause(Ref* pSender)
 {
-     log("222222\n");
+    if (!gameFlag)
+    {
+        return  false;
+    }
+    if (!stopFlag)
+    {
+           stopFlag=true;
+        pause->setTexture("continue_pause.png");
+        Director::getInstance()->pause();
+        
+        pauseBack=Sprite::create("setBackground.png");
+        pauseBack->setPosition(Point(270,600));
+        this->addChild(pauseBack,10);
+        
+        Sprite* music=Sprite::create("music.png");
+        pauseBack->addChild(music);
+        music->setPosition(120,300);
+        
+        
+        CheckBox* checkMenu=CheckBox::create("sound.png", "sound_off.png", "sound_off.png", "sound_stop.png", "sound_stop.png");
+        pauseBack->addChild(checkMenu,1);
+        checkMenu->::birdLayer::setPosition(350,300);
+        checkMenu->setSelected(!MainLayer::musicFlag);
+        checkMenu->addEventListener(CC_CALLBACK_2(birdLayer::selectedEvent0, this));
+        
+        MenuItemImage* conItem = MenuItemImage::create(
+                                                       "continue.png",
+                                                       "continue_off.png",
+                                                       CC_CALLBACK_1(::birdLayer::menuCallBack3, this) //µ„ª˜ ±÷¥––µƒªÿµ˜∑Ω∑®
+                                                       );
+        conItem->setPosition(Point(80, 80));
+        //∑µªÿ÷˜≤Àµ•
+        MenuItemImage* backItem = MenuItemImage::create(
+                                                        "menu.png",
+                                                        "menu_off.png",
+                                                        CC_CALLBACK_1(::birdLayer::menuCallBack2, this) //µ„ª˜ ±÷¥––µƒªÿµ˜∑Ω∑®
+                                                        );
+        backItem->setPosition(Point(225, 80));
+        //∑µªÿ÷˜≤Àµ•
+        MenuItemImage* againItem = MenuItemImage::create(
+                                                         "replay.png",
+                                                         "replay_off.png",
+                                                         CC_CALLBACK_1(::birdLayer::menuCallBack4, this) //µ„ª˜ ±÷¥––µƒªÿµ˜∑Ω∑®
+                                                         );
+        againItem->setPosition(Point(370, 80));
+        
+        Menu* menu = Menu::create(againItem, conItem, backItem, NULL);
+        //…Ë÷√≤Àµ•Œª÷√
+        menu->setPosition(Point::ZERO);
+        pauseBack->addChild(menu,1);
+
+        
+    }
+ 
+    
+    
+    
+    
+    
+    
+    
     return  true;
 }
 
+void birdLayer::selectedEvent0(cocos2d::Ref *pSender, CheckBox::EventType type)
+{
+
+    switch (type)
+    {
+        case cocos2d::ui::CheckBox::EventType::SELECTED:
+            CocosDenshion::SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+            MainLayer::musicFlag=false;
+            break;
+            
+            case cocos2d::ui::CheckBox::EventType::UNSELECTED:
+            CocosDenshion::SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+            MainLayer::musicFlag=true;
+            break;
+        default:
+            break;
+    }
+
+}
+
+void birdLayer::menuCallBack3(cocos2d::Ref *pSender)
+{
+    stopFlag=false;
+    this->removeChild(pauseBack);
+    pause->setTexture("pause.png");
+    Director::getInstance()->resume();
+
+}
+void birdLayer::menuCallBack2(cocos2d::Ref *pSender)
+{
+    Director::getInstance()->resume();
+    sceneManager->goToMainScene();
+
+}
+void birdLayer::menuCallBack4(cocos2d::Ref *pSender)
+{
+    Director::getInstance()->resume();
+    sceneManager->goToFlappyScene(1);
+
+}

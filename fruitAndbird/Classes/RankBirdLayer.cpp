@@ -35,7 +35,7 @@ bool rankBirdLayer::init()
     title->setPosition(270,850);
     this->addChild(title,1);
     
-    
+    load();
     MenuItemImage *menuItem=MenuItemImage::create("menu.png", "menu_off.png", CC_CALLBACK_1(rankBirdLayer::menuCallBack0, this));
     menuItem->setPosition(80,50);
     MenuItemImage *nextItem=MenuItemImage::create("next.png", "next_off.png", CC_CALLBACK_1(rankBirdLayer::menuCallBack1, this));
@@ -44,14 +44,16 @@ bool rankBirdLayer::init()
     Menu *menu=Menu::create(menuItem,nextItem, NULL);
     menu->setPosition(Point::ZERO);
     this->addChild(menu,10);
-    
+   
     //排行的显示
     int *tempBird= new int[5];
-    for (int i=0; i<5; i++) {
+    for (int i=0; i<5; i++)
+    {
         std::string score;
         std::string number=StringUtils::format("%d",(i+1)); //创建string
         tempBird[i]=atoi(scoreBird[i].c_str());// atoi(const char *) 转换为int; .c_str()将std::string转换为char ＊
-        if (tempBird[i]==0) {
+        if (tempBird[i]==0)
+        {
             score="-";
         }
     
@@ -86,7 +88,8 @@ void rankBirdLayer::save(int newScore)
     for (int i=4; i>=0; i--) {
         if (newScore>=tempBird[i]) {
             score=StringUtils::format("%d",newScore);
-            if (i!=4) {
+            if (i!=4)
+            {
                 oldScore=StringUtils::format("%d",tempBird[i]);
                 UserDefault::getInstance()->setStringForKey(StringUtils::format("b%d",(i+1)).c_str(), oldScore);
             }
