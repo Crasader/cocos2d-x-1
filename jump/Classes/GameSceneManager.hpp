@@ -17,7 +17,7 @@ class GameSceneManager
 {
 
 public:
-    void createScene();
+   static void createScene();
     void goFlayLayer();
     void goMenuLayer();
     void goLevelLayer();

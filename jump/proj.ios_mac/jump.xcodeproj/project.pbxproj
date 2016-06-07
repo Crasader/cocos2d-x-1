@@ -67,6 +67,8 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
+		FF4314CD1D06B0D50071A008 /* ChoiceCubeLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4314CB1D06B0D50071A008 /* ChoiceCubeLayer.cpp */; };
+		FF4314D01D06B10C0071A008 /* ChoiceCubeHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4314CE1D06B10C0071A008 /* ChoiceCubeHelp.cpp */; };
 		FF8A3FB31D0574840054ECC1 /* GameSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF8A3FB11D0574840054ECC1 /* GameSceneManager.cpp */; };
 		FF8A3FB61D0575BE0054ECC1 /* MenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF8A3FB41D0575BE0054ECC1 /* MenuLayer.cpp */; };
 		FF8A3FBA1D0576D30054ECC1 /* SpriteManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF8A3FB81D0576D30054ECC1 /* SpriteManager.cpp */; };
@@ -172,6 +174,11 @@
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		FF4314CB1D06B0D50071A008 /* ChoiceCubeLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChoiceCubeLayer.cpp; sourceTree = "<group>"; };
+		FF4314CC1D06B0D50071A008 /* ChoiceCubeLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ChoiceCubeLayer.hpp; sourceTree = "<group>"; };
+		FF4314CE1D06B10C0071A008 /* ChoiceCubeHelp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChoiceCubeHelp.cpp; sourceTree = "<group>"; };
+		FF4314CF1D06B10C0071A008 /* ChoiceCubeHelp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ChoiceCubeHelp.hpp; sourceTree = "<group>"; };
+		FF4314D21D06B34A0071A008 /* ParticlSystemHelp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ParticlSystemHelp.hpp; sourceTree = "<group>"; };
 		FF8A3FB11D0574840054ECC1 /* GameSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameSceneManager.cpp; sourceTree = "<group>"; };
 		FF8A3FB21D0574840054ECC1 /* GameSceneManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameSceneManager.hpp; sourceTree = "<group>"; };
 		FF8A3FB41D0575BE0054ECC1 /* MenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuLayer.cpp; sourceTree = "<group>"; };
@@ -184,9 +191,9 @@
 		FF8A3FC01D0579AC0054ECC1 /* Barrier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Barrier.cpp; sourceTree = "<group>"; };
 		FF8A3FC11D0579AC0054ECC1 /* Barrier.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Barrier.hpp; sourceTree = "<group>"; };
 		FF8A3FC51D057B9B0054ECC1 /* game_bg_01_001-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game_bg_01_001-hd.png"; sourceTree = "<group>"; };
-		FF8A3FC81D057B9B0054ECC1 /* dragEffect.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dragEffect.plist; sourceTree = "<group>"; };
-		FF8A3FC91D057B9B0054ECC1 /* explodeEffect.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = explodeEffect.plist; sourceTree = "<group>"; };
-		FF8A3FCA1D057B9B0054ECC1 /* square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = square.png; sourceTree = "<group>"; };
+		FF8A3FC81D057B9B0054ECC1 /* dragEffect.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = dragEffect.plist; path = GC/dragEffect.plist; sourceTree = "<group>"; };
+		FF8A3FC91D057B9B0054ECC1 /* explodeEffect.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = explodeEffect.plist; path = GC/explodeEffect.plist; sourceTree = "<group>"; };
+		FF8A3FCA1D057B9B0054ECC1 /* square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = square.png; path = GC/square.png; sourceTree = "<group>"; };
 		FF8A3FCB1D057B9B0054ECC1 /* GJ_GameSheet1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GJ_GameSheet1.png; sourceTree = "<group>"; };
 		FF8A3FCC1D057B9B0054ECC1 /* Scale9SpritePic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Scale9SpritePic.png; sourceTree = "<group>"; };
 		FF8A3FCD1D057B9B0054ECC1 /* snow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snow.png; sourceTree = "<group>"; };
@@ -333,6 +340,8 @@
 				FF8A3FB51D0575BE0054ECC1 /* MenuLayer.hpp */,
 				FF8A3FC01D0579AC0054ECC1 /* Barrier.cpp */,
 				FF8A3FC11D0579AC0054ECC1 /* Barrier.hpp */,
+				FF4314CB1D06B0D50071A008 /* ChoiceCubeLayer.cpp */,
+				FF4314CC1D06B0D50071A008 /* ChoiceCubeLayer.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -392,6 +401,9 @@
 				FF8A3FB91D0576D30054ECC1 /* SpriteManager.hpp */,
 				FF8A3FBB1D05775D0054ECC1 /* MenuLayerHelp.cpp */,
 				FF8A3FBC1D05775D0054ECC1 /* MenuLayerHelp.hpp */,
+				FF4314CE1D06B10C0071A008 /* ChoiceCubeHelp.cpp */,
+				FF4314CF1D06B10C0071A008 /* ChoiceCubeHelp.hpp */,
+				FF4314D21D06B34A0071A008 /* ParticlSystemHelp.hpp */,
 			);
 			name = framHelp;
 			sourceTree = "<group>";
@@ -400,22 +412,14 @@
 			isa = PBXGroup;
 			children = (
 				FF8A3FC51D057B9B0054ECC1 /* game_bg_01_001-hd.png */,
-				FF8A3FC61D057B9B0054ECC1 /* GC */,
+				FF8A3FC81D057B9B0054ECC1 /* dragEffect.plist */,
+				FF8A3FC91D057B9B0054ECC1 /* explodeEffect.plist */,
+				FF8A3FCA1D057B9B0054ECC1 /* square.png */,
 				FF8A3FCB1D057B9B0054ECC1 /* GJ_GameSheet1.png */,
 				FF8A3FCC1D057B9B0054ECC1 /* Scale9SpritePic.png */,
 				FF8A3FCD1D057B9B0054ECC1 /* snow.png */,
 			);
 			path = pic;
-			sourceTree = "<group>";
-		};
-		FF8A3FC61D057B9B0054ECC1 /* GC */ = {
-			isa = PBXGroup;
-			children = (
-				FF8A3FC81D057B9B0054ECC1 /* dragEffect.plist */,
-				FF8A3FC91D057B9B0054ECC1 /* explodeEffect.plist */,
-				FF8A3FCA1D057B9B0054ECC1 /* square.png */,
-			);
-			path = GC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -576,8 +580,10 @@
 				FF8A3FB61D0575BE0054ECC1 /* MenuLayer.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
+				FF4314D01D06B10C0071A008 /* ChoiceCubeHelp.cpp in Sources */,
 				FF8A3FB31D0574840054ECC1 /* GameSceneManager.cpp in Sources */,
 				FF8A3FBA1D0576D30054ECC1 /* SpriteManager.cpp in Sources */,
+				FF4314CD1D06B0D50071A008 /* ChoiceCubeLayer.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				FF8A3FBD1D05775D0054ECC1 /* MenuLayerHelp.cpp in Sources */,

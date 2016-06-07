@@ -13,6 +13,7 @@
 #include <cocos2d.h>
 #include "extensions/cocos-ext.h"
 #include "Constant.h"
+#include "SpriteManager.hpp"
 
 USING_NS_CC;
 using namespace extension;
@@ -20,7 +21,13 @@ using namespace extension;
 class MenuLayerHelp
 {
 
-
+public:
+    MenuLayerHelp(Layer* layerIn);
+    void initCreateSprite();
+    bool JudgeSp(Sprite* sp);
+public:
+    Layer* layer;
+    SpriteManager* sh;
 
 
 };

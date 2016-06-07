@@ -19,9 +19,9 @@ bool MenuLayer::init()
     visibleSize=Director::getInstance()->getVisibleSize();
     origin=Director::getInstance()->getVisibleOrigin();
     
-
+    sh=new SpriteManager(this);
     
-
-
+    mlh=new MenuLayerHelp(this);
+    mlh->initCreateSprite();
     return true;
 }
