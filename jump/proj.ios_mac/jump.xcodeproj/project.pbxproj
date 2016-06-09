@@ -67,6 +67,17 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
+		FF1E427B1D0950D8009A8B50 /* MusicLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF1E42791D0950D8009A8B50 /* MusicLayer.cpp */; };
+		FF1E427E1D095159009A8B50 /* MusicHelpLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF1E427C1D095159009A8B50 /* MusicHelpLayer.cpp */; };
+		FF1E42811D09555A009A8B50 /* MusicManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF1E427F1D09555A009A8B50 /* MusicManager.cpp */; };
+		FF1E42891D0956A3009A8B50 /* BackOnTrack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FF1E42831D0956A3009A8B50 /* BackOnTrack.mp3 */; };
+		FF1E428A1D0956A3009A8B50 /* CantLetGo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FF1E42841D0956A3009A8B50 /* CantLetGo.mp3 */; };
+		FF1E428B1D0956A3009A8B50 /* explode_11.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FF1E42851D0956A3009A8B50 /* explode_11.mp3 */; };
+		FF1E428C1D0956A3009A8B50 /* menuLoop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FF1E42861D0956A3009A8B50 /* menuLoop.mp3 */; };
+		FF1E428D1D0956A3009A8B50 /* playSound_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FF1E42871D0956A3009A8B50 /* playSound_01.mp3 */; };
+		FF1E428E1D0956A3009A8B50 /* quitSound_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FF1E42881D0956A3009A8B50 /* quitSound_01.mp3 */; };
+		FF1E42911D096223009A8B50 /* LevelLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF1E428F1D096223009A8B50 /* LevelLayer.cpp */; };
+		FF1E42941D096327009A8B50 /* LevelHelpLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF1E42921D096327009A8B50 /* LevelHelpLayer.cpp */; };
 		FF4314CD1D06B0D50071A008 /* ChoiceCubeLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4314CB1D06B0D50071A008 /* ChoiceCubeLayer.cpp */; };
 		FF4314D01D06B10C0071A008 /* ChoiceCubeHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4314CE1D06B10C0071A008 /* ChoiceCubeHelp.cpp */; };
 		FF8A3FB31D0574840054ECC1 /* GameSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF8A3FB11D0574840054ECC1 /* GameSceneManager.cpp */; };
@@ -174,6 +185,22 @@
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		FF1E42791D0950D8009A8B50 /* MusicLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MusicLayer.cpp; sourceTree = "<group>"; };
+		FF1E427A1D0950D8009A8B50 /* MusicLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MusicLayer.hpp; sourceTree = "<group>"; };
+		FF1E427C1D095159009A8B50 /* MusicHelpLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MusicHelpLayer.cpp; sourceTree = "<group>"; };
+		FF1E427D1D095159009A8B50 /* MusicHelpLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MusicHelpLayer.hpp; sourceTree = "<group>"; };
+		FF1E427F1D09555A009A8B50 /* MusicManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MusicManager.cpp; sourceTree = "<group>"; };
+		FF1E42801D09555A009A8B50 /* MusicManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MusicManager.hpp; sourceTree = "<group>"; };
+		FF1E42831D0956A3009A8B50 /* BackOnTrack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BackOnTrack.mp3; sourceTree = "<group>"; };
+		FF1E42841D0956A3009A8B50 /* CantLetGo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CantLetGo.mp3; sourceTree = "<group>"; };
+		FF1E42851D0956A3009A8B50 /* explode_11.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = explode_11.mp3; sourceTree = "<group>"; };
+		FF1E42861D0956A3009A8B50 /* menuLoop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menuLoop.mp3; sourceTree = "<group>"; };
+		FF1E42871D0956A3009A8B50 /* playSound_01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = playSound_01.mp3; sourceTree = "<group>"; };
+		FF1E42881D0956A3009A8B50 /* quitSound_01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = quitSound_01.mp3; sourceTree = "<group>"; };
+		FF1E428F1D096223009A8B50 /* LevelLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LevelLayer.cpp; sourceTree = "<group>"; };
+		FF1E42901D096223009A8B50 /* LevelLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LevelLayer.hpp; sourceTree = "<group>"; };
+		FF1E42921D096327009A8B50 /* LevelHelpLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LevelHelpLayer.cpp; sourceTree = "<group>"; };
+		FF1E42931D096327009A8B50 /* LevelHelpLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LevelHelpLayer.hpp; sourceTree = "<group>"; };
 		FF4314CB1D06B0D50071A008 /* ChoiceCubeLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChoiceCubeLayer.cpp; sourceTree = "<group>"; };
 		FF4314CC1D06B0D50071A008 /* ChoiceCubeLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ChoiceCubeLayer.hpp; sourceTree = "<group>"; };
 		FF4314CE1D06B10C0071A008 /* ChoiceCubeHelp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChoiceCubeHelp.cpp; sourceTree = "<group>"; };
@@ -314,6 +341,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FF1E42821D0956A3009A8B50 /* sound */,
 				FF8A3FC31D057B9B0054ECC1 /* pic */,
 				521A8EA819F11F5000D177D7 /* fonts */,
 				3EACC98E19EE6D4300EB3C5E /* res */,
@@ -342,6 +370,10 @@
 				FF8A3FC11D0579AC0054ECC1 /* Barrier.hpp */,
 				FF4314CB1D06B0D50071A008 /* ChoiceCubeLayer.cpp */,
 				FF4314CC1D06B0D50071A008 /* ChoiceCubeLayer.hpp */,
+				FF1E42791D0950D8009A8B50 /* MusicLayer.cpp */,
+				FF1E427A1D0950D8009A8B50 /* MusicLayer.hpp */,
+				FF1E428F1D096223009A8B50 /* LevelLayer.cpp */,
+				FF1E42901D096223009A8B50 /* LevelLayer.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -394,6 +426,19 @@
 			path = ios;
 			sourceTree = SOURCE_ROOT;
 		};
+		FF1E42821D0956A3009A8B50 /* sound */ = {
+			isa = PBXGroup;
+			children = (
+				FF1E42831D0956A3009A8B50 /* BackOnTrack.mp3 */,
+				FF1E42841D0956A3009A8B50 /* CantLetGo.mp3 */,
+				FF1E42851D0956A3009A8B50 /* explode_11.mp3 */,
+				FF1E42861D0956A3009A8B50 /* menuLoop.mp3 */,
+				FF1E42871D0956A3009A8B50 /* playSound_01.mp3 */,
+				FF1E42881D0956A3009A8B50 /* quitSound_01.mp3 */,
+			);
+			path = sound;
+			sourceTree = "<group>";
+		};
 		FF8A3FB71D0576BF0054ECC1 /* framHelp */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,6 +449,12 @@
 				FF4314CE1D06B10C0071A008 /* ChoiceCubeHelp.cpp */,
 				FF4314CF1D06B10C0071A008 /* ChoiceCubeHelp.hpp */,
 				FF4314D21D06B34A0071A008 /* ParticlSystemHelp.hpp */,
+				FF1E427C1D095159009A8B50 /* MusicHelpLayer.cpp */,
+				FF1E427D1D095159009A8B50 /* MusicHelpLayer.hpp */,
+				FF1E427F1D09555A009A8B50 /* MusicManager.cpp */,
+				FF1E42801D09555A009A8B50 /* MusicManager.hpp */,
+				FF1E42921D096327009A8B50 /* LevelHelpLayer.cpp */,
+				FF1E42931D096327009A8B50 /* LevelHelpLayer.hpp */,
 			);
 			name = framHelp;
 			sourceTree = "<group>";
@@ -529,10 +580,15 @@
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
+				FF1E42891D0956A3009A8B50 /* BackOnTrack.mp3 in Resources */,
+				FF1E428B1D0956A3009A8B50 /* explode_11.mp3 in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				46880B8119C43A67006E1F66 /* HelloWorld.png in Resources */,
+				FF1E428D1D0956A3009A8B50 /* playSound_01.mp3 in Resources */,
 				46880B7D19C43A67006E1F66 /* CloseSelected.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
+				FF1E428E1D0956A3009A8B50 /* quitSound_01.mp3 in Resources */,
+				FF1E428A1D0956A3009A8B50 /* CantLetGo.mp3 in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				FF8A3FD11D057B9B0054ECC1 /* dragEffect.plist in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
@@ -540,6 +596,7 @@
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
+				FF1E428C1D0956A3009A8B50 /* menuLoop.mp3 in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				FF8A3FD21D057B9B0054ECC1 /* explodeEffect.plist in Resources */,
 				FF8A3FD41D057B9B0054ECC1 /* GJ_GameSheet1.png in Resources */,
@@ -582,10 +639,15 @@
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				FF4314D01D06B10C0071A008 /* ChoiceCubeHelp.cpp in Sources */,
 				FF8A3FB31D0574840054ECC1 /* GameSceneManager.cpp in Sources */,
+				FF1E427B1D0950D8009A8B50 /* MusicLayer.cpp in Sources */,
 				FF8A3FBA1D0576D30054ECC1 /* SpriteManager.cpp in Sources */,
+				FF1E427E1D095159009A8B50 /* MusicHelpLayer.cpp in Sources */,
 				FF4314CD1D06B0D50071A008 /* ChoiceCubeLayer.cpp in Sources */,
+				FF1E42941D096327009A8B50 /* LevelHelpLayer.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				FF1E42911D096223009A8B50 /* LevelLayer.cpp in Sources */,
+				FF1E42811D09555A009A8B50 /* MusicManager.cpp in Sources */,
 				FF8A3FBD1D05775D0054ECC1 /* MenuLayerHelp.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 			);

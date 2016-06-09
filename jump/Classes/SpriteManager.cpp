@@ -10,6 +10,8 @@
 #include "Constant.h"
 #include "ChoiceCubeLayer.hpp"
 #include "MenuLayer.hpp"
+#include "MusicManager.hpp"
+#include "MusicLayer.hpp"
 
 //初始化
 SpriteManager::SpriteManager(Layer* layerIn)
@@ -62,22 +64,23 @@ bool SpriteManager::Judge(cocos2d::Sprite *sp, Point location)
 
     if (rect.containsPoint(location))
     {
-        if (layer->getTag()==INDEX_MENULAYER && (((MenuLayer*)layer)->mlh->JudgeSp(sp)))
-            {
-                log("yyyy");
-                return true;
-            }
         
-       if (layer->getTag()==INDEX_CHOICECUBELAYER && (((ChoiceCubeLayer*)layer)->cclh->JudgeSp(sp)))
-                
+        if(layer->getTag() == INDEX_MENULAYER && ((MenuLayer*)(layer))->mlh->JudgeSp(sp))
         {
             return true;
         }
-           }
+        else if(layer->getTag() == INDEX_CHOICECUBELAYER && ((ChoiceCubeLayer*)(layer))->cclh->JudgeSp(sp))
+        {
+            return true;
+        }
+        else if(layer->getTag() == INDEX_MUSICLAYER && ((MusicLayer*)(layer))->mh->JudgeSp(sp))
+        {
+            return true;
+        }
+    }
     return false;
-
 }
-                 
+
 
 //精灵创建方法，调用batchNode载入的图片直接裁切
 Sprite*  SpriteManager::createSprite(std::string *id, cocos2d::Rect recta, cocos2d::SpriteBatchNode *batchNode, float anchorX, float anchorY, float locationX, float locationY, float width, float height, int ZOrder)

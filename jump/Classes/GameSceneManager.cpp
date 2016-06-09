@@ -9,6 +9,7 @@
 #include "GameSceneManager.hpp"
 #include "MenuLayer.hpp"
 #include "ChoiceCubeLayer.hpp"
+#include "MusicLayer.hpp"
 
 void GameSceneManager::createScene()
 {
@@ -27,6 +28,24 @@ void GameSceneManager::goChoiceCubeLayer()
     auto layer=ChoiceCubeLayer::create();
     scene->addChild(layer);
     layer->gsm=this;
+    Director::getInstance()->replaceScene(scene);
+
+}
+void GameSceneManager::goMenuLayer()
+{
+
+    auto scene=Scene::create();
+    auto layer=MenuLayer::create();
+    scene->addChild(layer);
+    layer->gsm=this;
+    Director::getInstance()->replaceScene(scene);
+}
+
+void GameSceneManager::goMusicLayer()
+{
+    auto scene=Scene::create();
+    auto layer=MusicLayer::create();
+    scene->addChild(layer);
     Director::getInstance()->replaceScene(scene);
 
 }

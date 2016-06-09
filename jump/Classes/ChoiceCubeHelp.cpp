@@ -88,9 +88,126 @@ bool ChoiceCubeHelp::JudgeSp(cocos2d::Sprite *sp)
 {
     if (sp==sh->allSp[1])
     {
+        ((ChoiceCubeLayer*)layer)->gsm->goMenuLayer();
+        return true;
+    }
+    else if (sp==sh->allSp[2])
+    {
+        sh->batchNode->removeChild(sh->allSp[12], true);
+        sh->allSp[12] = sh->createSprite(NULL, Rect(815,80,844-815,111-80), sh->batchNode, 0.5f, 0.5f, 640, 350, 70, 70, GoBackZOrder);
+        p11 = 813;
+        p12 = 80;
+        p13 = 844-813;
+        p14 = 111-80;
+        saveData();
+        return true;
         
     }
-
+    
+    else if(sp == sh->allSp[3])
+    {
+        sh->batchNode->removeChild(sh->allSp[12],true);
+        sh->allSp[12] = sh->createSprite(NULL, Rect(903,123,933-903,153-123), sh->batchNode, 0.5f, 0.5f, 640, 350, 70, 70, GoBackZOrder);
+        p11 = 902;
+        p12 = 123;
+        p13 = 933-902;
+        p14 = 153-123;
+        saveData();
+        return true;
+    }
+    else if(sp == sh->allSp[4])
+    {
+        sh->batchNode->removeChild(sh->allSp[12],true);
+        sh->allSp[12] = sh->createSprite(NULL, Rect(873,116,902-873,147-116), sh->batchNode, 0.5f, 0.5f, 640, 350, 70, 70, GoBackZOrder);
+        p11 = 871;
+        p12 = 116;
+        p13 = 902-871;
+        p14 = 147-116;
+        saveData();
+        return true;
+    }
+    else if(sp == sh->allSp[5])
+    {
+        sh->batchNode->removeChild(sh->allSp[12],true);
+        sh->allSp[12] = sh->createSprite(NULL, Rect(843,117,871-843,147-117), sh->batchNode, 0.5f, 0.5f, 640, 350, 70, 70, GoBackZOrder);
+        p11 = 841;
+        p12 = 117;
+        p13 = 871-841;
+        p14 = 147-117;
+        saveData();
+        return true;
+    }
+    else if(sp == sh->allSp[6])
+    {
+        sh->batchNode->removeChild(sh->allSp[12],true);
+        sh->allSp[12] = sh->createSprite(NULL, Rect(811,112,840-811,142-112), sh->batchNode, 0.5f, 0.5f, 640, 350, 70, 70, GoBackZOrder);
+        p11 = 809;
+        p12 = 112;
+        p13 = 840-809;
+        p14 = 142-112;
+        saveData();
+        return true;
+    }
+    else if(sp == sh->allSp[7])
+    {
+        sh->batchNode->removeChild(sh->allSp[12],true);
+        sh->allSp[12] = sh->createSprite(NULL, Rect(780,109,809-780,140-109), sh->batchNode, 0.5f, 0.5f, 640, 350, 70, 70, GoBackZOrder);
+        p11 = 778;
+        p12 = 109;
+        p13 = 809-778;
+        p14 = 140-109;
+        saveData();
+        return true;
+    }
+    else if(sp == sh->allSp[8])
+    {
+        sh->batchNode->removeChild(sh->allSp[12],true);
+        sh->allSp[12] = sh->createSprite(NULL, Rect(751,109,778-751,140-109), sh->batchNode, 0.5f, 0.5f, 640, 350, 70, 70, GoBackZOrder);
+        p11 = 747;
+        p12 = 109;
+        p13 = 778-747;
+        p14 = 140-109;
+        saveData();
+        return true;
+    }
+    else if(sp == sh->allSp[9])
+    {
+        sh->batchNode->removeChild(sh->allSp[12],true);
+        sh->allSp[12] = sh->createSprite(NULL, Rect(718,109,747-718,140-109), sh->batchNode, 0.5f, 0.5f, 640, 350, 70, 70, GoBackZOrder);
+        p11 = 717;
+        p12 = 109;
+        p13 = 747-717;
+        p14 = 140-109;
+        saveData();
+        return true;
+    }
+    else if(sp == sh->allSp[10])
+    {
+        sh->batchNode->removeChild(sh->allSp[12],true);
+        sh->allSp[12] = sh->createSprite(NULL, Rect(686,109,716-686,140-109), sh->batchNode, 0.5f, 0.5f, 640, 350, 70, 70, GoBackZOrder);
+        p11 = 685;
+        p12 = 109;
+        p13 = 716-685;
+        p14 = 140-109;
+        saveData();
+        return true;
+    }
+    else if(sp == sh->allSp[11])
+    {
+        sh->batchNode->removeChild(sh->allSp[12],true);
+        sh->allSp[12] = sh->createSprite(NULL, Rect(655,107,685-655,138-107), sh->batchNode, 0.5f, 0.5f, 640, 350, 70, 70, GoBackZOrder);
+        p11 = 654;
+        p12 = 107;
+        p13 = 685-654;
+        p14 = 138-107;
+        saveData();
+        return true;
+    }
+    else
+        return false;
+    
+    
+    
 }
 void ChoiceCubeHelp::saveData()
 {

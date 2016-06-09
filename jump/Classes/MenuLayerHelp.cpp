@@ -16,7 +16,7 @@ MenuLayerHelp::MenuLayerHelp(Layer* layerIn)
     this->layer=layerIn;
     
     //获取menulayer的管理指针
-    sh=((MenuLayer*)(layerIn))->sh;
+    sh=((MenuLayer*)(layer))->sh;
 
 }
 
@@ -54,17 +54,26 @@ void MenuLayerHelp::initCreateSprite()
 //判断精灵是否为进入选择管卡的按钮
 bool MenuLayerHelp::JudgeSp(cocos2d::Sprite *sp)
 {
-    if (sp==sh->allSp[20])
-    {
-    
-    }
-    if (sp==sh->allSp[21])
-    {
-        ( (MenuLayer*)layer)->gsm->goChoiceCubeLayer();
-        return true;
-    }
-    
-
+    if(sp == sh->allSp[20])
+{
+   // ((MenuLayer*)(layer))->gsm->goLevelLayer();
+    return true;
+}
+else if(sp == sh->allSp[21])
+{
+    ((MenuLayer*)(layer))->gsm->goChoiceCubeLayer();
+    return true;
+}
+else if(sp == sh->allSp[22])
+{
+    ((MenuLayer*)(layer))->gsm->goMusicLayer();
+    return true;
+}
+else if(sp == sh->allSp[7])
+{
+    Director::getInstance()->end();
+    return true;
+}
     else
-    return false;
+        return false;
 }
