@@ -22,7 +22,7 @@ void GameSceneManager::createMainScene()
 {
     mainScene=Scene::create();
     MainLayer *layer=MainLayer::create();
-    layer->sceneManager=this;
+    layer->sceneManager=this; //this＝manger实例
     mainScene->addChild(layer);
 }
 //切换到main场景
@@ -32,7 +32,8 @@ void GameSceneManager::goToMainScene()
     mainScene=Scene::create();
     MainLayer *layer=MainLayer::create();
     mainScene->addChild(layer);
-    layer->sceneManager=this;//MainLayer中的GameSceneManager 的指针指向此类
+   layer->sceneManager=this ;
+      printf(" tomainScen:%p\n",layer->sceneManager);//MainLayer中的GameSceneManager 的指针指向此类
     auto ss=TransitionFade::create(1, mainScene);
     Director::getInstance()->replaceScene(mainScene);
 
@@ -83,6 +84,7 @@ void GameSceneManager::goToGameScene()
     gameLayer *layer=gameLayer::create();
     gameScene->addChild(layer);
     layer->sceneManager=this;
+    printf(" togameScen:%p\n",layer->sceneManager);
     auto ss=TransitionPageTurn::create(1, gameScene, false);
     Director::getInstance()->replaceScene(gameScene);
 }
@@ -92,6 +94,7 @@ void GameSceneManager::goToSetScene()
     musicScene=Scene::create();
     setLayer *layer=setLayer::create();
     layer->sceneManager=this;
+      printf(" toset:%p\n",layer->sceneManager);
     musicScene->addChild(layer);
     auto ss=TransitionPageTurn::create(1, musicScene, false);
     Director::getInstance()->replaceScene(ss);

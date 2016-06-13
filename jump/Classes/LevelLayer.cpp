@@ -7,6 +7,7 @@
 //
 
 #include "LevelLayer.hpp"
+#include "Constant.h"
 
 bool LevelLayer::init()
 {
@@ -16,10 +17,11 @@ bool LevelLayer::init()
         return false;
     }
     
+    this->setTag(INDEX_LEVELLAYER);
     sh=new SpriteManager(this);
-    
-    
-    
+    llh=new LevelHelpLayer(this);
+    llh->initCreateSp();
+    indexLevel=1;
 
 
     

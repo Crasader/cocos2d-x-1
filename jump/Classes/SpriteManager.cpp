@@ -12,7 +12,9 @@
 #include "MenuLayer.hpp"
 #include "MusicManager.hpp"
 #include "MusicLayer.hpp"
-
+#include "LevelLayer.hpp"
+#include "GameLayer.hpp"
+#include "FlyLayer.hpp"
 //初始化
 SpriteManager::SpriteManager(Layer* layerIn)
 {
@@ -64,8 +66,25 @@ bool SpriteManager::Judge(cocos2d::Sprite *sp, Point location)
 
     if (rect.containsPoint(location))
     {
-        
-        if(layer->getTag() == INDEX_MENULAYER && ((MenuLayer*)(layer))->mlh->JudgeSp(sp))
+        if(sp == allSp[23])
+        {
+            
+            if(MusicManager::onSound == true)
+            {
+                MusicManager::playMenuLayerMusic();//≤•∑≈“Ù¿÷
+            }
+            if(layer->getTag() == INDEX_GRAMLAYER)
+            {
+                ((GameLayer*)(layer))->gsm->goLevelLayer();//Ã¯◊™µΩLevelLayer¿Ô
+            }
+            else if(layer->getTag() == INDEX_FLYLAYER)
+            {
+                ((FlyLayer*)(layer))->gsm->goLevelLayer();//Ã¯◊™µΩLevelLayer¿Ô
+            }
+            return true;
+        }
+    
+       else if(layer->getTag() == INDEX_MENULAYER && ((MenuLayer*)(layer))->mlh->JudgeSp(sp))
         {
             return true;
         }
@@ -77,6 +96,12 @@ bool SpriteManager::Judge(cocos2d::Sprite *sp, Point location)
         {
             return true;
         }
+        else if(layer->getTag()==INDEX_LEVELLAYER && ((LevelLayer*)layer)->llh->JudgeSp(sp))
+        {
+            log("1111\n");
+            return true;
+        }
+        
     }
     return false;
 }

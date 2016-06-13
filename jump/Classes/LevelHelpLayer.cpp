@@ -9,6 +9,8 @@
 #include "LevelHelpLayer.hpp"
 #include "LevelLayer.hpp"
 #include "ParticlSystemHelp.hpp"
+#include "GameLayer.hpp"
+#include "FlyLayer.hpp"
 
 LevelHelpLayer::LevelHelpLayer(Layer* layerIn)
 {
@@ -67,7 +69,7 @@ void LevelHelpLayer::initCreateSp()
     sh->allSp[20]->setColor(Color3B(0,80,163));
     layer->addChild(sh->allSp[20],GroundZOrder-2);
     
-    //πÿø®Õº∆¨‘≤Ω«æÿ–Œ±≥æ∞
+    
     sh->allSp[10] = sh->createSprite(new std::string("1"), Rect(649, 508,1004-649,637-508), sh->batchNode, 0.5f, 0.5f, WIDTH/2, HEIGHT/2, 575, 200, GoBackZOrder-1);
     sh->AaddEventListenerSprite(sh->allSp[10]);
     //°∞πÿ°±◊÷
@@ -79,4 +81,157 @@ void LevelHelpLayer::initCreateSp()
     ((LevelLayer*)(layer))->indexLevel = 1;
 }
 
+void LevelHelpLayer::changeLevel(int levelNum, int direction)
+{
+    int sign=1;
+    if (direction==1) {
+        sign=1;
+    }
+    else if (direction==0)
+    {
+        sign=-1;
+    
+    }
+    
+   	if(levelNum == 1)
+    {
+        //πÿø®Õº∆¨±≥æ∞
+        sh->allSp[14] = sh->createSprite(new std::string("1"), Rect(649, 508,1004-649,637-508), sh->batchNode, 0.5f, 0.5f, sign*WIDTH+WIDTH/2, HEIGHT/2, 575, 200, GoBackZOrder-1);
+        sh->AaddEventListenerSprite(sh->allSp[14]);
+        //°∞πÿ°±◊÷
+        sh->allSp[15] = sh->createSprite(NULL, Rect(738, 696, 974-738, 751-696), sh->batchNode, 0.5f, 0.5f, sign*WIDTH+WIDTH/2, HEIGHT/2, 380, 75, GoBackZOrder-1);
+        sh->AaddEventListenerSprite(sh->allSp[15]);
+        //¡≥ Õº∆¨
+        sh->allSp[19] = sh->createSprite(NULL, Rect(499,205,530-499,237-205), sh->batchNode, 0.5f, 0.5f, sign*WIDTH+WIDTH/2-575/2+575/8, HEIGHT/2, 66, 66, GoBackZOrder-1);
+        sh->AaddEventListenerSprite(sh->allSp[19]);
+        
+        sh->allSp[12]->setColor(Color3B(0,91,186));
+        sh->allSp[13]->setColor(Color3B(0,91,186));
+        sh->allSp[16]->setColor(Color3B(0,91,186));
+        sh->allSp[21]->setColor(Color3B(0,91,186));
+        sh->allSp[20]->setColor(Color3B(0,80,163));
+    }
+    else if(levelNum == 2)
+    {
+        //πÿø®Õº∆¨±≥æ∞
+        sh->allSp[14] = sh->createSprite(new std::string("2"), Rect(649, 508,1004-649,637-508), sh->batchNode, 0.5f, 0.5f, sign*WIDTH+WIDTH/2, HEIGHT/2, 575, 200, GoBackZOrder-1);
+        sh->AaddEventListenerSprite(sh->allSp[14]);
+        //°∞πÿ°±◊÷
+        sh->allSp[15] = sh->createSprite(NULL, Rect(740, 753, 974-740, 807-753), sh->batchNode, 0.5f, 0.5f, sign*WIDTH+WIDTH/2, HEIGHT/2, 380, 75, GoBackZOrder-1);
+        sh->AaddEventListenerSprite(sh->allSp[15]);
+        //¡≥ Õº∆¨
+        sh->allSp[19] = sh->createSprite(NULL, Rect(0,88,30,118-88), sh->batchNode, 0.5f, 0.5f, sign*WIDTH+WIDTH/2-575/2+575/8, HEIGHT/2, 66, 66, GoBackZOrder-1);
+        sh->AaddEventListenerSprite(sh->allSp[19]);
+        
+        sh->allSp[12]->setColor(Color3B(180,88,0));
+        sh->allSp[13]->setColor(Color3B(180,88,0));
+        sh->allSp[16]->setColor(Color3B(180,88,0));
+        sh->allSp[21]->setColor(Color3B(180,88,0));
+        sh->allSp[20]->setColor(Color3B(149,73,0));
+    }
+    else if(levelNum == 3)
+    {
+        //πÿø®Õº∆¨±≥æ∞
+        sh->allSp[14] = sh->createSprite(new std::string("3"), Rect(649, 508,1004-649,637-508), sh->batchNode, 0.5f, 0.5f, sign*WIDTH+WIDTH/2, HEIGHT/2, 575, 200, GoBackZOrder-1);
+        sh->AaddEventListenerSprite(sh->allSp[14]);
+        //°∞πÿ°±◊÷
+        sh->allSp[15] = sh->createSprite(NULL, Rect(368, 496, 605-368, 555-496), sh->batchNode, 0.5f, 0.5f, sign*WIDTH+WIDTH/2+4, HEIGHT/2, 373, 75, GoBackZOrder-1);
+        sh->AaddEventListenerSprite(sh->allSp[15]);
+        //¡≥ Õº∆¨
+        sh->allSp[19] = sh->createSprite(NULL, Rect(30,88,60-30,118-88), sh->batchNode, 0.5f, 0.5f, sign*WIDTH+WIDTH/2-575/2+575/8, HEIGHT/2, 66, 66, GoBackZOrder-1);
+        sh->AaddEventListenerSprite(sh->allSp[19]);
+        
+        sh->allSp[12]->setColor(Color3B(219,0,0));
+        sh->allSp[13]->setColor(Color3B(219,0,0));
+        sh->allSp[16]->setColor(Color3B(219,0,0));
+        sh->allSp[21]->setColor(Color3B(219,0,0));
+        sh->allSp[20]->setColor(Color3B(152,0,0));
+    }
+    
+}
 
+bool LevelHelpLayer::JudgeSp(cocos2d::Sprite *sp)
+{
+    
+    if(sp == sh->allSp[7])//À˘∞¥æ´¡È »Ù «∑µªÿº¸
+    {
+        ((LevelLayer*)(layer))->gsm->goMenuLayer();
+        return true;
+    }
+    else if(sp == sh->allSp[8])//À˘∞¥æ´¡È »Ù «◊Û≤‡∞¥≈•
+    {
+        int index = ((LevelLayer*)(layer))->indexLevel;
+        index--;
+        if(index == 0)
+        {
+            index = 3;
+        }
+        changeLevel(index, 0);
+        moveEffect(0);
+        ((LevelLayer*)(layer))->indexLevel = index;
+        return true;
+    }
+    else if(sp == sh->allSp[9])//À˘∞¥æ´¡È »Ù «”“≤‡∞¥≈•
+    {
+        int index = ((LevelLayer*)(layer))->indexLevel;
+        index++;
+        if(index == 4)
+        {
+            index = 1;
+        }
+        changeLevel(index, 1);
+        moveEffect(1);
+        ((LevelLayer*)(layer))->indexLevel = index;
+        return true;
+    }
+    else if(sp == sh->allSp[10] ||  sp == sh->allSp[11] || sp == sh->allSp[18])//À˘∞¥æ´¡È »Ù «πÿø®±≥æ∞
+    {
+       // MusicManager::playFlyLayerEffect();
+        std::string* spS=(std::string*)sh->allSp[10]->getUserData();
+        char spC = spS->at(0);
+        if(spC == '1')
+        {
+            ((GameLayer*)(layer))->gsm->goGameLayer(1);
+        }
+        else if(spC == '2')
+        {
+            //((FlyLayer*)(layer))->gsm->goFlayLayer();
+        }
+        else if(spC == '3')
+        {
+            ((GameLayer*)(layer))->gsm->goGameLayer(3);
+        }
+        return true;
+    }
+    else
+        return false;}
+
+void LevelHelpLayer::moveEffect(int dirction)
+{
+    
+    int sign=-1;
+    if (dirction==1)
+    {
+        sign=-1;
+    }
+    else if(dirction==0)
+    {
+        sign=1;
+    }
+    sh->allSp[10]->runAction(Sequence::create(MoveBy::create(0.5, Point(sign*WIDTH,0)),RemoveSelf::create(true), NULL));
+    sh->allSp[11]->runAction(Sequence::create(
+                                              MoveBy::create(0.5,Point(sign*WIDTH,0)),
+                                              RemoveSelf::create(true),
+                                              NULL));
+    sh->allSp[18]->runAction(Sequence::create(
+                                              MoveBy::create(0.5,Point(sign*WIDTH,0)),
+                                              RemoveSelf::create(true),
+                                              NULL));
+    sh->allSp[14]->runAction(MoveBy::create(0.5,Point(sign*WIDTH,0)));
+    sh->allSp[15]->runAction(MoveBy::create(0.5,Point(sign*WIDTH,0)));
+    sh->allSp[19]->runAction(MoveBy::create(0.5,Point(sign*WIDTH,0)));
+    sh->allSp[10] = sh->allSp[14];
+    sh->allSp[11] = sh->allSp[15];
+    sh->allSp[18] = sh->allSp[19];
+    
+}

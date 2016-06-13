@@ -56,7 +56,7 @@ bool MenuLayerHelp::JudgeSp(cocos2d::Sprite *sp)
 {
     if(sp == sh->allSp[20])
 {
-   // ((MenuLayer*)(layer))->gsm->goLevelLayer();
+   ((MenuLayer*)(layer))->gsm->goLevelLayer();
     return true;
 }
 else if(sp == sh->allSp[21])
@@ -69,6 +69,7 @@ else if(sp == sh->allSp[22])
     ((MenuLayer*)(layer))->gsm->goMusicLayer();
     return true;
 }
+    
 else if(sp == sh->allSp[7])
 {
     Director::getInstance()->end();

@@ -99,6 +99,7 @@ void MainLayer::initTitle()
 void MainLayer::menuCallBack0(cocos2d::Ref *pSender)
 {
     initTitle();
+   // sceneManager=new GameSceneManager();
     sceneManager->goToGameScene();
 
 }

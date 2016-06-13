@@ -80,6 +80,9 @@
 		FF1E42941D096327009A8B50 /* LevelHelpLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF1E42921D096327009A8B50 /* LevelHelpLayer.cpp */; };
 		FF4314CD1D06B0D50071A008 /* ChoiceCubeLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4314CB1D06B0D50071A008 /* ChoiceCubeLayer.cpp */; };
 		FF4314D01D06B10C0071A008 /* ChoiceCubeHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4314CE1D06B10C0071A008 /* ChoiceCubeHelp.cpp */; };
+		FF44D7C41D0E897E00DC7ECC /* TrangleBarrier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF44D7C21D0E897E00DC7ECC /* TrangleBarrier.cpp */; };
+		FF44D7C71D0E8C6700DC7ECC /* RectBarrier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF44D7C51D0E8C6700DC7ECC /* RectBarrier.cpp */; };
+		FF44D7CA1D0E8D1000DC7ECC /* GDData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF44D7C81D0E8D1000DC7ECC /* GDData.cpp */; };
 		FF8A3FB31D0574840054ECC1 /* GameSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF8A3FB11D0574840054ECC1 /* GameSceneManager.cpp */; };
 		FF8A3FB61D0575BE0054ECC1 /* MenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF8A3FB41D0575BE0054ECC1 /* MenuLayer.cpp */; };
 		FF8A3FBA1D0576D30054ECC1 /* SpriteManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF8A3FB81D0576D30054ECC1 /* SpriteManager.cpp */; };
@@ -93,6 +96,10 @@
 		FF8A3FD41D057B9B0054ECC1 /* GJ_GameSheet1.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8A3FCB1D057B9B0054ECC1 /* GJ_GameSheet1.png */; };
 		FF8A3FD51D057B9B0054ECC1 /* Scale9SpritePic.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8A3FCC1D057B9B0054ECC1 /* Scale9SpritePic.png */; };
 		FF8A3FD61D057B9B0054ECC1 /* snow.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8A3FCD1D057B9B0054ECC1 /* snow.png */; };
+		FFB4503F1D0BFDA900D5C931 /* GameLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFB4503D1D0BFDA900D5C931 /* GameLayer.cpp */; };
+		FFB450431D0BFEE400D5C931 /* JumpCube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFB450411D0BFEE400D5C931 /* JumpCube.cpp */; };
+		FFB450461D0C082F00D5C931 /* FlyObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFB450441D0C082F00D5C931 /* FlyObject.cpp */; };
+		FFB450491D0C1B1800D5C931 /* FlyLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFB450471D0C1B1800D5C931 /* FlyLayer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -206,6 +213,10 @@
 		FF4314CE1D06B10C0071A008 /* ChoiceCubeHelp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChoiceCubeHelp.cpp; sourceTree = "<group>"; };
 		FF4314CF1D06B10C0071A008 /* ChoiceCubeHelp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ChoiceCubeHelp.hpp; sourceTree = "<group>"; };
 		FF4314D21D06B34A0071A008 /* ParticlSystemHelp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ParticlSystemHelp.hpp; sourceTree = "<group>"; };
+		FF44D7C21D0E897E00DC7ECC /* TrangleBarrier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TrangleBarrier.cpp; sourceTree = "<group>"; };
+		FF44D7C51D0E8C6700DC7ECC /* RectBarrier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RectBarrier.cpp; sourceTree = "<group>"; };
+		FF44D7C81D0E8D1000DC7ECC /* GDData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GDData.cpp; sourceTree = "<group>"; };
+		FF44D7C91D0E8D1000DC7ECC /* GDData.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GDData.hpp; sourceTree = "<group>"; };
 		FF8A3FB11D0574840054ECC1 /* GameSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameSceneManager.cpp; sourceTree = "<group>"; };
 		FF8A3FB21D0574840054ECC1 /* GameSceneManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameSceneManager.hpp; sourceTree = "<group>"; };
 		FF8A3FB41D0575BE0054ECC1 /* MenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuLayer.cpp; sourceTree = "<group>"; };
@@ -224,6 +235,14 @@
 		FF8A3FCB1D057B9B0054ECC1 /* GJ_GameSheet1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GJ_GameSheet1.png; sourceTree = "<group>"; };
 		FF8A3FCC1D057B9B0054ECC1 /* Scale9SpritePic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Scale9SpritePic.png; sourceTree = "<group>"; };
 		FF8A3FCD1D057B9B0054ECC1 /* snow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snow.png; sourceTree = "<group>"; };
+		FFB4503D1D0BFDA900D5C931 /* GameLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameLayer.cpp; sourceTree = "<group>"; };
+		FFB4503E1D0BFDA900D5C931 /* GameLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameLayer.hpp; sourceTree = "<group>"; };
+		FFB450411D0BFEE400D5C931 /* JumpCube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JumpCube.cpp; sourceTree = "<group>"; };
+		FFB450421D0BFEE400D5C931 /* JumpCube.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = JumpCube.hpp; sourceTree = "<group>"; };
+		FFB450441D0C082F00D5C931 /* FlyObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FlyObject.cpp; sourceTree = "<group>"; };
+		FFB450451D0C082F00D5C931 /* FlyObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FlyObject.hpp; sourceTree = "<group>"; };
+		FFB450471D0C1B1800D5C931 /* FlyLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FlyLayer.cpp; sourceTree = "<group>"; };
+		FFB450481D0C1B1800D5C931 /* FlyLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FlyLayer.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -356,24 +375,29 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				FFB450401D0BFE1100D5C931 /* objectHelp */,
 				FF8A3FB71D0576BF0054ECC1 /* framHelp */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 				FF8A3FBE1D05785F0054ECC1 /* Constant.h */,
+				FFB450471D0C1B1800D5C931 /* FlyLayer.cpp */,
+				FFB450481D0C1B1800D5C931 /* FlyLayer.hpp */,
 				46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */,
 				46880B8719C43A87006E1F66 /* HelloWorldScene.h */,
 				FF8A3FB11D0574840054ECC1 /* GameSceneManager.cpp */,
 				FF8A3FB21D0574840054ECC1 /* GameSceneManager.hpp */,
 				FF8A3FB41D0575BE0054ECC1 /* MenuLayer.cpp */,
 				FF8A3FB51D0575BE0054ECC1 /* MenuLayer.hpp */,
-				FF8A3FC01D0579AC0054ECC1 /* Barrier.cpp */,
-				FF8A3FC11D0579AC0054ECC1 /* Barrier.hpp */,
 				FF4314CB1D06B0D50071A008 /* ChoiceCubeLayer.cpp */,
 				FF4314CC1D06B0D50071A008 /* ChoiceCubeLayer.hpp */,
 				FF1E42791D0950D8009A8B50 /* MusicLayer.cpp */,
 				FF1E427A1D0950D8009A8B50 /* MusicLayer.hpp */,
 				FF1E428F1D096223009A8B50 /* LevelLayer.cpp */,
 				FF1E42901D096223009A8B50 /* LevelLayer.hpp */,
+				FFB4503D1D0BFDA900D5C931 /* GameLayer.cpp */,
+				FFB4503E1D0BFDA900D5C931 /* GameLayer.hpp */,
+				FF44D7C81D0E8D1000DC7ECC /* GDData.cpp */,
+				FF44D7C91D0E8D1000DC7ECC /* GDData.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -471,6 +495,21 @@
 				FF8A3FCD1D057B9B0054ECC1 /* snow.png */,
 			);
 			path = pic;
+			sourceTree = "<group>";
+		};
+		FFB450401D0BFE1100D5C931 /* objectHelp */ = {
+			isa = PBXGroup;
+			children = (
+				FF8A3FC01D0579AC0054ECC1 /* Barrier.cpp */,
+				FF8A3FC11D0579AC0054ECC1 /* Barrier.hpp */,
+				FFB450411D0BFEE400D5C931 /* JumpCube.cpp */,
+				FFB450421D0BFEE400D5C931 /* JumpCube.hpp */,
+				FFB450441D0C082F00D5C931 /* FlyObject.cpp */,
+				FFB450451D0C082F00D5C931 /* FlyObject.hpp */,
+				FF44D7C21D0E897E00DC7ECC /* TrangleBarrier.cpp */,
+				FF44D7C51D0E8C6700DC7ECC /* RectBarrier.cpp */,
+			);
+			name = objectHelp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -632,12 +671,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF44D7C41D0E897E00DC7ECC /* TrangleBarrier.cpp in Sources */,
 				FF8A3FBF1D0578800054ECC1 /* Constant.h in Sources */,
+				FFB450461D0C082F00D5C931 /* FlyObject.cpp in Sources */,
 				FF8A3FC21D0579AC0054ECC1 /* Barrier.cpp in Sources */,
+				FFB450491D0C1B1800D5C931 /* FlyLayer.cpp in Sources */,
+				FF44D7C71D0E8C6700DC7ECC /* RectBarrier.cpp in Sources */,
 				FF8A3FB61D0575BE0054ECC1 /* MenuLayer.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				FF4314D01D06B10C0071A008 /* ChoiceCubeHelp.cpp in Sources */,
+				FFB4503F1D0BFDA900D5C931 /* GameLayer.cpp in Sources */,
 				FF8A3FB31D0574840054ECC1 /* GameSceneManager.cpp in Sources */,
 				FF1E427B1D0950D8009A8B50 /* MusicLayer.cpp in Sources */,
 				FF8A3FBA1D0576D30054ECC1 /* SpriteManager.cpp in Sources */,
@@ -647,8 +691,10 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				FF1E42911D096223009A8B50 /* LevelLayer.cpp in Sources */,
+				FFB450431D0BFEE400D5C931 /* JumpCube.cpp in Sources */,
 				FF1E42811D09555A009A8B50 /* MusicManager.cpp in Sources */,
 				FF8A3FBD1D05775D0054ECC1 /* MenuLayerHelp.cpp in Sources */,
+				FF44D7CA1D0E8D1000DC7ECC /* GDData.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

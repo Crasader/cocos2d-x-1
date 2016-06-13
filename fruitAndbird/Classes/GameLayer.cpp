@@ -92,6 +92,7 @@ void gameLayer::menuCallBack1(cocos2d::Ref *pSender)
 }
 void gameLayer::menuCallBack2(cocos2d::Ref *pSender)
 {
+    //sceneManager=new GameSceneManager();
     sceneManager->goToMainScene();
     
 }
