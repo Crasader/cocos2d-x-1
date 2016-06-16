@@ -61,12 +61,16 @@
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		FF0B9C821D0FB85E00F70473 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = FF0B9C811D0FB85E00F70473 /* 1.png */; };
 		FF0B9C851D0FBAB300F70473 /* randomStars.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF0B9C831D0FBAB300F70473 /* randomStars.cpp */; };
-		FF0B9C8D1D0FFADB00F70473 /* pointer.png in Resources */ = {isa = PBXBuildFile; fileRef = FF0B9C8C1D0FFADB00F70473 /* pointer.png */; };
 		FF44D7CE1D0EBFDC00DC7ECC /* GameSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF44D7CC1D0EBFDC00DC7ECC /* GameSceneManager.cpp */; };
 		FF44D7D11D0EBFED00DC7ECC /* MenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF44D7CF1D0EBFED00DC7ECC /* MenuLayer.cpp */; };
 		FF44D7D41D0EC43100DC7ECC /* GameSceneManager.hpp in Sources */ = {isa = PBXBuildFile; fileRef = FF44D7CD1D0EBFDC00DC7ECC /* GameSceneManager.hpp */; };
 		FF44D7D51D0EC43B00DC7ECC /* AppDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8519C43A87006E1F66 /* AppDelegate.h */; };
 		FF44D7D61D0EC44B00DC7ECC /* MenuLayer.hpp in Sources */ = {isa = PBXBuildFile; fileRef = FF44D7D01D0EBFED00DC7ECC /* MenuLayer.hpp */; };
+		FFE5267C1D114AB2002ABED9 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE5267B1D114AB2002ABED9 /* bg.png */; };
+		FFE526821D115B05002ABED9 /* man2.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE526811D115B05002ABED9 /* man2.png */; };
+		FFE526871D118B03002ABED9 /* hand.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE526861D118B03002ABED9 /* hand.png */; };
+		FFE526891D118B8E002ABED9 /* boy-hand.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE526881D118B8E002ABED9 /* boy-hand.png */; };
+		FFEAA7A61D11024400F641E9 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = FFEAA7A51D11024400F641E9 /* star.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,11 +161,15 @@
 		FF0B9C811D0FB85E00F70473 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		FF0B9C831D0FBAB300F70473 /* randomStars.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = randomStars.cpp; sourceTree = "<group>"; };
 		FF0B9C841D0FBAB300F70473 /* randomStars.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = randomStars.hpp; sourceTree = "<group>"; };
-		FF0B9C8C1D0FFADB00F70473 /* pointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pointer.png; sourceTree = "<group>"; };
 		FF44D7CC1D0EBFDC00DC7ECC /* GameSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameSceneManager.cpp; sourceTree = "<group>"; };
 		FF44D7CD1D0EBFDC00DC7ECC /* GameSceneManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameSceneManager.hpp; sourceTree = "<group>"; };
 		FF44D7CF1D0EBFED00DC7ECC /* MenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuLayer.cpp; sourceTree = "<group>"; };
 		FF44D7D01D0EBFED00DC7ECC /* MenuLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MenuLayer.hpp; sourceTree = "<group>"; };
+		FFE5267B1D114AB2002ABED9 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		FFE526811D115B05002ABED9 /* man2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = man2.png; sourceTree = "<group>"; };
+		FFE526861D118B03002ABED9 /* hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hand.png; sourceTree = "<group>"; };
+		FFE526881D118B8E002ABED9 /* boy-hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "boy-hand.png"; sourceTree = "<group>"; };
+		FFEAA7A51D11024400F641E9 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,8 +287,12 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				FF0B9C8C1D0FFADB00F70473 /* pointer.png */,
+				FFE526881D118B8E002ABED9 /* boy-hand.png */,
+				FFE526861D118B03002ABED9 /* hand.png */,
+				FFE526811D115B05002ABED9 /* man2.png */,
+				FFE5267B1D114AB2002ABED9 /* bg.png */,
 				FF0B9C811D0FB85E00F70473 /* 1.png */,
+				FFEAA7A51D11024400F641E9 /* star.png */,
 				521A8EA819F11F5000D177D7 /* fonts */,
 				3EACC98E19EE6D4300EB3C5E /* res */,
 			);
@@ -453,6 +465,7 @@
 			files = (
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
+				FFE5267C1D114AB2002ABED9 /* bg.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
@@ -462,17 +475,20 @@
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
+				FFEAA7A61D11024400F641E9 /* star.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
+				FFE526821D115B05002ABED9 /* man2.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
+				FFE526871D118B03002ABED9 /* hand.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
-				FF0B9C8D1D0FFADB00F70473 /* pointer.png in Resources */,
 				3EACC98F19EE6D4300EB3C5E /* res in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
+				FFE526891D118B8E002ABED9 /* boy-hand.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

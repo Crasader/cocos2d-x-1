@@ -18,12 +18,12 @@ USING_NS_CC;
 class MenuLayer:public Layer
 {
 public:
-    
+    Size size;
     virtual  bool init();
     static  MenuLayer* create();
     
     //星星
-    randomStars* stars=new randomStars(this);
+    randomStars* stars=new randomStars(this,10,0);
 
     //场景管理器
     GameSceneManager* gsm;

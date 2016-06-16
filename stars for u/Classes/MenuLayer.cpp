@@ -33,19 +33,37 @@ bool MenuLayer::init()
     {
         return false;
     }
-    auto size=Director::getInstance()->getVisibleSize();
-   
+   size=Director::getInstance()->getVisibleSize();
+    
+    //背景
+    Sprite* backGround=Sprite::create("bg.png");
+    backGround->setPosition(size.width/2,size.height/2);
+    backGround->setScale(1.2);
+    this->addChild(backGround,0);
+    
 
-
-//布置星星类
-        stars->randomPosition();
+    //布置星星
+    stars->randomPosition();
     
+    //MAN
+    Sprite* man=Sprite::create("man2.png");
+    man->setPosition(100,100);
+    man->setScale(0.8f);
+    this->addChild(man);
     
+ 
     
-    //pointer
-    pointer=Sprite::create("pointer.png");
+    //boy
+    Sprite* boy=Sprite::create("boy-hand.png");
+    boy->setPosition(200,100);
+    boy->setScale(0.8f);
+    this->addChild(boy);
+    
+    //hand
+    pointer=Sprite::create("hand.png");
     pointer->setAnchorPoint(Point(0,0.5));
-    pointer->setPosition(480,100);
+    pointer->setScale(1.5);
+    pointer->setPosition(215,95);
     this->addChild(pointer);
     pointToStar();
 
@@ -73,23 +91,38 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
     }
     
     //判断触摸点是否在星星上
-    for (iter=stars->starsVector.begin(); iter!=stars->starsVector.end(); )
-    {
-        //测试指向0号星星
-        if ((*iter)->getBoundingBox().containsPoint(touchPoint)&& (*iter)==stars->starsVector.at(0))
+    //始终指向0号星星
+        iter=stars->starsVector.begin();
+        if ((*iter)->getBoundingBox().containsPoint(touchPoint))
         {
            
            //若点在星星上，则移除此星星
-            (*iter)->removeFromParent();
+            //移除特效
+            auto act1=MoveTo::create(1.0f, Point(size.width/2,size.height/2));
+            auto act2=ScaleTo::create(1.0f, 3.0f);
+            
+            //爆炸效果
+            auto act3=ParticleExplosion::create();
+            act3->setPosition(Point::ZERO);
+            act3->setLife(1.0f);
+            act3->setScale(0.2f);
+       
+            (*iter)->addChild(act3);
+            
+            //EASESINEOUT:正弦加速
+            (*iter)->runAction(Sequence::create(EaseSineOut::create(Spawn::create(act1,act2, NULL)),RemoveSelf::create(), NULL));
+            
+            
+            
+      
+            
+            //iter仍然指向0号元素
             iter=stars->starsVector.erase(iter);
             pointer->setRotation(0);
             pointToStar();
         }
-        else
-        {
-        iter++;
-        }
-    }
+    
+   // }
     return false;
 }
 
