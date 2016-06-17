@@ -17,10 +17,10 @@ class GameSceneManager
 {
 public:
     
-    static void createMenuLayer();
-
-
-
+    static void createOpeningLayer();
+    void goMenuLayer();
+    void goBookLayer();
+    void goSettingLayer();
 
 };
 

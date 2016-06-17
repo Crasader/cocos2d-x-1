@@ -70,6 +70,12 @@
 		FFE526821D115B05002ABED9 /* man2.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE526811D115B05002ABED9 /* man2.png */; };
 		FFE526871D118B03002ABED9 /* hand.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE526861D118B03002ABED9 /* hand.png */; };
 		FFE526891D118B8E002ABED9 /* boy-hand.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE526881D118B8E002ABED9 /* boy-hand.png */; };
+		FFE5268E1D1288E5002ABED9 /* OpeningLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFE5268C1D1288E5002ABED9 /* OpeningLayer.cpp */; };
+		FFE526921D12A34A002ABED9 /* StarBookLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFE526901D12A34A002ABED9 /* StarBookLayer.cpp */; };
+		FFE526951D12B32D002ABED9 /* book mark.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE526941D12B32D002ABED9 /* book mark.png */; };
+		FFE526991D12B346002ABED9 /* book-pix.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE526981D12B346002ABED9 /* book-pix.png */; };
+		FFE5269D1D12B5A8002ABED9 /* book.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE5269C1D12B5A8002ABED9 /* book.png */; };
+		FFE526A11D12CF84002ABED9 /* SettingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFE5269F1D12CF84002ABED9 /* SettingLayer.cpp */; };
 		FFEAA7A61D11024400F641E9 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = FFEAA7A51D11024400F641E9 /* star.png */; };
 /* End PBXBuildFile section */
 
@@ -169,6 +175,15 @@
 		FFE526811D115B05002ABED9 /* man2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = man2.png; sourceTree = "<group>"; };
 		FFE526861D118B03002ABED9 /* hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hand.png; sourceTree = "<group>"; };
 		FFE526881D118B8E002ABED9 /* boy-hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "boy-hand.png"; sourceTree = "<group>"; };
+		FFE5268C1D1288E5002ABED9 /* OpeningLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpeningLayer.cpp; sourceTree = "<group>"; };
+		FFE5268D1D1288E5002ABED9 /* OpeningLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OpeningLayer.hpp; sourceTree = "<group>"; };
+		FFE526901D12A34A002ABED9 /* StarBookLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StarBookLayer.cpp; sourceTree = "<group>"; };
+		FFE526911D12A34A002ABED9 /* StarBookLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StarBookLayer.hpp; sourceTree = "<group>"; };
+		FFE526941D12B32D002ABED9 /* book mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "book mark.png"; sourceTree = "<group>"; };
+		FFE526981D12B346002ABED9 /* book-pix.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "book-pix.png"; sourceTree = "<group>"; };
+		FFE5269C1D12B5A8002ABED9 /* book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book.png; sourceTree = "<group>"; };
+		FFE5269F1D12CF84002ABED9 /* SettingLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SettingLayer.cpp; sourceTree = "<group>"; };
+		FFE526A01D12CF84002ABED9 /* SettingLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SettingLayer.hpp; sourceTree = "<group>"; };
 		FFEAA7A51D11024400F641E9 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -287,6 +302,9 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FFE5269C1D12B5A8002ABED9 /* book.png */,
+				FFE526981D12B346002ABED9 /* book-pix.png */,
+				FFE526941D12B32D002ABED9 /* book mark.png */,
 				FFE526881D118B8E002ABED9 /* boy-hand.png */,
 				FFE526861D118B03002ABED9 /* hand.png */,
 				FFE526811D115B05002ABED9 /* man2.png */,
@@ -311,6 +329,12 @@
 				FF44D7D01D0EBFED00DC7ECC /* MenuLayer.hpp */,
 				FF0B9C831D0FBAB300F70473 /* randomStars.cpp */,
 				FF0B9C841D0FBAB300F70473 /* randomStars.hpp */,
+				FFE5268C1D1288E5002ABED9 /* OpeningLayer.cpp */,
+				FFE5268D1D1288E5002ABED9 /* OpeningLayer.hpp */,
+				FFE526901D12A34A002ABED9 /* StarBookLayer.cpp */,
+				FFE526911D12A34A002ABED9 /* StarBookLayer.hpp */,
+				FFE5269F1D12CF84002ABED9 /* SettingLayer.cpp */,
+				FFE526A01D12CF84002ABED9 /* SettingLayer.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -465,6 +489,7 @@
 			files = (
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
+				FFE5269D1D12B5A8002ABED9 /* book.png in Resources */,
 				FFE5267C1D114AB2002ABED9 /* bg.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
@@ -475,6 +500,7 @@
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
+				FFE526991D12B346002ABED9 /* book-pix.png in Resources */,
 				FFEAA7A61D11024400F641E9 /* star.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				FFE526821D115B05002ABED9 /* man2.png in Resources */,
@@ -488,6 +514,7 @@
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
+				FFE526951D12B32D002ABED9 /* book mark.png in Resources */,
 				FFE526891D118B8E002ABED9 /* boy-hand.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -509,11 +536,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFE526921D12A34A002ABED9 /* StarBookLayer.cpp in Sources */,
 				FF44D7D61D0EC44B00DC7ECC /* MenuLayer.hpp in Sources */,
+				FFE526A11D12CF84002ABED9 /* SettingLayer.cpp in Sources */,
 				FF44D7D51D0EC43B00DC7ECC /* AppDelegate.h in Sources */,
 				FF0B9C851D0FBAB300F70473 /* randomStars.cpp in Sources */,
 				FF44D7D41D0EC43100DC7ECC /* GameSceneManager.hpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				FFE5268E1D1288E5002ABED9 /* OpeningLayer.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				FF44D7D11D0EBFED00DC7ECC /* MenuLayer.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,

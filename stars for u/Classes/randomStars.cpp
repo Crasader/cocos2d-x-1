@@ -25,7 +25,7 @@ void randomStars::randomPosition()
     starsBatchNode->setPosition(Point::ZERO);
     auto size=Director::getInstance()->getVisibleSize();
     
-    //生成星星 10个
+    //生成星星 starNum个
     for (int i=0; i<starNum; i++)
     {
         //随机坐标
@@ -38,7 +38,7 @@ void randomStars::randomPosition()
         
         
         //随机生成大小不一的星星
-        star->setScale(random(0.5f, 2.0f));
+        star->setScale(random(0.8f, 2.0f));
         
         layer->addChild(star);
         

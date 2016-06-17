@@ -51,7 +51,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
   
     auto sceneManger=new GameSceneManager();
     
-    sceneManger->createMenuLayer();
+    sceneManger->createOpeningLayer();
 
     return true;
 }

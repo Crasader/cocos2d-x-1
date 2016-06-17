@@ -80,6 +80,7 @@ bool MenuLayer::init()
 bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
 {
     
+    
     //触摸点位置
     auto touchPoint=touch->getLocation();
     //vector指针
@@ -112,17 +113,44 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
             //EASESINEOUT:正弦加速
             (*iter)->runAction(Sequence::create(EaseSineOut::create(Spawn::create(act1,act2, NULL)),RemoveSelf::create(), NULL));
             
-            
+            //清除提示线条
+            if (lineShow)
+            {
+                line->removeFromParent();
+                lineShow=false;
+                lineCount=1;
+            }
             
       
             
-            //iter仍然指向0号元素
+            //iter指向下一个
             iter=stars->starsVector.erase(iter);
             pointer->setRotation(0);
+            
+           
             pointToStar();
         }
+  
+    //没有点对星星
+        else
+        {
+            if (lineCount>=3&&lineShow==false)
+            {
+                //提示线条
+                line=DrawNode::create();
+                line->drawLine(Point(215,95), stars->starsVector.at(0)->getPosition(), Color4F::WHITE);
+                this->addChild(line);
+                lineCount=1;
+                lineShow=true;
+            }
+            else
+            {
+            lineCount++;
+            }
+
+        }
     
-   // }
+    
     return false;
 }
 
@@ -158,7 +186,4 @@ void MenuLayer::pointToStar()
          pointer->setRotation(-Angle);
     }
    
-
-    
-   
-}
+    }
