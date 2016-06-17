@@ -18,9 +18,13 @@ class GameSceneManager
 public:
     
     static void createOpeningLayer();
-    void goMenuLayer();
+    
+    void goMenuLayer(int starNum,int shinStarNum);
+    
     void goBookLayer();
     void goSettingLayer();
+    
+    //void goStarCollectionLayer();
 
 };
 

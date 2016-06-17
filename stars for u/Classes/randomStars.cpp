@@ -8,12 +8,17 @@
 
 #include "randomStars.hpp"
 #include <time.h>
-randomStars::randomStars(Layer* layerIn,int starNum,int shineStarNum)
+#include "ConstellationSprite.hpp"
+
+//构造，传入创建层，星星数量，闪烁数量
+randomStars::randomStars(Layer* layerIn,int starNum,int shineStarNum,int constellationNum)
 {
 
     this->layer=layerIn;
     this->starNum=starNum;
     this->shineStarNum=shineStarNum;
+    this->constellationNum=constellationNum;
+    starsVector.clear();
 }
 
 void randomStars::randomPosition()
@@ -40,13 +45,37 @@ void randomStars::randomPosition()
         //随机生成大小不一的星星
         star->setScale(random(0.8f, 2.0f));
         
-        layer->addChild(star);
+        layer->addChild(star,100);
         
         starsVector.push_back(star);
     }
     
+    //星座
+    
+    //如果传入的星座编号不为0，则生成
+    if (constellationNum!=0)
+    {
+        auto constellation=constellationSprite::createConstellationSprite(constellationNum);
+        constellation->setPosition(400,400);
+        constellation->setAnchorPoint(Point(0.5,0.5));
+        layer->addChild(constellation,100);
+        
+        //压入vector
+        
+        starsVector.push_back(constellation);
+        
+    }
+   
+    
+    
+    
+    
+    
+    
+   
+    
     //检查生成的星星有无重叠
-    std::vector<Sprite*>::iterator iter;
+   std::vector<Sprite*>::iterator iter;
     int i, j;
     for (i=0; i<starNum; i++)
     { //0号星星依次与其他星星比较
@@ -95,7 +124,5 @@ void randomStars::randomPosition()
         
     }
 
-
-
-
 }
+

@@ -11,6 +11,7 @@
 #include "OpeningLayer.hpp"
 #include "StarBookLayer.hpp"
 #include "SettingLayer.hpp"
+
 void GameSceneManager::createOpeningLayer()
 {
 
@@ -21,11 +22,11 @@ void GameSceneManager::createOpeningLayer()
 
 }
 //menu
-void GameSceneManager::goMenuLayer()
+void GameSceneManager::goMenuLayer(int starNum,int shinStarNum)
 {
 
     auto scene=Scene::create();
-    auto layer=MenuLayer::create();
+    auto layer=MenuLayer::create( starNum,shinStarNum);
     scene->addChild(layer);
     layer->gsm=this;
     
@@ -59,3 +60,18 @@ void GameSceneManager::goSettingLayer()
     auto act=TransitionFade::create(0.5f, scene);
     Director::getInstance()->replaceScene(act);
 }
+
+//starCollection
+
+//void GameSceneManager::goStarCollectionLayer()
+//{
+//    auto scene=Scene::create();
+//    auto layer=starCollectionLayer::create();
+//    scene->addChild(layer);
+//    layer->gsm=this;
+//    auto act=TransitionFade::create(0.5f, scene);
+//    Director::getInstance()->replaceScene(act);
+//
+//
+//
+//}

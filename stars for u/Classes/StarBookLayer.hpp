@@ -38,6 +38,7 @@ public:
     
    //回调
     void label0Callback(Ref* pSender);
+    void label10Callback(Ref* pSender);
     //书签的menu
     Menu* menu;
      

@@ -7,6 +7,7 @@
 //
 
 #include "StarBookLayer.hpp"
+#include "MenuLayer.hpp"
 
 
 StarBookLayer* StarBookLayer::create()
@@ -47,8 +48,8 @@ bool StarBookLayer::init()
     
     //bookMark
     int i=UserDefault::getInstance()->getIntegerForKey("age", 0);
-    //生成书签
-    BookMark(i);
+    //生成关卡选择
+    BookMark(10);
     
    
    
@@ -61,27 +62,75 @@ void  StarBookLayer::BookMark(int i)
 {
     switch (i)
     {
+
+            //age=10
+        case 10:
+        {
+            //book mark
+            auto bookMarkSprite10=Sprite::create("book mark.png");
+            bookMarkSprite10->setPosition(Point(800,350));
+            this->addChild(bookMarkSprite10);
+            
+            
+            //age label
+            auto label10=Label::createWithSystemFont("age:10", "Marker Felt.ttf", 30);
+            auto menuLabel10=MenuItemLabel::create(label10,CC_CALLBACK_1(StarBookLayer::label10Callback, this));
+            menuLabel10->setPosition(0,0);
+
+            menu=Menu::create(menuLabel10, NULL);
+            menu->setPosition(bookMarkSprite10->getContentSize().width/2,bookMarkSprite10->getContentSize().height/2);
+            bookMarkSprite10->addChild(menu,100);
+
+            
+        
+        }
+            
+            
+            
+    //age=0
         case 0:
+        {
+            //book mark
+            auto bookMarkSprite0=Sprite::create("book mark.png");
+            bookMarkSprite0->setPosition(Point(800,420));
+            this->addChild(bookMarkSprite0);
             
-            auto bookMarkSprite=Sprite::create("book mark.png");
-            bookMarkSprite->setPosition(Point(900,500));
-            bookSprite->addChild(bookMarkSprite);
+            //age label
+            auto label0=Label::createWithSystemFont("age:0", "Marker Felt.ttf", 30);
+            auto menuLabel0=MenuItemLabel::create(label0,CC_CALLBACK_1(StarBookLayer::label0Callback, this));
+            menuLabel0->setPosition(0,0);
             
-           
+            menu=Menu::create(menuLabel0, NULL);
+            menu->setPosition(bookMarkSprite0->getContentSize().width/2,bookMarkSprite0->getContentSize().height/2);
+            bookMarkSprite0->addChild(menu,100);
             
             
-            break;
+            //日记文字
             
+            
+            
+            
+        }
+
     }
 
 
 
 }
 
+
+//age:0
 void StarBookLayer::label0Callback(cocos2d::Ref *pSender)
 {
-    log("oooo");
+    gsm->goMenuLayer(5,2);
 
 }
 
+
+//age:10
+void StarBookLayer::label10Callback(cocos2d::Ref *pSender)
+{
+  
+    //gsm->goStarCollectionLayer();
+}
 

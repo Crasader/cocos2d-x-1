@@ -9,12 +9,13 @@
 #include "MenuLayer.hpp"
 #include "randomStars.hpp"
 #include <math.h>
+#include "ConstellationSprite.hpp"
 
 //create()方法
-MenuLayer* MenuLayer::create()
+MenuLayer* MenuLayer::create(int starNum,int shinStarNum)
 {
 
-    MenuLayer* layer=new MenuLayer();
+    MenuLayer* layer=new MenuLayer(starNum,shinStarNum);
     
     if (layer&&layer->init())
     {
@@ -25,6 +26,16 @@ MenuLayer* MenuLayer::create()
     return nullptr;
 }
 
+//构造
+MenuLayer::MenuLayer(int starNum, int ShineStar)
+{
+
+    this->starNum=starNum;
+    this->shineStarNum=ShineStar;
+
+
+}
+
 //init()方法
 
 bool MenuLayer::init()
@@ -33,6 +44,9 @@ bool MenuLayer::init()
     {
         return false;
     }
+    
+    //默认1号星座
+   stars =new randomStars(this,starNum,shineStarNum,1);
    size=Director::getInstance()->getVisibleSize();
     
     //背景
@@ -64,7 +78,7 @@ bool MenuLayer::init()
     pointer->setAnchorPoint(Point(0,0.5));
     pointer->setScale(1.5);
     pointer->setPosition(215,95);
-    this->addChild(pointer);
+    this->addChild(pointer,100);
     pointToStar();
 
     //开启触摸
@@ -73,6 +87,8 @@ bool MenuLayer::init()
     setTouchMode(kCCTouchesOneByOne);
 
 
+//    
+   
     
     return true;
 }
@@ -83,8 +99,6 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
     
     //触摸点位置
     auto touchPoint=touch->getLocation();
-    //vector指针
-    std::vector<Sprite*>::iterator iter;
     
     if (stars->starsVector.empty())
     {
@@ -92,9 +106,8 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
     }
     
     //判断触摸点是否在星星上
-    //始终指向0号星星
-        iter=stars->starsVector.begin();
-        if ((*iter)->getBoundingBox().containsPoint(touchPoint))
+    //始终指向back号星星
+        if ((stars->starsVector.back())->getBoundingBox().containsPoint(touchPoint))
         {
            
            //若点在星星上，则移除此星星
@@ -108,10 +121,10 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
             act3->setLife(1.0f);
             act3->setScale(0.2f);
        
-            (*iter)->addChild(act3);
+          (stars->starsVector.back())->addChild(act3);
             
             //EASESINEOUT:正弦加速
-            (*iter)->runAction(Sequence::create(EaseSineOut::create(Spawn::create(act1,act2, NULL)),RemoveSelf::create(), NULL));
+            (stars->starsVector.back())->runAction(Sequence::create(EaseSineOut::create(Spawn::create(act1,act2, NULL)),RemoveSelf::create(), NULL));
             
             //清除提示线条
             if (lineShow)
@@ -124,7 +137,8 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
       
             
             //iter指向下一个
-            iter=stars->starsVector.erase(iter);
+            //iter=stars->starsVector.erase(iter);
+            stars->starsVector.pop_back();
             pointer->setRotation(0);
             
            
@@ -138,8 +152,8 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
             {
                 //提示线条
                 line=DrawNode::create();
-                line->drawLine(Point(215,95), stars->starsVector.at(0)->getPosition(), Color4F::WHITE);
-                this->addChild(line);
+                line->drawLine(Point(215,95),  (stars->starsVector.back())->getPosition(), Color4F::WHITE);
+                this->addChild(line,0);
                 lineCount=1;
                 lineShow=true;
             }
@@ -164,7 +178,8 @@ void MenuLayer::pointToStar()
     
     //星星的坐标
      //测试指向0号星星
-    auto starToPoint= stars->starsVector.at(0)->getPosition();
+    
+    auto starToPoint= (stars->starsVector.back())->getPosition();
     log("x=%lf,y=%lf\n",starToPoint.x,starToPoint.y);
     //正切
     

@@ -32,7 +32,7 @@ public:
     void goSettingCallBack(Ref* pSender);
     
     //星星
-    randomStars* star=new randomStars(this,10,6);
+    randomStars* star=new randomStars(this,10,6,0);
     
 
 

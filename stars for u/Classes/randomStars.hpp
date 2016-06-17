@@ -18,7 +18,7 @@ USING_NS_CC;
 class randomStars
 {
 public:
-    randomStars(Layer* layerIn,int , int);
+    randomStars(Layer* layerIn,int starNum,int shineStarNum,int constellation);
     void randomPosition();
     //星星向量
     std::vector<Sprite*> starsVector;
@@ -28,7 +28,8 @@ public:
     //星星数量
     int starNum;
     int shineStarNum;
-
+//星座编号
+    int constellationNum=0;
 
 
 };
