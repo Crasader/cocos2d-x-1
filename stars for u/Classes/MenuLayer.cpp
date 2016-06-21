@@ -13,10 +13,10 @@
 #include <string>
 
 //create()方法
-MenuLayer* MenuLayer::create(int starNum,int shinStarNum)
+MenuLayer* MenuLayer::create(int starNum,int shinStarNum,int collNum)
 {
 
-    MenuLayer* layer=new MenuLayer(starNum,shinStarNum);
+    MenuLayer* layer=new MenuLayer(starNum,shinStarNum,collNum);
     
     if (layer&&layer->init())
     {
@@ -28,13 +28,14 @@ MenuLayer* MenuLayer::create(int starNum,int shinStarNum)
 }
 
 //构造
-MenuLayer::MenuLayer(int starNum, int ShineStar)
+MenuLayer::MenuLayer(int starNum, int ShineStar,int collNum)
 {
-
+    this->collensation=collNum;
     this->starNum=starNum;
     this->shineStarNum=ShineStar;
     Relation=0;
     relationString=(char*)malloc(sizeof(int));
+    rgrowthString=(char*)malloc(sizeof(int));
     lineNum=0;
 }
 
@@ -47,7 +48,7 @@ bool MenuLayer::init()
         return false;
     }
     
-    //亲密值&成长值
+    //亲密值
     Relation= UserDefault::getInstance()->getIntegerForKey("RELATION", 0);
     sprintf(relationString, "亲密值：%d",Relation);
     RelationLabel=Label::createWithSystemFont(relationString, "", 30);
@@ -55,14 +56,17 @@ bool MenuLayer::init()
     RelationLabel->setColor(Color3B::WHITE);
     this->addChild(RelationLabel,10);
     
+     //成长值
+    growth= UserDefault::getInstance()->getIntegerForKey("GROWTH", 0);
+    sprintf(rgrowthString, "成长值：%d",growth);
+    growthLabel=Label::createWithSystemFont(rgrowthString, "", 30);
+    growthLabel->setPosition(Point(300,400));
+    growthLabel->setColor(Color3B::WHITE);
+    this->addChild(growthLabel,10);
     
-   int growth= UserDefault::getInstance()->getIntegerForKey("GROWTH", 0);
-   
     
-    
-    
-    //X号星座
-   stars =new randomStars(this,starNum,shineStarNum,4);
+    //星星的生成：starNum\shineStarNum\collensation
+   stars =new randomStars(this,starNum,shineStarNum,collensation);
    size=Director::getInstance()->getVisibleSize();
     
     //背景
@@ -89,6 +93,30 @@ bool MenuLayer::init()
     boy->setScale(0.8f);
     this->addChild(boy);
     
+    //talkingBox
+    talkingBox=Sprite::create("talkingBox_L.png");
+    talkingBox->setAnchorPoint(Point(0.5,0.5));
+    talkingBox->setPosition(370,80);
+    this->addChild(talkingBox);
+
+     talkingString="i want that one,dad";
+    talkingLabel=Label::createWithSystemFont("", "Marker Felt.ttf", 30);
+    talkingLabel->setPosition(160,40);
+    talkingLabel->setColor(Color3B::WHITE);
+    talkingBox->addChild(talkingLabel);
+   
+    //schdule（）函数实现打字效果
+    this->schedule(schedule_selector(MenuLayer::talkingBoxFunc), 0.1f);
+    
+    //说完话隐藏
+    talkingBox->runAction(Sequence::create(DelayTime::create(5),Hide::create(), NULL));
+    
+    
+
+ 
+    
+    
+    
     //hand
     pointer=Sprite::create("hand.png");
     pointer->setAnchorPoint(Point(0,0.5));
@@ -103,11 +131,28 @@ bool MenuLayer::init()
     setTouchMode(kCCTouchesOneByOne);
 
 
-//    
+   
    
     
     return true;
 }
+
+//talkingBox打字效果回调
+
+void MenuLayer::talkingBoxFunc(float dt)
+{
+    if (talkingString==talkingStr)
+    {
+        index=0;
+    }
+    else
+    {
+    talkingStr=talkingString.substr(0,index);
+    index++;
+    talkingLabel->setString(talkingStr.c_str());
+    }
+}
+
 //触摸监控
 bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
 {
@@ -145,7 +190,8 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
             
             
             //错误提示效果
-            
+            talkingString="no,not that one,dad~";
+            talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(3),Hide::create() NULL));
             auto act1=ScaleTo::create(0.3, 2);
             auto act2=ScaleTo::create(0.3, 1);
             stars->starsVector.at(i)->runAction(Sequence::create(act1,act2, NULL));
@@ -176,6 +222,49 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
         if ((stars->starsVector.back())->getBoundingBox().containsPoint(touchPoint))
         {
            
+            //若点击了星座
+            if (stars->starsVector.back()==stars->constellation)
+            {
+    
+                std::string constelationString;
+               
+               
+                
+                switch (collensation)
+                {
+                    case 1:
+                        constelationString="yeap, u get the Aries!";
+                        break;
+                        
+                    default:
+                        break;
+                }
+                //提示效果
+                auto collLabel=Label::createWithSystemFont(constelationString.c_str(), "Marker Felt.ttf", 50);
+                collLabel->setColor(Color3B::WHITE);
+                collLabel->setPosition(400,500);
+                
+                //action
+                auto effecNode=NodeGrid::create();
+                this->addChild(effecNode);
+                effecNode->addChild(collLabel);
+                //水波效果
+                auto  collLabelact1=Ripple3D::create(5.0f, Size(20,20), collLabel->getPosition(), 360, 2, 5);
+                effecNode->runAction(Sequence::create(collLabelact1,RemoveSelf::create(), NULL));
+                
+                
+                
+                //移除特效
+                auto collact1=ScaleTo::create(2.5f, 2);
+                auto collact2=MoveTo::create(2.5f, Point(300,350));
+              
+                stars->starsVector.back()->runAction(Sequence::create(Spawn::create(collact1,collact2, NULL), RemoveSelf::create(),NULL));
+                
+                
+            }
+            
+            else
+            {
            //若点在星星上，则移除此星星
             //移除特效
             auto act1=MoveTo::create(1.0f, Point(size.width/2,size.height/2));
@@ -191,6 +280,8 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
             
             //EASESINEOUT:正弦加速
             (stars->starsVector.back())->runAction(Sequence::create(EaseSineOut::create(Spawn::create(act1,act2, NULL)),RemoveSelf::create(), NULL));
+            }
+            
             
             //清除提示线条
             if (lineShow)
@@ -215,7 +306,13 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
             // 若空，则胜利
             if (stars->starsVector.empty())
             {
-                log("win~~");
+                //成长值＋＋
+                growth++;
+                win();
+                
+                
+                
+                
             }
             else
             {
@@ -263,3 +360,11 @@ void MenuLayer::pointToStar()
     }
    
     }
+
+void MenuLayer::win()
+{
+
+    
+
+
+}

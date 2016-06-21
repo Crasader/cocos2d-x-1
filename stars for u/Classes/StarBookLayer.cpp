@@ -122,7 +122,8 @@ void  StarBookLayer::BookMark(int i)
 //age:0
 void StarBookLayer::label0Callback(cocos2d::Ref *pSender)
 {
-    gsm->goMenuLayer(5,2);
+    //5克星星，2个闪闪，1号白羊座
+    gsm->goMenuLayer(5,2,1);
 
 }
 

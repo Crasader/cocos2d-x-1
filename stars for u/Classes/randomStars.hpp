@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include "cocos2d.h"
 #include  <math.h>
-
+#include "ConstellationSprite.hpp"
 USING_NS_CC;
 
 class randomStars
@@ -30,6 +30,8 @@ public:
     int shineStarNum;
 //星座编号
     int constellationNum=0;
+    //星座实例
+    constellationSprite* constellation;
 
 
 };

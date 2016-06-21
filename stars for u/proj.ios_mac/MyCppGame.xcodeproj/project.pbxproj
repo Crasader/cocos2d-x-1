@@ -60,6 +60,8 @@
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		FF0B9C851D0FBAB300F70473 /* randomStars.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF0B9C831D0FBAB300F70473 /* randomStars.cpp */; };
+		FF25AC881D193DA900EACC3C /* talkingBox.png in Resources */ = {isa = PBXBuildFile; fileRef = FF25AC871D193DA900EACC3C /* talkingBox.png */; };
+		FF25AC8A1D193FF900EACC3C /* talkingBox_L.png in Resources */ = {isa = PBXBuildFile; fileRef = FF25AC891D193FF900EACC3C /* talkingBox_L.png */; };
 		FF44D7CE1D0EBFDC00DC7ECC /* GameSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF44D7CC1D0EBFDC00DC7ECC /* GameSceneManager.cpp */; };
 		FF44D7D11D0EBFED00DC7ECC /* MenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF44D7CF1D0EBFED00DC7ECC /* MenuLayer.cpp */; };
 		FF44D7D41D0EC43100DC7ECC /* GameSceneManager.hpp in Sources */ = {isa = PBXBuildFile; fileRef = FF44D7CD1D0EBFDC00DC7ECC /* GameSceneManager.hpp */; };
@@ -166,6 +168,8 @@
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		FF0B9C831D0FBAB300F70473 /* randomStars.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = randomStars.cpp; sourceTree = "<group>"; };
 		FF0B9C841D0FBAB300F70473 /* randomStars.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = randomStars.hpp; sourceTree = "<group>"; };
+		FF25AC871D193DA900EACC3C /* talkingBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = talkingBox.png; sourceTree = "<group>"; };
+		FF25AC891D193FF900EACC3C /* talkingBox_L.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = talkingBox_L.png; sourceTree = "<group>"; };
 		FF44D7CC1D0EBFDC00DC7ECC /* GameSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameSceneManager.cpp; sourceTree = "<group>"; };
 		FF44D7CD1D0EBFDC00DC7ECC /* GameSceneManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameSceneManager.hpp; sourceTree = "<group>"; };
 		FF44D7CF1D0EBFED00DC7ECC /* MenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuLayer.cpp; sourceTree = "<group>"; };
@@ -304,6 +308,8 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FF25AC891D193FF900EACC3C /* talkingBox_L.png */,
+				FF25AC871D193DA900EACC3C /* talkingBox.png */,
 				FFE5269C1D12B5A8002ABED9 /* book.png */,
 				FFE526981D12B346002ABED9 /* book-pix.png */,
 				FFE526941D12B32D002ABED9 /* book mark.png */,
@@ -511,6 +517,7 @@
 				FFE526871D118B03002ABED9 /* hand.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
+				FF25AC881D193DA900EACC3C /* talkingBox.png in Resources */,
 				3EACC98F19EE6D4300EB3C5E /* res in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
@@ -519,6 +526,7 @@
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 				FFE526951D12B32D002ABED9 /* book mark.png in Resources */,
 				FFE526891D118B8E002ABED9 /* boy-hand.png in Resources */,
+				FF25AC8A1D193FF900EACC3C /* talkingBox_L.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,11 +22,11 @@ void GameSceneManager::createOpeningLayer()
 
 }
 //menu
-void GameSceneManager::goMenuLayer(int starNum,int shinStarNum)
+void GameSceneManager::goMenuLayer(int starNum,int shinStarNum,int collNum)
 {
 
     auto scene=Scene::create();
-    auto layer=MenuLayer::create( starNum,shinStarNum);
+    auto layer=MenuLayer::create( starNum,shinStarNum,collNum);
     scene->addChild(layer);
     layer->gsm=this;
     

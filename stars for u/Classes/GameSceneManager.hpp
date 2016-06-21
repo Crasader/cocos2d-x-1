@@ -19,7 +19,8 @@ public:
     
     static void createOpeningLayer();
     
-    void goMenuLayer(int starNum,int shinStarNum);
+    //starNum ：星星数量， ShinestarNum闪闪数量，collNUm：星座号
+    void goMenuLayer(int starNum,int shinStarNum,int collNum);
     
     void goBookLayer();
     void goSettingLayer();

@@ -57,7 +57,7 @@ void randomStars::randomPosition()
     //如果传入的星座编号不为0，则生成
     if (constellationNum!=0)
     {
-        auto constellation=constellationSprite::createConstellationSprite(constellationNum);
+       constellation=constellationSprite::createConstellationSprite(constellationNum);
         constellation->setPosition(400,400);
         constellation->setAnchorPoint(Point(0.5,0.5));
         layer->addChild(constellation,100);
