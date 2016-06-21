@@ -13,6 +13,7 @@
 #include "cocos2d.h"
 #include "GameSceneManager.hpp"
 #include "randomStars.hpp"
+#include <string>
 USING_NS_CC;
 
 class MenuLayer:public Layer
@@ -23,6 +24,12 @@ public:
     virtual  bool init();
     static  MenuLayer* create(int starNum,int shinStarNum);
     
+    
+    //亲密值
+    Label* RelationLabel;
+    int Relation;
+    char* relationString;
+   std::string relationDiscribe;
     //星星传入参数
     int starNum=0;
     int shineStarNum=0;
@@ -38,13 +45,14 @@ public:
 
     //指示线条
     DrawNode* line;
+    int lineNum;
     
     //pointer直向一颗星星
     Sprite* pointer;
     void pointToStar();
     
     //提示线的出现
-    int lineCount=1;
+   
     bool lineShow=false;
 
 };

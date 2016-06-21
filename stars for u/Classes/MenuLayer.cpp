@@ -10,6 +10,7 @@
 #include "randomStars.hpp"
 #include <math.h>
 #include "ConstellationSprite.hpp"
+#include <string>
 
 //create()方法
 MenuLayer* MenuLayer::create(int starNum,int shinStarNum)
@@ -32,8 +33,9 @@ MenuLayer::MenuLayer(int starNum, int ShineStar)
 
     this->starNum=starNum;
     this->shineStarNum=ShineStar;
-
-
+    Relation=0;
+    relationString=(char*)malloc(sizeof(int));
+    lineNum=0;
 }
 
 //init()方法
@@ -45,8 +47,22 @@ bool MenuLayer::init()
         return false;
     }
     
-    //默认1号星座
-   stars =new randomStars(this,starNum,shineStarNum,1);
+    //亲密值&成长值
+    Relation= UserDefault::getInstance()->getIntegerForKey("RELATION", 0);
+    sprintf(relationString, "亲密值：%d",Relation);
+    RelationLabel=Label::createWithSystemFont(relationString, "", 30);
+    RelationLabel->setPosition(Point(300,200));
+    RelationLabel->setColor(Color3B::WHITE);
+    this->addChild(RelationLabel,10);
+    
+    
+   int growth= UserDefault::getInstance()->getIntegerForKey("GROWTH", 0);
+   
+    
+    
+    
+    //X号星座
+   stars =new randomStars(this,starNum,shineStarNum,4);
    size=Director::getInstance()->getVisibleSize();
     
     //背景
@@ -105,8 +121,58 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
         return false;
     }
     
-    //判断触摸点是否在星星上
-    //始终指向back号星星
+    //判断触摸点是否在其他星星上
+    for (int i=0; i<stars->starsVector.size(); i++)
+    {
+      //触摸点在星星上且不在正确的星星上
+        if ((stars->starsVector.at(i)->getBoundingBox().containsPoint(touchPoint))&& stars->starsVector.at(i)!=stars->starsVector.back())
+        {
+            //提示线
+            if (lineShow==false)
+            {
+                lineNum++;
+            }
+            
+            if (lineNum>=3&&lineShow==false)
+            {
+                //提示线条
+                line=DrawNode::create();
+                line->drawLine(Point(215,95),  (stars->starsVector.back())->getPosition(), Color4F::WHITE);
+                this->addChild(line,0);
+                lineNum=0;
+                lineShow=true;
+            }
+            
+            
+            //错误提示效果
+            
+            auto act1=ScaleTo::create(0.3, 2);
+            auto act2=ScaleTo::create(0.3, 1);
+            stars->starsVector.at(i)->runAction(Sequence::create(act1,act2, NULL));
+            
+            //点错亲密值降低
+            if (Relation>0)
+            {
+                --Relation;
+                
+                sprintf(relationString, "亲密值：%d",Relation);
+                RelationLabel->cleanup();
+                RelationLabel->setString(relationString);
+                
+                UserDefault::getInstance()-> setIntegerForKey("RELATION", Relation);
+                
+            }
+            
+            
+        }
+        
+        
+    }
+    
+    
+    
+    
+    //触摸指向的星星back()
         if ((stars->starsVector.back())->getBoundingBox().containsPoint(touchPoint))
         {
            
@@ -131,38 +197,33 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
             {
                 line->removeFromParent();
                 lineShow=false;
-                lineCount=1;
+                
             }
+            
+            //亲密值增加
+            Relation++;
+            sprintf(relationString, "亲密值：%d",Relation);
+            RelationLabel->cleanup();
+            RelationLabel->setString(relationString);
+            UserDefault::getInstance()->setIntegerForKey("RELATION", Relation);
             
       
             
-            //iter指向下一个
-            //iter=stars->starsVector.erase(iter);
+            //弹出点击正确的星星
             stars->starsVector.pop_back();
             pointer->setRotation(0);
-            
-           
-            pointToStar();
-        }
-  
-    //没有点对星星
-        else
-        {
-            if (lineCount>=3&&lineShow==false)
+            // 若空，则胜利
+            if (stars->starsVector.empty())
             {
-                //提示线条
-                line=DrawNode::create();
-                line->drawLine(Point(215,95),  (stars->starsVector.back())->getPosition(), Color4F::WHITE);
-                this->addChild(line,0);
-                lineCount=1;
-                lineShow=true;
+                log("win~~");
             }
             else
             {
-            lineCount++;
+            pointToStar();
             }
-
         }
+  
+    
     
     
     return false;

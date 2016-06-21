@@ -18,6 +18,8 @@ randomStars::randomStars(Layer* layerIn,int starNum,int shineStarNum,int constel
     this->starNum=starNum;
     this->shineStarNum=shineStarNum;
     this->constellationNum=constellationNum;
+    //向量大小定义为100，避免反复申请内存
+    starsVector.resize(100);
     starsVector.clear();
 }
 
@@ -50,7 +52,7 @@ void randomStars::randomPosition()
         starsVector.push_back(star);
     }
     
-    //星座
+    //星座...........
     
     //如果传入的星座编号不为0，则生成
     if (constellationNum!=0)
