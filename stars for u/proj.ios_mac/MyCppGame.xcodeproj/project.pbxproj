@@ -67,17 +67,22 @@
 		FF44D7D41D0EC43100DC7ECC /* GameSceneManager.hpp in Sources */ = {isa = PBXBuildFile; fileRef = FF44D7CD1D0EBFDC00DC7ECC /* GameSceneManager.hpp */; };
 		FF44D7D51D0EC43B00DC7ECC /* AppDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8519C43A87006E1F66 /* AppDelegate.h */; };
 		FF44D7D61D0EC44B00DC7ECC /* MenuLayer.hpp in Sources */ = {isa = PBXBuildFile; fileRef = FF44D7D01D0EBFED00DC7ECC /* MenuLayer.hpp */; };
-		FFE5267C1D114AB2002ABED9 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE5267B1D114AB2002ABED9 /* bg.png */; };
 		FFE526821D115B05002ABED9 /* man2.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE526811D115B05002ABED9 /* man2.png */; };
 		FFE526871D118B03002ABED9 /* hand.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE526861D118B03002ABED9 /* hand.png */; };
 		FFE526891D118B8E002ABED9 /* boy-hand.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE526881D118B8E002ABED9 /* boy-hand.png */; };
 		FFE5268E1D1288E5002ABED9 /* OpeningLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFE5268C1D1288E5002ABED9 /* OpeningLayer.cpp */; };
 		FFE526921D12A34A002ABED9 /* StarBookLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFE526901D12A34A002ABED9 /* StarBookLayer.cpp */; };
 		FFE526951D12B32D002ABED9 /* book mark.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE526941D12B32D002ABED9 /* book mark.png */; };
-		FFE526991D12B346002ABED9 /* book-pix.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE526981D12B346002ABED9 /* book-pix.png */; };
-		FFE5269D1D12B5A8002ABED9 /* book.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE5269C1D12B5A8002ABED9 /* book.png */; };
 		FFE526A11D12CF84002ABED9 /* SettingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFE5269F1D12CF84002ABED9 /* SettingLayer.cpp */; };
 		FFE526A91D13F01D002ABED9 /* ConstellationSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFE526A71D13F01D002ABED9 /* ConstellationSprite.cpp */; };
+		FFE602511D1A7B2A00642825 /* diary_0.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE602501D1A7B2A00642825 /* diary_0.png */; };
+		FFE6025D1D1A8A3C00642825 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE6025C1D1A8A3C00642825 /* bg.png */; };
+		FFE6025F1D1A8A6700642825 /* book.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE6025E1D1A8A6700642825 /* book.png */; };
+		FFE602661D1A8C5D00642825 /* mark_gree.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE602641D1A8C5D00642825 /* mark_gree.png */; };
+		FFE602671D1A8C5D00642825 /* mark_red.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE602651D1A8C5D00642825 /* mark_red.png */; };
+		FFE602691D1A9F3E00642825 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE602681D1A9F3E00642825 /* 1.png */; };
+		FFE6026B1D1A9F4D00642825 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE6026A1D1A9F4D00642825 /* 2.png */; };
+		FFE6026D1D1AA76E00642825 /* List.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFE6026C1D1AA76E00642825 /* List.plist */; };
 		FFEAA7A61D11024400F641E9 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = FFEAA7A51D11024400F641E9 /* star.png */; };
 /* End PBXBuildFile section */
 
@@ -175,7 +180,6 @@
 		FF44D7CF1D0EBFED00DC7ECC /* MenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuLayer.cpp; sourceTree = "<group>"; };
 		FF44D7D01D0EBFED00DC7ECC /* MenuLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MenuLayer.hpp; sourceTree = "<group>"; };
 		FF5D70D11D17D27200F05D2A /* notes.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = notes.hpp; sourceTree = "<group>"; };
-		FFE5267B1D114AB2002ABED9 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		FFE526811D115B05002ABED9 /* man2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = man2.png; sourceTree = "<group>"; };
 		FFE526861D118B03002ABED9 /* hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hand.png; sourceTree = "<group>"; };
 		FFE526881D118B8E002ABED9 /* boy-hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "boy-hand.png"; sourceTree = "<group>"; };
@@ -184,12 +188,18 @@
 		FFE526901D12A34A002ABED9 /* StarBookLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StarBookLayer.cpp; sourceTree = "<group>"; };
 		FFE526911D12A34A002ABED9 /* StarBookLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StarBookLayer.hpp; sourceTree = "<group>"; };
 		FFE526941D12B32D002ABED9 /* book mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "book mark.png"; sourceTree = "<group>"; };
-		FFE526981D12B346002ABED9 /* book-pix.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "book-pix.png"; sourceTree = "<group>"; };
-		FFE5269C1D12B5A8002ABED9 /* book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book.png; sourceTree = "<group>"; };
 		FFE5269F1D12CF84002ABED9 /* SettingLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SettingLayer.cpp; sourceTree = "<group>"; };
 		FFE526A01D12CF84002ABED9 /* SettingLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SettingLayer.hpp; sourceTree = "<group>"; };
 		FFE526A71D13F01D002ABED9 /* ConstellationSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConstellationSprite.cpp; sourceTree = "<group>"; };
 		FFE526A81D13F01D002ABED9 /* ConstellationSprite.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConstellationSprite.hpp; sourceTree = "<group>"; };
+		FFE602501D1A7B2A00642825 /* diary_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diary_0.png; sourceTree = "<group>"; };
+		FFE6025C1D1A8A3C00642825 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		FFE6025E1D1A8A6700642825 /* book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book.png; sourceTree = "<group>"; };
+		FFE602641D1A8C5D00642825 /* mark_gree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mark_gree.png; sourceTree = "<group>"; };
+		FFE602651D1A8C5D00642825 /* mark_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mark_red.png; sourceTree = "<group>"; };
+		FFE602681D1A9F3E00642825 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		FFE6026A1D1A9F4D00642825 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		FFE6026C1D1AA76E00642825 /* List.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = List.plist; sourceTree = "<group>"; };
 		FFEAA7A51D11024400F641E9 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -308,18 +318,23 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FFE602681D1A9F3E00642825 /* 1.png */,
+				FFE6026A1D1A9F4D00642825 /* 2.png */,
+				FFE602501D1A7B2A00642825 /* diary_0.png */,
 				FF25AC891D193FF900EACC3C /* talkingBox_L.png */,
 				FF25AC871D193DA900EACC3C /* talkingBox.png */,
-				FFE5269C1D12B5A8002ABED9 /* book.png */,
-				FFE526981D12B346002ABED9 /* book-pix.png */,
 				FFE526941D12B32D002ABED9 /* book mark.png */,
 				FFE526881D118B8E002ABED9 /* boy-hand.png */,
 				FFE526861D118B03002ABED9 /* hand.png */,
 				FFE526811D115B05002ABED9 /* man2.png */,
-				FFE5267B1D114AB2002ABED9 /* bg.png */,
 				FFEAA7A51D11024400F641E9 /* star.png */,
+				FFE6025C1D1A8A3C00642825 /* bg.png */,
+				FFE6025E1D1A8A6700642825 /* book.png */,
+				FFE602641D1A8C5D00642825 /* mark_gree.png */,
+				FFE602651D1A8C5D00642825 /* mark_red.png */,
 				521A8EA819F11F5000D177D7 /* fonts */,
 				3EACC98E19EE6D4300EB3C5E /* res */,
+				FFE6026C1D1AA76E00642825 /* List.plist */,
 			);
 			name = Resources;
 			path = ../Resources;
@@ -499,23 +514,28 @@
 			files = (
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
-				FFE5269D1D12B5A8002ABED9 /* book.png in Resources */,
-				FFE5267C1D114AB2002ABED9 /* bg.png in Resources */,
+				FFE6025D1D1A8A3C00642825 /* bg.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
+				FFE602671D1A8C5D00642825 /* mark_red.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
+				FFE6025F1D1A8A6700642825 /* book.png in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
+				FFE602511D1A7B2A00642825 /* diary_0.png in Resources */,
+				FFE602691D1A9F3E00642825 /* 1.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
-				FFE526991D12B346002ABED9 /* book-pix.png in Resources */,
 				FFEAA7A61D11024400F641E9 /* star.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				FFE526821D115B05002ABED9 /* man2.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
+				FFE602661D1A8C5D00642825 /* mark_gree.png in Resources */,
+				FFE6026B1D1A9F4D00642825 /* 2.png in Resources */,
 				FFE526871D118B03002ABED9 /* hand.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
+				FFE6026D1D1AA76E00642825 /* List.plist in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				FF25AC881D193DA900EACC3C /* talkingBox.png in Resources */,
 				3EACC98F19EE6D4300EB3C5E /* res in Resources */,

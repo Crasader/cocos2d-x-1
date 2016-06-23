@@ -41,6 +41,13 @@ public:
     void label10Callback(Ref* pSender);
     //书签的menu
     Menu* menu;
+    Sprite* diary;
+    
+    //获得的星座
+    void setGetedConsent(int i);
+    //所有的星座在book上的精灵
+    std::vector<Sprite*> conllenVecetor;
+
      
 };
 

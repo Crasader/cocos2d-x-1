@@ -142,3 +142,31 @@ slider->loadBarTexture(“”);
 slider->loadProgressBarTexture(“”);
 slider->setPercent(100);
 
+
+
+12
+使用csb文件
+#include”ui/CososGUI.h”
+#include “cocostuido/Cocostudio.h”
+using namespace cocostudio;
+
+Node* rootNode=CSLoader::createNode(“MainScene.csb”);
+
+cocos2d::ui::Button* button1=static_cast<cocos2d::ui::Buttong*>(rootNode->getChildByName(“Button_1”));
+button1->addClickEventListener(CC_CALLBACK1(….));
+
+
+//读取列表为数组类型的plist
+    auto sharedFileUtis=FileUtils::getInstance();
+    std::string writePath=sharedFileUtis->getWritablePath();
+    std::string fullPath="List.plist";
+    auto root=__Dictionary::createWithContentsOfFile(fullPath.c_str());
+    bool isExit=false;
+    isExit=sharedFileUtis->isFileExist(fullPath);
+    if (!isExit)
+    {
+        log("wronggg");
+    }
+    
+       auto arry=static_cast<__Array*>(root->objectForKey(buf));
+    __String*str=static_cast<__String*>( arry->objectAtIndex(i));

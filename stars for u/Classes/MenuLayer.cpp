@@ -72,7 +72,7 @@ bool MenuLayer::init()
     //背景
     Sprite* backGround=Sprite::create("bg.png");
     backGround->setPosition(size.width/2,size.height/2);
-    backGround->setScale(1.2);
+   // backGround->setScale(1.2);
     this->addChild(backGround,0);
     
 
@@ -106,7 +106,7 @@ bool MenuLayer::init()
     talkingBox->addChild(talkingLabel);
    
     //schdule（）函数实现打字效果
-    this->schedule(schedule_selector(MenuLayer::talkingBoxFunc), 0.1f);
+    this->schedule(schedule_selector(MenuLayer::talkingBoxFunc), 0.1f,talkingString.length(),0.1);
     
     //说完话隐藏
     talkingBox->runAction(Sequence::create(DelayTime::create(5),Hide::create(), NULL));
@@ -191,7 +191,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
             
             //错误提示效果
             talkingString="no,not that one,dad~";
-            talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(3),Hide::create() NULL));
+            talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(3),Hide::create(),NULL));
             auto act1=ScaleTo::create(0.3, 2);
             auto act2=ScaleTo::create(0.3, 1);
             stars->starsVector.at(i)->runAction(Sequence::create(act1,act2, NULL));
@@ -227,7 +227,12 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
             {
     
                 std::string constelationString;
-               
+                
+                
+                //记录获取了的星座,以其序号为key
+                char constlFromInt[10];
+                sprintf(constlFromInt, "%d",collensation);
+                UserDefault::getInstance()->setBoolForKey(constlFromInt, true);
                
                 
                 switch (collensation)
