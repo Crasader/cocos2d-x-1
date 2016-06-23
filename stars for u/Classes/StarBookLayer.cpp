@@ -35,20 +35,66 @@ bool StarBookLayer::init()
     
     size=Director::getInstance()->getVisibleSize();
     //创建12星座的Spirte并设置不可见
-    auto conllentSprite1=Sprite::create("1.png");
-    conllentSprite1->setPosition(Point(640,500));
+    auto conllentSprite1=Sprite::create("C1.png");
     conllentSprite1->setVisible(false);
     this->addChild(conllentSprite1,10);
-    auto conllentSprite2=Sprite::create("2.png");
-    conllentSprite2->setPosition(Point(640,200));
+    
+    auto conllentSprite2=Sprite::create("C2.png");
     conllentSprite2->setVisible(false);
     this->addChild(conllentSprite2,10);
     
+    auto conllentSprite3=Sprite::create("C3.png");
+    conllentSprite3->setVisible(false);
+    this->addChild(conllentSprite3,10);
+    
+    auto conllentSprite4=Sprite::create("C4.png");
+    conllentSprite4->setVisible(false);
+    this->addChild(conllentSprite4,10);
+    
+    auto conllentSprite5=Sprite::create("C5.png");
+    conllentSprite5->setVisible(false);
+    this->addChild(conllentSprite5,10);
+    
+    auto conllentSprite6=Sprite::create("C6.png");
+    conllentSprite6->setVisible(false);
+    this->addChild(conllentSprite6,10);
+    
+    auto conllentSprite7=Sprite::create("C7.png");
+    conllentSprite7->setVisible(false);
+    this->addChild(conllentSprite7,10);
+    
+    auto conllentSprite8=Sprite::create("C8.png");
+    conllentSprite8->setVisible(false);
+    this->addChild(conllentSprite8,10);
+    
+    auto conllentSprite9=Sprite::create("C9.png");
+    conllentSprite9->setVisible(false);
+    this->addChild(conllentSprite9,10);
+    
+    auto conllentSprite10=Sprite::create("C10.png");
+    conllentSprite10->setVisible(false);
+    this->addChild(conllentSprite10,10);
+    
+    auto conllentSprite11=Sprite::create("C11.png");
+    conllentSprite11->setVisible(false);
+    this->addChild(conllentSprite11,10);
+    
+    auto conllentSprite12=Sprite::create("C12.png");
+    conllentSprite12->setVisible(false);
+    this->addChild(conllentSprite12,10);
+    
     conllenVecetor.push_back(conllentSprite1);
     conllenVecetor.push_back(conllentSprite2);
-    
-
-    
+     conllenVecetor.push_back(conllentSprite3);
+    conllenVecetor.push_back(conllentSprite4);
+    conllenVecetor.push_back(conllentSprite5);
+    conllenVecetor.push_back(conllentSprite6);
+    conllenVecetor.push_back(conllentSprite7);
+    conllenVecetor.push_back(conllentSprite8);
+    conllenVecetor.push_back(conllentSprite9);
+    conllenVecetor.push_back(conllentSprite10);
+    conllenVecetor.push_back(conllentSprite11);
+    conllenVecetor.push_back(conllentSprite12);
     
     //book
     
@@ -174,7 +220,7 @@ void StarBookLayer::setGetedConsent(int i)
     isExit=sharedFileUtis->isFileExist(fullPath);
     if (!isExit)
     {
-        log("wronggg");
+        log("no plist");
     }
     
     
@@ -182,7 +228,8 @@ void StarBookLayer::setGetedConsent(int i)
     
     
     //显示
-    for (int i=0; i<2; i++)
+    int k=0;//坐标偏移
+    for (int i=0; i<12; i++)
     {
         __String*str=static_cast<__String*>( arry->objectAtIndex(i));
         
@@ -190,6 +237,8 @@ void StarBookLayer::setGetedConsent(int i)
         if (a==1)
         {
             conllenVecetor.at(i)->setVisible(true);
+            conllenVecetor.at(i)->setPosition(Point(580+k*110,520));
+            k++;
         }
         else
         {
@@ -210,7 +259,7 @@ void StarBookLayer::label0Callback(cocos2d::Ref *pSender)
   //跳转到选择的mark页，并显示内容
     
  
-        setGetedConsent(0);
+            setGetedConsent(0);
            diary->setTexture("man2.png");
    
 
@@ -223,7 +272,7 @@ void StarBookLayer::label0Callback(cocos2d::Ref *pSender)
 void StarBookLayer::label10Callback(cocos2d::Ref *pSender)
 {
     
-    setGetedConsent(10);
+     setGetedConsent(10);
      diary->setTexture("diary_0.png");
         
     

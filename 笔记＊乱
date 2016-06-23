@@ -152,7 +152,7 @@ using namespace cocostudio;
 
 Node* rootNode=CSLoader::createNode(“MainScene.csb”);
 
-cocos2d::ui::Button* button1=static_cast<cocos2d::ui::Buttong*>(rootNode->getChildByName(“Button_1”));
+cocos2d::ui::Button* button1=static_cast<cocos2d::ui::Button*>(rootNode->getChildByName(“Button_1”));
 button1->addClickEventListener(CC_CALLBACK1(….));
 
 

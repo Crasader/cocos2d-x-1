@@ -32,7 +32,7 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
             case 0:
                 return nullptr;
                 break;
-            //白羊
+            //白羊C1
             case 1:
             {   constellation->autorelease();
                 constellation->initWithTexture(starBatchNode->getTexture());
@@ -75,7 +75,7 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
                 break;
                 
             }
-                //金牛 Taurus
+                //金牛 Taurus C2
             case 2:
             {
                 constellation->autorelease();
