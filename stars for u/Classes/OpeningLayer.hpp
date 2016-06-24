@@ -34,7 +34,8 @@ public:
     //星星
     randomStars* star=new randomStars(this,10,6,0);
     
-
+//plist建立
+    void createPlist();
 
 };
 

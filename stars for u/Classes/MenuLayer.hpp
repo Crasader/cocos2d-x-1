@@ -74,6 +74,12 @@ public:
     std::string talkingStr;
     void talkingBoxFunc(float dt);
     int index=0;
+    
+    //第1关提示
+    void info(int starNum);
+    
+    //写入plist获取的星座
+    void writToPlist();
 };
 
 #endif /* MenuLayer_hpp */

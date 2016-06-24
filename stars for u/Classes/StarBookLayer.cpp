@@ -8,6 +8,7 @@
 
 #include "StarBookLayer.hpp"
 #include "MenuLayer.hpp"
+#include <time.h>
 
 
 StarBookLayer* StarBookLayer::create()
@@ -32,6 +33,15 @@ bool StarBookLayer::init()
     {
         return false;
     }
+    //初始化获取的星座数组
+   
+    for (int i=0; i<12; i++)
+    {
+        getedCon[i]=i+1;
+    }
+    
+    
+    srand(unsigned(time(NULL)));
     
     size=Director::getInstance()->getVisibleSize();
     //创建12星座的Spirte并设置不可见
@@ -83,18 +93,18 @@ bool StarBookLayer::init()
     conllentSprite12->setVisible(false);
     this->addChild(conllentSprite12,10);
     
-    conllenVecetor.push_back(conllentSprite1);
-    conllenVecetor.push_back(conllentSprite2);
-     conllenVecetor.push_back(conllentSprite3);
-    conllenVecetor.push_back(conllentSprite4);
-    conllenVecetor.push_back(conllentSprite5);
-    conllenVecetor.push_back(conllentSprite6);
-    conllenVecetor.push_back(conllentSprite7);
-    conllenVecetor.push_back(conllentSprite8);
-    conllenVecetor.push_back(conllentSprite9);
-    conllenVecetor.push_back(conllentSprite10);
-    conllenVecetor.push_back(conllentSprite11);
-    conllenVecetor.push_back(conllentSprite12);
+    conllenVecetor.pushBack(conllentSprite1);
+    conllenVecetor.pushBack(conllentSprite2);
+     conllenVecetor.pushBack(conllentSprite3);
+    conllenVecetor.pushBack(conllentSprite4);
+    conllenVecetor.pushBack(conllentSprite5);
+    conllenVecetor.pushBack(conllentSprite6);
+    conllenVecetor.pushBack(conllentSprite7);
+    conllenVecetor.pushBack(conllentSprite8);
+    conllenVecetor.pushBack(conllentSprite9);
+    conllenVecetor.pushBack(conllentSprite10);
+    conllenVecetor.pushBack(conllentSprite11);
+    conllenVecetor.pushBack(conllentSprite12);
     
     //book
     
@@ -106,11 +116,20 @@ bool StarBookLayer::init()
     
     
     //bookMark
-    int i=UserDefault::getInstance()->getIntegerForKey("age", 0);
+    age=UserDefault::getInstance()->getIntegerForKey("age", 0);
     //生成书签页数量
+    //age传入
     BookMark(10);
     
-    
+
+    //开始游戏按钮
+    auto goMenuLabel=Label::createWithSystemFont("Go for stars", "Marker Felt.ttf", 40);
+    goMenuLabel->setColor(Color3B::RED);
+    auto goMenuButton=MenuItemLabel::create(goMenuLabel, CC_CALLBACK_0(StarBookLayer::startGame, this));
+    goMenuButton->setPosition(Point(687,122));
+    auto menu=Menu::create(goMenuButton, NULL);
+    menu->setPosition(0,0);
+    this->addChild(menu,10);
     
         return  true;
 }
@@ -212,29 +231,30 @@ void StarBookLayer::setGetedConsent(int i)
  
 
     //读取Plist
-    auto sharedFileUtis=FileUtils::getInstance();
-    std::string writePath=sharedFileUtis->getWritablePath();
-    std::string fullPath="List.plist";
-    auto root=__Dictionary::createWithContentsOfFile(fullPath.c_str());
+    
+    std::string writablePath=FileUtils::getInstance()->getWritablePath();
+    std::string fullPath=writablePath+"List.plist";
+    //auto root=__Dictionary::createWithContentsOfFile(fullPath.c_str());
+    auto root=FileUtils::getInstance()->getValueMapFromFile(fullPath.c_str());
     bool isExit=false;
-    isExit=sharedFileUtis->isFileExist(fullPath);
+    isExit=FileUtils::getInstance()->isFileExist(fullPath);
     if (!isExit)
     {
         log("no plist");
     }
     
     
-    auto arry=static_cast<__Array*>(root->objectForKey(buf));
-    
+    //auto arry=static_cast<__Array*>(root->objectForKey(buf));
+    auto arry=root[buf].asValueVector();
     
     //显示
     int k=0;//坐标偏移
     for (int i=0; i<12; i++)
     {
-        __String*str=static_cast<__String*>( arry->objectAtIndex(i));
-        
-        int a =str->intValue();
-        if (a==1)
+       // __String*str=static_cast<__String*>( arry->objectAtIndex(i));
+       
+        //int a =str->intValue();
+        if (arry[i].asInt()==1)
         {
             conllenVecetor.at(i)->setVisible(true);
             conllenVecetor.at(i)->setPosition(Point(580+k*110,520));
@@ -256,15 +276,14 @@ void StarBookLayer::setGetedConsent(int i)
 void StarBookLayer::label0Callback(cocos2d::Ref *pSender)
 {
   
-  //跳转到选择的mark页，并显示内容
+  //跳转到选择的页，并显示内容
     
  
             setGetedConsent(0);
            diary->setTexture("man2.png");
-    gsm->goMenuLayer(10, 8, 1);
-   
-
     
+    
+  
 
 }
 
@@ -281,3 +300,82 @@ void StarBookLayer::label10Callback(cocos2d::Ref *pSender)
     
 }
 
+//////////////
+void StarBookLayer::startGame()
+{
+    getAllgetedConsetn();
+    switch (age) {
+        case 0:
+        {//第一关，1颗星星
+           //gsm->goMenuLayer(1, 0, 0);
+            gsm->goMenuLayer(8, 4,1);
+            break;
+        }
+        case 10:
+        {//设置关卡数据
+            int starNum=random(6, 10);
+            int shinNum=random(2, 5);
+            
+            //星座概率出现
+             //方便设置标记已获取的星座，就不再出现
+            getAllgetedConsetn();
+            int conNum=random(0, 99);
+         //getedCon前12个元素为1-12,其余为0，获取了号星座为0, 防止重复出现
+            gsm->goMenuLayer(starNum, shinNum,getedCon[conNum]);
+            
+            break;
+        }
+        default:
+            break;
+    }
+
+ 
+
+
+}
+
+
+//获取所有已经得到的星座
+
+void StarBookLayer::getAllgetedConsetn()
+{
+    
+    auto sharedFile=FileUtils::getInstance();
+    auto writablePath=sharedFile->getWritablePath();
+    std:: string path=writablePath+"List.plist";
+   // auto root=__Dictionary::createWithContentsOfFile(path.c_str());
+    auto root=FileUtils::getInstance()->getValueMapFromFile(path.c_str());
+
+    //章节
+    int arrName[]={0,10};
+    for (int i=0; i<sizeof(arrName)/sizeof(int); i++)
+    {
+        
+        char key[4];
+        sprintf(key, "A%d",arrName[i]);
+//        auto dataArr=static_cast<__Array*>(root->objectForKey(key));
+        auto arr= root[key].asValueVector();
+        
+        
+        
+        
+        for (int j=0; j<12; j++)
+        {
+//            __String* str=static_cast<__String*>(dataArr->getObjectAtIndex(j));
+//            int value=str->intValue();
+            if (arr[j].asInt()==1)
+            {
+                
+                getedCon[j]=0;
+                
+            }
+            
+        }
+        
+        
+        
+    }
+
+
+
+}

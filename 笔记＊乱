@@ -155,18 +155,36 @@ Node* rootNode=CSLoader::createNode(“MainScene.csb”);
 cocos2d::ui::Button* button1=static_cast<cocos2d::ui::Button*>(rootNode->getChildByName(“Button_1”));
 button1->addClickEventListener(CC_CALLBACK1(….));
 
+13 plist 初始化
 
-//读取列表为数组类型的plist
-    auto sharedFileUtis=FileUtils::getInstance();
-    std::string writePath=sharedFileUtis->getWritablePath();
-    std::string fullPath="List.plist";
-    auto root=__Dictionary::createWithContentsOfFile(fullPath.c_str());
-    bool isExit=false;
-    isExit=sharedFileUtis->isFileExist(fullPath);
-    if (!isExit)
-    {
-        log("wronggg");
-    }
+//新建根目录类型和写入类型
+ValueMap root;
+ValueVector arr;
+
+arr.push_back( Value(123));  //Value()可包容多种类型
+
+root[“key”]=arr;
+
+
+std::string writablePath=FileUtils::getInstance()->getWritablePath();
+std::string path= writablePath +”List. plist”;
+
+FileUtils::getInstance()->writeToFile(root, path.c_str());  //写入
+
+
+14  plist本地保存  //只能保存在可写目录下，资源目录不可写
+
+std::string writablePath=FileUtils::getInstance()->getWritablePath();
+std::string path= writablePath +”List. plist”;
+
+auto root= FileUtils::getInstance()->getValueMapFromFile(path.c_str());//根目录为dic类型
+
+auto arr=root[“key”].asValueVector();  //此级为数组型
+
+arr[1]=10; //修改值
+
+root[“key”]=arr;  //回传
+
+FileUtils::getInstance()->writeToFile(root, path.c_str());  //写入
     
-       auto arry=static_cast<__Array*>(root->objectForKey(buf));
-    __String*str=static_cast<__String*>( arry->objectAtIndex(i));
+

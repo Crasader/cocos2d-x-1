@@ -37,16 +37,23 @@ public:
     
     
    //回调
+    //age按钮的回调
     void label0Callback(Ref* pSender);
     void label10Callback(Ref* pSender);
+    
+    
+    //开始游戏回调
+    void startGame();
     //书签的menu
     Menu* menu;
     Sprite* diary;
     
     //获得的星座
     void setGetedConsent(int i);
+    void getAllgetedConsetn();
+    int getedCon[100]={0};
     //所有的星座在book上的精灵
-    std::vector<Sprite*> conllenVecetor;
+    Vector<Sprite*> conllenVecetor;
 
      
 };

@@ -94,7 +94,7 @@ bool OpeningLayer::init()
     
    
     
-    
+    createPlist();
     
 
     return true;
@@ -120,4 +120,64 @@ void OpeningLayer::goSettingCallBack(cocos2d::Ref *pSender)
 }
 
 
+//创建plist
+void OpeningLayer::createPlist()
+{
+
+    std::string path=FileUtils::getInstance()->getWritablePath();
+    
+    std::string fullPath=path+"List.plist";
+    if ( !FileUtils::getInstance()->isFileExist(fullPath.c_str()))
+    {
+        ValueMap root;
+        ValueVector arry;
+        arry.clear();
+        root.clear();
+        for (int i=0; i<12; i++)
+        {
+            
+            arry.push_back(Value(0));
+            
+        }
+        
+        root["A0"]=arry;
+        
+        FileUtils::getInstance()->writeToFile(root, fullPath.c_str());
+         arry.clear();
+        
+        
+        for (int i=0; i<12; i++)
+        {
+            
+            arry.push_back(Value(0));
+            
+        }
+        
+        root["A10"]=arry;
+         FileUtils::getInstance()->writeToFile(root, fullPath.c_str());
+        arry.clear();
+        
+        for (int i=0; i<12; i++)
+        {
+            
+            arry.push_back(Value(0));
+            
+        }
+        
+        root["A12"]=arry;
+        FileUtils::getInstance()->writeToFile(root, fullPath.c_str());
+         arry.clear();
+        
+        for (int i=0; i<12; i++)
+        {
+            
+            arry.push_back(Value(0));
+            
+        }
+        
+        root["A14"]=arry;
+         FileUtils::getInstance()->writeToFile(root, fullPath.c_str());
+         arry.clear();
+    }
+}
 

@@ -48,6 +48,8 @@ bool MenuLayer::init()
         return false;
     }
     
+    
+    
     //亲密值
     Relation= UserDefault::getInstance()->getIntegerForKey("RELATION", 0);
     sprintf(relationString, "亲密值：%d",Relation);
@@ -227,7 +229,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
             {
                
                 std::string constelationString;
-                
+                writToPlist();
                 
                 //记录获取了的星座,以其序号为key
               
@@ -373,5 +375,51 @@ void MenuLayer::win()
 
     
 
+
+}
+
+//提示
+void MenuLayer::info(int starNum)
+{
+//第一关
+    if (starNum==1)
+    {
+        
+        auto act1=ScaleTo::create(0.5, 2);
+        auto act2=ScaleTo::create(0.5, 1);
+        
+        stars->starsVector.back()->runAction(RepeatForever::create(Sequence::create(act1,act2, NULL)));
+        
+        
+        
+    }
+    
+    
+
+
+}
+
+//写入plist
+void MenuLayer::writToPlist()
+{
+    __String ActionNum;
+    
+    if (starNum>5&&starNum<=10)
+    {
+    ActionNum="A10";
+    }
+    
+    std::  string writaBle=FileUtils::getInstance()->getWritablePath();
+    std::string path=writaBle+"List.plist";
+    
+     //跟目录是dic类型
+    auto  root=FileUtils::getInstance()->getValueMapFromFile(path.c_str());
+    
+        //各个章节是arry
+    auto arr=root[ActionNum.getCString()].asValueVector();
+    arr[collensation-1]=1;
+    root[ActionNum.getCString()]=arr;
+    FileUtils::getInstance()->writeToFile(root, path.c_str());
+   
 
 }
