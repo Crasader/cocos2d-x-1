@@ -261,6 +261,7 @@ void StarBookLayer::label0Callback(cocos2d::Ref *pSender)
  
             setGetedConsent(0);
            diary->setTexture("man2.png");
+    gsm->goMenuLayer(10, 8, 1);
    
 
     

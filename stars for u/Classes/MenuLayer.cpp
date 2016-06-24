@@ -106,7 +106,7 @@ bool MenuLayer::init()
     talkingBox->addChild(talkingLabel);
    
     //schdule（）函数实现打字效果
-    this->schedule(schedule_selector(MenuLayer::talkingBoxFunc), 0.1f,talkingString.length(),0.1);
+    this->schedule(schedule_selector(MenuLayer::talkingBoxFunc), 0.1f);
     
     //说完话隐藏
     talkingBox->runAction(Sequence::create(DelayTime::create(5),Hide::create(), NULL));
@@ -225,14 +225,13 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
             //若点击了星座
             if (stars->starsVector.back()==stars->constellation)
             {
-    
+               
                 std::string constelationString;
                 
                 
                 //记录获取了的星座,以其序号为key
-                char constlFromInt[10];
-                sprintf(constlFromInt, "%d",collensation);
-                UserDefault::getInstance()->setBoolForKey(constlFromInt, true);
+              
+                
                
                 
                 switch (collensation)
@@ -306,7 +305,10 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
       
             
             //弹出点击正确的星星
-            stars->starsVector.pop_back();
+            //stars->starsVector.pop_back();
+            stars->starsVector.popBack();
+            //错误计数清零
+             lineNum=0;
             pointer->setRotation(0);
             // 若空，则胜利
             if (stars->starsVector.empty())

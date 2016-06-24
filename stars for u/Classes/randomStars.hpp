@@ -21,8 +21,8 @@ public:
     randomStars(Layer* layerIn,int starNum,int shineStarNum,int constellation);
     void randomPosition();
     //星星向量
-    std::vector<Sprite*> starsVector;
-    
+    //std::vector<Sprite*> starsVector;
+    Vector<Sprite*>starsVector;
     Layer* layer;
     
     //星星数量

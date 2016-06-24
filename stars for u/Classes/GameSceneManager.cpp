@@ -61,17 +61,3 @@ void GameSceneManager::goSettingLayer()
     Director::getInstance()->replaceScene(act);
 }
 
-//starCollection
-
-//void GameSceneManager::goStarCollectionLayer()
-//{
-//    auto scene=Scene::create();
-//    auto layer=starCollectionLayer::create();
-//    scene->addChild(layer);
-//    layer->gsm=this;
-//    auto act=TransitionFade::create(0.5f, scene);
-//    Director::getInstance()->replaceScene(act);
-//
-//
-//
-//}

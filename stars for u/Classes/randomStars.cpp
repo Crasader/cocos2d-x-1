@@ -19,7 +19,8 @@ randomStars::randomStars(Layer* layerIn,int starNum,int shineStarNum,int constel
     this->shineStarNum=shineStarNum;
     this->constellationNum=constellationNum;
     //向量大小定义为100，避免反复申请内存
-    starsVector.resize(100);
+    //starsVector.resize(100);
+    starsVector.reserve(100);
     starsVector.clear();
 }
 
@@ -49,7 +50,8 @@ void randomStars::randomPosition()
         
         layer->addChild(star,100);
         
-        starsVector.push_back(star);
+        //starsVector.push_back(star);
+        starsVector.pushBack(star);
     }
     
     //星座...........
@@ -64,7 +66,8 @@ void randomStars::randomPosition()
         
         //压入vector
         
-        starsVector.push_back(constellation);
+        //starsVector.push_back(constellation);
+        starsVector.pushBack(constellation);
         
     }
    
@@ -77,7 +80,7 @@ void randomStars::randomPosition()
    
     
     //检查生成的星星有无重叠
-   std::vector<Sprite*>::iterator iter;
+   
     int i, j;
     for (i=0; i<starNum; i++)
     { //0号星星依次与其他星星比较
@@ -120,9 +123,9 @@ void randomStars::randomPosition()
         auto delay=DelayTime::create(random(0.0f, 10.0f));
         
         
-        starsVector[i]->runAction(RepeatForever::create(Sequence::create(act1,act2,delay, NULL)));
+       // starsVector[i]->runAction(RepeatForever::create(Sequence::create(act1,act2,delay, NULL)));
         
-       
+        starsVector.at(i)->runAction(RepeatForever::create(Sequence::create(act1,act2,delay, NULL)));
         
     }
 

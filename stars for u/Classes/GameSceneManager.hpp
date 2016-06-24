@@ -25,7 +25,7 @@ public:
     void goBookLayer();
     void goSettingLayer();
     
-    //void goStarCollectionLayer();
+  
 
 };
 
