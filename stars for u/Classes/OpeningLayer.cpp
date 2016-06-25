@@ -42,7 +42,7 @@ bool OpeningLayer::init()
     
     
     //背景
-    Sprite* backGround=Sprite::create("bg.png");
+    Sprite* backGround=Sprite::create("bg_L.png");
     backGround->setPosition(size.width/2,size.height/2);
     backGround->setScale(1.2);
     this->addChild(backGround,0);

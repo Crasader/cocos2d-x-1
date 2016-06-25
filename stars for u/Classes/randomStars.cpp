@@ -24,6 +24,8 @@ randomStars::randomStars(Layer* layerIn,int starNum,int shineStarNum,int constel
     starsVector.clear();
 }
 
+//生成随机位置的星星
+
 void randomStars::randomPosition()
 
 {   std::srand(unsigned(time(NULL)));
@@ -38,7 +40,7 @@ void randomStars::randomPosition()
     {
         //随机坐标
         float x=random(0.1f, 0.9f)*size.width;
-        float y=((size.height/5)*4+rand_0_1()*size.height/5)*0.8;
+        float y=((size.height/5)*2.5+rand_0_1()*size.height/5)*0.8;
         
         //创建星星
         auto star=Sprite::createWithTexture(starsBatchNode->getTexture());
@@ -46,7 +48,7 @@ void randomStars::randomPosition()
         
         
         //随机生成大小不一的星星
-        star->setScale(random(0.8f, 2.0f));
+        star->setScale(random(0.8f, 1.5f));
         
         layer->addChild(star,100);
         
@@ -59,8 +61,108 @@ void randomStars::randomPosition()
     //如果传入的星座编号不为0，则生成
     if (constellationNum!=0)
     {
-       constellation=constellationSprite::createConstellationSprite(constellationNum);
-        constellation->setPosition(400,400);
+        constellation=constellationSprite::createConstellationSprite(constellationNum);
+        //调整位置和大小
+        switch (constellationNum)
+        {
+            case 1://baiyang
+            {
+                constellation->setPosition(700,550);
+                
+
+                break;
+            }
+                case 2:  //jinniu
+            {
+                
+                constellation->setPosition(700,550);
+                constellation->setRotation(100);
+                
+                break;
+            }
+                
+                case 3: //shuangzi
+            {
+                constellation->setPosition(500,550);
+               
+
+                break;
+            }
+            case 4://shuangyu
+            {
+                constellation->setPosition(400,550);
+                constellation->setRotation(50);
+
+                break;
+            }
+
+            case 5: //mojie
+            {
+                constellation->setPosition(600,450);
+               
+
+                break;
+            }
+
+            case 6: //chunv
+            {
+                constellation->setPosition(600,600);
+             
+
+                break;
+            }
+
+            case 7:  //sheshou
+            {
+                constellation->setPosition(630,550);
+               
+
+                break;
+            }
+
+            case 8: //shuiping
+            {
+                constellation->setPosition(700,550);
+                constellation->setRotation(40);
+                break;
+            }
+
+            case 9:  //tianping
+            {
+                constellation->setPosition(530,550);
+               
+
+                break;
+            }
+            case 10:  //shizi
+            {
+                constellation->setPosition(430,550);
+               
+                break;
+            }
+
+            case 11:
+            {
+                constellation->setPosition(700,550);
+               
+
+                break;
+            }
+
+            case 12:
+            {
+                constellation->setPosition(700,550);
+                
+
+                break;
+            }
+
+
+            default:
+                break;
+        }
+       
+       
         constellation->setAnchorPoint(Point(0.5,0.5));
         layer->addChild(constellation,100);
         

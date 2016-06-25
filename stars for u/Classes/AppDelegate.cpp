@@ -49,9 +49,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // create a scene. it's an autorelease object
   
-    auto sceneManger=new GameSceneManager();
+    //auto sceneManger=new GameSceneManager();
     
-    sceneManger->createOpeningLayer();
+   // sceneManger->createOpeningLayer();
+    GameSceneManager::createOpeningLayer();
 
     return true;
 }

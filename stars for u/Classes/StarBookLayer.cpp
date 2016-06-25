@@ -308,7 +308,7 @@ void StarBookLayer::startGame()
         case 0:
         {//第一关，1颗星星
            //gsm->goMenuLayer(1, 0, 0);
-            gsm->goMenuLayer(8, 4,1);
+            gsm->goMenuLayer(8, 4,10);
             break;
         }
         case 10:
