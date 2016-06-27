@@ -51,7 +51,7 @@ public:
     //获得的星座
     void setGetedConsent(int i);
     void getAllgetedConsetn();
-    int getedCon[100]={0};
+    int getedCon[20]={0};
     //所有的星座在book上的精灵
     Vector<Sprite*> conllenVecetor;
 

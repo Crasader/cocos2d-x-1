@@ -102,7 +102,7 @@ bool MenuLayer::init()
     this->addChild(talkingBox);
 
      talkingString="i want that one,dad";
-    talkingLabel=Label::createWithSystemFont("", "Marker Felt.ttf", 30);
+    talkingLabel=Label::createWithSystemFont("", "Marker Felt.ttf", 25);
     talkingLabel->setPosition(160,40);
     talkingLabel->setColor(Color3B::WHITE);
     talkingBox->addChild(talkingLabel);
@@ -193,7 +193,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
             
             //错误提示效果
             talkingString="no,not that one,dad~";
-            talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(3),Hide::create(),NULL));
+            talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
             auto act1=ScaleTo::create(0.3, 2);
             auto act2=ScaleTo::create(0.3, 1);
             stars->starsVector.at(i)->runAction(Sequence::create(act1,act2, NULL));
@@ -227,8 +227,8 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
             //若点击了星座
             if (stars->starsVector.back()==stars->constellation)
             {
-               
-                std::string constelationString;
+               //写入plist
+                
                 writToPlist();
                 
                 //记录获取了的星座,以其序号为key
@@ -238,33 +238,168 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                 
                 switch (collensation)
                 {
-                    case 1:
-                        constelationString="yeap, u get the Aries!";
+                    case 1:  //baiyang
+                    {  //提示信息
+                        talkingString="yeap, we get the Aries!";
+                        talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
+                        
+                        
+                         //显示连线
+                        stars->constellation->getChildByTag(1)->runAction(Sequence::create(Show::create(),Blink::create(1.0f, 2), NULL));
+                      
+                       
+                        
+                         stars->constellation->getChildByTag(2)->runAction(Sequence::create(Show::create(),Blink::create(1.0f, 2), NULL));
+                        
+                        
+                         stars->constellation->getChildByTag(3)->runAction(Sequence::create(Show::create(),Blink::create(1.0f, 2), NULL));
+                        break;
+                        
+                }
+                    case 2:  //jinniu
+                    {talkingString="yeap, we get the Taurus!";
+                        talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
+                        
+                        
+                        for (int i=1; i<=17; i++)
+                        {
+                            //stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(1.0f, 2), NULL));
+                            stars->constellation->getChildByTag(i)->setVisible(true);
+                        }
+                        
+                        
+                        
+                        
+                        break;
+                    }
+                    case 3:  //shuangzi
+                        talkingString="yeap, we get the Gemini!";
+                        talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
+                        
+                        for (int i=0; i<=15; i++)
+                        {
+                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(2.0f, 5), NULL));
+                        }
+                        
+                        break;
+                        
+                        
+                    case 4:  //shuangyu
+                        talkingString="yeap, we get the Pisces!";
+                        talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
+                        
+                        for (int i=0; i<=18; i++)
+                        {
+                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(2.0f, 5), NULL));
+                        }
+                        break;
+                        
+                        
+                    case 5:  //mojie
+                        talkingString="yeap, we get the Capricorn!";
+                        talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
+                        
+                        for (int i=0; i<=10; i++)
+                        {
+                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(2.0f, 5), NULL));
+                        }
+
+                        
+                        break;
+                        
+                        
+                    case 6:  //chunv
+                        talkingString="yeap, we get the Virgo!";
+                        talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
+                        for (int i=0; i<=13; i++)
+                        {
+                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(2.0f, 5), NULL));
+                        }
+
+                        
+                        
+                        break;
+                        
+                        
+                        
+                    case 7:  //sheshou
+                        talkingString="yeap, we get the Sagittarius!";
+                        talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
+                        
+                        
+                        for (int i=0; i<=21; i++)
+                        {
+                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(2.0f, 5), NULL));
+                        }
+                        break;
+                        
+                        
+                    case 8:  //shuiping
+                        talkingString="yeap, we get the Aquarius!";
+                        talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
+                        
+                        for (int i=0; i<=14; i++)
+                        {
+                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(2.0f, 5), NULL));
+                        }
+                        break;
+                        
+                        
+                    case 9:  //tianping
+                        talkingString="yeap, we get the Libra!";
+                        talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
+                        for (int i=0; i<=7; i++)
+                        {
+                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(2.0f, 5), NULL));
+                        }
+                        break;
+                        
+                        
+                    case 10:  //shizi
+                        talkingString="yeap, we get the Leo!";
+                        talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
+                        
+                        for (int i=0; i<=10; i++)
+                        {
+                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(2.0f, 5), NULL));
+                        }
+                        break;
+                        
+                        
+                    case 11:  //tianxie
+                        talkingString="yeap, we get the Scorpio!";
+                        talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
+                        for (int i=0; i<=4; i++)
+                        {
+                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(2.0f, 5), NULL));
+                        }
+                        break;
+                        
+                        
+                    case 12:  //juxie
+                        talkingString="yeap, we get the Cancer!";
+                        talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
+                        
+                        
+                        for (int i=0; i<=6; i++)
+                        {
+                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(2.0f, 5), NULL));
+                        }
                         break;
                         
                     default:
                         break;
                 }
-                //提示效果
-                auto collLabel=Label::createWithSystemFont(constelationString.c_str(), "Marker Felt.ttf", 50);
-                collLabel->setColor(Color3B::WHITE);
-                collLabel->setPosition(400,500);
-                
-                //action
-                auto effecNode=NodeGrid::create();
-                this->addChild(effecNode);
-                effecNode->addChild(collLabel);
-                //水波效果
-                auto  collLabelact1=Ripple3D::create(5.0f, Size(20,20), collLabel->getPosition(), 360, 2, 5);
-                effecNode->runAction(Sequence::create(collLabelact1,RemoveSelf::create(), NULL));
+
                 
                 
+               
+                auto collact1=DelayTime::create(2.0f);
                 
-                //移除特效
-                auto collact1=ScaleTo::create(2.5f, 2);
-                auto collact2=MoveTo::create(2.5f, Point(300,350));
+                auto collact2=ScaleTo::create(2.0f, 1.5);
+                
               
-                stars->starsVector.back()->runAction(Sequence::create(Spawn::create(collact1,collact2, NULL), RemoveSelf::create(),NULL));
+             //   stars->starsVector.back()->runAction(Sequence::create(Spawn::create(collact1, collact2,NULL), RemoveSelf::create(),NULL));
                 
                 
             }
@@ -408,6 +543,9 @@ void MenuLayer::writToPlist()
     {
     ActionNum="A10";
     }
+
+    
+    
     
     std::  string writaBle=FileUtils::getInstance()->getWritablePath();
     std::string path=writaBle+"List.plist";

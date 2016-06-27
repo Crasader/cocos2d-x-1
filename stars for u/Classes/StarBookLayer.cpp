@@ -249,6 +249,7 @@ void StarBookLayer::setGetedConsent(int i)
     
     //显示
     int k=0;//坐标偏移
+    int j=0;
     for (int i=0; i<12; i++)
     {
        // __String*str=static_cast<__String*>( arry->objectAtIndex(i));
@@ -257,8 +258,14 @@ void StarBookLayer::setGetedConsent(int i)
         if (arry[i].asInt()==1)
         {
             conllenVecetor.at(i)->setVisible(true);
-            conllenVecetor.at(i)->setPosition(Point(580+k*110,520));
+           
+            conllenVecetor.at(i)->setPosition(Point(580+k*110,520-j*110));
             k++;
+            if (k%3==0)
+            {
+                ++j;
+                k=0;
+            }
         }
         else
         {
@@ -307,8 +314,7 @@ void StarBookLayer::startGame()
     switch (age) {
         case 0:
         {//第一关，1颗星星
-           //gsm->goMenuLayer(1, 0, 0);
-            gsm->goMenuLayer(8, 4,10);
+            gsm->goMenuLayer(7, 0, 12);
             break;
         }
         case 10:
@@ -319,7 +325,7 @@ void StarBookLayer::startGame()
             //星座概率出现
              //方便设置标记已获取的星座，就不再出现
             getAllgetedConsetn();
-            int conNum=random(0, 99);
+            int conNum=random(0, 20);
          //getedCon前12个元素为1-12,其余为0，获取了号星座为0, 防止重复出现
             gsm->goMenuLayer(starNum, shinNum,getedCon[conNum]);
             

@@ -60,15 +60,19 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
                 
                 //line
                 auto line0=DrawNode::create();
-                line0->drawLine(constellation->getPosition()+Point(25,12), constellation->getPosition()+starSprite1->getPosition(), Color4F::WHITE);
-                constellation->addChild(line0,0);
+                line0->drawLine(constellation->getPosition()+Point(30,10), constellation->getPosition()+starSprite1->getPosition(), Color4F::WHITE);
+                line0->setVisible(false);
+                constellation->addChild(line0,0,1);
+                
                 auto line1=DrawNode::create();
                 line1->drawLine(constellation->getPosition()+starSprite1->getPosition(),constellation->getPosition()+ starSprite2->getPosition(), Color4F::WHITE);
-                constellation->addChild(line1,0);
+                 line1->setVisible(false);
+                constellation->addChild(line1,0,2);
+                
                 auto line2=DrawNode::create();
                 line2->drawLine(constellation->getPosition()+starSprite2->getPosition(), constellation->getPosition()+starSprite3->getPosition(), Color4F::WHITE);
-                
-                constellation->addChild(line2,0);
+                 line2->setVisible(false);
+                constellation->addChild(line2,0,3);
                 
                 
                 return constellation;
@@ -150,7 +154,7 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
                 
                 starSprite16->setPosition(Point(139,-161));
                 starSprite16->setAnchorPoint(Point(0.5,0.5));
-                starSprite13->setVisible(false);
+                starSprite16->setVisible(false);
                 
                 constellation->addChild(starSprite1,10);
                 constellation->addChild(starSprite2,10);
@@ -167,7 +171,8 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
                 constellation->addChild(starSprite13,10);
                 constellation->addChild(starSprite14,10);
                 constellation->addChild(starSprite15,10);
-                constellation->addChild(starSprite16,10);
+                 constellation->addChild(starSprite16,10);
+                
                 constellation->setPosition(0,0);
                 
                 
@@ -176,72 +181,89 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
                 //line
                 auto line0=DrawNode::create();
                 line0->drawLine(constellation->getPosition()+Point(20,5), constellation->getPosition()+starSprite1->getPosition(), Color4F::WHITE);
-                constellation->addChild(line0,0);
+                 line0->setVisible(false);
+                constellation->addChild(line0,0,1);
                 
                 auto line1=DrawNode::create();
                 line1->drawLine(constellation->getPosition()+starSprite1->getPosition(),constellation->getPosition()+ starSprite14->getPosition(), Color4F::WHITE);
-                constellation->addChild(line1,0);
+                 line1->setVisible(false);
+                constellation->addChild(line1,0,2);
                 
                 auto line2=DrawNode::create();
                 line2->drawLine(constellation->getPosition()+starSprite14->getPosition(), constellation->getPosition()+starSprite2->getPosition(), Color4F::WHITE);
-                constellation->addChild(line2,0);
+                 line2->setVisible(false);
+                constellation->addChild(line2,0,3);
                 
                 auto line3=DrawNode::create();
                 line3->drawLine(constellation->getPosition()+starSprite2->getPosition(), constellation->getPosition()+starSprite3->getPosition(), Color4F::WHITE);
-                constellation->addChild(line3,0);
+                 line3->setVisible(false);
+                constellation->addChild(line3,0,4);
                 
                 auto line4=DrawNode::create();
                 line4->drawLine(constellation->getPosition()+starSprite3->getPosition(), constellation->getPosition()+starSprite4->getPosition(), Color4F::WHITE);
-                constellation->addChild(line4,0);
+                 line4->setVisible(false);
+                constellation->addChild(line4,0,5);
                 
                 auto line5=DrawNode::create();
                 line5->drawLine(constellation->getPosition()+starSprite4->getPosition(), constellation->getPosition()+starSprite5->getPosition(), Color4F::WHITE);
-                constellation->addChild(line5,0);
+                 line5->setVisible(false);
+                constellation->addChild(line5,0,6);
                 
                 auto line6=DrawNode::create();
                 line6->drawLine(constellation->getPosition()+starSprite5->getPosition(), constellation->getPosition()+starSprite6->getPosition(), Color4F::WHITE);
-                constellation->addChild(line6,0);
+                constellation->addChild(line6,0,7);
+                line6->setVisible(false);
                 
                 
                 auto line7=DrawNode::create();
                 line7->drawLine(constellation->getPosition()+starSprite6->getPosition(), constellation->getPosition()+starSprite8->getPosition(), Color4F::WHITE);
-                constellation->addChild(line7,0);
+                 line7->setVisible(false);
+                constellation->addChild(line7,0,8);
                 
                 auto line8=DrawNode::create();
                 line8->drawLine(constellation->getPosition()+starSprite8->getPosition(), constellation->getPosition()+starSprite7->getPosition(), Color4F::WHITE);
-                constellation->addChild(line8,0);
+                 line8->setVisible(false);
+                constellation->addChild(line8,0,9);
                 
                 auto line9=DrawNode::create();
                 line9->drawLine(constellation->getPosition()+starSprite6->getPosition(), constellation->getPosition()+starSprite13->getPosition(), Color4F::WHITE);
-                constellation->addChild(line9,0);
+                 line9->setVisible(false);
+                constellation->addChild(line9,0,10);
                 
                 auto line10=DrawNode::create();
                 line10->drawLine(constellation->getPosition()+starSprite13->getPosition(), constellation->getPosition()+starSprite16->getPosition(), Color4F::WHITE);
-                constellation->addChild(line10,0);
+                 line10->setVisible(false);
+                constellation->addChild(line10,0,11);
                 
                 auto line11=DrawNode::create();
                 line11->drawLine(constellation->getPosition()+starSprite16->getPosition(), constellation->getPosition()+starSprite14->getPosition(), Color4F::WHITE);
-                constellation->addChild(line11,0);
+                 line11->setVisible(false);
+                constellation->addChild(line11,0,12);
                 
                 auto line12=DrawNode::create();
                 line12->drawLine(constellation->getPosition()+starSprite16->getPosition(), constellation->getPosition()+starSprite12->getPosition(), Color4F::WHITE);
-                constellation->addChild(line12,0);
+                 line12->setVisible(false);
+                constellation->addChild(line12,0,13);
                 
                 auto line13=DrawNode::create();
                 line13->drawLine(constellation->getPosition()+starSprite12->getPosition(), constellation->getPosition()+starSprite15->getPosition(), Color4F::WHITE);
-                constellation->addChild(line13,0);
+                 line13->setVisible(false);
+                constellation->addChild(line13,0,14);
                 
                 auto line14=DrawNode::create();
                 line14->drawLine(constellation->getPosition()+starSprite13->getPosition(), constellation->getPosition()+starSprite11->getPosition(), Color4F::WHITE);
-                constellation->addChild(line14,0);
+                 line14->setVisible(false);
+                constellation->addChild(line14,0,15);
                 
                 auto line15=DrawNode::create();
                 line15->drawLine(constellation->getPosition()+starSprite11->getPosition(), constellation->getPosition()+starSprite10->getPosition(), Color4F::WHITE);
-                constellation->addChild(line15,0);
+                line15->setVisible(false);
+                constellation->addChild(line15,0,16);
                 
                 auto line16=DrawNode::create();
                 line16->drawLine(constellation->getPosition()+starSprite10->getPosition(), constellation->getPosition()+starSprite9->getPosition(), Color4F::WHITE);
-                constellation->addChild(line16,0);
+                 line16->setVisible(false);
+                constellation->addChild(line16,0,17);
                 
               
                 return constellation;
@@ -347,71 +369,89 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
                 
                 
                 
+             
+                
                 //line
                 auto line0=DrawNode::create();
                 line0->drawLine(constellation->getPosition()+Point(20,5), constellation->getPosition()+starSprite1->getPosition(), Color4F::WHITE);
-                constellation->addChild(line0,0);
+                line0->setVisible(false);
+                constellation->addChild(line0,0,0);
                 
                 auto line1=DrawNode::create();
                 line1->drawLine(constellation->getPosition()+starSprite1->getPosition(),constellation->getPosition()+ starSprite2->getPosition(), Color4F::WHITE);
-                constellation->addChild(line1,0);
+                   line1->setVisible(false);
+                constellation->addChild(line1,0,1);
                 
                 auto line2=DrawNode::create();
                 line2->drawLine(constellation->getPosition()+starSprite1->getPosition(), constellation->getPosition()+starSprite3->getPosition(), Color4F::WHITE);
-                constellation->addChild(line2,0);
+                   line2->setVisible(false);
+                constellation->addChild(line2,0,2);
                 
                 auto line3=DrawNode::create();
                 line3->drawLine(constellation->getPosition()+starSprite3->getPosition(), constellation->getPosition()+starSprite4->getPosition(), Color4F::WHITE);
-                constellation->addChild(line3,0);
+                   line3->setVisible(false);
+                constellation->addChild(line3,0,3);
                 
                 auto line4=DrawNode::create();
                 line4->drawLine(constellation->getPosition()+starSprite3->getPosition(), constellation->getPosition()+starSprite5->getPosition(), Color4F::WHITE);
-                constellation->addChild(line4,0);
+                   line4->setVisible(false);
+                constellation->addChild(line4,0,4);
                 
                 auto line5=DrawNode::create();
                 line5->drawLine(constellation->getPosition()+starSprite5->getPosition(), constellation->getPosition()+starSprite6->getPosition(), Color4F::WHITE);
-                constellation->addChild(line5,0);
+                   line5->setVisible(false);
+                constellation->addChild(line5,0,5);
                 
                 auto line6=DrawNode::create();
                 line6->drawLine(constellation->getPosition()+starSprite6->getPosition(), constellation->getPosition()+starSprite7->getPosition(), Color4F::WHITE);
-                constellation->addChild(line6,0);
+                   line6->setVisible(false);
+                constellation->addChild(line6,0,6);
                 
                 
                 auto line7=DrawNode::create();
                 line7->drawLine(constellation->getPosition()+starSprite8->getPosition(), constellation->getPosition()+starSprite10->getPosition(), Color4F::WHITE);
-                constellation->addChild(line7,0);
+                   line7->setVisible(false);
+                constellation->addChild(line7,0,7);
                 
                 auto line8=DrawNode::create();
                 line8->drawLine(constellation->getPosition()+starSprite10->getPosition(), constellation->getPosition()+starSprite9->getPosition(), Color4F::WHITE);
-                constellation->addChild(line8,0);
+                   line8->setVisible(false);
+                constellation->addChild(line8,0,8);
                 
                 auto line9=DrawNode::create();
                 line9->drawLine(constellation->getPosition()+starSprite10->getPosition(), constellation->getPosition()+starSprite11->getPosition(), Color4F::WHITE);
-                constellation->addChild(line9,0);
+                   line9->setVisible(false);
+                constellation->addChild(line9,0,9);
                 
                 auto line10=DrawNode::create();
                 line10->drawLine(constellation->getPosition()+starSprite10->getPosition(), constellation->getPosition()+starSprite12->getPosition(), Color4F::WHITE);
-                constellation->addChild(line10,0);
+                  line10->setVisible(false);
+                constellation->addChild(line10,0,10);
                 
                 auto line11=DrawNode::create();
                 line11->drawLine(constellation->getPosition()+starSprite12->getPosition(), constellation->getPosition()+starSprite16->getPosition(), Color4F::WHITE);
-                constellation->addChild(line11,0);
+                  line11->setVisible(false);
+                constellation->addChild(line11,0,11);
                 
                 auto line12=DrawNode::create();
                 line12->drawLine(constellation->getPosition()+starSprite12->getPosition(), constellation->getPosition()+starSprite13->getPosition(), Color4F::WHITE);
-                constellation->addChild(line12,0);
+                  line12->setVisible(false);
+                constellation->addChild(line12,0,12);
                 
                 auto line13=DrawNode::create();
                 line13->drawLine(constellation->getPosition()+starSprite13->getPosition(), constellation->getPosition()+starSprite14->getPosition(), Color4F::WHITE);
-                constellation->addChild(line13,0);
+                  line13->setVisible(false);
+                constellation->addChild(line13,0,13);
                 
                 auto line14=DrawNode::create();
                 line14->drawLine(constellation->getPosition()+starSprite16->getPosition(), constellation->getPosition()+starSprite15->getPosition(), Color4F::WHITE);
-                constellation->addChild(line14,0);
+                  line14->setVisible(false);
+                constellation->addChild(line14,0,14);
                 
                 auto line15=DrawNode::create();
                 line15->drawLine(constellation->getPosition()+starSprite1->getPosition(), constellation->getPosition()+starSprite9->getPosition(), Color4F::WHITE);
-                constellation->addChild(line15,0);
+                  line15->setVisible(false);
+                constellation->addChild(line15,0,15);
                 
                 
                 constellation->setScale(0.7);
@@ -531,82 +571,101 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
                 //line
                 auto line0=DrawNode::create();
                 line0->drawLine(constellation->getPosition()+Point(10,5), constellation->getPosition()+starSprite1->getPosition(), Color4F::WHITE);
-                constellation->addChild(line0,0);
+                line0->setVisible(false);
+                constellation->addChild(line0,0,0);
                 
                 auto line1=DrawNode::create();
                 line1->drawLine(constellation->getPosition()+starSprite1->getPosition(),constellation->getPosition()+ starSprite2->getPosition(), Color4F::WHITE);
-                constellation->addChild(line1,0);
+                    line1->setVisible(false);
+                constellation->addChild(line1,0,1);
                 
                 auto line2=DrawNode::create();
                 line2->drawLine(constellation->getPosition()+starSprite2->getPosition(), constellation->getPosition()+starSprite3->getPosition(), Color4F::WHITE);
-                constellation->addChild(line2,0);
+                    line2->setVisible(false);
+                constellation->addChild(line2,0,2);
                 
                 auto line3=DrawNode::create();
                 line3->drawLine(constellation->getPosition()+starSprite3->getPosition(), constellation->getPosition()+starSprite4->getPosition(), Color4F::WHITE);
-                constellation->addChild(line3,0);
+                    line3->setVisible(false);
+                constellation->addChild(line3,0,3);
                 
                 auto line4=DrawNode::create();
                 line4->drawLine(constellation->getPosition()+starSprite4->getPosition(), constellation->getPosition()+starSprite5->getPosition(), Color4F::WHITE);
-                constellation->addChild(line4,0);
+                    line4->setVisible(false);
+                constellation->addChild(line4,0,4);
                 
                 auto line5=DrawNode::create();
                 line5->drawLine(constellation->getPosition()+starSprite5->getPosition(), constellation->getPosition()+starSprite6->getPosition(), Color4F::WHITE);
-                constellation->addChild(line5,0);
+                    line5->setVisible(false);
+                constellation->addChild(line5,0,5);
                 
                 auto line6=DrawNode::create();
                 line6->drawLine(constellation->getPosition()+starSprite6->getPosition(), constellation->getPosition()+starSprite7->getPosition(), Color4F::WHITE);
-                constellation->addChild(line6,0);
+                    line6->setVisible(false);
+                constellation->addChild(line6,0,6);
                 
                 
                 auto line7=DrawNode::create();
                 line7->drawLine(constellation->getPosition()+starSprite7->getPosition(), constellation->getPosition()+starSprite8->getPosition(), Color4F::WHITE);
-                constellation->addChild(line7,0);
+                    line7->setVisible(false);
+                constellation->addChild(line7,0,7);
                 
                 auto line8=DrawNode::create();
                 line8->drawLine(constellation->getPosition()+starSprite8->getPosition(), constellation->getPosition()+starSprite9->getPosition(), Color4F::WHITE);
-                constellation->addChild(line8,0);
+                    line8->setVisible(false);
+                constellation->addChild(line8,0,8);
                 
                 auto line9=DrawNode::create();
                 line9->drawLine(constellation->getPosition()+starSprite9->getPosition(), constellation->getPosition()+starSprite10->getPosition(), Color4F::WHITE);
-                constellation->addChild(line9,0);
+                    line9->setVisible(false);
+                constellation->addChild(line9,0,9);
                 
                 auto line10=DrawNode::create();
                 line10->drawLine(constellation->getPosition()+starSprite10->getPosition(), constellation->getPosition()+starSprite11->getPosition(), Color4F::WHITE);
-                constellation->addChild(line10,0);
+                    line10->setVisible(false);
+                constellation->addChild(line10,0,10);
                 
                 auto line11=DrawNode::create();
                 line11->drawLine(constellation->getPosition()+starSprite11->getPosition(), constellation->getPosition()+starSprite12->getPosition(), Color4F::WHITE);
-                constellation->addChild(line11,0);
+                line11->setVisible(false);
+                constellation->addChild(line11,0,11);
                 
                 auto line12=DrawNode::create();
                 line12->drawLine(constellation->getPosition()+starSprite12->getPosition(), constellation->getPosition()+starSprite13->getPosition(), Color4F::WHITE);
-                constellation->addChild(line12,0);
+                    line12->setVisible(false);
+                constellation->addChild(line12,0,12);
                 
                 auto line13=DrawNode::create();
                 line13->drawLine(constellation->getPosition()+starSprite13->getPosition(), constellation->getPosition()+starSprite14->getPosition(), Color4F::WHITE);
-                constellation->addChild(line13,0);
+                    line13->setVisible(false);
+                constellation->addChild(line13,0,13);
                 
                 auto line14=DrawNode::create();
                 line14->drawLine(constellation->getPosition()+starSprite14->getPosition(), constellation->getPosition()+starSprite15->getPosition(), Color4F::WHITE);
-                constellation->addChild(line14,0);
+                    line14->setVisible(false);
+                constellation->addChild(line14,0,14);
                 
                 auto line15=DrawNode::create();
                 line15->drawLine(constellation->getPosition()+starSprite15->getPosition(), constellation->getPosition()+starSprite16->getPosition(), Color4F::WHITE);
-                constellation->addChild(line15,0);
+                    line15->setVisible(false);
+                constellation->addChild(line15,0,15);
                 
                 auto line16=DrawNode::create();
                 line16->drawLine(constellation->getPosition()+starSprite16->getPosition(), constellation->getPosition()+starSprite17->getPosition(), Color4F::WHITE);
-                constellation->addChild(line16,0);
+                    line16->setVisible(false);
+                constellation->addChild(line16,0,16);
                 
                 auto line17=DrawNode::create();
                 line17->drawLine(constellation->getPosition()+starSprite17->getPosition(), constellation->getPosition()+starSprite18->getPosition(), Color4F::WHITE);
-                constellation->addChild(line17,0);
+                    line17->setVisible(false);
+                constellation->addChild(line17,0,17);
                 
                 auto line18=DrawNode::create();
                 line18->drawLine(constellation->getPosition()+starSprite18->getPosition(), constellation->getPosition()+starSprite12->getPosition(), Color4F::WHITE);
-                constellation->addChild(line18,0);
+                    line18->setVisible(false);
+                constellation->addChild(line18,0,18);
                 
-                constellation->setScale(0.7);
+              
                 return constellation;
                 
                 
@@ -683,51 +742,62 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
                 //line
                 auto line0=DrawNode::create();
                 line0->drawLine(constellation->getPosition()+Point(10,5), constellation->getPosition()+starSprite1->getPosition(), Color4F::WHITE);
-                constellation->addChild(line0,0);
+                line0->setVisible(false);
+                constellation->addChild(line0,0,0);
                 
                 auto line1=DrawNode::create();
                 line1->drawLine(constellation->getPosition()+starSprite1->getPosition(),constellation->getPosition()+ starSprite2->getPosition(), Color4F::WHITE);
-                constellation->addChild(line1,0);
+                line1->setVisible(false);
+                constellation->addChild(line1,0,1);
                 
                 auto line2=DrawNode::create();
                 line2->drawLine(constellation->getPosition()+starSprite2->getPosition(), constellation->getPosition()+starSprite3->getPosition(), Color4F::WHITE);
-                constellation->addChild(line2,0);
+                line2->setVisible(false);
+                constellation->addChild(line2,0,2);
                 
                 auto line3=DrawNode::create();
                 line3->drawLine(constellation->getPosition()+starSprite3->getPosition(), constellation->getPosition()+starSprite4->getPosition(), Color4F::WHITE);
-                constellation->addChild(line3,0);
+                line3->setVisible(false);
+                constellation->addChild(line3,0,3);
                 
                 auto line4=DrawNode::create();
                 line4->drawLine(constellation->getPosition()+starSprite4->getPosition(), constellation->getPosition()+starSprite5->getPosition(), Color4F::WHITE);
-                constellation->addChild(line4,0);
+                line4->setVisible(false);
+                constellation->addChild(line4,0,4);
                 
                 auto line5=DrawNode::create();
                 line5->drawLine(constellation->getPosition()+starSprite5->getPosition(), constellation->getPosition()+starSprite6->getPosition(), Color4F::WHITE);
-                constellation->addChild(line5,0);
+                line5->setVisible(false);
+                constellation->addChild(line5,0,5);
                 
                 auto line6=DrawNode::create();
                 line6->drawLine(constellation->getPosition()+starSprite6->getPosition(), constellation->getPosition()+starSprite7->getPosition(), Color4F::WHITE);
-                constellation->addChild(line6,0);
+                line6->setVisible(false);
+                constellation->addChild(line6,0,6);
                 
                 
                 auto line7=DrawNode::create();
                 line7->drawLine(constellation->getPosition()+starSprite7->getPosition(), constellation->getPosition()+starSprite8->getPosition(), Color4F::WHITE);
-                constellation->addChild(line7,0);
+                line7->setVisible(false);
+                constellation->addChild(line7,0,7);
                 
                 auto line8=DrawNode::create();
                 line8->drawLine(constellation->getPosition()+starSprite7->getPosition(), constellation->getPosition()+starSprite9->getPosition(), Color4F::WHITE);
-                constellation->addChild(line8,0);
+                line8->setVisible(false);
+                constellation->addChild(line8,0,8);
                 
                 auto line9=DrawNode::create();
                 line9->drawLine(constellation->getPosition()+starSprite9->getPosition(), constellation->getPosition()+starSprite10->getPosition(), Color4F::WHITE);
-                constellation->addChild(line9,0);
+                line9->setVisible(false);
+                constellation->addChild(line9,0,9);
                 
                 auto line10=DrawNode::create();
                 line10->drawLine(constellation->getPosition()+starSprite10->getPosition(), constellation->getPosition()+starSprite2->getPosition(), Color4F::WHITE);
-                constellation->addChild(line10,0);
+                line10->setVisible(false);
+                constellation->addChild(line10,0,10);
                 
                 
-                constellation->setScale(0.7);
+             
                 return constellation;
 
                 
@@ -827,63 +897,77 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
                 //line
                 auto line0=DrawNode::create();
                 line0->drawLine(constellation->getPosition()+Point(15,5), constellation->getPosition()+starSprite1->getPosition(), Color4F::WHITE);
-                constellation->addChild(line0,0);
+                line0->setVisible(false);
+                constellation->addChild(line0,0,0);
                 
                 auto line1=DrawNode::create();
                 line1->drawLine(constellation->getPosition()+starSprite1->getPosition(),constellation->getPosition()+ starSprite2->getPosition(), Color4F::WHITE);
-                constellation->addChild(line1,0);
+                 line1->setVisible(false);
+                constellation->addChild(line1,0,1);
                 
                 auto line2=DrawNode::create();
                 line2->drawLine(constellation->getPosition()+starSprite2->getPosition(), constellation->getPosition()+starSprite3->getPosition(), Color4F::WHITE);
-                constellation->addChild(line2,0);
+                 line2->setVisible(false);
+                constellation->addChild(line2,0,2);
                 
                 auto line3=DrawNode::create();
                 line3->drawLine(constellation->getPosition()+starSprite3->getPosition(), constellation->getPosition()+starSprite4->getPosition(), Color4F::WHITE);
-                constellation->addChild(line3,0);
+                 line3->setVisible(false);
+                constellation->addChild(line3,0,3);
                 
                 auto line4=DrawNode::create();
                 line4->drawLine(constellation->getPosition()+starSprite3->getPosition(), constellation->getPosition()+starSprite6->getPosition(), Color4F::WHITE);
-                constellation->addChild(line4,0);
+                 line4->setVisible(false);
+                constellation->addChild(line4,0,4);
                 
                 auto line5=DrawNode::create();
                 line5->drawLine(constellation->getPosition()+starSprite3->getPosition(), constellation->getPosition()+starSprite5->getPosition(), Color4F::WHITE);
-                constellation->addChild(line5,0);
+                 line5->setVisible(false);
+                constellation->addChild(line5,0,5);
                 
                 auto line6=DrawNode::create();
                 line6->drawLine(constellation->getPosition()+starSprite6->getPosition(), constellation->getPosition()+starSprite7->getPosition(), Color4F::WHITE);
-                constellation->addChild(line6,0);
+                 line6->setVisible(false);
+                constellation->addChild(line6,0,6);
                 
                 
                 auto line7=DrawNode::create();
                 line7->drawLine(constellation->getPosition()+starSprite2->getPosition(), constellation->getPosition()+starSprite8->getPosition(), Color4F::WHITE);
-                constellation->addChild(line7,0);
+                 line7->setVisible(false);
+                constellation->addChild(line7,0,7);
                 
                 auto line8=DrawNode::create();
                 line8->drawLine(constellation->getPosition()+starSprite8->getPosition(), constellation->getPosition()+starSprite9->getPosition(), Color4F::WHITE);
-                constellation->addChild(line8,0);
+                 line8->setVisible(false);
+                constellation->addChild(line8,0,8);
                 
                 auto line9=DrawNode::create();
                 line9->drawLine(constellation->getPosition()+starSprite8->getPosition(), constellation->getPosition()+starSprite10->getPosition(), Color4F::WHITE);
-                constellation->addChild(line9,0);
+                 line9->setVisible(false);
+                constellation->addChild(line9,0,9);
                 
                 auto line10=DrawNode::create();
                 line10->drawLine(constellation->getPosition()+starSprite10->getPosition(), constellation->getPosition()+starSprite11->getPosition(), Color4F::WHITE);
-                constellation->addChild(line10,0);
+                 line10->setVisible(false);
+                constellation->addChild(line10,0,10);
                 
                 auto line11=DrawNode::create();
                 line11->drawLine(constellation->getPosition()+starSprite8->getPosition(), constellation->getPosition()+starSprite12->getPosition(), Color4F::WHITE);
-                constellation->addChild(line11,0);
+                 line11->setVisible(false);
+                constellation->addChild(line11,0,11);
                 
                 auto line12=DrawNode::create();
                 line12->drawLine(constellation->getPosition()+starSprite12->getPosition(), constellation->getPosition()+starSprite13->getPosition(), Color4F::WHITE);
-                constellation->addChild(line12,0);
+                 line12->setVisible(false);
+                constellation->addChild(line12,0,12);
                 
                 auto line13=DrawNode::create();
                 line13->drawLine(constellation->getPosition()+starSprite13->getPosition(), constellation->getPosition()+starSprite14->getPosition(), Color4F::WHITE);
-                constellation->addChild(line13,0);
+                 line13->setVisible(false);
+                constellation->addChild(line13,0,13);
                 
                                 
-                constellation->setScale(0.7);
+               
                 return constellation;
                 
 
@@ -1019,23 +1103,28 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
                 //line
                 auto line0=DrawNode::create();
                 line0->drawLine(constellation->getPosition()+Point(20,0), constellation->getPosition()+starSprite1->getPosition(), Color4F::WHITE);
-                constellation->addChild(line0,0);
+                line0->setVisible(false);
+                constellation->addChild(line0,0,0);
                 
                 auto line1=DrawNode::create();
                 line1->drawLine(constellation->getPosition()+starSprite1->getPosition(),constellation->getPosition()+ starSprite2->getPosition(), Color4F::WHITE);
-                constellation->addChild(line1,0);
+                 line1->setVisible(false);
+                constellation->addChild(line1,0,1);
                 
                 auto line2=DrawNode::create();
                 line2->drawLine(constellation->getPosition()+starSprite2->getPosition(), constellation->getPosition()+starSprite3->getPosition(), Color4F::WHITE);
-                constellation->addChild(line2,0);
+                 line2->setVisible(false);
+                constellation->addChild(line2,0,2);
                 
                 auto line3=DrawNode::create();
                 line3->drawLine(constellation->getPosition()+starSprite2->getPosition(), constellation->getPosition()+starSprite4->getPosition(), Color4F::WHITE);
-                constellation->addChild(line3,0);
+                 line3->setVisible(false);
+                constellation->addChild(line3,0,3);
                 
                 auto line4=DrawNode::create();
                 line4->drawLine(constellation->getPosition()+starSprite4->getPosition(), constellation->getPosition()+starSprite5->getPosition(), Color4F::WHITE);
-                constellation->addChild(line4,0);
+                 line4->setVisible(false);
+                constellation->addChild(line4,0,4);
                 
                 auto line5=DrawNode::create();
                 line5->drawLine(constellation->getPosition()+starSprite5->getPosition(), constellation->getPosition()+starSprite6->getPosition(), Color4F::WHITE);
@@ -1049,6 +1138,7 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
                 auto line7=DrawNode::create();
                 line7->drawLine(constellation->getPosition()+starSprite6->getPosition(), constellation->getPosition()+starSprite8->getPosition(), Color4F::WHITE);
                 constellation->addChild(line7,0);
+        
                 
                 auto line8=DrawNode::create();
                 line8->drawLine(constellation->getPosition()+starSprite8->getPosition(), constellation->getPosition()+starSprite9->getPosition(), Color4F::WHITE);
@@ -1107,7 +1197,43 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
                 constellation->addChild(line21,0);
                 
                 
-                constellation->setScale(0.7);
+                
+                line5->setVisible(false);
+                line5->setTag(5);
+                line6->setVisible(false);
+                line6->setTag(6);
+                line7->setVisible(false);
+                line7->setTag(7);
+                line8->setVisible(false);
+                line8->setTag(8);
+                line9->setVisible(false);
+                line9->setTag(9);
+                line10->setVisible(false);
+                line10->setTag(10);
+                line11->setVisible(false);
+                line11->setTag(11);
+                line12->setVisible(false);
+                line12->setTag(12);
+                line13->setVisible(false);
+                line13->setTag(13);
+                line14->setVisible(false);
+                line14->setTag(14);
+                line15->setVisible(false);
+                line15->setTag(15);
+                line16->setVisible(false);
+                line16->setTag(16);
+                line17->setVisible(false);
+                line17->setTag(17);
+                line18->setVisible(false);
+                line18->setTag(18);
+                line19->setVisible(false);
+                line19->setTag(19);
+                line20->setVisible(false);
+                line20->setTag(20);
+                line21->setVisible(false);
+                line21->setTag(21);
+                
+               
                 return constellation;
 
             break;
@@ -1266,6 +1392,37 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
                 line14->drawLine(constellation->getPosition()+starSprite14->getPosition(), constellation->getPosition()+starSprite6->getPosition(), Color4F::WHITE);
                 constellation->addChild(line14,0);
                 
+                line0->setVisible(false);
+                line0->setTag(0);
+                line1->setVisible(false);
+                line1->setTag(1);
+                line2->setVisible(false);
+                line2->setTag(2);
+                line3->setVisible(false);
+                line3->setTag(3);
+                line4->setVisible(false);
+                line4->setTag(4);
+                line5->setVisible(false);
+                line5->setTag(5);
+                line6->setVisible(false);
+                line6->setTag(6);
+                line7->setVisible(false);
+                line7->setTag(7);
+                line8->setVisible(false);
+                line8->setTag(8);
+                line9->setVisible(false);
+                line9->setTag(9);
+                line10->setVisible(false);
+                line10->setTag(10);
+                line11->setVisible(false);
+                line11->setTag(11);
+                line12->setVisible(false);
+                line12->setTag(12);
+                line13->setVisible(false);
+                line13->setTag(13);
+                line14->setVisible(false);
+                line14->setTag(14);
+               
                 
              
                 return constellation;
@@ -1333,9 +1490,9 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
                 line0->drawLine(constellation->getPosition()+Point(10,0), constellation->getPosition()+starSprite1->getPosition(), Color4F::WHITE);
                 constellation->addChild(line0,0);
                 
-                auto line7=DrawNode::create();
-                line7->drawLine(constellation->getPosition()+Point(30,0), constellation->getPosition()+starSprite5->getPosition(), Color4F::WHITE);
-                constellation->addChild(line7,0);
+                auto line3=DrawNode::create();
+                line3->drawLine(constellation->getPosition()+Point(30,0), constellation->getPosition()+starSprite5->getPosition(), Color4F::WHITE);
+                constellation->addChild(line3,0);
                 
                 auto line1=DrawNode::create();
                 line1->drawLine(constellation->getPosition()+starSprite1->getPosition(),constellation->getPosition()+ starSprite2->getPosition(), Color4F::WHITE);
@@ -1359,10 +1516,29 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
                 constellation->addChild(line6,0);
                 
                 
-                auto line8=DrawNode::create();
-                line8->drawLine(constellation->getPosition()+starSprite6->getPosition(), constellation->getPosition()+starSprite7->getPosition(), Color4F::WHITE);
-                constellation->addChild(line8,0);
+                auto line7=DrawNode::create();
+                line7->drawLine(constellation->getPosition()+starSprite6->getPosition(), constellation->getPosition()+starSprite7->getPosition(), Color4F::WHITE);
+                constellation->addChild(line7,0);
                 
+                
+                
+                line0->setVisible(false);
+                line0->setTag(0);
+                line1->setVisible(false);
+                line1->setTag(1);
+                line2->setVisible(false);
+                line2->setTag(2);
+                line3->setVisible(false);
+                line3->setTag(3);
+                line4->setVisible(false);
+                line4->setTag(4);
+                line5->setVisible(false);
+                line5->setTag(5);
+                line6->setVisible(false);
+                line6->setTag(6);
+                line7->setVisible(false);
+                line7->setTag(7);
+    
                 
                 
                 return constellation;
@@ -1469,27 +1645,240 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
                 constellation->addChild(line6,0);
                 
                 
+                auto line3=DrawNode::create();
+                line3->drawLine(constellation->getPosition()+starSprite5->getPosition(), constellation->getPosition()+starSprite7->getPosition(), Color4F::WHITE);
+                constellation->addChild(line3,0);
+                
+                auto line7=DrawNode::create();
+                line7->drawLine(constellation->getPosition()+starSprite5->getPosition(), constellation->getPosition()+starSprite8->getPosition(), Color4F::WHITE);
+                constellation->addChild(line7,0);
+                
                 auto line8=DrawNode::create();
-                line8->drawLine(constellation->getPosition()+starSprite5->getPosition(), constellation->getPosition()+starSprite7->getPosition(), Color4F::WHITE);
+                line8->drawLine(constellation->getPosition()+starSprite8->getPosition(), constellation->getPosition()+starSprite9->getPosition(), Color4F::WHITE);
                 constellation->addChild(line8,0);
                 
                 auto line9=DrawNode::create();
-                line9->drawLine(constellation->getPosition()+starSprite5->getPosition(), constellation->getPosition()+starSprite8->getPosition(), Color4F::WHITE);
+                line9->drawLine(constellation->getPosition()+starSprite9->getPosition(), constellation->getPosition()+starSprite10->getPosition(), Color4F::WHITE);
                 constellation->addChild(line9,0);
-                
-                auto line10=DrawNode::create();
-                line10->drawLine(constellation->getPosition()+starSprite8->getPosition(), constellation->getPosition()+starSprite9->getPosition(), Color4F::WHITE);
-                constellation->addChild(line10,0);
-                
-                auto line11=DrawNode::create();
-                line11->drawLine(constellation->getPosition()+starSprite9->getPosition(), constellation->getPosition()+starSprite10->getPosition(), Color4F::WHITE);
-                constellation->addChild(line11,0);
                 
             
                 
-                auto line13=DrawNode::create();
-                line13->drawLine(constellation->getPosition()+starSprite3->getPosition(), constellation->getPosition()+starSprite11->getPosition(), Color4F::WHITE);
-                constellation->addChild(line13,0);
+                auto line10=DrawNode::create();
+                line10->drawLine(constellation->getPosition()+starSprite3->getPosition(), constellation->getPosition()+starSprite11->getPosition(), Color4F::WHITE);
+                constellation->addChild(line10,0);
+                
+                
+                
+                
+                line0->setVisible(false);
+                line0->setTag(0);
+                line1->setVisible(false);
+                line1->setTag(1);
+                line2->setVisible(false);
+                line2->setTag(2);
+                line3->setVisible(false);
+                line3->setTag(3);
+                line4->setVisible(false);
+                line4->setTag(4);
+                line5->setVisible(false);
+                line5->setTag(5);
+                line6->setVisible(false);
+                line6->setTag(6);
+                line7->setVisible(false);
+                line7->setTag(7);
+                line8->setVisible(false);
+                line8->setTag(8);
+                line9->setVisible(false);
+                line9->setTag(9);
+                line10->setVisible(false);
+                line10->setTag(10);
+      
+
+                
+                return constellation;
+                
+                break;
+            }
+                
+            case 11://tianxie
+            {
+                
+                constellation->autorelease();
+                constellation->initWithFile("star_L.png");
+                auto starSprite1=Sprite::createWithTexture(starBatchNode->getTexture());
+                auto starSprite2=Sprite::createWithTexture(starBatchNode->getTexture());
+                auto starSprite3=Sprite::createWithTexture(starBatchNode->getTexture());
+                auto starSprite4=Sprite::createWithTexture(starBatchNode->getTexture());
+                auto starSprite5=Sprite::createWithTexture(starBatchNode->getTexture());
+            
+                
+                
+                //坐标
+                starSprite1->setPosition(Point(32,-30));
+                starSprite1->setAnchorPoint(Point(0.5,0.5));
+                
+                starSprite2->setPosition(Point(-33,-56));
+                starSprite2->setAnchorPoint(Point(0.5,0.5));
+                
+                starSprite3->setPosition(Point(-59,-103));
+                starSprite3->setAnchorPoint(Point(0.5,0.5));
+                
+                starSprite4->setPosition(Point(-128,-132));
+                starSprite4->setAnchorPoint(Point(0.5,0.5));
+                
+                
+                starSprite5->setPosition(Point(-1,-146));
+                starSprite5->setAnchorPoint(Point(0.5,0.5));
+                
+                
+                
+                constellation->addChild(starSprite1,10);
+                constellation->addChild(starSprite2,10);
+                constellation->addChild(starSprite3,10);
+                constellation->addChild(starSprite4,10);
+                constellation->addChild(starSprite5,10);
+             
+                
+                
+                constellation->setPosition(0,0);
+                
+                
+                
+                
+                //line
+                auto line0=DrawNode::create();
+                line0->drawLine(constellation->getPosition()+Point(15,5), constellation->getPosition()+starSprite1->getPosition(), Color4F::WHITE);
+                constellation->addChild(line0,0);
+                
+                
+                auto line1=DrawNode::create();
+                line1->drawLine(constellation->getPosition()+starSprite1->getPosition(),constellation->getPosition()+ starSprite2->getPosition(), Color4F::WHITE);
+                constellation->addChild(line1,0);
+                
+                auto line2=DrawNode::create();
+                line2->drawLine(constellation->getPosition()+starSprite2->getPosition(), constellation->getPosition()+starSprite3->getPosition(), Color4F::WHITE);
+                constellation->addChild(line2,0);
+                
+                
+                auto line4=DrawNode::create();
+                line4->drawLine(constellation->getPosition()+starSprite3->getPosition(), constellation->getPosition()+starSprite4->getPosition(), Color4F::WHITE);
+                constellation->addChild(line4,0);
+                
+                auto line3=DrawNode::create();
+                line3->drawLine(constellation->getPosition()+starSprite3->getPosition(), constellation->getPosition()+starSprite5->getPosition(), Color4F::WHITE);
+                constellation->addChild(line3,0);
+                
+                
+                line0->setVisible(false);
+                line0->setTag(0);
+                line1->setVisible(false);
+                line1->setTag(1);
+                line2->setVisible(false);
+                line2->setTag(2);
+                line3->setVisible(false);
+                line3->setTag(3);
+                line4->setVisible(false);
+                line4->setTag(4);
+      
+                
+                return constellation;
+                
+                break;
+            }
+
+            case 12://juxie
+            {
+                
+                constellation->autorelease();
+                constellation->initWithFile("star_L.png");
+                auto starSprite1=Sprite::createWithTexture(starBatchNode->getTexture());
+                auto starSprite2=Sprite::createWithTexture(starBatchNode->getTexture());
+                auto starSprite3=Sprite::createWithTexture(starBatchNode->getTexture());
+                auto starSprite4=Sprite::createWithTexture(starBatchNode->getTexture());
+                auto starSprite5=Sprite::createWithTexture(starBatchNode->getTexture());
+                auto starSprite6=Sprite::createWithTexture(starBatchNode->getTexture());
+                
+                
+                //坐标
+                starSprite1->setPosition(Point(37,-25));
+                starSprite1->setAnchorPoint(Point(0.5,0.5));
+                
+                starSprite2->setPosition(Point(-2.7,-61));
+                starSprite2->setAnchorPoint(Point(0.5,0.5));
+                
+                starSprite3->setPosition(Point(-31.5,-20));
+                starSprite3->setAnchorPoint(Point(0.5,0.5));
+                
+                starSprite4->setPosition(Point(-119,-2.6));
+                starSprite4->setAnchorPoint(Point(0.5,0.5));
+                
+                
+                starSprite5->setPosition(Point(-50.5,-120));
+                starSprite5->setAnchorPoint(Point(0.5,0.5));
+                
+                starSprite6->setPosition(Point(144.5,-26));
+                starSprite6->setAnchorPoint(Point(0.5,0.5));
+                
+                
+                constellation->addChild(starSprite1,10);
+                constellation->addChild(starSprite2,10);
+                constellation->addChild(starSprite3,10);
+                constellation->addChild(starSprite4,10);
+                constellation->addChild(starSprite5,10);
+                 constellation->addChild(starSprite6,10);
+                
+                
+                constellation->setPosition(0,0);
+                
+                
+                
+                
+                //line
+                auto line0=DrawNode::create();
+                line0->drawLine(constellation->getPosition()+Point(20,5), constellation->getPosition()+starSprite1->getPosition(), Color4F::WHITE);
+                constellation->addChild(line0,0);
+                
+                auto line3=DrawNode::create();
+                line3->drawLine(constellation->getPosition()+Point(5,5), constellation->getPosition()+starSprite3->getPosition(), Color4F::WHITE);
+                constellation->addChild(line3,0);
+                
+                auto line1=DrawNode::create();
+                line1->drawLine(constellation->getPosition()+starSprite1->getPosition(),constellation->getPosition()+ starSprite2->getPosition(), Color4F::WHITE);
+                constellation->addChild(line1,0);
+                
+                auto line2=DrawNode::create();
+                line2->drawLine(constellation->getPosition()+starSprite2->getPosition(), constellation->getPosition()+starSprite3->getPosition(), Color4F::WHITE);
+                constellation->addChild(line2,0);
+                
+                
+                auto line4=DrawNode::create();
+                line4->drawLine(constellation->getPosition()+starSprite3->getPosition(), constellation->getPosition()+starSprite4->getPosition(), Color4F::WHITE);
+                constellation->addChild(line4,0);
+                
+                auto line5=DrawNode::create();
+                line5->drawLine(constellation->getPosition()+starSprite2->getPosition(), constellation->getPosition()+starSprite5->getPosition(), Color4F::WHITE);
+                constellation->addChild(line5,0);
+                
+                
+                auto line6=DrawNode::create();
+                line6->drawLine(constellation->getPosition()+starSprite1->getPosition(), constellation->getPosition()+starSprite6->getPosition(), Color4F::WHITE);
+                constellation->addChild(line6,0);
+                
+                
+                line0->setVisible(false);
+                line0->setTag(0);
+                line1->setVisible(false);
+                line1->setTag(1);
+                line2->setVisible(false);
+                line2->setTag(2);
+                line3->setVisible(false);
+                line3->setTag(3);
+                line4->setVisible(false);
+                line4->setTag(4);
+                line5->setVisible(false);
+                line5->setTag(5);
+                line6->setVisible(false);
+                line6->setTag(6);
                 
                 return constellation;
                 

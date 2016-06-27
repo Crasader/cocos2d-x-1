@@ -48,7 +48,7 @@ void randomStars::randomPosition()
         
         
         //随机生成大小不一的星星
-        star->setScale(random(0.8f, 1.5f));
+        star->setScale(random(1.0f, 2.0f));
         
         layer->addChild(star,100);
         
@@ -91,14 +91,14 @@ void randomStars::randomPosition()
             case 4://shuangyu
             {
                 constellation->setPosition(400,550);
-                constellation->setRotation(50);
+                constellation->setRotation(-50);
 
                 break;
             }
 
             case 5: //mojie
             {
-                constellation->setPosition(600,450);
+                constellation->setPosition(600,500);
                
 
                 break;
@@ -114,7 +114,7 @@ void randomStars::randomPosition()
 
             case 7:  //sheshou
             {
-                constellation->setPosition(630,550);
+                constellation->setPosition(600,550);
                
 
                 break;
@@ -143,7 +143,7 @@ void randomStars::randomPosition()
 
             case 11:
             {
-                constellation->setPosition(700,550);
+                constellation->setPosition(600,600);
                
 
                 break;
