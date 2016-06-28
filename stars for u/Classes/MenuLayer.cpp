@@ -33,9 +33,6 @@ MenuLayer::MenuLayer(int starNum, int ShineStar,int collNum)
     this->collensation=collNum;
     this->starNum=starNum;
     this->shineStarNum=ShineStar;
-    Relation=0;
-    relationString=(char*)malloc(sizeof(int));
-    rgrowthString=(char*)malloc(sizeof(int));
     lineNum=0;
 }
 
@@ -47,24 +44,13 @@ bool MenuLayer::init()
     {
         return false;
     }
-    
-    
+   
     
     //亲密值
     Relation= UserDefault::getInstance()->getIntegerForKey("RELATION", 0);
-    sprintf(relationString, "亲密值：%d",Relation);
-    RelationLabel=Label::createWithSystemFont(relationString, "", 30);
-    RelationLabel->setPosition(Point(300,200));
-    RelationLabel->setColor(Color3B::WHITE);
-    this->addChild(RelationLabel,10);
-    
+
      //成长值
     growth= UserDefault::getInstance()->getIntegerForKey("GROWTH", 0);
-    sprintf(rgrowthString, "成长值：%d",growth);
-    growthLabel=Label::createWithSystemFont(rgrowthString, "", 30);
-    growthLabel->setPosition(Point(300,400));
-    growthLabel->setColor(Color3B::WHITE);
-    this->addChild(growthLabel,10);
     
     
     //星星的生成：starNum\shineStarNum\collensation
@@ -74,18 +60,22 @@ bool MenuLayer::init()
     //背景
     Sprite* backGround=Sprite::create("bg_L.png");
     backGround->setPosition(size.width/2,size.height/2);
-   // backGround->setScale(1.2);
     this->addChild(backGround,0);
     
+    
+    backGround2=Sprite::create("bg_2.png");
+    backGround2->setPosition(size.width/2,backGround2->getContentSize().height/2);
+    // backGround->setScale(1.2);
+    this->addChild(backGround2,1);
 
     //布置星星
     stars->randomPosition();
     
     //MAN
     Sprite* man=Sprite::create("man2.png");
-    man->setPosition(100,100);
+    man->setPosition(100,105);
     man->setScale(0.8f);
-    this->addChild(man);
+    this->addChild(man,101,100);
     
  
     
@@ -93,19 +83,19 @@ bool MenuLayer::init()
     Sprite* boy=Sprite::create("boy-hand.png");
     boy->setPosition(200,100);
     boy->setScale(0.8f);
-    this->addChild(boy);
+    this->addChild(boy,102,101);
     
     //talkingBox
     talkingBox=Sprite::create("talkingBox_L.png");
     talkingBox->setAnchorPoint(Point(0.5,0.5));
     talkingBox->setPosition(370,80);
-    this->addChild(talkingBox);
+    this->addChild(talkingBox,4);
 
      talkingString="i want that one,dad";
     talkingLabel=Label::createWithSystemFont("", "Marker Felt.ttf", 25);
     talkingLabel->setPosition(160,40);
     talkingLabel->setColor(Color3B::WHITE);
-    talkingBox->addChild(talkingLabel);
+    talkingBox->addChild(talkingLabel,3);
    
     //schdule（）函数实现打字效果
     this->schedule(schedule_selector(MenuLayer::talkingBoxFunc), 0.1f);
@@ -124,9 +114,21 @@ bool MenuLayer::init()
     pointer->setAnchorPoint(Point(0,0.5));
     pointer->setScale(1.5);
     pointer->setPosition(215,95);
-    this->addChild(pointer,100);
+    this->addChild(pointer,103,102);
     pointToStar();
 
+    
+    
+    
+    //timer
+    auto moon=Sprite::create("moon_2.png");
+    moon->setPosition(Point(170,490));
+    moon->setAnchorPoint(Point(0,0));
+    moon->setTag(10);
+    this->addChild(moon,0);
+    this->schedule(schedule_selector(MenuLayer::timerFunc), 0.1f);
+    
+    
     //开启触摸
     setTouchEnabled(true);
     setSwallowsTouches(true);
@@ -146,6 +148,7 @@ void MenuLayer::talkingBoxFunc(float dt)
     if (talkingString==talkingStr)
     {
         index=0;
+       // unschedule(schedule_selector(MenuLayer::talkingBoxFunc));
     }
     else
     {
@@ -185,7 +188,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                 //提示线条
                 line=DrawNode::create();
                 line->drawLine(Point(215,95),  (stars->starsVector.back())->getPosition(), Color4F::WHITE);
-                this->addChild(line,0);
+                this->addChild(line,2);
                 lineNum=0;
                 lineShow=true;
             }
@@ -194,18 +197,14 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
             //错误提示效果
             talkingString="no,not that one,dad~";
             talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
-            auto act1=ScaleTo::create(0.3, 2);
-            auto act2=ScaleTo::create(0.3, 1);
+            auto act1=ScaleTo::create(0.3, 2.5);
+            auto act2=ScaleTo::create(0.3, 1.5);
             stars->starsVector.at(i)->runAction(Sequence::create(act1,act2, NULL));
             
             //点错亲密值降低
             if (Relation>0)
             {
                 --Relation;
-                
-                sprintf(relationString, "亲密值：%d",Relation);
-                RelationLabel->cleanup();
-                RelationLabel->setString(relationString);
                 
                 UserDefault::getInstance()-> setIntegerForKey("RELATION", Relation);
                 
@@ -230,6 +229,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                //写入plist
                 
                 writToPlist();
+                conllGeted=true;
                 
                 //记录获取了的星座,以其序号为key
               
@@ -431,12 +431,10 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                 lineShow=false;
                 
             }
-            
+            //得分
+            score++;
             //亲密值增加
             Relation++;
-            sprintf(relationString, "亲密值：%d",Relation);
-            RelationLabel->cleanup();
-            RelationLabel->setString(relationString);
             UserDefault::getInstance()->setIntegerForKey("RELATION", Relation);
             
       
@@ -452,7 +450,8 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
             {
                 //成长值＋＋
                 growth++;
-                win();
+                UserDefault::getInstance()->setIntegerForKey("GROWTH", growth);
+                timeOver();
                 
                 
                 
@@ -505,34 +504,6 @@ void MenuLayer::pointToStar()
    
     }
 
-void MenuLayer::win()
-{
-
-    
-
-
-}
-
-//提示
-void MenuLayer::info(int starNum)
-{
-//第一关
-    if (starNum==1)
-    {
-        
-        auto act1=ScaleTo::create(0.5, 2);
-        auto act2=ScaleTo::create(0.5, 1);
-        
-        stars->starsVector.back()->runAction(RepeatForever::create(Sequence::create(act1,act2, NULL)));
-        
-        
-        
-    }
-    
-    
-
-
-}
 
 //写入plist
 void MenuLayer::writToPlist()
@@ -559,5 +530,130 @@ void MenuLayer::writToPlist()
     root[ActionNum.getCString()]=arr;
     FileUtils::getInstance()->writeToFile(root, path.c_str());
    
+
+}
+
+
+//timer回调
+void MenuLayer::timerFunc(float dt)
+{
+    Sprite* moon =(Sprite*)this->getChildByTag(10);
+    
+    //下降
+    moon->runAction(MoveBy::create(0.1f, Point(0,-2)));
+    
+    //透明度
+    moon->setOpacity(moon->getOpacity()-0.01);
+
+    //达到海平面
+    if (moon->getPositionY() <=(backGround2->getContentSize().height-moon->getContentSize().height))
+    {
+        timeOver();
+        unschedule(schedule_selector(MenuLayer::timerFunc));
+        
+    }
+    
+    
+
+}
+
+
+
+//提示
+void MenuLayer::info(int starNum)
+{
+    //第一关
+    if (starNum==1)
+    {
+        
+        auto act1=ScaleTo::create(0.5, 2);
+        auto act2=ScaleTo::create(0.5, 1);
+        
+        stars->starsVector.back()->runAction(RepeatForever::create(Sequence::create(act1,act2, NULL)));
+        
+        
+        
+    }
+    
+    
+    
+    
+}
+
+
+
+//时间到
+void MenuLayer::timeOver()
+{
+    //移除人
+    this->removeChildByTag(100);
+    this->removeChildByTag(101);
+    this->removeChildByTag(102);
+    this->pause();
+    
+    
+    //提示版
+    auto bookSprite=Sprite::create("book_s.png");
+    bookSprite->setPosition(size.width/2,size.height/2);
+    bookSprite->setScale(0, 0);
+    this->addChild(bookSprite,1000);
+    
+    //分值
+    char scoreBuf[128];
+    sprintf(scoreBuf, "We get %d Stars!",score);
+    
+    auto scoreLabel=Label::createWithSystemFont(scoreBuf, "Marker Felt.ttf", 30);
+    scoreLabel->setColor(Color3B::RED);
+    scoreLabel->setPosition(Point(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height-50));
+    bookSprite->addChild(scoreLabel);
+    
+    
+     sprintf(scoreBuf, "Relation %d ",Relation);
+    auto relationLabel=Label::createWithSystemFont(scoreBuf, "Marker Felt.ttf", 30);
+    relationLabel->setColor(Color3B::RED);
+    relationLabel->setPosition(Point(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height-50-50));
+    bookSprite->addChild(relationLabel);
+    
+    sprintf(scoreBuf, "Growth %d ",growth);
+    auto growtLabel=Label::createWithSystemFont(scoreBuf, "Marker Felt.ttf", 30);
+    growtLabel->setColor(Color3B::RED);
+    growtLabel->setPosition(Point(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height-50-50-50));
+    bookSprite->addChild(growtLabel);
+    
+    
+    
+    
+    //弹出效果
+    bookSprite->runAction(Sequence::create(ScaleTo::create(0, 0),ScaleTo::create(0.1, 0.2),ScaleTo::create(0.1, 0.5),ScaleTo::create(0.1, 0.8), ScaleTo::create(0.1, 1),NULL));
+
+   
+    
+  
+    
+    
+    
+    
+    
+    
+    //如果出现了星座
+
+    if (collensation!=0 && conllGeted==true)
+    {
+        auto boardSprite=Sprite::create("mark_2.png");
+        boardSprite->setPosition(size.width/2+bookSprite->getContentSize().width/4,size.height/2);
+        boardSprite->setScale(0, 0);
+        boardSprite->setRotation(-10);
+        this->addChild(boardSprite,1001);
+        
+        
+        boardSprite->runAction(Sequence::create(DelayTime::create(1.0f),ScaleTo::create(0, 1),ScaleTo::create(0.1, 0.8),ScaleTo::create(0.1, 0.6),ScaleTo::create(0.1, 0.5), NULL));
+    
+        
+        
+        
+    }
+   
+    
+
 
 }

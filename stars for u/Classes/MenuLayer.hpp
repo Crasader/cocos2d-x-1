@@ -26,25 +26,23 @@ public:
     
     
     //亲密值
-    Label* RelationLabel;
     int Relation;
-    char* relationString;
-    std::string relationDiscribe;
+ 
     
     //成长值
-    Label* growthLabel;
     int growth;
-    char* rgrowthString;
-    std::string growthDiscribe;
+   
     
     //星星传入参数
     int starNum=0;
     int shineStarNum=0;
     //星座号,0为没有
     int collensation=0;
+    bool conllGeted=false;
     
     //星星 ,传入 层，星星数量，闪烁数量
     randomStars* stars;
+    
 
     //场景管理器
     GameSceneManager* gsm;
@@ -63,9 +61,10 @@ public:
     //提示线的出现
     bool lineShow=false;
     
-    //胜利
-    void win();
-
+   
+    //时间到，显示数量
+    void timeOver();
+    int score=0;
     
     //talingBox
     Sprite* talkingBox;
@@ -80,6 +79,11 @@ public:
     
     //写入plist获取的星座
     void writToPlist();
+    
+    //定时器
+    void timerFunc(float dt);
+    //沙滩背景，以显示月亮落下海平面的效果
+    Sprite* backGround2;
 };
 
 #endif /* MenuLayer_hpp */
