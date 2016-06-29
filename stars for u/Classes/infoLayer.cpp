@@ -264,20 +264,11 @@ bool infoLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
             
             
             //错误提示效果
-            talkingString="no,not that one,dad~";
-            talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
             auto act1=ScaleTo::create(0.3, 2.5);
             auto act2=ScaleTo::create(0.3, 1.5);
             stars->starsVector.at(i)->runAction(Sequence::create(act1,act2, NULL));
             
-            //点错亲密值降低
-            if (Relation>0)
-            {
-                --Relation;
-                
-                UserDefault::getInstance()-> setIntegerForKey("RELATION", Relation);
-                
-            }
+
             
             
         }

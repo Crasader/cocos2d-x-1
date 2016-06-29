@@ -355,7 +355,7 @@ void StarBookLayer::setGetedConsent(int i)
 void StarBookLayer::startGame()
 {
     getAllgetedConsetn();
-    switch (age) {
+    switch (0) {
         case 0:
         {//第一关，1颗星星
             gsm->goinfoLayer(1, 0, 1);
@@ -377,7 +377,7 @@ void StarBookLayer::startGame()
         }
         case 15:
         {//设置关卡数据
-            int starNum=random(10, 15);
+            int starNum=random(11, 15);
             int shinNum=random(5, 8);
             
             //星座概率出现
@@ -391,7 +391,7 @@ void StarBookLayer::startGame()
         }
         case 20:
         {//设置关卡数据
-            int starNum=random(15, 20);
+            int starNum=random(16, 20);
             int shinNum=random(10, 15);
             
             //星座概率出现

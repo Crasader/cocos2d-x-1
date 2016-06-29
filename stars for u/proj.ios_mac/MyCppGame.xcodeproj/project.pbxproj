@@ -113,7 +113,6 @@
 		FFE526871D118B03002ABED9 /* hand.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE526861D118B03002ABED9 /* hand.png */; };
 		FFE5268E1D1288E5002ABED9 /* OpeningLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFE5268C1D1288E5002ABED9 /* OpeningLayer.cpp */; };
 		FFE526921D12A34A002ABED9 /* StarBookLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFE526901D12A34A002ABED9 /* StarBookLayer.cpp */; };
-		FFE526951D12B32D002ABED9 /* book mark.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE526941D12B32D002ABED9 /* book mark.png */; };
 		FFE526A11D12CF84002ABED9 /* SettingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFE5269F1D12CF84002ABED9 /* SettingLayer.cpp */; };
 		FFE526A91D13F01D002ABED9 /* ConstellationSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFE526A71D13F01D002ABED9 /* ConstellationSprite.cpp */; };
 		FFE602511D1A7B2A00642825 /* diary_0.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE602501D1A7B2A00642825 /* diary_0.png */; };
@@ -267,7 +266,6 @@
 		FFE5268D1D1288E5002ABED9 /* OpeningLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OpeningLayer.hpp; sourceTree = "<group>"; };
 		FFE526901D12A34A002ABED9 /* StarBookLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StarBookLayer.cpp; sourceTree = "<group>"; };
 		FFE526911D12A34A002ABED9 /* StarBookLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StarBookLayer.hpp; sourceTree = "<group>"; };
-		FFE526941D12B32D002ABED9 /* book mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "book mark.png"; sourceTree = "<group>"; };
 		FFE5269F1D12CF84002ABED9 /* SettingLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SettingLayer.cpp; sourceTree = "<group>"; };
 		FFE526A01D12CF84002ABED9 /* SettingLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SettingLayer.hpp; sourceTree = "<group>"; };
 		FFE526A71D13F01D002ABED9 /* ConstellationSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConstellationSprite.cpp; sourceTree = "<group>"; };
@@ -411,7 +409,6 @@
 				FFD605D71D227DCA009304F8 /* mark_2.png */,
 				FF25AC871D193DA900EACC3C /* talkingBox.png */,
 				FFD605D51D2278C2009304F8 /* board.png */,
-				FFE526941D12B32D002ABED9 /* book mark.png */,
 				FFE526861D118B03002ABED9 /* hand.png */,
 				FF5750A41D213F6C00796C95 /* boy-hand.png */,
 				FFD605D31D227766009304F8 /* moon_2.png */,
@@ -703,7 +700,6 @@
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 				FFD605F41D23BF90009304F8 /* shuangyu.png in Resources */,
 				FFD605D61D2278C2009304F8 /* board.png in Resources */,
-				FFE526951D12B32D002ABED9 /* book mark.png in Resources */,
 				FF968A3A1D1BEC2700643012 /* C3.png in Resources */,
 				FFD605CA1D2255FC009304F8 /* star_yellow_s.png in Resources */,
 				FF968A3E1D1BEC6100643012 /* C12.png in Resources */,
