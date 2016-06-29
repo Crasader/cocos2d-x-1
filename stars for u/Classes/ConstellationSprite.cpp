@@ -35,7 +35,7 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
             //白羊C1
             case 1:
             {   constellation->autorelease();
-                constellation->initWithFile("star_L.png");
+                constellation->initWithFile("baiyang.png");
                 auto starSprite1=Sprite::createWithTexture(starBatchNode->getTexture());
                 auto starSprite2=Sprite::createWithTexture(starBatchNode->getTexture());
                 auto starSprite3=Sprite::createWithTexture(starBatchNode->getTexture());
@@ -83,7 +83,7 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
             case 2:
             {
                 constellation->autorelease();
-                constellation->initWithFile("star_L.png");
+                constellation->initWithFile("jinniu.png");
                 auto starSprite1=Sprite::createWithTexture(starBatchNode->getTexture());
                 auto starSprite2=Sprite::createWithTexture(starBatchNode->getTexture());
                 auto starSprite3=Sprite::createWithTexture(starBatchNode->getTexture());
@@ -275,7 +275,7 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
             case 3://双子
             {
                 constellation->autorelease();
-                constellation->initWithFile("star_L.png");
+                constellation->initWithFile("shuangzi.png");
                 auto starSprite1=Sprite::createWithTexture(starBatchNode->getTexture());
                 auto starSprite2=Sprite::createWithTexture(starBatchNode->getTexture());
                 auto starSprite3=Sprite::createWithTexture(starBatchNode->getTexture());
@@ -466,7 +466,7 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
             case 4://双鱼
             {
                 constellation->autorelease();
-                  constellation->initWithFile("star_L.png");
+                  constellation->initWithFile("shuangyu.png");
                 auto starSprite1=Sprite::createWithTexture(starBatchNode->getTexture());
                 auto starSprite2=Sprite::createWithTexture(starBatchNode->getTexture());
                 auto starSprite3=Sprite::createWithTexture(starBatchNode->getTexture());
@@ -677,7 +677,7 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
             case 5: //mojie
             {
                 constellation->autorelease();
-                  constellation->initWithFile("star_L.png");
+                  constellation->initWithFile("mojie.png");
                 auto starSprite1=Sprite::createWithTexture(starBatchNode->getTexture());
                 auto starSprite2=Sprite::createWithTexture(starBatchNode->getTexture());
                 auto starSprite3=Sprite::createWithTexture(starBatchNode->getTexture());
@@ -809,7 +809,7 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
             case 6: //chunv
             {
                 constellation->autorelease();
-                  constellation->initWithFile("star_L.png");
+                  constellation->initWithFile("chunv.png");
                 auto starSprite1=Sprite::createWithTexture(starBatchNode->getTexture());
                 auto starSprite2=Sprite::createWithTexture(starBatchNode->getTexture());
                 auto starSprite3=Sprite::createWithTexture(starBatchNode->getTexture());
@@ -981,7 +981,7 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
             {
                 
                 constellation->autorelease();
-                constellation->initWithFile("star_L.png");
+                constellation->initWithFile("sheshou.png");
                 auto starSprite1=Sprite::createWithTexture(starBatchNode->getTexture());
                 auto starSprite2=Sprite::createWithTexture(starBatchNode->getTexture());
                 auto starSprite3=Sprite::createWithTexture(starBatchNode->getTexture());
@@ -1243,7 +1243,7 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
             {
                 
                 constellation->autorelease();
-                constellation->initWithFile("star_L.png");
+                constellation->initWithFile("shuiping.png");
                 auto starSprite1=Sprite::createWithTexture(starBatchNode->getTexture());
                 auto starSprite2=Sprite::createWithTexture(starBatchNode->getTexture());
                 auto starSprite3=Sprite::createWithTexture(starBatchNode->getTexture());
@@ -1433,7 +1433,7 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
             {
                 
                 constellation->autorelease();
-                constellation->initWithFile("star_L.png");
+                constellation->initWithFile("tianping.png");
                 auto starSprite1=Sprite::createWithTexture(starBatchNode->getTexture());
                 auto starSprite2=Sprite::createWithTexture(starBatchNode->getTexture());
                 auto starSprite3=Sprite::createWithTexture(starBatchNode->getTexture());
@@ -1550,7 +1550,7 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
             {
                 
                 constellation->autorelease();
-                constellation->initWithFile("star_L.png");
+                constellation->initWithFile("shizi.png");
                 auto starSprite1=Sprite::createWithTexture(starBatchNode->getTexture());
                 auto starSprite2=Sprite::createWithTexture(starBatchNode->getTexture());
                 auto starSprite3=Sprite::createWithTexture(starBatchNode->getTexture());
@@ -1704,7 +1704,7 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
             {
                 
                 constellation->autorelease();
-                constellation->initWithFile("star_L.png");
+                constellation->initWithFile("tianxie.png");
                 auto starSprite1=Sprite::createWithTexture(starBatchNode->getTexture());
                 auto starSprite2=Sprite::createWithTexture(starBatchNode->getTexture());
                 auto starSprite3=Sprite::createWithTexture(starBatchNode->getTexture());
@@ -1790,7 +1790,7 @@ constellationSprite* constellationSprite::createConstellationSprite(int num)
             {
                 
                 constellation->autorelease();
-                constellation->initWithFile("star_L.png");
+                constellation->initWithFile("juxie.png");
                 auto starSprite1=Sprite::createWithTexture(starBatchNode->getTexture());
                 auto starSprite2=Sprite::createWithTexture(starBatchNode->getTexture());
                 auto starSprite3=Sprite::createWithTexture(starBatchNode->getTexture());

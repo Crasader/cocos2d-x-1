@@ -39,7 +39,7 @@ void randomStars::randomPosition()
     for (int i=0; i<starNum; i++)
     {
         //随机坐标
-        float x=random(0.1f, 0.9f)*size.width;
+        float x=random(0.2f, 0.9f)*size.width;
         float y=((size.height/5)*2.5+rand_0_1()*size.height/5)*0.8;
         
         //创建星星
@@ -59,7 +59,7 @@ void randomStars::randomPosition()
     //星座...........
     
     //如果传入的星座编号不为0，则生成
-    if (constellationNum!=0)
+    if (constellationNum>0&&constellationNum<13)
     {
         constellation=constellationSprite::createConstellationSprite(constellationNum);
         //调整位置和大小

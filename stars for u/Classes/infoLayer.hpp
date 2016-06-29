@@ -1,13 +1,16 @@
 //
-//  MenuLayer.hpp
+//  infoLayer.hpp
 //  MyCppGame
 //
-//  Created by zwj on 16/6/13.
+//  Created by zwj on 16/6/29.
 //
 //
 
-#ifndef MenuLayer_hpp
-#define MenuLayer_hpp
+#ifndef infoLayer_hpp
+#define infoLayer_hpp
+
+#include <stdio.h>
+
 
 #include <stdio.h>
 #include "cocos2d.h"
@@ -16,23 +19,23 @@
 #include <string>
 USING_NS_CC;
 
-class MenuLayer:public Layer
+class infoLayer:public Layer
 {
 public:
-    MenuLayer(int starNum, int ShineStarNum,int collNum);
-    MenuLayer();
+    infoLayer(int starNum, int ShineStarNum,int collNum);
+    infoLayer();
     Size size;
     virtual  bool init();
-    static  MenuLayer* create(int starNum,int shinStarNum,int collNum);
+    static  infoLayer* create(int starNum,int shinStarNum,int collNum);
     
     
     //亲密值
     int Relation;
- 
+    
     
     //成长值
     int growth;
-   
+    
     
     //星星传入参数
     int starNum=0;
@@ -44,13 +47,13 @@ public:
     //星星 ,传入 层，星星数量，闪烁数量
     randomStars* stars;
     
-
+    
     //场景管理器
     GameSceneManager* gsm;
     
     //触摸方法
     virtual bool onTouchBegan(Touch* touch,Event* event);
-
+    
     //指示线条
     DrawNode* line;
     int lineNum;
@@ -62,7 +65,7 @@ public:
     //提示线的出现
     bool lineShow=false;
     
-   
+    
     //时间到，显示数量
     void timeOver();
     int score=0;
@@ -75,7 +78,8 @@ public:
     void talkingBoxFunc(float dt);
     int index=0;
     
-    
+    //ok点击次数
+    int k=0;
     
     //写入plist获取的星座
     void writToPlist();
@@ -90,6 +94,13 @@ public:
     void goBackCallBack(Ref *pSender);
     //暂停回调
     void pauseCallBack(Ref* pSender);
+    
+    //tishi
+    Sprite* infoLabel;
+    void infoCallBak(Ref* pSender);
+    Sprite* moon;
+    Sprite* jiantou;
 };
 
-#endif /* MenuLayer_hpp */
+
+#endif /* infoLayer_hpp */

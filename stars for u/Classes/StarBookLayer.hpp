@@ -40,7 +40,8 @@ public:
     //age按钮的回调
     void label0Callback(Ref* pSender);
     void label10Callback(Ref* pSender);
-    
+      void label15Callback(Ref* pSender);
+      void label20Callback(Ref* pSender);
     
     //开始游戏回调
     void startGame();

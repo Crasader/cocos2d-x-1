@@ -119,7 +119,7 @@ bool StarBookLayer::init()
     age=UserDefault::getInstance()->getIntegerForKey("age", 0);
     //生成书签页数量
     //age传入
-    BookMark(10);
+    BookMark(age);
     
 
     //开始游戏按钮
@@ -144,6 +144,77 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
     switch (bookMarkIndex)
     {
 
+            
+        case 20:
+        {
+            
+            
+            //显示获得的星座
+            if (bookMarkIndex==20)
+            {
+                setGetedConsent(20);
+            }
+            
+            //book mark
+            auto bookMarkSprite20=Sprite::create("mark_gree.png");
+            bookMarkSprite20->setPosition(Point(889,296));
+            this->addChild(bookMarkSprite20,2);
+            
+            
+            //age label
+            auto label20=Label::createWithSystemFont("20", "Marker Felt.ttf", 30);
+            auto menuLabel20=MenuItemLabel::create(label20,CC_CALLBACK_1(StarBookLayer::label20Callback, this));
+            menuLabel20->setPosition(0,0);
+            
+            menu=Menu::create(menuLabel20, NULL);
+            menu->setPosition(bookMarkSprite20->getContentSize().width/2,bookMarkSprite20->getContentSize().height/2);
+            bookMarkSprite20->addChild(menu,100);
+            
+            //如果是当前mark，则显示其内容
+            if (bookMarkIndex==20)
+            {
+                diary=Sprite::create("diary_0.png");
+                diary->setPosition(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height/2);
+                this->addChild(diary,2);
+            }
+        }
+            
+            case 15:
+        {
+            
+        
+            //显示获得的星座
+            if (bookMarkIndex==15)
+            {
+                setGetedConsent(15);
+            }
+            
+            //book mark
+            auto bookMarkSprite15=Sprite::create("mark_gree.png");
+            bookMarkSprite15->setPosition(Point(889,379));
+            this->addChild(bookMarkSprite15,2);
+            
+            
+            //age label
+            auto label15=Label::createWithSystemFont("15", "Marker Felt.ttf", 30);
+            auto menuLabel15=MenuItemLabel::create(label15,CC_CALLBACK_1(StarBookLayer::label15Callback, this));
+            menuLabel15->setPosition(0,0);
+            
+            menu=Menu::create(menuLabel15, NULL);
+            menu->setPosition(bookMarkSprite15->getContentSize().width/2,bookMarkSprite15->getContentSize().height/2);
+            bookMarkSprite15->addChild(menu,100);
+            
+            //如果是当前mark，则显示其内容
+            if (bookMarkIndex==15)
+            {
+                diary=Sprite::create("diary_0.png");
+                diary->setPosition(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height/2);
+                this->addChild(diary,2);
+            }
+        }
+            
+            
+            
             //age=10
         case 10:
         {
@@ -172,7 +243,7 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
             if (bookMarkIndex==10)
             {
                 diary=Sprite::create("diary_0.png");
-                diary->setPosition(320,320);
+               diary->setPosition(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height/2);
                 this->addChild(diary,2);
             }
             
@@ -206,8 +277,8 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
             
             if (bookMarkIndex==0)
             {
-                diary=Sprite::create("man2.png");
-                diary->setPosition(320,320);
+                diary=Sprite::create("diary_0.png");
+                diary->setPosition(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height/2);
                 this->addChild(diary,2);
             }
             
@@ -279,33 +350,6 @@ void StarBookLayer::setGetedConsent(int i)
 }
 
 
-//age:0
-void StarBookLayer::label0Callback(cocos2d::Ref *pSender)
-{
-  
-  //跳转到选择的页，并显示内容
-    
- 
-            setGetedConsent(0);
-           diary->setTexture("man2.png");
-    
-    
-  
-
-}
-
-
-//age:10
-void StarBookLayer::label10Callback(cocos2d::Ref *pSender)
-{
-    
-     setGetedConsent(10);
-     diary->setTexture("diary_0.png");
-        
-    
-
-    
-}
 
 //////////////
 void StarBookLayer::startGame()
@@ -314,7 +358,7 @@ void StarBookLayer::startGame()
     switch (age) {
         case 0:
         {//第一关，1颗星星
-            gsm->goMenuLayer(7, 0, 12);
+            gsm->goinfoLayer(1, 0, 1);
             break;
         }
         case 10:
@@ -331,6 +375,40 @@ void StarBookLayer::startGame()
             
             break;
         }
+        case 15:
+        {//设置关卡数据
+            int starNum=random(10, 15);
+            int shinNum=random(5, 8);
+            
+            //星座概率出现
+            //方便设置标记已获取的星座，就不再出现
+            getAllgetedConsetn();
+            int conNum=random(0, 20);
+            //getedCon前12个元素为1-12,其余为0，获取了号星座为0, 防止重复出现
+            gsm->goMenuLayer(starNum, shinNum,getedCon[conNum]);
+            
+            break;
+        }
+        case 20:
+        {//设置关卡数据
+            int starNum=random(15, 20);
+            int shinNum=random(10, 15);
+            
+            //星座概率出现
+            //方便设置标记已获取的星座，就不再出现
+            getAllgetedConsetn();
+            int conNum=random(0, 12);
+            //getedCon前12个元素为1-12,其余为0，获取了号星座为0, 防止重复出现
+            gsm->goMenuLayer(starNum, shinNum,getedCon[conNum]);
+            
+            break;
+        }
+
+
+            
+            
+            
+            
         default:
             break;
     }
@@ -353,11 +431,11 @@ void StarBookLayer::getAllgetedConsetn()
     auto root=FileUtils::getInstance()->getValueMapFromFile(path.c_str());
 
     //章节
-    int arrName[]={0,10};
+    int arrName[]={0,10,15,20};
     for (int i=0; i<sizeof(arrName)/sizeof(int); i++)
     {
         
-        char key[4];
+        char key[12];
         sprintf(key, "A%d",arrName[i]);
 //        auto dataArr=static_cast<__Array*>(root->objectForKey(key));
         auto arr= root[key].asValueVector();
@@ -384,4 +462,46 @@ void StarBookLayer::getAllgetedConsetn()
 
 
 
+}
+
+//标签按钮回调
+//age:0
+void StarBookLayer::label0Callback(cocos2d::Ref *pSender)
+{
+    
+    //跳转到选择的页，并显示内容
+    
+    
+    setGetedConsent(0);
+    diary->setTexture("diary_0.png");
+    
+    
+    
+    
+}
+
+
+//age:10
+void StarBookLayer::label10Callback(cocos2d::Ref *pSender)
+{
+    
+    setGetedConsent(10);
+    diary->setTexture("diary_0.png");
+    
+}
+
+void StarBookLayer::label15Callback(cocos2d::Ref *pSender)
+{
+
+    setGetedConsent(15);
+    diary->setTexture("diary_0.png");
+
+}
+
+void StarBookLayer::label20Callback(cocos2d::Ref *pSender)
+{
+    
+    setGetedConsent(20);
+    diary->setTexture("diary_0.png");
+    
 }

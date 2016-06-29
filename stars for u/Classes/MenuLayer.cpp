@@ -45,6 +45,7 @@ bool MenuLayer::init()
         return false;
     }
    
+  
     
     //亲密值
     Relation= UserDefault::getInstance()->getIntegerForKey("RELATION", 0);
@@ -93,7 +94,7 @@ bool MenuLayer::init()
 
      talkingString="i want that one,dad";
     talkingLabel=Label::createWithSystemFont("", "Marker Felt.ttf", 25);
-    talkingLabel->setPosition(160,40);
+    talkingLabel->setPosition(talkingBox->getContentSize().width/2,talkingBox->getContentSize().height/3);
     talkingLabel->setColor(Color3B::WHITE);
     talkingBox->addChild(talkingLabel,3);
    
@@ -104,7 +105,14 @@ bool MenuLayer::init()
     talkingBox->runAction(Sequence::create(DelayTime::create(5),Hide::create(), NULL));
     
     
-
+//暂停按钮
+    auto pasueLabel=Label::createWithSystemFont("Pause", "Marker Felt.ttf", 40);
+    pasueLabel->setColor(Color3B::RED);
+    auto pasueButton=MenuItemLabel::create(pasueLabel,CC_CALLBACK_1(MenuLayer::goBackCallBack, this));
+    pasueButton->setPosition(pasueButton->getContentSize().width/2+5,size.height-pasueButton->getContentSize().height);
+    auto menu=Menu::create(pasueButton, NULL);
+    menu->setPosition(0,0);
+    this->addChild(menu);
  
     
     
@@ -122,7 +130,7 @@ bool MenuLayer::init()
     
     //timer
     auto moon=Sprite::create("moon_2.png");
-    moon->setPosition(Point(170,490));
+    moon->setPosition(Point(moon->getContentSize().width,490));
     moon->setAnchorPoint(Point(0,0));
     moon->setTag(10);
     this->addChild(moon,0);
@@ -245,14 +253,14 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                         
                         
                          //显示连线
-                        stars->constellation->getChildByTag(1)->runAction(Sequence::create(Show::create(),Blink::create(1.0f, 2), NULL));
+                        stars->constellation->getChildByTag(1)->runAction(Sequence::create(Show::create(),Blink::create(1.0f, 3), NULL));
                       
                        
                         
-                         stars->constellation->getChildByTag(2)->runAction(Sequence::create(Show::create(),Blink::create(1.0f, 2), NULL));
+                         stars->constellation->getChildByTag(2)->runAction(Sequence::create(Show::create(),Blink::create(1.0f, 3), NULL));
                         
                         
-                         stars->constellation->getChildByTag(3)->runAction(Sequence::create(Show::create(),Blink::create(1.0f, 2), NULL));
+                         stars->constellation->getChildByTag(3)->runAction(Sequence::create(Show::create(),Blink::create(1.0f, 3), NULL));
                         break;
                         
                 }
@@ -263,8 +271,8 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                         
                         for (int i=1; i<=17; i++)
                         {
-                            //stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(1.0f, 2), NULL));
-                            stars->constellation->getChildByTag(i)->setVisible(true);
+                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(1.0f, 3), NULL));
+                          
                         }
                         
                         
@@ -278,7 +286,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                         
                         for (int i=0; i<=15; i++)
                         {
-                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(2.0f, 5), NULL));
+                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(1.0f, 3), NULL));
                         }
                         
                         break;
@@ -290,7 +298,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                         
                         for (int i=0; i<=18; i++)
                         {
-                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(2.0f, 5), NULL));
+                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(1.0f, 3), NULL));
                         }
                         break;
                         
@@ -301,7 +309,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                         
                         for (int i=0; i<=10; i++)
                         {
-                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(2.0f, 5), NULL));
+                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(1.0f, 3), NULL));
                         }
 
                         
@@ -313,7 +321,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                         talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
                         for (int i=0; i<=13; i++)
                         {
-                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(2.0f, 5), NULL));
+                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(1.0f, 3), NULL));
                         }
 
                         
@@ -329,7 +337,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                         
                         for (int i=0; i<=21; i++)
                         {
-                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(2.0f, 5), NULL));
+                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(1.0f, 3), NULL));
                         }
                         break;
                         
@@ -340,7 +348,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                         
                         for (int i=0; i<=14; i++)
                         {
-                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(2.0f, 5), NULL));
+                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(1.0f, 3), NULL));
                         }
                         break;
                         
@@ -350,7 +358,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                         talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
                         for (int i=0; i<=7; i++)
                         {
-                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(2.0f, 5), NULL));
+                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(1.0f, 3), NULL));
                         }
                         break;
                         
@@ -361,7 +369,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                         
                         for (int i=0; i<=10; i++)
                         {
-                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(2.0f, 5), NULL));
+                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(1.0f, 3), NULL));
                         }
                         break;
                         
@@ -371,7 +379,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                         talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
                         for (int i=0; i<=4; i++)
                         {
-                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(2.0f, 5), NULL));
+                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(1.0f, 3), NULL));
                         }
                         break;
                         
@@ -383,7 +391,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                         
                         for (int i=0; i<=6; i++)
                         {
-                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(2.0f, 5), NULL));
+                            stars->constellation->getChildByTag(i)->runAction(Sequence::create(Show::create(),Blink::create(1.0f, 3), NULL));
                         }
                         break;
                         
@@ -451,6 +459,28 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                 //成长值＋＋
                 growth++;
                 UserDefault::getInstance()->setIntegerForKey("GROWTH", growth);
+                //设置age
+                if (growth<=5&& growth>1)
+                {
+                    UserDefault::getInstance()->setIntegerForKey("age", 10);
+                    
+                }
+                else if (growth>5&&growth<10)
+                {
+                 UserDefault::getInstance()->setIntegerForKey("age", 15);
+                
+                }
+                else if (growth>10&&growth<15)
+                {
+                    UserDefault::getInstance()->setIntegerForKey("age", 20);
+                    
+                }
+                
+                
+                
+                
+                
+                
                 timeOver();
                 
                 
@@ -510,9 +540,24 @@ void MenuLayer::writToPlist()
 {
     __String ActionNum;
     
-    if (starNum>5&&starNum<=10)
+    
+    if (starNum<5)
     {
-    ActionNum="A10";
+        ActionNum="A0";
+    }
+    
+    
+   else if (starNum>5&&starNum<=10)
+    {
+        ActionNum="A10";
+    }
+   else if (starNum>10&&starNum<=15)
+    {
+        ActionNum="A15";
+    }
+   else if (starNum>15&&starNum<=20)
+    {
+        ActionNum="A20";
     }
 
     
@@ -548,6 +593,26 @@ void MenuLayer::timerFunc(float dt)
     //达到海平面
     if (moon->getPositionY() <=(backGround2->getContentSize().height-moon->getContentSize().height))
     {
+        growth++;
+        UserDefault::getInstance()->setIntegerForKey("GROWTH", growth);
+        //设置age
+        if (growth<=5&& growth>1)
+        {
+            UserDefault::getInstance()->setIntegerForKey("age", 10);
+            
+        }
+        else if (growth>5&&growth<10)
+        {
+            UserDefault::getInstance()->setIntegerForKey("age", 15);
+            
+        }
+        else if (growth>10&&growth<15)
+        {
+            UserDefault::getInstance()->setIntegerForKey("age", 20);
+            
+        }
+        
+
         timeOver();
         unschedule(schedule_selector(MenuLayer::timerFunc));
         
@@ -558,27 +623,6 @@ void MenuLayer::timerFunc(float dt)
 }
 
 
-
-//提示
-void MenuLayer::info(int starNum)
-{
-    //第一关
-    if (starNum==1)
-    {
-        
-        auto act1=ScaleTo::create(0.5, 2);
-        auto act2=ScaleTo::create(0.5, 1);
-        
-        stars->starsVector.back()->runAction(RepeatForever::create(Sequence::create(act1,act2, NULL)));
-        
-        
-        
-    }
-    
-    
-    
-    
-}
 
 
 
@@ -628,8 +672,14 @@ void MenuLayer::timeOver()
 
    
     
-  
-    
+  //确定按钮
+    auto okLabel=Label::createWithSystemFont("OK", "Marker Felt.ttf", 40);
+    okLabel->setColor(Color3B::RED);
+    auto okButton=MenuItemLabel::create(okLabel,CC_CALLBACK_1(MenuLayer::goBackCallBack, this));
+    okButton->setPosition(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height/4);
+    auto menu=Menu::create(okButton, NULL);
+    menu->setPosition(0,0);
+    bookSprite->addChild(menu);
     
     
     
@@ -648,12 +698,21 @@ void MenuLayer::timeOver()
         
         boardSprite->runAction(Sequence::create(DelayTime::create(1.0f),ScaleTo::create(0, 1),ScaleTo::create(0.1, 0.8),ScaleTo::create(0.1, 0.6),ScaleTo::create(0.1, 0.5), NULL));
     
-        
+        char conBuf[10];
+        sprintf(conBuf, "C%d.png",collensation);
+        auto conSprite=Sprite::create(conBuf);
+        conSprite->setPosition(boardSprite->getContentSize().width/2,boardSprite->getContentSize().height/2);
+        conSprite->setScale(2.0f);
+        boardSprite->addChild(conSprite);
         
         
     }
-   
-    
+
+}
 
 
+void MenuLayer::goBackCallBack(cocos2d::Ref *pSender)
+{
+
+    gsm->goBookLayer();
 }

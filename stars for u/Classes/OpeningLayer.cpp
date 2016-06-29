@@ -164,7 +164,7 @@ void OpeningLayer::createPlist()
             
         }
         
-        root["A12"]=arry;
+        root["A15"]=arry;
         FileUtils::getInstance()->writeToFile(root, fullPath.c_str());
          arry.clear();
         
@@ -175,7 +175,7 @@ void OpeningLayer::createPlist()
             
         }
         
-        root["A14"]=arry;
+        root["A20"]=arry;
          FileUtils::getInstance()->writeToFile(root, fullPath.c_str());
          arry.clear();
     }
