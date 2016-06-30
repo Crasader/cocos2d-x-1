@@ -12,6 +12,7 @@
 #include "StarBookLayer.hpp"
 #include "SettingLayer.hpp"
 #include "infoLayer.hpp"
+#include "laderLayer.hpp"
 
 void GameSceneManager::createOpeningLayer()
 {
@@ -78,3 +79,18 @@ void GameSceneManager::goinfoLayer(int starNum,int shinStarNum,int collNum)
 }
 
 
+void GameSceneManager::goLadderLayer()
+{
+    auto scene=Scene::create();
+    
+    
+    
+   
+    auto layer=laderLayer::create();
+    scene->addChild(layer);
+    layer->gsm=this;
+    
+    //过渡效果
+    auto act=TransitionFade::create(0.5f, scene);
+    Director::getInstance()->replaceScene(act);
+}

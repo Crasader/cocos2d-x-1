@@ -67,9 +67,14 @@
 		FF44D7D41D0EC43100DC7ECC /* GameSceneManager.hpp in Sources */ = {isa = PBXBuildFile; fileRef = FF44D7CD1D0EBFDC00DC7ECC /* GameSceneManager.hpp */; };
 		FF44D7D51D0EC43B00DC7ECC /* AppDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8519C43A87006E1F66 /* AppDelegate.h */; };
 		FF44D7D61D0EC44B00DC7ECC /* MenuLayer.hpp in Sources */ = {isa = PBXBuildFile; fileRef = FF44D7D01D0EBFED00DC7ECC /* MenuLayer.hpp */; };
+		FF4678231D24FCE30037774D /* mark0.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4678221D24FCE30037774D /* mark0.png */; };
+		FF4678251D24FD090037774D /* mark10.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4678241D24FD090037774D /* mark10.png */; };
+		FF4678271D24FD240037774D /* mark15.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4678261D24FD240037774D /* mark15.png */; };
+		FF4678291D24FDA30037774D /* mark20.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4678281D24FDA30037774D /* mark20.png */; };
+		FF46782C1D24FFCA0037774D /* laderLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF46782A1D24FFCA0037774D /* laderLayer.cpp */; };
+		FF4678301D2510B80037774D /* ladder_s.png in Resources */ = {isa = PBXBuildFile; fileRef = FF46782F1D2510B80037774D /* ladder_s.png */; };
 		FF5750A51D213F6C00796C95 /* boy-hand.png in Resources */ = {isa = PBXBuildFile; fileRef = FF5750A41D213F6C00796C95 /* boy-hand.png */; };
 		FF5750A71D213F9500796C95 /* man2.png in Resources */ = {isa = PBXBuildFile; fileRef = FF5750A61D213F9500796C95 /* man2.png */; };
-		FF60B3F31D1D486C00C31BB8 /* List2.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF60B3F21D1D486B00C31BB8 /* List2.plist */; };
 		FF60B3F71D1E6D2600C31BB8 /* star_L.png in Resources */ = {isa = PBXBuildFile; fileRef = FF60B3F61D1E6D2600C31BB8 /* star_L.png */; };
 		FF60B3F91D1E6F7C00C31BB8 /* bg_L.png in Resources */ = {isa = PBXBuildFile; fileRef = FF60B3F81D1E6F7C00C31BB8 /* bg_L.png */; };
 		FF968A331D1BCF0600643012 /* C4.png in Resources */ = {isa = PBXBuildFile; fileRef = FF968A321D1BCF0600643012 /* C4.png */; };
@@ -216,10 +221,16 @@
 		FF44D7CD1D0EBFDC00DC7ECC /* GameSceneManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameSceneManager.hpp; sourceTree = "<group>"; };
 		FF44D7CF1D0EBFED00DC7ECC /* MenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuLayer.cpp; sourceTree = "<group>"; };
 		FF44D7D01D0EBFED00DC7ECC /* MenuLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MenuLayer.hpp; sourceTree = "<group>"; };
+		FF4678221D24FCE30037774D /* mark0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mark0.png; sourceTree = "<group>"; };
+		FF4678241D24FD090037774D /* mark10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mark10.png; sourceTree = "<group>"; };
+		FF4678261D24FD240037774D /* mark15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mark15.png; sourceTree = "<group>"; };
+		FF4678281D24FDA30037774D /* mark20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mark20.png; sourceTree = "<group>"; };
+		FF46782A1D24FFCA0037774D /* laderLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = laderLayer.cpp; sourceTree = "<group>"; };
+		FF46782B1D24FFCA0037774D /* laderLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = laderLayer.hpp; sourceTree = "<group>"; };
+		FF46782F1D2510B80037774D /* ladder_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ladder_s.png; sourceTree = "<group>"; };
 		FF5750A41D213F6C00796C95 /* boy-hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "boy-hand.png"; sourceTree = "<group>"; };
 		FF5750A61D213F9500796C95 /* man2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = man2.png; sourceTree = "<group>"; };
 		FF5D70D11D17D27200F05D2A /* notes.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = notes.hpp; sourceTree = "<group>"; };
-		FF60B3F21D1D486B00C31BB8 /* List2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = List2.plist; sourceTree = "<group>"; };
 		FF60B3F61D1E6D2600C31BB8 /* star_L.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_L.png; sourceTree = "<group>"; };
 		FF60B3F81D1E6F7C00C31BB8 /* bg_L.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_L.png; sourceTree = "<group>"; };
 		FF968A321D1BCF0600643012 /* C4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = C4.png; sourceTree = "<group>"; };
@@ -409,10 +420,15 @@
 				FFD605D71D227DCA009304F8 /* mark_2.png */,
 				FF25AC871D193DA900EACC3C /* talkingBox.png */,
 				FFD605D51D2278C2009304F8 /* board.png */,
+				FF4678221D24FCE30037774D /* mark0.png */,
 				FFE526861D118B03002ABED9 /* hand.png */,
 				FF5750A41D213F6C00796C95 /* boy-hand.png */,
 				FFD605D31D227766009304F8 /* moon_2.png */,
+				FF46782F1D2510B80037774D /* ladder_s.png */,
 				FFD606071D23D501009304F8 /* info3.png */,
+				FF4678241D24FD090037774D /* mark10.png */,
+				FF4678281D24FDA30037774D /* mark20.png */,
+				FF4678261D24FD240037774D /* mark15.png */,
 				FFD606051D23D387009304F8 /* info2.png */,
 				FFEAA7A51D11024400F641E9 /* star.png */,
 				FFE6025C1D1A8A3C00642825 /* bg.png */,
@@ -422,7 +438,6 @@
 				FFE602651D1A8C5D00642825 /* mark_red.png */,
 				521A8EA819F11F5000D177D7 /* fonts */,
 				3EACC98E19EE6D4300EB3C5E /* res */,
-				FF60B3F21D1D486B00C31BB8 /* List2.plist */,
 			);
 			name = Resources;
 			path = ../Resources;
@@ -450,6 +465,8 @@
 				FF5D70D11D17D27200F05D2A /* notes.hpp */,
 				FFD605FC1D23C68A009304F8 /* infoLayer.cpp */,
 				FFD605FD1D23C68A009304F8 /* infoLayer.hpp */,
+				FF46782A1D24FFCA0037774D /* laderLayer.cpp */,
+				FF46782B1D24FFCA0037774D /* laderLayer.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -643,6 +660,7 @@
 			files = (
 				FFD605EE1D23BF90009304F8 /* chunv.png in Resources */,
 				FFD605EF1D23BF90009304F8 /* jinniu.png in Resources */,
+				FF4678271D24FD240037774D /* mark15.png in Resources */,
 				FFD606021D23D279009304F8 /* jiantou.png in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
@@ -668,6 +686,7 @@
 				FFD605F01D23BF90009304F8 /* juxie.png in Resources */,
 				FFE602511D1A7B2A00642825 /* diary_0.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
+				FF4678251D24FD090037774D /* mark10.png in Resources */,
 				FF968A401D1BEC6700643012 /* C5.png in Resources */,
 				FFEAA7A61D11024400F641E9 /* star.png in Resources */,
 				FFD605DF1D23BA72009304F8 /* C1_i.png in Resources */,
@@ -678,8 +697,10 @@
 				FF968A331D1BCF0600643012 /* C4.png in Resources */,
 				FFD606081D23D501009304F8 /* info3.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
+				FF4678301D2510B80037774D /* ladder_s.png in Resources */,
 				FFE602661D1A8C5D00642825 /* mark_gree.png in Resources */,
 				FFD605D41D227766009304F8 /* moon_2.png in Resources */,
+				FF4678291D24FDA30037774D /* mark20.png in Resources */,
 				FF968A421D1BEC6A00643012 /* C7.png in Resources */,
 				FFE526871D118B03002ABED9 /* hand.png in Resources */,
 				FF5750A51D213F6C00796C95 /* boy-hand.png in Resources */,
@@ -704,9 +725,9 @@
 				FFD605CA1D2255FC009304F8 /* star_yellow_s.png in Resources */,
 				FF968A3E1D1BEC6100643012 /* C12.png in Resources */,
 				FFD605CC1D225602009304F8 /* star_red_s.png in Resources */,
+				FF4678231D24FCE30037774D /* mark0.png in Resources */,
 				FFD605CE1D225E53009304F8 /* moon.png in Resources */,
 				FFD605D01D226CF3009304F8 /* bg_2.png in Resources */,
-				FF60B3F31D1D486C00C31BB8 /* List2.plist in Resources */,
 				FFD605F71D23BF90009304F8 /* tianping.png in Resources */,
 				FFD605D81D227DCA009304F8 /* mark_2.png in Resources */,
 				FF25AC8A1D193FF900EACC3C /* talkingBox_L.png in Resources */,
@@ -736,6 +757,7 @@
 				FF44D7D61D0EC44B00DC7ECC /* MenuLayer.hpp in Sources */,
 				FFE526A11D12CF84002ABED9 /* SettingLayer.cpp in Sources */,
 				FFD605FE1D23C68A009304F8 /* infoLayer.cpp in Sources */,
+				FF46782C1D24FFCA0037774D /* laderLayer.cpp in Sources */,
 				FF44D7D51D0EC43B00DC7ECC /* AppDelegate.h in Sources */,
 				FF0B9C851D0FBAB300F70473 /* randomStars.cpp in Sources */,
 				FF44D7D41D0EC43100DC7ECC /* GameSceneManager.hpp in Sources */,

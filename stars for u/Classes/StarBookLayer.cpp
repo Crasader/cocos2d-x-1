@@ -154,7 +154,7 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
             {
                 setGetedConsent(20);
             }
-            
+           /*
             //book mark
             auto bookMarkSprite20=Sprite::create("mark_gree.png");
             bookMarkSprite20->setPosition(Point(889,296));
@@ -169,6 +169,15 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
             menu=Menu::create(menuLabel20, NULL);
             menu->setPosition(bookMarkSprite20->getContentSize().width/2,bookMarkSprite20->getContentSize().height/2);
             bookMarkSprite20->addChild(menu,100);
+            */
+            
+            auto bookMarkSprite20=Sprite::create("mark20.png");
+            auto markButton20=MenuItemSprite::create(bookMarkSprite20, bookMarkSprite20, CC_CALLBACK_1(StarBookLayer::label20Callback, this));
+            markButton20->setPosition(Point(889,296));
+            auto menu=Menu::create(markButton20, NULL);
+            menu->setPosition(0,0);
+            this->addChild(menu);
+
             
             //如果是当前mark，则显示其内容
             if (bookMarkIndex==20)
@@ -188,7 +197,7 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
             {
                 setGetedConsent(15);
             }
-            
+            /*
             //book mark
             auto bookMarkSprite15=Sprite::create("mark_gree.png");
             bookMarkSprite15->setPosition(Point(889,379));
@@ -203,7 +212,15 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
             menu=Menu::create(menuLabel15, NULL);
             menu->setPosition(bookMarkSprite15->getContentSize().width/2,bookMarkSprite15->getContentSize().height/2);
             bookMarkSprite15->addChild(menu,100);
+            */
             
+            auto bookMarkSprite15=Sprite::create("mark15.png");
+            auto markButton15=MenuItemSprite::create(bookMarkSprite15, bookMarkSprite15, CC_CALLBACK_1(StarBookLayer::label15Callback, this));
+            markButton15->setPosition(Point(889,379));
+            auto menu=Menu::create(markButton15, NULL);
+            menu->setPosition(0,0);
+            this->addChild(menu);
+
             //如果是当前mark，则显示其内容
             if (bookMarkIndex==15)
             {
@@ -223,7 +240,7 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
             {
                   setGetedConsent(10);
             }
-          
+          /*
             //book mark
             auto bookMarkSprite10=Sprite::create("mark_gree.png");
             bookMarkSprite10->setPosition(Point(889,462));
@@ -238,6 +255,14 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
             menu=Menu::create(menuLabel10, NULL);
             menu->setPosition(bookMarkSprite10->getContentSize().width/2,bookMarkSprite10->getContentSize().height/2);
             bookMarkSprite10->addChild(menu,100);
+*/
+            
+            auto bookMarkSprite10=Sprite::create("mark10.png");
+            auto markButton10=MenuItemSprite::create(bookMarkSprite10, bookMarkSprite10, CC_CALLBACK_1(StarBookLayer::label10Callback, this));
+            markButton10->setPosition(Point(889,462));
+            auto menu=Menu::create(markButton10, NULL);
+            menu->setPosition(0,0);
+            this->addChild(menu);
 
             //如果是当前mark，则显示其内容
             if (bookMarkIndex==10)
@@ -260,6 +285,7 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
                 setGetedConsent(0);
             }
             
+            /*
             //book mark
             auto bookMarkSprite0=Sprite::create("mark_red.png");
             bookMarkSprite0->setPosition(Point(889,545));
@@ -274,6 +300,20 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
             menu->setPosition(bookMarkSprite0->getContentSize().width/2,bookMarkSprite0->getContentSize().height/2);
             bookMarkSprite0->addChild(menu,100);
             
+             */
+            
+            
+            auto bookMarkSprite0=Sprite::create("mark0.png");
+            auto markButton0=MenuItemSprite::create(bookMarkSprite0, bookMarkSprite0, CC_CALLBACK_1(StarBookLayer::label0Callback, this));
+            markButton0->setPosition(Point(889,545));
+            auto menu=Menu::create(markButton0, NULL);
+            menu->setPosition(0,0);
+            this->addChild(menu);
+            
+            
+            
+            
+        
             
             if (bookMarkIndex==0)
             {
@@ -358,7 +398,8 @@ void StarBookLayer::startGame()
     switch (0) {
         case 0:
         {//第一关，1颗星星
-            gsm->goinfoLayer(1, 0, 1);
+           // gsm->goinfoLayer(1, 0, 1);
+            gsm->goLadderLayer();
             break;
         }
         case 10:
