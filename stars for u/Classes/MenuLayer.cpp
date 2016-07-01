@@ -460,7 +460,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                 growth++;
                 UserDefault::getInstance()->setIntegerForKey("GROWTH", growth);
                 //设置age
-                if (growth<=5&& growth>1)
+                if (growth<=5&& growth>=1)
                 {
                     UserDefault::getInstance()->setIntegerForKey("age", 10);
                     
@@ -596,7 +596,7 @@ void MenuLayer::timerFunc(float dt)
         growth++;
         UserDefault::getInstance()->setIntegerForKey("GROWTH", growth);
         //设置age
-        if (growth<=5&& growth>1)
+        if (growth<=5&& growth>=1)
         {
             UserDefault::getInstance()->setIntegerForKey("age", 10);
             

@@ -79,14 +79,14 @@ void GameSceneManager::goinfoLayer(int starNum,int shinStarNum,int collNum)
 }
 
 
-void GameSceneManager::goLadderLayer()
+void GameSceneManager::goLadderLayer(int windNum, int cloudNum)
 {
     auto scene=Scene::create();
     
     
     
    
-    auto layer=laderLayer::create();
+    auto layer=laderLayer::create(windNum,cloudNum);
     scene->addChild(layer);
     layer->gsm=this;
     

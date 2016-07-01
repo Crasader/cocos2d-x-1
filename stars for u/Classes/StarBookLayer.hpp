@@ -56,6 +56,9 @@ public:
     //所有的星座在book上的精灵
     Vector<Sprite*> conllenVecetor;
 
+    
+    //按钮显示优先级
+    int markIndex=50;
      
 };
 

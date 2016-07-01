@@ -172,11 +172,12 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
             */
             
             auto bookMarkSprite20=Sprite::create("mark20.png");
+             bookMarkSprite20->setTag(53);
             auto markButton20=MenuItemSprite::create(bookMarkSprite20, bookMarkSprite20, CC_CALLBACK_1(StarBookLayer::label20Callback, this));
             markButton20->setPosition(Point(889,296));
             auto menu=Menu::create(markButton20, NULL);
             menu->setPosition(0,0);
-            this->addChild(menu);
+            this->addChild(menu,100,53);
 
             
             //如果是当前mark，则显示其内容
@@ -215,11 +216,12 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
             */
             
             auto bookMarkSprite15=Sprite::create("mark15.png");
+             bookMarkSprite15->setTag(52);
             auto markButton15=MenuItemSprite::create(bookMarkSprite15, bookMarkSprite15, CC_CALLBACK_1(StarBookLayer::label15Callback, this));
             markButton15->setPosition(Point(889,379));
             auto menu=Menu::create(markButton15, NULL);
             menu->setPosition(0,0);
-            this->addChild(menu);
+           this->addChild(menu,100,52);
 
             //如果是当前mark，则显示其内容
             if (bookMarkIndex==15)
@@ -258,11 +260,16 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
 */
             
             auto bookMarkSprite10=Sprite::create("mark10.png");
-            auto markButton10=MenuItemSprite::create(bookMarkSprite10, bookMarkSprite10, CC_CALLBACK_1(StarBookLayer::label10Callback, this));
+            auto bookMarkSprite10_2=Sprite::create("mark10.png");
+            bookMarkSprite10_2->setScale(1.2);
+
+            
+            auto markButton10=MenuItemSprite::create(bookMarkSprite10, bookMarkSprite10_2, CC_CALLBACK_1(StarBookLayer::label10Callback, this));
             markButton10->setPosition(Point(889,462));
+          
             auto menu=Menu::create(markButton10, NULL);
             menu->setPosition(0,0);
-            this->addChild(menu);
+            this->addChild(menu,100,51);
 
             //如果是当前mark，则显示其内容
             if (bookMarkIndex==10)
@@ -304,11 +311,15 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
             
             
             auto bookMarkSprite0=Sprite::create("mark0.png");
-            auto markButton0=MenuItemSprite::create(bookMarkSprite0, bookMarkSprite0, CC_CALLBACK_1(StarBookLayer::label0Callback, this));
+           auto bookMarkSprite0_2=Sprite::create("mark0.png");
+            bookMarkSprite0_2->setScale(1.2);
+            
+            auto markButton0=MenuItemSprite::create(bookMarkSprite0, bookMarkSprite0_2, CC_CALLBACK_1(StarBookLayer::label0Callback, this));
             markButton0->setPosition(Point(889,545));
+           
             auto menu=Menu::create(markButton0, NULL);
             menu->setPosition(0,0);
-            this->addChild(menu);
+            this->addChild(menu,100,50);
             
             
             
@@ -395,11 +406,11 @@ void StarBookLayer::setGetedConsent(int i)
 void StarBookLayer::startGame()
 {
     getAllgetedConsetn();
-    switch (0) {
+    switch (age) {
         case 0:
         {//第一关，1颗星星
-           // gsm->goinfoLayer(1, 0, 1);
-            gsm->goLadderLayer();
+            gsm->goinfoLayer(4, 0, 1);
+           // gsm->goLadderLayer(1,1);
             break;
         }
         case 10:
@@ -515,6 +526,7 @@ void StarBookLayer::label0Callback(cocos2d::Ref *pSender)
     
     setGetedConsent(0);
     diary->setTexture("diary_0.png");
+    this->reorderChild(this->getChildByTag(50),++markIndex);
     
     
     
@@ -528,7 +540,8 @@ void StarBookLayer::label10Callback(cocos2d::Ref *pSender)
     
     setGetedConsent(10);
     diary->setTexture("diary_0.png");
-    
+     this->reorderChild(this->getChildByTag(51),++markIndex);
+   
 }
 
 void StarBookLayer::label15Callback(cocos2d::Ref *pSender)
@@ -536,6 +549,7 @@ void StarBookLayer::label15Callback(cocos2d::Ref *pSender)
 
     setGetedConsent(15);
     diary->setTexture("diary_0.png");
+  this->reorderChild(this->getChildByTag(52),++markIndex);
 
 }
 
@@ -544,5 +558,6 @@ void StarBookLayer::label20Callback(cocos2d::Ref *pSender)
     
     setGetedConsent(20);
     diary->setTexture("diary_0.png");
+    this->reorderChild(this->getChildByTag(53),++markIndex);
     
 }

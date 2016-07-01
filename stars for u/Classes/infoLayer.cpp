@@ -493,22 +493,9 @@ bool infoLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
             growth++;
             UserDefault::getInstance()->setIntegerForKey("GROWTH", growth);
             //设置age
-            if (growth<=5&& growth>1)
-            {
-                UserDefault::getInstance()->setIntegerForKey("age", 10);
+           
+            UserDefault::getInstance()->setIntegerForKey("age", 10);
                 
-            }
-            else if (growth>5&&growth<10)
-            {
-                UserDefault::getInstance()->setIntegerForKey("age", 15);
-                
-            }
-            else if (growth>10&&growth<15)
-            {
-                UserDefault::getInstance()->setIntegerForKey("age", 20);
-                
-            }
-            
             
             
             
@@ -572,26 +559,10 @@ void infoLayer::pointToStar()
 void infoLayer::writToPlist()
 {
     __String ActionNum;
-    
-    
-    if (starNum<5)
-    {
         ActionNum="A0";
-    }
     
     
-    else if (starNum>5&&starNum<=10)
-    {
-        ActionNum="A10";
-    }
-    else if (starNum>10&&starNum<=15)
-    {
-        ActionNum="A15";
-    }
-    else if (starNum>15&&starNum<=20)
-    {
-        ActionNum="A20";
-    }
+    
     
     
     
@@ -629,22 +600,8 @@ void infoLayer::timerFunc(float dt)
         growth++;
         UserDefault::getInstance()->setIntegerForKey("GROWTH", growth);
         //设置age
-        if (growth<=5&& growth>1)
-        {
             UserDefault::getInstance()->setIntegerForKey("age", 10);
             
-        }
-        else if (growth>5&&growth<10)
-        {
-            UserDefault::getInstance()->setIntegerForKey("age", 15);
-            
-        }
-        else if (growth>10&&growth<15)
-        {
-            UserDefault::getInstance()->setIntegerForKey("age", 20);
-            
-        }
-        
         
         timeOver();
         unschedule(schedule_selector(infoLayer::timerFunc));

@@ -30,9 +30,36 @@ void randomStars::randomPosition()
 
 {   std::srand(unsigned(time(NULL)));
     
-   
-    SpriteBatchNode* starsBatchNode=SpriteBatchNode::create("star.png");
-    starsBatchNode->setPosition(Point::ZERO);
+   //随机颜色
+    SpriteBatchNode* starsBatchNode_1=SpriteBatchNode::create("star_1_s.png");
+     starsBatchNode_1->setPosition(Point::ZERO);
+    
+    SpriteBatchNode* starsBatchNode_2=SpriteBatchNode::create("star_2_s.png");
+    starsBatchNode_2->setPosition(Point::ZERO);
+
+    SpriteBatchNode* starsBatchNode_3=SpriteBatchNode::create("star_3_s.png");
+    starsBatchNode_3->setPosition(Point::ZERO);
+    
+    SpriteBatchNode* starsBatchNode_4=SpriteBatchNode::create("star_4_s.png");
+    starsBatchNode_4->setPosition(Point::ZERO);
+    
+    SpriteBatchNode* starsBatchNode_5=SpriteBatchNode::create("star_5_s.png");
+    starsBatchNode_5->setPosition(Point::ZERO);
+    
+    SpriteBatchNode* starsBatchNode_6=SpriteBatchNode::create("star_6_s.png");
+    starsBatchNode_6->setPosition(Point::ZERO);
+    
+    SpriteBatchNode* starsBatchNode_7=SpriteBatchNode::create("star_7_s.png");
+    starsBatchNode_7->setPosition(Point::ZERO);
+    
+    SpriteBatchNode* starsBatchNode_8=SpriteBatchNode::create("star_8_s.png");
+    starsBatchNode_8->setPosition(Point::ZERO);
+    
+    SpriteBatchNode* starsBatchNode_9=SpriteBatchNode::create("star_9_s.png");
+    starsBatchNode_9->setPosition(Point::ZERO);
+
+    
+    
     auto size=Director::getInstance()->getVisibleSize();
     
     //生成星星 starNum个
@@ -42,9 +69,61 @@ void randomStars::randomPosition()
         float x=random(0.2f, 0.9f)*size.width;
         float y=((size.height/5)*2.5+rand_0_1()*size.height/5)*0.8;
         
+        Sprite* star;
         //创建星星
-        auto star=Sprite::createWithTexture(starsBatchNode->getTexture());
-        star->setPosition(Point(x,y));
+        
+        //随机颜色
+        int randStarBacth=random(1, 9);
+        switch (randStarBacth) {
+            case 1:
+                star=Sprite::createWithTexture(starsBatchNode_1->getTexture());
+
+                break;
+               case 2:
+                star=Sprite::createWithTexture(starsBatchNode_2->getTexture());
+
+                break;
+            case 3:
+                star=Sprite::createWithTexture(starsBatchNode_3->getTexture());
+                
+                break;
+            case 4:
+                star=Sprite::createWithTexture(starsBatchNode_4->getTexture());
+                
+                break;
+
+            case 5:
+                star=Sprite::createWithTexture(starsBatchNode_5->getTexture());
+                
+                break;
+
+            case 6:
+                star=Sprite::createWithTexture(starsBatchNode_6->getTexture());
+                
+                break;
+
+            case 7:
+                star=Sprite::createWithTexture(starsBatchNode_7->getTexture());
+                
+                break;
+
+            case 8:
+                star=Sprite::createWithTexture(starsBatchNode_8->getTexture());
+                
+                break;
+
+            case 9:
+                star=Sprite::createWithTexture(starsBatchNode_9->getTexture());
+                
+                break;
+
+                
+                
+            default:
+                break;
+        }
+        
+               star->setPosition(Point(x,y));
         
         
         //随机生成大小不一的星星

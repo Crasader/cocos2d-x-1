@@ -21,21 +21,38 @@ class laderLayer:public Layer
 {
 public:
     virtual bool init();
-    static laderLayer* create();
+    static laderLayer* create(int windNum, int cloudNum);
     GameSceneManager* gsm;
+    //提子数量
     int k=0;
     Sprite* star;
     
-    void starFunc(float dt);
+    //风力 负表示朝左边，正表示朝右
+    int wind=0;
+    int cloud=0;
+    //触摸
     virtual bool onTouchBegan(Touch* touch, Event *event);
-    
+    virtual void onTouchMoved(Touch* touch, Event* event);
+    virtual void onTouchEnded(Touch* touch, Event* event);
+    //box2d
     void initPhysic();
     b2World* world;
+    
+    //析构
     virtual void onExit();
     
     void update(float dt);
     
     void goBackCallBack(Ref* pSender);
+    
+    //bodyVector
+    std::vector<b2Body*> bodyVector;
+    
+    laderLayer(int windNum, int cloudNum);
+    
+    
+
+    
 
 };
 

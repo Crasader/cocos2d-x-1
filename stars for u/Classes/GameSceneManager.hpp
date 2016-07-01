@@ -25,7 +25,7 @@ public:
     void goBookLayer();
     void goSettingLayer();
     void goinfoLayer(int starNum,int shinStarNum,int collNum);
-    void goLadderLayer();
+    void goLadderLayer(int windNum, int cloudNum);
     
   
 
