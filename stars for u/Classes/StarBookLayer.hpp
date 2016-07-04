@@ -9,11 +9,16 @@
 #ifndef StarBookLayer_hpp
 #define StarBookLayer_hpp
 
+
+
 #include <stdio.h>
 #include "GameSceneManager.hpp"
 #include "cocos2d.h"
 
 USING_NS_CC;
+
+
+
 
 class StarBookLayer:public Layer
 {
@@ -42,7 +47,12 @@ public:
     void label10Callback(Ref* pSender);
       void label15Callback(Ref* pSender);
       void label20Callback(Ref* pSender);
+    void label25Callback(Ref* pSender);
     
+    
+    //商店回调
+    void shopCallBack(Ref* pSender);
+
     //开始游戏回调
     void startGame();
     //书签的menu

@@ -477,6 +477,11 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                 }
                 
                 
+                else if(growth>15)
+                {
+                    UserDefault::getInstance()->setIntegerForKey("age", 25);
+                    
+                }
                 
                 
                 
@@ -611,6 +616,12 @@ void MenuLayer::timerFunc(float dt)
             UserDefault::getInstance()->setIntegerForKey("age", 20);
             
         }
+        else if(growth>15)
+        {
+        UserDefault::getInstance()->setIntegerForKey("age", 25);
+        
+        }
+        
         
 
         timeOver();
@@ -715,4 +726,30 @@ void MenuLayer::goBackCallBack(cocos2d::Ref *pSender)
 {
 
     gsm->goBookLayer();
+    
+    //测试用～～～～～
+    growth++;
+    UserDefault::getInstance()->setIntegerForKey("GROWTH", growth);
+    //设置age
+    if (growth<=5&& growth>=1)
+    {
+        UserDefault::getInstance()->setIntegerForKey("age", 10);
+        
+    }
+    else if (growth>5&&growth<10)
+    {
+        UserDefault::getInstance()->setIntegerForKey("age", 15);
+        
+    }
+    else if (growth>10&&growth<15)
+    {
+        UserDefault::getInstance()->setIntegerForKey("age", 20);
+        
+    }
+    else if(growth>15)
+    {
+        UserDefault::getInstance()->setIntegerForKey("age", 25);
+        
+    }
+
 }

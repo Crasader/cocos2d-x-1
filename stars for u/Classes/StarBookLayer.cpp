@@ -9,6 +9,8 @@
 #include "StarBookLayer.hpp"
 #include "MenuLayer.hpp"
 #include <time.h>
+#include "shopLayer.hpp"
+
 
 
 StarBookLayer* StarBookLayer::create()
@@ -127,7 +129,15 @@ bool StarBookLayer::init()
     goMenuLabel->setColor(Color3B::RED);
     auto goMenuButton=MenuItemLabel::create(goMenuLabel, CC_CALLBACK_0(StarBookLayer::startGame, this));
     goMenuButton->setPosition(Point(687,122));
-    auto menu=Menu::create(goMenuButton, NULL);
+  
+    
+    
+    //交互按钮
+    auto interButton=MenuItemImage::create("intertack.png", "intertack.png", CC_CALLBACK_1(StarBookLayer::shopCallBack, this));
+    interButton->setPosition(size.width/4, size.height/4);
+   
+    
+    auto menu=Menu::create(goMenuButton,interButton, NULL);
     menu->setPosition(0,0);
     this->addChild(menu,10);
     
@@ -144,6 +154,33 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
     switch (bookMarkIndex)
     {
 
+            
+            
+        case 25:
+            
+        {
+        
+            auto bookMarkSprite25=Sprite::create("mark25.png");
+            auto bookMarkSprite25_s=Sprite::create("mark25.png");
+            bookMarkSprite25_s->setScale(1.2);
+            
+            auto markButton25=MenuItemSprite::create(bookMarkSprite25, bookMarkSprite25_s, CC_CALLBACK_1(StarBookLayer::label25Callback, this));
+            markButton25->setPosition(Point(889,213));
+            auto menu=Menu::create(markButton25, NULL);
+            menu->setPosition(0,0);
+            this->addChild(menu,markIndex--,54);
+            
+            
+            //如果是当前mark，则显示其内容
+            if (bookMarkIndex==25)
+            {
+                diary=Sprite::create("diary0.png");
+                diary->setPosition(bookSprite->getContentSize().width/4+35,bookSprite->getContentSize().height/2);
+                this->addChild(diary,markIndex--);
+            }
+
+        
+        }
             
         case 20:
         {
@@ -172,20 +209,22 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
             */
             
             auto bookMarkSprite20=Sprite::create("mark20.png");
-             bookMarkSprite20->setTag(53);
-            auto markButton20=MenuItemSprite::create(bookMarkSprite20, bookMarkSprite20, CC_CALLBACK_1(StarBookLayer::label20Callback, this));
+            auto bookMarkSprite20_s=Sprite::create("mark20.png");
+            bookMarkSprite20_s->setScale(1.2);
+
+            auto markButton20=MenuItemSprite::create(bookMarkSprite20, bookMarkSprite20_s, CC_CALLBACK_1(StarBookLayer::label20Callback, this));
             markButton20->setPosition(Point(889,296));
             auto menu=Menu::create(markButton20, NULL);
             menu->setPosition(0,0);
-            this->addChild(menu,100,53);
+            this->addChild(menu,markIndex--,53);
 
             
             //如果是当前mark，则显示其内容
             if (bookMarkIndex==20)
             {
-                diary=Sprite::create("diary_0.png");
+                diary=Sprite::create("diary0.png");
                 diary->setPosition(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height/2);
-                this->addChild(diary,2);
+                this->addChild(diary,markIndex--);
             }
         }
             
@@ -216,19 +255,20 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
             */
             
             auto bookMarkSprite15=Sprite::create("mark15.png");
-             bookMarkSprite15->setTag(52);
-            auto markButton15=MenuItemSprite::create(bookMarkSprite15, bookMarkSprite15, CC_CALLBACK_1(StarBookLayer::label15Callback, this));
+          auto bookMarkSprite15_s=Sprite::create("mark15.png");
+            bookMarkSprite15_s->setScale(1.2);
+            auto markButton15=MenuItemSprite::create(bookMarkSprite15, bookMarkSprite15_s, CC_CALLBACK_1(StarBookLayer::label15Callback, this));
             markButton15->setPosition(Point(889,379));
             auto menu=Menu::create(markButton15, NULL);
             menu->setPosition(0,0);
-           this->addChild(menu,100,52);
+           this->addChild(menu,markIndex--,52);
 
             //如果是当前mark，则显示其内容
             if (bookMarkIndex==15)
             {
-                diary=Sprite::create("diary_0.png");
+                diary=Sprite::create("diary0.png");
                 diary->setPosition(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height/2);
-                this->addChild(diary,2);
+                this->addChild(diary,markIndex--);
             }
         }
             
@@ -269,14 +309,14 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
           
             auto menu=Menu::create(markButton10, NULL);
             menu->setPosition(0,0);
-            this->addChild(menu,100,51);
+            this->addChild(menu,markIndex--,51);
 
             //如果是当前mark，则显示其内容
             if (bookMarkIndex==10)
             {
-                diary=Sprite::create("diary_0.png");
+                diary=Sprite::create("diary0.png");
                diary->setPosition(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height/2);
-                this->addChild(diary,2);
+                this->addChild(diary,markIndex--);
             }
             
         
@@ -319,7 +359,7 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
            
             auto menu=Menu::create(markButton0, NULL);
             menu->setPosition(0,0);
-            this->addChild(menu,100,50);
+            this->addChild(menu,markIndex--,50);
             
             
             
@@ -328,9 +368,9 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
             
             if (bookMarkIndex==0)
             {
-                diary=Sprite::create("diary_0.png");
+                diary=Sprite::create("diary0.png");
                 diary->setPosition(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height/2);
-                this->addChild(diary,2);
+                this->addChild(diary,markIndex--);
             }
             
 
@@ -455,6 +495,16 @@ void StarBookLayer::startGame()
             
             break;
         }
+            
+        case 25:
+        {//梯子关
+    
+            
+           
+            gsm->goLadderLayer(2, 2);
+            
+            break;
+        }
 
 
             
@@ -525,7 +575,7 @@ void StarBookLayer::label0Callback(cocos2d::Ref *pSender)
     
     
     setGetedConsent(0);
-    diary->setTexture("diary_0.png");
+    diary->setTexture("diary0.png");
     this->reorderChild(this->getChildByTag(50),++markIndex);
     
     
@@ -539,7 +589,7 @@ void StarBookLayer::label10Callback(cocos2d::Ref *pSender)
 {
     
     setGetedConsent(10);
-    diary->setTexture("diary_0.png");
+    diary->setTexture("diary0.png");
      this->reorderChild(this->getChildByTag(51),++markIndex);
    
 }
@@ -548,7 +598,7 @@ void StarBookLayer::label15Callback(cocos2d::Ref *pSender)
 {
 
     setGetedConsent(15);
-    diary->setTexture("diary_0.png");
+    diary->setTexture("diary0.png");
   this->reorderChild(this->getChildByTag(52),++markIndex);
 
 }
@@ -557,7 +607,46 @@ void StarBookLayer::label20Callback(cocos2d::Ref *pSender)
 {
     
     setGetedConsent(20);
-    diary->setTexture("diary_0.png");
+    diary->setTexture("diary0.png");
     this->reorderChild(this->getChildByTag(53),++markIndex);
     
+}
+
+void StarBookLayer::label25Callback(cocos2d::Ref *pSender)
+{
+    
+    //setGetedConsent(20);
+    diary->setTexture("diary0.png");
+    this->reorderChild(this->getChildByTag(54),++markIndex);
+    
+}
+
+
+//shop 回调
+void StarBookLayer::shopCallBack(cocos2d::Ref *pSender)
+{
+
+
+   
+        shopLayer* layer=shopLayer::create();
+       // layer->setAnchorPoint(Point(0.5,0.5));
+        
+        layer->setPosition(0,0);
+        layer->runAction(Sequence::create(
+                                          ScaleTo::create(0.1, 0),
+                                          ScaleTo::create(0.1, 0.3),
+                                          ScaleTo::create(0.1, 0.6),
+                                          ScaleTo::create(0.1, 0.8),
+                                          ScaleTo::create(0.1, 1),
+                                          NULL));
+    
+        this->addChild(layer,2000);
+      
+        
+    
+        
+    
+   
+
+
 }

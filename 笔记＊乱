@@ -187,4 +187,9 @@ root[“key”]=arr;  //回传
 
 FileUtils::getInstance()->writeToFile(root, path.c_str());  //写入
     
+//不同层的触摸优先级
+ dispatcher->addEventListenerWithFixedPriority(lisetener, -128); //-128最高
+onExit(){ Director::getInstance()->getEventDispatcher()->removeEventListener(lisetener);
+};  //需要手动删除
+
 
