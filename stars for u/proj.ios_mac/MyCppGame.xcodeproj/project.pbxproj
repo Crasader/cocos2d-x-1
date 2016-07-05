@@ -60,6 +60,7 @@
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		FF0B9C851D0FBAB300F70473 /* randomStars.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF0B9C831D0FBAB300F70473 /* randomStars.cpp */; };
+		FF12D07A1D2BA3CA00E3C478 /* talkingBox_LL.png in Resources */ = {isa = PBXBuildFile; fileRef = FF12D0791D2BA3CA00E3C478 /* talkingBox_LL.png */; };
 		FF25AC881D193DA900EACC3C /* talkingBox.png in Resources */ = {isa = PBXBuildFile; fileRef = FF25AC871D193DA900EACC3C /* talkingBox.png */; };
 		FF25AC8A1D193FF900EACC3C /* talkingBox_L.png in Resources */ = {isa = PBXBuildFile; fileRef = FF25AC891D193FF900EACC3C /* talkingBox_L.png */; };
 		FF315F2D1D264F26008DD671 /* cloud_S.png in Resources */ = {isa = PBXBuildFile; fileRef = FF315F2C1D264F26008DD671 /* cloud_S.png */; };
@@ -231,6 +232,7 @@
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		FF0B9C831D0FBAB300F70473 /* randomStars.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = randomStars.cpp; sourceTree = "<group>"; };
 		FF0B9C841D0FBAB300F70473 /* randomStars.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = randomStars.hpp; sourceTree = "<group>"; };
+		FF12D0791D2BA3CA00E3C478 /* talkingBox_LL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = talkingBox_LL.png; path = ../Classes/talkingBox_LL.png; sourceTree = "<group>"; };
 		FF25AC871D193DA900EACC3C /* talkingBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = talkingBox.png; sourceTree = "<group>"; };
 		FF25AC891D193FF900EACC3C /* talkingBox_L.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = talkingBox_L.png; sourceTree = "<group>"; };
 		FF315F2C1D264F26008DD671 /* cloud_S.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud_S.png; sourceTree = "<group>"; };
@@ -455,6 +457,7 @@
 				FF25AC871D193DA900EACC3C /* talkingBox.png */,
 				FFD605D51D2278C2009304F8 /* board.png */,
 				FF7B87E61D2A3D1C00BE5C8F /* intertack.png */,
+				FF12D0791D2BA3CA00E3C478 /* talkingBox_LL.png */,
 				FF7B87EF1D2A5BB900BE5C8F /* bg2.png */,
 				FF4678221D24FCE30037774D /* mark0.png */,
 				FFE526861D118B03002ABED9 /* hand.png */,
@@ -499,13 +502,13 @@
 				FFE526A01D12CF84002ABED9 /* SettingLayer.hpp */,
 				FFE526A71D13F01D002ABED9 /* ConstellationSprite.cpp */,
 				FFE526A81D13F01D002ABED9 /* ConstellationSprite.hpp */,
-				FF5D70D11D17D27200F05D2A /* notes.hpp */,
 				FFD605FC1D23C68A009304F8 /* infoLayer.cpp */,
 				FFD605FD1D23C68A009304F8 /* infoLayer.hpp */,
 				FF46782A1D24FFCA0037774D /* laderLayer.cpp */,
 				FF46782B1D24FFCA0037774D /* laderLayer.hpp */,
 				FF7B87EA1D2A445B00BE5C8F /* shopLayer.cpp */,
 				FF7B87EB1D2A445B00BE5C8F /* shopLayer.hpp */,
+				FF5D70D11D17D27200F05D2A /* notes.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -767,6 +770,7 @@
 				FF9657B41D2679E50070BB9B /* star_7_s.png in Resources */,
 				FF7B87E91D2A423F00BE5C8F /* shop.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
+				FF12D07A1D2BA3CA00E3C478 /* talkingBox_LL.png in Resources */,
 				FF968A331D1BCF0600643012 /* C4.png in Resources */,
 				FFD606081D23D501009304F8 /* info3.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,

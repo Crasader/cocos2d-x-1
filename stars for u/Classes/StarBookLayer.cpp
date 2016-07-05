@@ -175,7 +175,7 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
             if (bookMarkIndex==25)
             {
                 diary=Sprite::create("diary0.png");
-                diary->setPosition(bookSprite->getContentSize().width/4+35,bookSprite->getContentSize().height/2);
+                diary->setPosition(bookSprite->getContentSize().width/4+35,bookSprite->getContentSize().height/2+100);
                 this->addChild(diary,markIndex--);
             }
 
@@ -498,10 +498,21 @@ void StarBookLayer::startGame()
             
         case 25:
         {//梯子关
-    
-            
-           
+            bool firstTime=UserDefault::getInstance()->getBoolForKey("LADDER", false);
+            if (firstTime)
+            {
+                gsm->goLadderLayer(1, 1);
+                
+                UserDefault::getInstance()->setBoolForKey("LADDER", true);
+            }
+            else
+            {
+            //关卡信息
+                
             gsm->goLadderLayer(2, 2);
+            
+            }
+            
             
             break;
         }

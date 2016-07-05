@@ -522,11 +522,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/shopLayer.cpp"
-            timestampString = "489315900.225855"
+            timestampString = "489402912.168257"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55">
+            startingLineNumber = "82"
+            endingLineNumber = "82">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -536,11 +536,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/shopLayer.cpp"
-            timestampString = "489315900.225855"
+            timestampString = "489402912.168257"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "shopLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)"
             landmarkType = "5">
          </BreakpointContent>

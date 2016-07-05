@@ -8,7 +8,7 @@
 //
 
 
-/*
+
 //亲密值：点错星星降低亲密值，亲密值会触发孩子相关行为  userDefualt- RELATION
 
 //成长值： 通关增加孩子的成长值，影响孩子的成长，剧情的主线  userDef ualt- GROWTH
@@ -51,3 +51,11 @@ item1: 金牛    case 2
 10:天蝎
 11: 巨蟹
 */
+
+
+
+
+//成长相关参数
+int exam=UserDefault::getInstance()->getIntegerForKey("EXAM", 0);
+
+ int FRIENDS=UserDefault::getInstance()->getIntegerForKey("FRIENDS", 0);

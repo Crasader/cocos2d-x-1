@@ -32,10 +32,24 @@ public:
     //virtual void onEnter();
     virtual void onExit();
     
+    //item回调
+    void talkCallBack(Ref* pSender);
+    void examCallBack(Ref* pSender);
+    void friendsCallBack(Ref* pSender);
+    void  footballCallBack(Ref* pSender);
+    void  gumdamCallBack(Ref* pSender);
+    void  saintseiyaCallBack(Ref* pSender);
+    void  pcgamesCallBack(Ref* pSender);
+    
     
     EventListenerTouchOneByOne* lisetener;
     
-
+    Sprite* bg;
+    
+    int relation;
+    
+    
+    
 
 };
 
