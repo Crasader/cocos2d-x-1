@@ -37,17 +37,16 @@ public:
     void examCallBack(Ref* pSender);
     void friendsCallBack(Ref* pSender);
     void  footballCallBack(Ref* pSender);
-    void  gumdamCallBack(Ref* pSender);
-    void  saintseiyaCallBack(Ref* pSender);
-    void  pcgamesCallBack(Ref* pSender);
+    void familyCallBack(Ref* pSender);
+    
     
     
     EventListenerTouchOneByOne* lisetener;
     
     Sprite* bg;
     
-    int relation;
     
+   Label* pointLabel;
     
     
 
