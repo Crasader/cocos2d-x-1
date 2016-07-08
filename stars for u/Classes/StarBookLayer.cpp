@@ -141,6 +141,8 @@ bool StarBookLayer::init()
     menu->setPosition(0,0);
     this->addChild(menu,10);
     
+    
+      
         return  true;
 }
 
@@ -509,7 +511,10 @@ void StarBookLayer::startGame()
             {
             //关卡信息
                 
-            gsm->goLadderLayer(2, 2);
+                int wind=random(-5, 5);
+                int cloud=random(2, 5);
+                
+                gsm->goLadderLayer(wind, cloud);
             
             }
             

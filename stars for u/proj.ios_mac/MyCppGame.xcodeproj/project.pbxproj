@@ -61,6 +61,7 @@
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		FF0B9C851D0FBAB300F70473 /* randomStars.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF0B9C831D0FBAB300F70473 /* randomStars.cpp */; };
 		FF12D07A1D2BA3CA00E3C478 /* talkingBox_LL.png in Resources */ = {isa = PBXBuildFile; fileRef = FF12D0791D2BA3CA00E3C478 /* talkingBox_LL.png */; };
+		FF12D07F1D2CED8400E3C478 /* gameOverLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF12D07D1D2CED8400E3C478 /* gameOverLayer.cpp */; };
 		FF25AC881D193DA900EACC3C /* talkingBox.png in Resources */ = {isa = PBXBuildFile; fileRef = FF25AC871D193DA900EACC3C /* talkingBox.png */; };
 		FF25AC8A1D193FF900EACC3C /* talkingBox_L.png in Resources */ = {isa = PBXBuildFile; fileRef = FF25AC891D193FF900EACC3C /* talkingBox_L.png */; };
 		FF315F2D1D264F26008DD671 /* cloud_S.png in Resources */ = {isa = PBXBuildFile; fileRef = FF315F2C1D264F26008DD671 /* cloud_S.png */; };
@@ -233,6 +234,8 @@
 		FF0B9C831D0FBAB300F70473 /* randomStars.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = randomStars.cpp; sourceTree = "<group>"; };
 		FF0B9C841D0FBAB300F70473 /* randomStars.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = randomStars.hpp; sourceTree = "<group>"; };
 		FF12D0791D2BA3CA00E3C478 /* talkingBox_LL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = talkingBox_LL.png; path = ../Classes/talkingBox_LL.png; sourceTree = "<group>"; };
+		FF12D07D1D2CED8400E3C478 /* gameOverLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gameOverLayer.cpp; sourceTree = "<group>"; };
+		FF12D07E1D2CED8400E3C478 /* gameOverLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = gameOverLayer.hpp; sourceTree = "<group>"; };
 		FF25AC871D193DA900EACC3C /* talkingBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = talkingBox.png; sourceTree = "<group>"; };
 		FF25AC891D193FF900EACC3C /* talkingBox_L.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = talkingBox_L.png; sourceTree = "<group>"; };
 		FF315F2C1D264F26008DD671 /* cloud_S.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud_S.png; sourceTree = "<group>"; };
@@ -509,6 +512,8 @@
 				FF7B87EA1D2A445B00BE5C8F /* shopLayer.cpp */,
 				FF7B87EB1D2A445B00BE5C8F /* shopLayer.hpp */,
 				FF5D70D11D17D27200F05D2A /* notes.hpp */,
+				FF12D07D1D2CED8400E3C478 /* gameOverLayer.cpp */,
+				FF12D07E1D2CED8400E3C478 /* gameOverLayer.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -847,6 +852,7 @@
 				FF0B9C851D0FBAB300F70473 /* randomStars.cpp in Sources */,
 				FF44D7D41D0EC43100DC7ECC /* GameSceneManager.hpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				FF12D07F1D2CED8400E3C478 /* gameOverLayer.cpp in Sources */,
 				FFE5268E1D1288E5002ABED9 /* OpeningLayer.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				FF44D7D11D0EBFED00DC7ECC /* MenuLayer.cpp in Sources */,

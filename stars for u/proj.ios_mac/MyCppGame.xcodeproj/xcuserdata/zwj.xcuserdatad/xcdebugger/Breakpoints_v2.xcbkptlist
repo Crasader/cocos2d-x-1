@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/StarBookLayer.cpp"
-            timestampString = "489312964.689454"
+            timestampString = "489656820.591924"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "415"
-            endingLineNumber = "415"
+            startingLineNumber = "417"
+            endingLineNumber = "417"
             landmarkName = "StarBookLayer::setGetedConsent(int i)"
             landmarkType = "5">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/StarBookLayer.cpp"
-            timestampString = "489312964.689454"
+            timestampString = "489656820.591924"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "458"
-            endingLineNumber = "458"
+            startingLineNumber = "460"
+            endingLineNumber = "460"
             landmarkName = "StarBookLayer::startGame()"
             landmarkType = "5">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/StarBookLayer.cpp"
-            timestampString = "489312964.689454"
+            timestampString = "489656820.591924"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "464"
-            endingLineNumber = "464"
+            startingLineNumber = "466"
+            endingLineNumber = "466"
             landmarkName = "StarBookLayer::startGame()"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/StarBookLayer.cpp"
-            timestampString = "489312964.689454"
+            timestampString = "489656820.591924"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "555"
-            endingLineNumber = "555"
+            startingLineNumber = "560"
+            endingLineNumber = "560"
             landmarkName = "StarBookLayer::getAllgetedConsetn()"
             landmarkType = "5">
          </BreakpointContent>
@@ -250,13 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/StarBookLayer.cpp"
-            timestampString = "489312964.689454"
+            timestampString = "489656820.591924"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "533"
-            endingLineNumber = "533"
-            landmarkName = "StarBookLayer::getAllgetedConsetn()"
-            landmarkType = "5">
+            startingLineNumber = "538"
+            endingLineNumber = "538">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -282,11 +280,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/StarBookLayer.cpp"
-            timestampString = "489312964.689454"
+            timestampString = "489656820.591924"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "410"
-            endingLineNumber = "410"
+            startingLineNumber = "412"
+            endingLineNumber = "412"
             landmarkName = "StarBookLayer::setGetedConsent(int i)"
             landmarkType = "5">
          </BreakpointContent>
@@ -362,11 +360,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/StarBookLayer.cpp"
-            timestampString = "489312964.689454"
+            timestampString = "489656820.591924"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "397"
-            endingLineNumber = "397"
+            startingLineNumber = "399"
+            endingLineNumber = "399"
             landmarkName = "StarBookLayer::setGetedConsent(int i)"
             landmarkType = "5">
          </BreakpointContent>
@@ -378,11 +376,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/StarBookLayer.cpp"
-            timestampString = "489312964.689454"
+            timestampString = "489656820.591924"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "398"
-            endingLineNumber = "398"
+            startingLineNumber = "400"
+            endingLineNumber = "400"
             landmarkName = "StarBookLayer::setGetedConsent(int i)"
             landmarkType = "5">
          </BreakpointContent>
@@ -394,11 +392,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/StarBookLayer.cpp"
-            timestampString = "489312964.689454"
+            timestampString = "489656820.591924"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "478"
-            endingLineNumber = "478"
+            startingLineNumber = "480"
+            endingLineNumber = "480"
             landmarkName = "StarBookLayer::startGame()"
             landmarkType = "5">
          </BreakpointContent>
@@ -426,11 +424,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/StarBookLayer.cpp"
-            timestampString = "489312964.689454"
+            timestampString = "489656820.591924"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "494"
-            endingLineNumber = "494"
+            startingLineNumber = "496"
+            endingLineNumber = "496"
             landmarkName = "StarBookLayer::startGame()"
             landmarkType = "5">
          </BreakpointContent>
@@ -442,11 +440,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/StarBookLayer.cpp"
-            timestampString = "489312964.689454"
+            timestampString = "489656820.591924"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "495"
-            endingLineNumber = "495"
+            startingLineNumber = "497"
+            endingLineNumber = "497"
             landmarkName = "StarBookLayer::startGame()"
             landmarkType = "5">
          </BreakpointContent>
@@ -458,11 +456,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/laderLayer.cpp"
-            timestampString = "489058051.552461"
+            timestampString = "489656820.591924"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
             landmarkName = "laderLayer::update(float dt)"
             landmarkType = "5">
          </BreakpointContent>
@@ -474,11 +472,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/laderLayer.cpp"
-            timestampString = "489058051.552461"
+            timestampString = "489656820.591924"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
             landmarkName = "laderLayer::update(float dt)"
             landmarkType = "5">
          </BreakpointContent>
@@ -490,11 +488,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/laderLayer.cpp"
-            timestampString = "489058051.552461"
+            timestampString = "489656820.591924"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
+            startingLineNumber = "398"
+            endingLineNumber = "398"
             landmarkName = "laderLayer::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -506,11 +504,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/laderLayer.cpp"
-            timestampString = "489060070.7873"
+            timestampString = "489656820.591924"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "368"
-            endingLineNumber = "368"
+            startingLineNumber = "536"
+            endingLineNumber = "536"
             landmarkName = "laderLayer::onExit()"
             landmarkType = "5">
          </BreakpointContent>
@@ -558,6 +556,54 @@
             startingLineNumber = "296"
             endingLineNumber = "296"
             landmarkName = "shopLayer::examCallBack(cocos2d::Ref *pSender)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/laderLayer.cpp"
+            timestampString = "489485104.402293"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "laderLayer::init()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/laderLayer.cpp"
+            timestampString = "489656820.591924"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
+            landmarkName = "laderLayer::fail()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/gameOverLayer.cpp"
+            timestampString = "489664497.052628"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "gameOverLayer::labelOverCallback()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

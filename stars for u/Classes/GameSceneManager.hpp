@@ -26,6 +26,7 @@ public:
     void goSettingLayer();
     void goinfoLayer(int starNum,int shinStarNum,int collNum);
     void goLadderLayer(int windNum, int cloudNum);
+    void goGameOverLayer();
     
   
 

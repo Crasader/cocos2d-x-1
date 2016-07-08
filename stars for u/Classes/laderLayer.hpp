@@ -50,8 +50,10 @@ public:
     
     laderLayer(int windNum, int cloudNum);
     
+    void win();
+    void fail();
     
-
+    
     
 
 };

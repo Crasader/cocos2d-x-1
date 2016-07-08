@@ -69,7 +69,9 @@ bool laderLayer::init()
     
     
    star=Sprite::create("star_L.png");
-    star->setPosition(400,400);
+    int starY=random(500, 600);
+    int starX=random(200, 700);
+    star->setPosition(starX,starY);
     this->addChild(star);
     
 
@@ -83,33 +85,59 @@ bool laderLayer::init()
     this->addChild(menu);
     
     
+    //风力提示
+    char windBuf[128];
+    char *dirBuf;
+    sprintf(windBuf, "Wind:%d Level",abs(wind));
+   
+    if (wind<0)
+    {
+        dirBuf="WindDirection: left";
+    }
+    if (wind>0)
+    {
+        dirBuf="WindDirection: right";
+    }
+    
+    //风力
+    auto windLabel=Label::createWithSystemFont(windBuf, "Marker Felt.ttf", 40);
+    windLabel->setColor(Color3B::RED);
+    windLabel->setPosition(windLabel->getContentSize().width/2+5,size.height-pasueButton->getContentSize().height-50);
+    this->addChild(windLabel);
+    
+    //风向
+    auto windDirLabel=Label::createWithSystemFont(dirBuf, "Marker Felt.ttf", 40);
+    windDirLabel->setColor(Color3B::RED);
+    windDirLabel->setPosition(windDirLabel->getContentSize().width/2+5,size.height-pasueButton->getContentSize().height-100);
+    this->addChild(windDirLabel);
+
     //随机出现的云
-    auto cloud_s=Sprite::create("cloud_S.png");
-    cloud_s->setTag(1000);
-    float x=random(100, 800);
-    float y=random(250, 500);
-    cloud_s->setPosition(x,y);
-    this->addChild(cloud_s);
-    
-    b2BodyDef cloudBodyDef;
-    cloudBodyDef.type=b2_dynamicBody;
-    cloudBodyDef.position.Set(x/PTM_RATIO, y/PTM_RATIO);
-    
-    b2Body* cloudBody=world->CreateBody(&cloudBodyDef);
-    cloudBody->SetUserData(cloud_s);
-    cloudBody->ApplyLinearImpulse(b2Vec2(-1, 0), cloudBody->GetPosition(), true);
-    cloudBody->SetGravityScale(0);
-    
-    b2PolygonShape cloudBox;
-    cloudBox.SetAsBox(2, 1);
-    
-    b2FixtureDef cloudFix;
-    cloudFix.shape=&cloudBox;
-    cloudFix.density=50;
-    cloudFix.friction=0.1;
-    cloudFix.restitution=0;
-    cloudBody->CreateFixture(&cloudFix);
-    
+    for (int i=0; i<cloud; i++)
+    {
+        auto cloud_s=Sprite::create("cloud_S.png");
+        cloud_s->setTag(1000);
+        float x=random(100, 800);
+        float y=random(250, 500);
+        cloud_s->setPosition(x,y);
+        this->addChild(cloud_s);
+        b2BodyDef cloudBodyDef;
+        cloudBodyDef.type=b2_dynamicBody;
+        cloudBodyDef.position.Set(x/PTM_RATIO, y/PTM_RATIO);
+        b2Body* cloudBody=world->CreateBody(&cloudBodyDef);
+        cloudBody->SetUserData(cloud_s);
+        int Impluse=random(-2, 2);
+        cloudBody->ApplyLinearImpulse(b2Vec2(Impluse, 0), cloudBody->GetPosition(), true);
+        cloudBody->SetGravityScale(0);
+        b2PolygonShape cloudBox;
+        cloudBox.SetAsBox(2, 1);
+        b2FixtureDef cloudFix;
+        cloudFix.shape=&cloudBox;
+        cloudFix.density=50;
+        cloudFix.friction=0.1;
+        cloudFix.restitution=0;
+        cloudBody->CreateFixture(&cloudFix);
+
+    }
     
    
     
@@ -121,8 +149,19 @@ bool laderLayer::init()
 void laderLayer::goBackCallBack(cocos2d::Ref *pSender)
 {
 
+    //结束游戏
+    int gameOver=UserDefault::getInstance()->getIntegerForKey("GROWTH", 0);
+    if (gameOver>=2)
+    {
+        gsm->goGameOverLayer();
+        UserDefault::getInstance()->setIntegerForKey("GROWTH", 0);
+        
+        
+    }
+else
+{
     gsm->goBookLayer();
-
+}
 }
 //box2d的update
 void laderLayer::update(float dt)
@@ -144,24 +183,20 @@ void laderLayer::update(float dt)
                                       PTM_RATIO, b->GetPosition().y * PTM_RATIO) );
            
            // sprite->setRotation( -1 * CC_RADIANS_TO_DEGREES(b->GetAngle()) );
-            
-            if (sprite->getPosition().y<=sprite->getContentSize().height)
+             //失败判断，有两个的位置低于箱子高度
+            if (sprite->getPosition().y<=sprite->getContentSize().height/2)
             {
                 i1++;
-                log("i=====%d",i1);
+              
             }
-            if (i1>=2)
-            {
-                this->pause();
-                log("falie");
-            }
-        
-           
-            
-            
-        }
+                    }
     }
-    
+    //失败
+    if (i1>=2)
+    {
+        this->pause();
+        fail();
+    }
     
     //胜利判断
     int i =k;
@@ -169,11 +204,11 @@ void laderLayer::update(float dt)
         
         while(i>1)
         {
-            
+            //每个箱子都想接
             if (this->getChildByTag(i)->getBoundingBox().intersectsRect(this->getChildByTag(i-1)->getBoundingBox()))
             {
                 index++;
-                log("i=%d",index);
+               
                 
             }
             i--;
@@ -188,23 +223,137 @@ void laderLayer::update(float dt)
         if (this->getChildByTag(k)->getBoundingBox().intersectsRect(star->getBoundingBox()))
         {
             this->pause();
+            win();
+            
+            
             
         }
         
     }
    
+
+}
+//fail
+
+void laderLayer::fail()
+{
+
+    auto size=Director::getInstance()->getVisibleSize();
+    int growth=UserDefault::getInstance()->getIntegerForKey("GROWTH", 0);
+    int relation=UserDefault::getInstance()->getIntegerForKey("RELATION", 0);
+    growth+=1;
+    
+    UserDefault::getInstance()->setIntegerForKey("GROWTH", growth);
     
     
+    //背景
+    auto bookSprite=Sprite::create("book_s.png");
+    bookSprite->setPosition(size.width/2,size.height/2);
+    bookSprite->setScale(0, 0);
+    this->addChild(bookSprite,1000);
+    
+    //label
+    char buf[128]={0};
+    sprintf(buf, "Growth:%d",growth);
+    auto growthLabel=Label::createWithSystemFont(buf, "Marker Felt.ttf", 40);
+    growthLabel->setColor(Color3B::RED);
+    growthLabel->setPosition(Point(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height-100));
+    bookSprite->addChild(growthLabel);
+    
+    
+    sprintf(buf, "Relation:%d",relation);
+    auto relationLabel=Label::createWithSystemFont(buf, "Marker Felt.ttf", 40);
+    relationLabel->setColor(Color3B::RED);
+    relationLabel->setPosition(Point(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height-150));
+    bookSprite->addChild(relationLabel);
+    
+    //弹出效果
+    bookSprite->runAction(Sequence::create(ScaleTo::create(0, 0),ScaleTo::create(0.1, 0.2),ScaleTo::create(0.1, 0.5),ScaleTo::create(0.1, 0.8), ScaleTo::create(0.1, 1),NULL));
+    
+    
+    
+    //确定按钮
+    auto okLabel=Label::createWithSystemFont("OK", "Marker Felt.ttf", 40);
+    okLabel->setColor(Color3B::RED);
+    auto okButton=MenuItemLabel::create(okLabel,CC_CALLBACK_1(laderLayer::goBackCallBack, this));
+    okButton->setPosition(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height/4);
+    auto menu=Menu::create(okButton, NULL);
+    menu->setPosition(0,0);
+    bookSprite->addChild(menu);
+    
+    //失败提示
+    auto failLabel=Label::createWithSystemFont("The star is to faraway..\n Maybe,\n I am to old to get him \n a star...", "Marker Felt.ttf", 25);
+     failLabel->setColor(Color3B::RED);
+    failLabel->setPosition(Point(3*bookSprite->getContentSize().width/4+10,bookSprite->getContentSize().height-100));
+    failLabel->runAction(Sequence::create(FadeOut::create(0.0),DelayTime::create(1.0),FadeIn::create(2.0f), NULL));
+    bookSprite->addChild(failLabel);
     
     
     
 }
 
+//win
+void laderLayer::win()
+{
+    auto size=Director::getInstance()->getVisibleSize();
+    int growth=UserDefault::getInstance()->getIntegerForKey("GROWTH", 0);
+    int relation=UserDefault::getInstance()->getIntegerForKey("RELATION", 0);
+    
+    growth++;
+    relation+=5;
+    
+    UserDefault::getInstance()->setIntegerForKey("GROWTH", growth);
+    UserDefault::getInstance()->setIntegerForKey("RELATION", relation);
+    
+    //背景
+    auto bookSprite=Sprite::create("book_s.png");
+    bookSprite->setPosition(size.width/2,size.height/2);
+    bookSprite->setScale(0, 0);
+    this->addChild(bookSprite,1000);
+    
+    //label
+    char buf[128];
+    sprintf(buf, "Growth:%d",growth);
+    auto growthLabel=Label::createWithSystemFont(buf, "Marker Felt.ttf", 40);
+    growthLabel->setColor(Color3B::RED);
+    growthLabel->setPosition(Point(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height-100));
+    bookSprite->addChild(growthLabel);
+    
+    sprintf(buf, "Relation:%d",relation);
+    auto relationLabel=Label::createWithSystemFont(buf, "Marker Felt.ttf", 40);
+    relationLabel->setColor(Color3B::RED);
+    relationLabel->setPosition(Point(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height-150));
+    bookSprite->addChild(relationLabel);
+    
+    //弹出效果
+    bookSprite->runAction(Sequence::create(ScaleTo::create(0, 0),ScaleTo::create(0.1, 0.2),ScaleTo::create(0.1, 0.5),ScaleTo::create(0.1, 0.8), ScaleTo::create(0.1, 1),NULL));
+    
+    
+    
+    //确定按钮
+    auto okLabel=Label::createWithSystemFont("OK", "Marker Felt.ttf", 40);
+    okLabel->setColor(Color3B::RED);
+    auto okButton=MenuItemLabel::create(okLabel,CC_CALLBACK_1(laderLayer::goBackCallBack, this));
+    okButton->setPosition(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height/4);
+    auto menu=Menu::create(okButton, NULL);
+    menu->setPosition(0,0);
+    bookSprite->addChild(menu);
+    
+    
+    //win提示
+    auto winLabel=Label::createWithSystemFont("Maybe,\n I am still strong enough \nto get him a star!", "Marker Felt.ttf", 25);
+    winLabel->setColor(Color3B::RED);
+    winLabel->setPosition(Point(3*bookSprite->getContentSize().width/4+10,bookSprite->getContentSize().height-100));
+    winLabel->runAction(Sequence::create(FadeOut::create(0.0),DelayTime::create(1.0),FadeIn::create(2.0f), NULL));
+    bookSprite->addChild(winLabel);
+    
 
 
 
+}
 
-//
+
+//触摸
 bool laderLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
 {
     
@@ -221,6 +370,11 @@ bool laderLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
     ladder->setPosition(touch->getLocation());
     ladder->setTag(k);
     this->addChild(ladder);
+    
+    
+
+    
+    
     
     
     
@@ -273,16 +427,30 @@ void laderLayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
     
     bodyVector.push_back(body);
     //5层以上有随机外力
-    if (k>=5)
+    if (k>=5&&k<8)
     {
         //引入风向
         body->ApplyLinearImpulse(b2Vec2(1, 0), body->GetPosition(), true);
-        int x=random(20,30)*wind;
+        int x=random(50,60)*wind;
         log("x=%d",x);
         bodyVector.at(k/2)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(k/2)->GetPosition(), true);
         bodyVector.at(k/2-1)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(k/2-1)->GetPosition(), true);
         bodyVector.at(k/2+1)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(k/2+1)->GetPosition(), true);
     }
+    if (k>=8)
+    {
+        //引入风向
+        body->ApplyLinearImpulse(b2Vec2(1, 0), body->GetPosition(), true);
+        int x=random(60,80)*wind;
+        log("x=%d",x);
+        bodyVector.at(k/2)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(k/2)->GetPosition(), true);
+        bodyVector.at(k/2-1)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(k/2-1)->GetPosition(), true);
+        bodyVector.at(k/2+1)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(k/2+1)->GetPosition(), true);
+        bodyVector.at(1)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(1)->GetPosition(), true);
+        bodyVector.at(2)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(2)->GetPosition(), true);
+        bodyVector.at(3)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(3)->GetPosition(), true);
+    }
+
     
     body->SetUserData(this->getChildByTag(k));
     
@@ -368,3 +536,5 @@ void laderLayer::onExit()
   
 
 }
+
+
