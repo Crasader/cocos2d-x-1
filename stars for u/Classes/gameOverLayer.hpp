@@ -40,9 +40,9 @@ public:
     void okCallBack();
     int index=0;
     void labelOverCallback();
-  
+    void labelOverCallback2();
     
     //
-
+   Size size;
 };
 #endif /* gameOverLayer_hpp */

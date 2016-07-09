@@ -8,6 +8,8 @@
 
 #include "gameOverLayer.hpp"
 #include <string>
+#include <algorithm>
+
 
 bool gameOverLayer::init()
 {
@@ -16,9 +18,13 @@ bool gameOverLayer::init()
     {
         return  false;
     }
-    auto size=Director::getInstance()->getVisibleSize();
+    size=Director::getInstance()->getVisibleSize();
     
-    labelString="Time flies. Someday, I will leave.\n ";
+    
+    
+    
+    
+    labelString="Time flies. Someday, I will leave.\n I am not rich , I am not famous.\n But I gave you all I have.";
     labelStr="";
      stringLabel=Label::createWithSystemFont(labelStr.c_str(), "Marker Felt.ttf", 40);
     
@@ -27,10 +33,10 @@ bool gameOverLayer::init()
     
     this->addChild(stringLabel);
     
-    this->schedule(schedule_selector(gameOverLayer::labelUpdate), 0.1);
+    this->schedule(schedule_selector(gameOverLayer::labelUpdate), 0.05);
     
     //延迟5秒，字幕放完，回调下一个画面
-    stringLabel->runAction(Sequence::create(DelayTime::create(5.0),CallFunc::create(CC_CALLBACK_0(gameOverLayer::okCallBack, this)), NULL));
+    stringLabel->runAction(Sequence::create(DelayTime::create(10.0),CallFunc::create(CC_CALLBACK_0(gameOverLayer::okCallBack, this)), NULL));
     
     
     
@@ -50,6 +56,8 @@ void gameOverLayer::labelUpdate(float dt)
     
     if (labelStr==labelString)
     {
+        //清零方便其他调用
+        strIndex=0;
         unschedule(schedule_selector(gameOverLayer::labelUpdate));
         
     }
@@ -63,22 +71,70 @@ void gameOverLayer::labelUpdate(float dt)
 
     }
 }
-//ok回调
+//字幕回调
 void gameOverLayer::okCallBack()
 {
-    
-stringLabel->runAction(Sequence::create(FadeOut::create(2.0),RemoveSelf::create(),CallFunc::create(CC_CALLBACK_0(gameOverLayer::labelOverCallback, this)), NULL));
+    //
+stringLabel->runAction(Sequence::create(FadeOut::create(2.0),CallFunc::create(CC_CALLBACK_0(gameOverLayer::labelOverCallback, this)), NULL));
     
     
     
 }
 
+//字幕结束回调
 void gameOverLayer::labelOverCallback()
 {
     //获取所有数据
     int growth=UserDefault::getInstance()->getIntegerForKey("GROWTH", 0);
     int relation=UserDefault::getInstance()->getIntegerForKey("RELATION", 0);
     int age=UserDefault::getInstance()->getIntegerForKey("age", 0);
+    
+    int EXAM=UserDefault::getInstance()->getIntegerForKey("EXAM", 0);
+    int FAMILY=UserDefault::getInstance()->getIntegerForKey("FAMILY", 0);
+    int HOBBY=UserDefault::getInstance()->getIntegerForKey("HOBBY", 0);
+    int FRIENDS=UserDefault::getInstance()->getIntegerForKey("FRIENDS", 0);
+    
+    
+
+    //arr排序
+    std::vector<int >arr;
+    arr.push_back(EXAM);
+    arr.push_back(FAMILY);
+    arr.push_back(HOBBY);
+    arr.push_back(FRIENDS);
+    std::sort(arr.begin(), arr.end());
+   
+    
+    
+    if (arr[3]==EXAM)
+    {
+        labelString="He becomes a PHD.";
+    }
+    else if(arr[3]==FAMILY)
+    {
+         labelString="With all the talks we had,\nhe think famliy is the most important.\nHe stay home, behind me, living a sipmple life. ";
+    }
+    else if (arr[3]==HOBBY)
+    {
+        labelString="He becomes  a  football player.";
+    
+    }
+    else if (arr[3]==FRIENDS)
+    {
+    
+       labelString="He becomes  a  salesman.";
+    }
+    stringLabel->runAction(FadeIn::create(0));
+    stringLabel->setDimensions(200, 100);
+    stringLabel->setPosition(size.width/4,size.height/2);
+    this->schedule(schedule_selector(gameOverLayer::labelUpdate), 0.05);
+    
+   
+
+    
+    
+    
+    
     
     
     //创建12星座的Spirte并设置不可见
@@ -176,9 +232,9 @@ void gameOverLayer::labelOverCallback()
             conllenVecetor.at(i)->setVisible(true);
             
             conllenVecetor.at(i)->setPosition(Point(580+k*110,520-j*110));
-            conllenVecetor.at(i)->runAction(Sequence::create(ScaleTo::create(0.1, 0.4),
-                                                             ScaleTo::create(0.1, 0.7),
-                                                             ScaleTo::create(0.1, 1.0),
+            conllenVecetor.at(i)->runAction(Sequence::create(ScaleTo::create(0.15, 0.4),
+                                                             ScaleTo::create(0.15, 0.7),
+                                                             ScaleTo::create(0.15, 1.0),
                                                              NULL));
             k++;
             
@@ -195,6 +251,20 @@ void gameOverLayer::labelOverCallback()
         
     }
     
+    auto sprite=Sprite::create();
+    sprite->runAction(Sequence::create(DelayTime::create(5.0f),CallFunc::create(CC_CALLBACK_0(gameOverLayer::labelOverCallback2, this)), NULL));
+
+}
+
+
+void gameOverLayer::labelOverCallback2()
+{
+
+
+
+
+
+
 
 
 }
