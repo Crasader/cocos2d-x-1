@@ -86,7 +86,7 @@ bool infoLayer::init()
     
     
     //暂停按钮
-    auto pasueLabel=Label::createWithSystemFont("Pause", "Marker Felt.ttf", 40);
+    auto pasueLabel=Label::createWithTTF("退出", "fonts/china.ttf" ,40);
     pasueLabel->setColor(Color3B::RED);
     auto pasueButton=MenuItemLabel::create(pasueLabel,CC_CALLBACK_1(infoLayer::goBackCallBack, this));
     pasueButton->setPosition(pasueButton->getContentSize().width/2+5,size.height-pasueButton->getContentSize().height);

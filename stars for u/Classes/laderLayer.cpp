@@ -76,7 +76,10 @@ bool laderLayer::init()
     
 
     //zanting
-    auto pasueLabel=Label::createWithSystemFont("Pause", "Marker Felt.ttf", 40);
+    //auto pasueLabel=Label::createWithSystemFont("Pause", "Marker Felt.ttf", 40);
+    auto pasueLabel=Label::createWithTTF("暂停", "fonts/china.ttf", 40);
+
+
     pasueLabel->setColor(Color3B::RED);
     auto pasueButton=MenuItemLabel::create(pasueLabel,CC_CALLBACK_1(laderLayer::goBackCallBack, this));
     pasueButton->setPosition(pasueButton->getContentSize().width/2+5,size.height-pasueButton->getContentSize().height);
@@ -88,25 +91,25 @@ bool laderLayer::init()
     //风力提示
     char windBuf[128];
     char *dirBuf;
-    sprintf(windBuf, "Wind:%d Level",abs(wind));
+    sprintf(windBuf, "风力:%d 级",abs(wind));
    
     if (wind<0)
     {
-        dirBuf="WindDirection: left";
+        dirBuf="风向: 左";
     }
     if (wind>0)
     {
-        dirBuf="WindDirection: right";
+        dirBuf="风向: 右";
     }
     
     //风力
-    auto windLabel=Label::createWithSystemFont(windBuf, "Marker Felt.ttf", 40);
+    auto windLabel=Label::createWithTTF(windBuf, "fonts/china.ttf", 40);
     windLabel->setColor(Color3B::RED);
     windLabel->setPosition(windLabel->getContentSize().width/2+5,size.height-pasueButton->getContentSize().height-50);
     this->addChild(windLabel);
     
     //风向
-    auto windDirLabel=Label::createWithSystemFont(dirBuf, "Marker Felt.ttf", 40);
+    auto windDirLabel=Label::createWithTTF(dirBuf, "fonts/china.ttf", 40);
     windDirLabel->setColor(Color3B::RED);
     windDirLabel->setPosition(windDirLabel->getContentSize().width/2+5,size.height-pasueButton->getContentSize().height-100);
     this->addChild(windDirLabel);
@@ -254,15 +257,15 @@ void laderLayer::fail()
     
     //label
     char buf[128]={0};
-    sprintf(buf, "Growth:%d",growth);
-    auto growthLabel=Label::createWithSystemFont(buf, "Marker Felt.ttf", 40);
+    sprintf(buf, "成长值:%d",growth);
+    auto growthLabel=Label::createWithTTF(buf, "fonts/china.ttf", 40);
     growthLabel->setColor(Color3B::RED);
     growthLabel->setPosition(Point(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height-100));
     bookSprite->addChild(growthLabel);
     
     
-    sprintf(buf, "Relation:%d",relation);
-    auto relationLabel=Label::createWithSystemFont(buf, "Marker Felt.ttf", 40);
+    sprintf(buf, "亲密值:%d",relation);
+    auto relationLabel=Label::createWithTTF(buf, "fonts/china.ttf", 40);
     relationLabel->setColor(Color3B::RED);
     relationLabel->setPosition(Point(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height-150));
     bookSprite->addChild(relationLabel);
@@ -282,10 +285,10 @@ void laderLayer::fail()
     bookSprite->addChild(menu);
     
     //失败提示
-    auto failLabel=Label::createWithSystemFont("The star is to faraway..\n Maybe,\n I am to old to get him \n a star...", "Marker Felt.ttf", 25);
+    auto failLabel=Label::createWithTTF("看来我已经老了。。", "fonts/china.ttf", 25);
      failLabel->setColor(Color3B::RED);
     failLabel->setPosition(Point(3*bookSprite->getContentSize().width/4+10,bookSprite->getContentSize().height-100));
-    failLabel->runAction(Sequence::create(FadeOut::create(0.0),DelayTime::create(1.0),FadeIn::create(2.0f), NULL));
+    failLabel->runAction(Sequence::create(FadeOut::create(0.0),DelayTime::create(0.50),FadeIn::create(2.0f), NULL));
     bookSprite->addChild(failLabel);
     
     
@@ -313,14 +316,14 @@ void laderLayer::win()
     
     //label
     char buf[128];
-    sprintf(buf, "Growth:%d",growth);
-    auto growthLabel=Label::createWithSystemFont(buf, "Marker Felt.ttf", 40);
+    sprintf(buf, "成长值:%d",growth);
+    auto growthLabel=Label::createWithTTF(buf, "fonts/china.ttf", 40);
     growthLabel->setColor(Color3B::RED);
     growthLabel->setPosition(Point(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height-100));
     bookSprite->addChild(growthLabel);
     
-    sprintf(buf, "Relation:%d",relation);
-    auto relationLabel=Label::createWithSystemFont(buf, "Marker Felt.ttf", 40);
+    sprintf(buf, "亲密值:%d",relation);
+    auto relationLabel=Label::createWithTTF(buf, "fonts/china.ttf", 40);
     relationLabel->setColor(Color3B::RED);
     relationLabel->setPosition(Point(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height-150));
     bookSprite->addChild(relationLabel);
@@ -341,7 +344,7 @@ void laderLayer::win()
     
     
     //win提示
-    auto winLabel=Label::createWithSystemFont("Maybe,\n I am still strong enough \nto get him a star!", "Marker Felt.ttf", 25);
+    auto winLabel=Label::createWithTTF("看来我还可以为他做点什么！", "fonts/china.ttf", 25);
     winLabel->setColor(Color3B::RED);
     winLabel->setPosition(Point(3*bookSprite->getContentSize().width/4+10,bookSprite->getContentSize().height-100));
     winLabel->runAction(Sequence::create(FadeOut::create(0.0),DelayTime::create(1.0),FadeIn::create(2.0f), NULL));

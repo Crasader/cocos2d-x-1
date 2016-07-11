@@ -92,8 +92,8 @@ bool MenuLayer::init()
     talkingBox->setPosition(370,80);
     this->addChild(talkingBox,4);
 
-     talkingString="i want that one,dad";
-    talkingLabel=Label::createWithSystemFont("", "Marker Felt.ttf", 25);
+     talkingString="老爸，我要那个星星！";
+    talkingLabel=Label::createWithTTF("", "fonts/china.ttf", 25);
     talkingLabel->setPosition(talkingBox->getContentSize().width/2,talkingBox->getContentSize().height/3);
     talkingLabel->setColor(Color3B::WHITE);
     talkingBox->addChild(talkingLabel,3);
@@ -106,7 +106,7 @@ bool MenuLayer::init()
     
     
 //暂停按钮
-    auto pasueLabel=Label::createWithSystemFont("Pause", "Marker Felt.ttf", 40);
+    auto pasueLabel=Label::createWithTTF("退出", "fonts/china.ttf", 40);
     pasueLabel->setColor(Color3B::RED);
     auto pasueButton=MenuItemLabel::create(pasueLabel,CC_CALLBACK_1(MenuLayer::goBackCallBack, this));
     pasueButton->setPosition(pasueButton->getContentSize().width/2+5,size.height-pasueButton->getContentSize().height);
@@ -203,7 +203,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
             
             
             //错误提示效果
-            talkingString="no,not that one,dad~";
+            talkingString="不是那个～";
             talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
             auto act1=ScaleTo::create(0.3, 2.5);
             auto act2=ScaleTo::create(0.3, 1.5);
@@ -248,7 +248,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                 {
                     case 1:  //baiyang
                     {  //提示信息
-                        talkingString="yeap, we get the Aries!";
+                        talkingString="yeap,白羊座！";
                         talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
                         
                         
@@ -265,7 +265,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                         
                 }
                     case 2:  //jinniu
-                    {talkingString="yeap, we get the Taurus!";
+                    {talkingString="yeap, 金牛座！";
                         talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
                         
                         
@@ -281,7 +281,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                         break;
                     }
                     case 3:  //shuangzi
-                        talkingString="yeap, we get the Gemini!";
+                        talkingString="yeap, 双子座！";
                         talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
                         
                         for (int i=0; i<=15; i++)
@@ -293,7 +293,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                         
                         
                     case 4:  //shuangyu
-                        talkingString="yeap, we get the Pisces!";
+                        talkingString="yeap, 双鱼座！";
                         talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
                         
                         for (int i=0; i<=18; i++)
@@ -304,7 +304,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                         
                         
                     case 5:  //mojie
-                        talkingString="yeap, we get the Capricorn!";
+                        talkingString="yeap, 摩羯座！";
                         talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
                         
                         for (int i=0; i<=10; i++)
@@ -317,7 +317,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                         
                         
                     case 6:  //chunv
-                        talkingString="yeap, we get the Virgo!";
+                        talkingString="yeap, 处女座！";
                         talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
                         for (int i=0; i<=13; i++)
                         {
@@ -331,7 +331,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                         
                         
                     case 7:  //sheshou
-                        talkingString="yeap, we get the Sagittarius!";
+                        talkingString="yeap, 射手座！";
                         talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
                         
                         
@@ -343,7 +343,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                         
                         
                     case 8:  //shuiping
-                        talkingString="yeap, we get the Aquarius!";
+                        talkingString="yeap, 水瓶座！";
                         talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
                         
                         for (int i=0; i<=14; i++)
@@ -354,7 +354,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                         
                         
                     case 9:  //tianping
-                        talkingString="yeap, we get the Libra!";
+                        talkingString="yeap, 天平座！";
                         talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
                         for (int i=0; i<=7; i++)
                         {
@@ -364,7 +364,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                         
                         
                     case 10:  //shizi
-                        talkingString="yeap, we get the Leo!";
+                        talkingString="yeap, 狮子座！";
                         talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
                         
                         for (int i=0; i<=10; i++)
@@ -375,7 +375,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                         
                         
                     case 11:  //tianxie
-                        talkingString="yeap, we get the Scorpio!";
+                        talkingString="yeap, 天蝎座！";
                         talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
                         for (int i=0; i<=4; i++)
                         {
@@ -385,7 +385,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                         
                         
                     case 12:  //juxie
-                        talkingString="yeap, we get the Cancer!";
+                        talkingString="yeap, 巨蟹座！";
                         talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
                         
                         
@@ -655,22 +655,22 @@ void MenuLayer::timeOver()
     
     //分值
     char scoreBuf[128];
-    sprintf(scoreBuf, "We get %d Stars!",score);
+    sprintf(scoreBuf, "摘到了 %d 颗星星!",score);
     
-    auto scoreLabel=Label::createWithSystemFont(scoreBuf, "Marker Felt.ttf", 30);
+    auto scoreLabel=Label::createWithTTF(scoreBuf, "fonts/china.ttf", 30);
     scoreLabel->setColor(Color3B::RED);
     scoreLabel->setPosition(Point(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height-50));
     bookSprite->addChild(scoreLabel);
     
     
-     sprintf(scoreBuf, "Relation %d ",Relation);
-    auto relationLabel=Label::createWithSystemFont(scoreBuf, "Marker Felt.ttf", 30);
+     sprintf(scoreBuf, "亲密值： %d ",Relation);
+    auto relationLabel=Label::createWithTTF(scoreBuf, "fonts/china.ttf", 30);
     relationLabel->setColor(Color3B::RED);
     relationLabel->setPosition(Point(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height-50-50));
     bookSprite->addChild(relationLabel);
     
-    sprintf(scoreBuf, "Growth %d ",growth);
-    auto growtLabel=Label::createWithSystemFont(scoreBuf, "Marker Felt.ttf", 30);
+    sprintf(scoreBuf, "成长值： %d ",growth);
+    auto growtLabel=Label::createWithTTF(scoreBuf, "fonts/china.ttf", 30);
     growtLabel->setColor(Color3B::RED);
     growtLabel->setPosition(Point(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height-50-50-50));
     bookSprite->addChild(growtLabel);

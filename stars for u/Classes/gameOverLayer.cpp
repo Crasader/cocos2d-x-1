@@ -24,16 +24,17 @@ bool gameOverLayer::init()
     
     
     
-    labelString="Time flies. Someday, I will leave.\n I am not rich , I am not famous.\n But I gave you all I have.";
+   // labelString="Time flies. Someday, I will leave.\n I am not rich , I am not famous.\n But I gave you all my love.";
+    labelString="时光流逝。总有一天我会离去。\n虽然，我并不富裕，\n也没有权力，\n但我会把我所有的爱都给你。";
     labelStr="";
-     stringLabel=Label::createWithSystemFont(labelStr.c_str(), "Marker Felt.ttf", 40);
+     stringLabel=Label::createWithTTF(labelStr.c_str(), "fonts/china.ttf", 40);
     
     stringLabel->setColor(Color3B::RED);
     stringLabel->setPosition(size.width/2,size.height/2);
     
     this->addChild(stringLabel);
     
-    this->schedule(schedule_selector(gameOverLayer::labelUpdate), 0.05);
+    this->schedule(schedule_selector(gameOverLayer::labelUpdate), 0.03);
     
     //延迟5秒，字幕放完，回调下一个画面
     stringLabel->runAction(Sequence::create(DelayTime::create(10.0),CallFunc::create(CC_CALLBACK_0(gameOverLayer::okCallBack, this)), NULL));
@@ -105,27 +106,209 @@ void gameOverLayer::labelOverCallback()
     std::sort(arr.begin(), arr.end());
    
     
+    //
+    std::string famliyStr1="虽然他很忙，但是他每周都回回来看我。我们经常去看夜空中的星星。";
+    std::string famliyStr2="虽然我一直告诉他家庭的重要性，但是，他好像还没明白。自从他工作以后，我们很少见面。";
+    std::string hobbyStr1="空闲的时候，他会摆弄他的电子产品，那是他的爱好。有个喜欢的东西真好啊！";
+    std::string hobbyStr2="他好像从来没提起过他的业余爱好。我不是给他灌输了太多学习的重要性？希望他找到自己真正喜欢的东西。";
     
+    std::string examStr1="他空闲的时候仍然会看书，他说活到老学到老。 看来儿时的教育还是对他相当有影响的。";
+    std::string examStr2="虽然他小的时候我经常跟他讲学习的重要性，但是现在看来他好像没怎么听进去。";
+    
+    std::string friendsStr1="他身边有一群要好的朋友。他们都很喜欢和他相处。";
+    std::string friendsStr2="但是他总是孤身一人。或许他小的时候应该多跟他聊聊与他人交往方面的。";
+    
+    //学习第一
     if (arr[3]==EXAM)
     {
-        labelString="He becomes a PHD.";
+        labelString="他的梦想实现了，他成了一名大学教授。";
+        
+        if (arr[2]==FAMILY)
+        {
+            if (FAMILY>=10)
+            {
+                labelString+=famliyStr1;
+            }
+            else
+            {
+            labelString+=famliyStr2;
+            }
+            
+        }
+        if (arr[2]==HOBBY)
+        {
+            if (HOBBY>=10)
+            {
+                labelString+=hobbyStr1;
+            }
+            else
+            {
+                labelString+=hobbyStr2;
+            }
+            
+        }
+        if (arr[2]==FRIENDS)
+        {
+            if (FRIENDS>=10)
+            {
+                labelString+=friendsStr1;
+            }
+            else
+            {
+             labelString+=famliyStr2;
+            }
+            
+        }
+        
     }
+    
+       //家庭第一
     else if(arr[3]==FAMILY)
     {
-         labelString="With all the talks we had,\nhe think famliy is the most important.\nHe stay home, behind me, living a sipmple life. ";
+         labelString="他在外漂泊了几年之后，他仍然觉得家庭是最重要的。他回到了故乡，过着和我一样的生活。";
+        
+        if (arr[2]==EXAM)
+        {
+            if (EXAM>=10)
+            {
+              labelString+=examStr1;
+            }
+            else
+            {
+            
+            labelString+=examStr2;
+                
+            }
+            
+        }
+        if (arr[2]==HOBBY)
+        {
+            if (HOBBY>=10)
+            {
+               labelString+=hobbyStr1;
+            }
+            else
+            {
+             labelString+=hobbyStr2;
+            
+            }
+            
+        }
+        if (arr[2]==FRIENDS)
+        {
+            if (FRIENDS>=10)
+            {
+                labelString+=famliyStr1;
+            }
+            else
+            {
+             labelString+=famliyStr2;
+            
+            }
+        }
+        
     }
+    
+    //爱好第一
     else if (arr[3]==HOBBY)
     {
-        labelString="He becomes  a  football player.";
+        labelString="他从小就喜欢电脑，现在他成了一名电脑工程师，找到了他喜欢做的事情。";
+        if (arr[2]==EXAM)
+        {
+            if (EXAM>=10)
+            {
+                labelString+=examStr1;
+            }
+            else
+            {
+                
+                labelString+=examStr2;
+                
+            }
+
+        }
+        if (arr[2]==FRIENDS)
+        {
+            if (FRIENDS>=10)
+            {
+                labelString+=famliyStr1;
+            }
+            else
+            {
+                labelString+=friendsStr2;
+                
+            }
+        }
+
+        if (arr[2]==FAMILY)
+        {
+            if (FAMILY>=10)
+            {
+                labelString+=famliyStr1;
+            }
+            else
+            {
+                labelString+=famliyStr2;
+            }
+            
+        }
+
+        
     
     }
+    
+    //社交第一
     else if (arr[3]==FRIENDS)
     {
     
-       labelString="He becomes  a  salesman.";
+       labelString="他很擅于和人打交道。所以他去做销售了。很棒。";
+        
+        if (arr[2]==EXAM)
+        {
+            if (EXAM>=10)
+            {
+                labelString+=examStr1;
+            }
+            else
+            {
+                
+                labelString+=examStr2;
+                
+            }
+            
+        }
+        
+        if (arr[2]==FAMILY)
+        {
+            if (FAMILY>=10)
+            {
+                labelString+=famliyStr1;
+            }
+            else
+            {
+                labelString+=famliyStr2;
+            }
+            
+        }
+        if (arr[2]==HOBBY)
+        {
+            if (HOBBY>=10)
+            {
+                labelString+=hobbyStr1;
+            }
+            else
+            {
+                labelString+=hobbyStr2;
+                
+            }
+            
+        }
+
+        
+        
     }
     stringLabel->runAction(FadeIn::create(0));
-    stringLabel->setDimensions(200, 100);
+    stringLabel->setDimensions(size.width/2-20, size.height*0.8);
     stringLabel->setPosition(size.width/4,size.height/2);
     this->schedule(schedule_selector(gameOverLayer::labelUpdate), 0.05);
     

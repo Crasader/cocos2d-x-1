@@ -62,14 +62,14 @@ bool shopLayer::init()
     int relation=UserDefault::getInstance()->getIntegerForKey("RELATION", 0);
     
     char pointBuf[128];
-    sprintf(pointBuf, "Relation Point:%d",relation);
-     pointLabel=Label::createWithSystemFont(pointBuf, "Marker Felt.ttf", 30);
+    sprintf(pointBuf, "亲密值:%d",relation);
+     pointLabel=Label::createWithTTF(pointBuf, "fonts/china.ttf", 30);
     pointLabel->setColor(Color3B::RED);
     pointLabel->setPosition(pointLabel->getContentSize().width-20,bg->getContentSize().height*0.85);
     bg->addChild(pointLabel);
   
     //talk
-    auto talkLabel=Label::createWithSystemFont("Have a talk ", "Marker Felt.ttf", 40);
+    auto talkLabel=Label::createWithTTF("和他聊个天 ", "fonts/china.ttf", 40);
     talkLabel->setColor(Color3B::RED);
     auto talkButton=MenuItemLabel::create(talkLabel, CC_CALLBACK_1(shopLayer::talkCallBack, this));
     talkButton->setPosition(bg->getContentSize().width*0.2+40,bg->getContentSize().height*0.7);
@@ -113,7 +113,6 @@ void shopLayer::onExit()
     //Director::getInstance()->getEventDispatcher()->removeEventListener(lisetener);
     
     
-    log("onnnnnexit");
 }
 
 
@@ -136,13 +135,13 @@ void shopLayer::talkCallBack(cocos2d::Ref *pSender)
     
 
     //exam
-    auto examLabel=Label::createWithSystemFont("exams(2)", "Marker Felt.ttf", 30);
+    auto examLabel=Label::createWithTTF("学习(2)", "fonts/china.ttf", 30);
     examLabel->setColor(Color3B::RED);
     auto examButton=MenuItemLabel::create(examLabel, CC_CALLBACK_1(shopLayer::examCallBack, this));
     examButton->setPosition(examButton->getContentSize().width,talkingBox->getContentSize().height-140);
     
     //friends
-    auto firendsLabel=Label::createWithSystemFont("friends(2)", "Marker Felt.ttf", 30);
+    auto firendsLabel=Label::createWithTTF("朋友(2)", "fonts/china.ttf", 30);
     firendsLabel->setColor(Color3B::RED);
     auto friendsButton=MenuItemLabel::create(firendsLabel, CC_CALLBACK_1(shopLayer::friendsCallBack, this));
     friendsButton->setPosition(friendsButton->getContentSize().width,talkingBox->getContentSize().height-200);
@@ -150,14 +149,14 @@ void shopLayer::talkCallBack(cocos2d::Ref *pSender)
 
     //hobby
     
-    auto footballLabel=Label::createWithSystemFont("hobby(5)", "Marker Felt.ttf", 30);
+    auto footballLabel=Label::createWithTTF("爱好(5)", "fonts/china.ttf", 30);
     footballLabel->setColor(Color3B::RED);
     auto footballButton=MenuItemLabel::create(footballLabel, CC_CALLBACK_1(shopLayer::footballCallBack, this));
     footballButton->setPosition(examButton->getContentSize().width+200,talkingBox->getContentSize().height-140);
     
     
     //family
-    auto familylLabel=Label::createWithSystemFont("family(1)", "Marker Felt.ttf", 30);
+    auto familylLabel=Label::createWithTTF("家庭(1)", "fonts/china.ttf", 30);
     familylLabel->setColor(Color3B::RED);
     auto familyButton=MenuItemLabel::create(familylLabel, CC_CALLBACK_1(shopLayer::familyCallBack, this));
     familyButton->setPosition(familyButton->getContentSize().width+200,talkingBox->getContentSize().height-200);
@@ -181,7 +180,7 @@ void shopLayer::examCallBack(cocos2d::Ref *pSender)
     //不够提示
     if ((relation-2)<0)
     {
-        auto tipLabel=Label::createWithSystemFont("Not enough Points", "Marker Felt.ttf", 30);
+        auto tipLabel=Label::createWithTTF("亲密值不足", "fonts/china.ttf", 30);
         
         tipLabel->setColor(Color3B::RED);
         tipLabel->setPosition(bg->getPosition().x,60);
@@ -197,7 +196,7 @@ void shopLayer::examCallBack(cocos2d::Ref *pSender)
         
         
         //提示信息
-        Label* tipsLabel=Label::createWithSystemFont("", "Marker Felt.ttf", 30);
+        Label* tipsLabel=Label::createWithTTF("", "fonts/china.ttf", 30);
         tipsLabel->setColor(Color3B::RED);
         tipsLabel->setPosition(bg->getPosition().x,60);
         
@@ -220,11 +219,11 @@ void shopLayer::examCallBack(cocos2d::Ref *pSender)
                 
                 //pointLabel
                 char pointBuf[128];
-                sprintf(pointBuf, "Relation Point:%d",relation);
+                sprintf(pointBuf, "亲密值:%d",relation);
                 pointLabel->setString(pointBuf);
                 
                 //消费提示
-                std::string buf="He seems to get something... \n  Learning Increased! ";
+                std::string buf="他好像明白了什么... \n  学习值增加! ";
                // auto tipsLabel=Label::createWithSystemFont(buf, "Marker Felt.ttf", 30);
                 tipsLabel->setString(buf);
 //                tipsLabel->setColor(Color3B::RED);
@@ -243,11 +242,11 @@ void shopLayer::examCallBack(cocos2d::Ref *pSender)
                 
                 //pointLabel
                 char pointBuf[128];
-                sprintf(pointBuf, "Relation Point:%d",relation);
+                sprintf(pointBuf, "亲密值:%d",relation);
                 pointLabel->setString(pointBuf);
                 
                 //消费提示
-                std::string buf="He has no reaction...  \n  Nothing happened.";
+                std::string buf="他好像没什么反应...  \n  什么都没发生.";
                 
                
                 
@@ -271,11 +270,11 @@ void shopLayer::examCallBack(cocos2d::Ref *pSender)
                 
                 //pointLabel
                 char pointBuf[128];
-                sprintf(pointBuf, "Relation Point:%d",relation-1);
+                sprintf(pointBuf, "亲密值:%d",relation-1);
                 pointLabel->setString(pointBuf);
                 
                 //消费提示
-                std::string buf="He seems to be unhappy ... \n Learning Decreased!";
+                std::string buf="聊这个话题他好像不高兴... \n 学习值减少!";
                 
                 
                 
@@ -312,7 +311,7 @@ void shopLayer::friendsCallBack(cocos2d::Ref *pSender)
     //不够提示
     if ((relation-2)<0)
     {
-        auto tipLabel=Label::createWithSystemFont("Not enough Points", "Marker Felt.ttf", 30);
+        auto tipLabel=Label::createWithTTF("亲密值不足!", "fonts/china.ttf", 30);
         
         tipLabel->setColor(Color3B::RED);
         tipLabel->setPosition(bg->getPosition().x,60);
@@ -336,7 +335,7 @@ void shopLayer::friendsCallBack(cocos2d::Ref *pSender)
         
         
         //提示信息
-        Label* tipsLabel=Label::createWithSystemFont("", "Marker Felt.ttf", 30);
+        Label* tipsLabel=Label::createWithTTF("", "fonts/china.ttf", 30);
         tipsLabel->setColor(Color3B::RED);
          tipsLabel->setPosition(bg->getPosition().x,60);
 
@@ -350,11 +349,11 @@ void shopLayer::friendsCallBack(cocos2d::Ref *pSender)
                 
                 //pointLabel
                 char pointBuf[128];
-                sprintf(pointBuf, "Relation Point:%d",relation);
+                sprintf(pointBuf, "亲密值:%d",relation);
                 pointLabel->setString(pointBuf);
                 
                 //消费提示
-                std::string buf="He talks a lot about the topic! \n Communication Increased!";
+                std::string buf="他好像很感兴趣！ \n 社交值增加!";
                 
                 
                 tipsLabel->setString(buf);
@@ -376,11 +375,11 @@ void shopLayer::friendsCallBack(cocos2d::Ref *pSender)
                 
                 //pointLabel
                 char pointBuf[128];
-                sprintf(pointBuf, "Relation Point:%d",relation);
+                sprintf(pointBuf, "亲密值:%d",relation);
                 pointLabel->setString(pointBuf);
                 
                 //消费提示
-                std::string buf="He has no interesting ...\n Nothing Happened.";
+                std::string buf="对这个话题他没什么反应。\n 什么都没发生。";
                 
             
                   tipsLabel->setString(buf);
@@ -404,11 +403,11 @@ void shopLayer::friendsCallBack(cocos2d::Ref *pSender)
                 
                 //pointLabel
                 char pointBuf[128];
-                sprintf(pointBuf, "Relation Point:%d",relation-2);
+                sprintf(pointBuf, "亲密值:%d",relation-2);
                 pointLabel->setString(pointBuf);
                 
                 //消费提示
-                std::string buf="Maybe, I should change a topic... \n Communication Decreased! ";
+                std::string buf="或许我应该换个话题.. \n 社交值降低! ";
                 
 
                 
@@ -447,7 +446,7 @@ void shopLayer::footballCallBack(cocos2d::Ref *pSender)
     //不够提示
     if ((relation-5)<0)
     {
-        auto tipLabel=Label::createWithSystemFont("Not enough Points", "Marker Felt.ttf", 30);
+        auto tipLabel=Label::createWithTTF("亲密值不足！", "fonts/china.ttf", 30);
         
         tipLabel->setColor(Color3B::RED);
         tipLabel->setPosition(bg->getPosition().x,60);
@@ -484,11 +483,11 @@ void shopLayer::footballCallBack(cocos2d::Ref *pSender)
                 
                 //pointLabel
                 char pointBuf[128];
-                sprintf(pointBuf, "Relation Point:%d",relation);
+                sprintf(pointBuf, "亲密值:%d",relation);
                 pointLabel->setString(pointBuf);
                 
                 //消费提示
-                std::string buf="He likes to talk about this topic! \n Specialty Increased！";
+                std::string buf="我们聊了很多！ \n 特长值增加！";
                 
                 tipsLabel->setString(buf);
                 
@@ -503,11 +502,11 @@ void shopLayer::footballCallBack(cocos2d::Ref *pSender)
                 
                 //pointLabel
                 char pointBuf[128];
-                sprintf(pointBuf, "Relation Point:%d",relation);
+                sprintf(pointBuf, "亲密值:%d",relation);
                 pointLabel->setString(pointBuf);
                 
                 //消费提示
-                std::string buf="Maybe another day...\n Nothing Happened...";
+                std::string buf="或许改天吧。\n 什么都没发生...";
                 tipsLabel->setString(buf);
                 
                 break;
@@ -539,7 +538,7 @@ void shopLayer::familyCallBack(cocos2d::Ref *pSender)
     //不够提示
     if ((relation-1)<0)
     {
-        auto tipLabel=Label::createWithSystemFont("Not enough Points", "Marker Felt.ttf", 30);
+        auto tipLabel=Label::createWithTTF("亲密值不足！", "fonts/china.ttf", 30);
         
         tipLabel->setColor(Color3B::RED);
         tipLabel->setPosition(bg->getPosition().x,60);
@@ -561,7 +560,7 @@ void shopLayer::familyCallBack(cocos2d::Ref *pSender)
         int FAMILY=UserDefault::getInstance()->getIntegerForKey("FAMILY", 0);
         
         //提示信息
-        auto tipsLabel=Label::createWithSystemFont("", "Marker Felt.ttf", 30);
+        auto tipsLabel=Label::createWithTTF("", "fonts/china.ttf", 30);
         tipsLabel->setColor(Color3B::RED);
         tipsLabel->setPosition(bg->getPosition().x,60);
         
@@ -571,11 +570,11 @@ void shopLayer::familyCallBack(cocos2d::Ref *pSender)
                 
                 //pointLabel
                 char pointBuf[128];
-                sprintf(pointBuf, "Relation Point:%d",relation);
+                sprintf(pointBuf, "亲密值:%d",relation);
                 pointLabel->setString(pointBuf);
                 
                 //消费提示
-                std::string buf="He seems to understand something... \n Family Increased！";
+                std::string buf="他好像明白了什么。 \n 家庭值增加了！";
                 
                 tipsLabel->setString(buf);
                 
