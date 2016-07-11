@@ -25,7 +25,7 @@ bool shopLayer::init()
     
     //测试用//////////////////
     
-    UserDefault::getInstance()->setIntegerForKey("RELATION", 1000);
+  //  UserDefault::getInstance()->setIntegerForKey("RELATION", 1000);
     
     //测试用
     

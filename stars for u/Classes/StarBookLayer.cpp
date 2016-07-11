@@ -150,11 +150,13 @@ bool StarBookLayer::init()
     //交互按钮
     auto interButton=MenuItemImage::create("intertack.png", "intertack.png", CC_CALLBACK_1(StarBookLayer::shopCallBack, this));
     interButton->setPosition(size.width/4, size.height/4);
-   
-    
-    auto menu=Menu::create(goMenuButton,interButton, NULL);
+       auto menu=Menu::create(goMenuButton,interButton, NULL);
     menu->setPosition(0,0);
     this->addChild(menu,10);
+    auto interLabel=Label::createWithTTF("互动", "fonts/china.ttf", 30);
+    interLabel->setColor(Color3B::RED);
+    interLabel->setPosition(interButton->getPosition()+Point(0,-40));
+    this->addChild(interLabel);
     
   
     
@@ -286,11 +288,11 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
                 bg2->setPosition(size.width/2,size.height/2);
                 this->addChild(bg2,markIndex+10);
                 bg2->setOpacity(100);
-                bg2->runAction(Sequence::create(DelayTime::create(10.0),RemoveSelf::create(), NULL));
+                bg2->runAction(Sequence::create(DelayTime::create(15.0),RemoveSelf::create(), NULL));
                 dirayString=age20String;
                 labelText->setPosition(size.width/2+50,size.height/2);
                 labelText->setScale(1.5);
-                labelText->runAction(Sequence::create(DelayTime::create(10.0),Spawn::create(MoveTo::create(1.0f, Point(size.width/4+50,size.height/2)), ScaleTo::create(1.0f, 1.0f),NULL), NULL));
+                labelText->runAction(Sequence::create(DelayTime::create(15.0),Spawn::create(MoveTo::create(1.0f, Point(size.width/4+50,size.height/2)), ScaleTo::create(1.0f, 1.0f),NULL), NULL));
                // this->addChild(labelText,markIndex+11);
                 
                 this->schedule(schedule_selector(StarBookLayer::textOut), 0.05);

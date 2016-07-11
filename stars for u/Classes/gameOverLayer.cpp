@@ -24,10 +24,11 @@ bool gameOverLayer::init()
     
     
     
-   // labelString="Time flies. Someday, I will leave.\n I am not rich , I am not famous.\n But I gave you all my love.";
-    labelString="时光流逝。总有一天我会离去。\n虽然，我并不富裕，\n也没有权力，\n但我会把我所有的爱都给你。";
+   
+    labelString="时光流逝。总有一天我会离去.虽然，我并不富裕，也没有权力,但我会把我所有的爱都给你。";
     labelStr="";
      stringLabel=Label::createWithTTF(labelStr.c_str(), "fonts/china.ttf", 40);
+    stringLabel->setDimensions(size.width/2-20, size.height*0.8);
     
     stringLabel->setColor(Color3B::RED);
     stringLabel->setPosition(size.width/2,size.height/2);
@@ -37,7 +38,7 @@ bool gameOverLayer::init()
     this->schedule(schedule_selector(gameOverLayer::labelUpdate), 0.03);
     
     //延迟5秒，字幕放完，回调下一个画面
-    stringLabel->runAction(Sequence::create(DelayTime::create(10.0),CallFunc::create(CC_CALLBACK_0(gameOverLayer::okCallBack, this)), NULL));
+    stringLabel->runAction(Sequence::create(DelayTime::create(5.0),CallFunc::create(CC_CALLBACK_0(gameOverLayer::okCallBack, this)), NULL));
     
     
     
@@ -77,7 +78,7 @@ void gameOverLayer::okCallBack()
 {
     //
 stringLabel->runAction(Sequence::create(FadeOut::create(2.0),CallFunc::create(CC_CALLBACK_0(gameOverLayer::labelOverCallback, this)), NULL));
-    
+    stringLabel->setString("");
     
     
 }
@@ -198,11 +199,11 @@ void gameOverLayer::labelOverCallback()
         {
             if (FRIENDS>=10)
             {
-                labelString+=famliyStr1;
+                labelString+=friendsStr1;
             }
             else
             {
-             labelString+=famliyStr2;
+             labelString+=friendsStr2;
             
             }
         }
@@ -307,7 +308,7 @@ void gameOverLayer::labelOverCallback()
         
         
     }
-    stringLabel->runAction(FadeIn::create(0));
+    stringLabel->runAction(FadeIn::create(0.1));
     stringLabel->setDimensions(size.width/2-20, size.height*0.8);
     stringLabel->setPosition(size.width/4,size.height/2);
     this->schedule(schedule_selector(gameOverLayer::labelUpdate), 0.05);
