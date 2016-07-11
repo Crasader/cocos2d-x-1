@@ -99,7 +99,7 @@ bool MenuLayer::init()
     talkingBox->addChild(talkingLabel,3);
    
     //schdule（）函数实现打字效果
-    this->schedule(schedule_selector(MenuLayer::talkingBoxFunc), 0.1f);
+    this->schedule(schedule_selector(MenuLayer::talkingBoxFunc), 0.05f);
     
     //说完话隐藏
     talkingBox->runAction(Sequence::create(DelayTime::create(5),Hide::create(), NULL));
@@ -156,6 +156,7 @@ void MenuLayer::talkingBoxFunc(float dt)
     if (talkingString==talkingStr)
     {
         index=0;
+       
        // unschedule(schedule_selector(MenuLayer::talkingBoxFunc));
     }
     else
@@ -248,6 +249,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                 {
                     case 1:  //baiyang
                     {  //提示信息
+                        
                         talkingString="yeap,白羊座！";
                         talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
                         

@@ -115,17 +115,32 @@ bool StarBookLayer::init()
     bookSprite->setPosition(Point(size.width/2,size.height/2));
     this->addChild(bookSprite,0);
     
+    //日记内容
+    labelText=Label::createWithTTF("", "fonts/china.ttf", 25);
+    labelText->setColor(Color3B::RED);
+    labelText->setDimensions(size.width/4+50, size.height/2);
+    labelText->setPosition(size.width/4+50,size.height/2);
+    this->addChild(labelText,1);
     
+    //日记string
+    age0String="嗯，是的，他来了！......................";
+    age10String="哦哦哦，他突然间已经10岁了！！！................ ";
+    age15String="你已经是个大人样了，但是在我眼里，你永远是那个跟我要星星的孩子。............";
+    age20String="嘿，儿子。大学的生活怎么样？爸爸的眼睛越来越不中用了，感觉天上的星星越来越多啊。不过，既然你好不容易回来一次，咱们去摘星星吧！";
+    age25String="一转眼他已经25岁了。他已经习惯了一个人在外生活了吧。 而且我已经不能像过去那样轻易地摘到星星了。但是总想为他做些什么。嗯，要不，就这样吧，用梯子！";
     
     //bookMark
     age=UserDefault::getInstance()->getIntegerForKey("age", 0);
     //生成书签页数量
     //age传入
     BookMark(age);
-    
 
+    
+    
+    
+    
     //开始游戏按钮
-    auto goMenuLabel=Label::createWithSystemFont("Go for stars", "Marker Felt.ttf", 40);
+    auto goMenuLabel=Label::createWithTTF("摘星星！", "fonts/china.ttf", 40);
     goMenuLabel->setColor(Color3B::RED);
     auto goMenuButton=MenuItemLabel::create(goMenuLabel, CC_CALLBACK_0(StarBookLayer::startGame, this));
     goMenuButton->setPosition(Point(687,122));
@@ -141,17 +156,19 @@ bool StarBookLayer::init()
     menu->setPosition(0,0);
     this->addChild(menu,10);
     
+  
     
-      
-        return  true;
+    
+    
+
+    
+     return  true;
 }
 
 
 //书签
 void  StarBookLayer::BookMark(int bookMarkIndex)
 {
-    
-    
     
     switch (bookMarkIndex)
     {
@@ -162,6 +179,54 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
             
         {
         
+            //第一次日记的效果
+            int age25= UserDefault::getInstance()->getIntegerForKey("25", 1);
+            if (age25==1)
+            {
+                
+                UserDefault::getInstance()->setIntegerForKey("25", 0);
+                
+                auto bookMarkSprite25=Sprite::create("mark25.png");
+                auto bookMarkSprite25_s=Sprite::create("mark25.png");
+                bookMarkSprite25_s->setScale(1.2);
+                
+                auto markButton25=MenuItemSprite::create(bookMarkSprite25, bookMarkSprite25_s, CC_CALLBACK_1(StarBookLayer::label25Callback, this));
+                markButton25->runAction(Sequence::create(
+                                                         ScaleTo::create(0, 0),
+                                                         DelayTime::create(2.0f),
+                                                         ScaleTo::create(0.1, 0.8),
+                                                         
+                                                         ScaleTo::create(0.1, 1.6),
+                                                         ScaleTo::create(0.1, 2.0),
+                                                         ScaleTo::create(0.1, 1.6),
+                                                         ScaleTo::create(0.1, 1),
+                                                         NULL));
+                markButton25->setPosition(Point(889,213));
+                auto menu=Menu::create(markButton25, NULL);
+                menu->setPosition(0,0);
+                this->addChild(menu,markIndex,54);
+                
+                //大透明背景
+                //日记打字效果
+                auto bg2=Sprite::create("bg2.png");
+                bg2->setPosition(size.width/2,size.height/2);
+                this->addChild(bg2,markIndex+10);
+                bg2->setOpacity(100);
+                bg2->runAction(Sequence::create(DelayTime::create(10.0),RemoveSelf::create(), NULL));
+                dirayString=age25String;
+                labelText->setPosition(size.width/2+50,size.height/2);
+                labelText->setScale(1.5);
+                labelText->runAction(Sequence::create(DelayTime::create(10.0),Spawn::create(MoveTo::create(1.0f, Point(size.width/4+50,size.height/2)), ScaleTo::create(1.0f, 1.0f),NULL), NULL));
+              //  this->addChild(labelText,markIndex+11);
+                
+                this->schedule(schedule_selector(StarBookLayer::textOut), 0.05);
+                
+                
+            }
+            
+            else
+            {
+            
             auto bookMarkSprite25=Sprite::create("mark25.png");
             auto bookMarkSprite25_s=Sprite::create("mark25.png");
             bookMarkSprite25_s->setScale(1.2);
@@ -170,45 +235,75 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
             markButton25->setPosition(Point(889,213));
             auto menu=Menu::create(markButton25, NULL);
             menu->setPosition(0,0);
-            this->addChild(menu,markIndex--,54);
+            this->addChild(menu,markIndex,54);
             
-            
+          
             //如果是当前mark，则显示其内容
             if (bookMarkIndex==25)
             {
-                diary=Sprite::create("diary0.png");
-                diary->setPosition(bookSprite->getContentSize().width/4+35,bookSprite->getContentSize().height/2+100);
-                this->addChild(diary,markIndex--);
+                
+                
+                labelText->setString(age25String);
+              // this->addChild(labelText,markIndex);
+               
             }
-
-        
+  }
+            
         }
             
         case 20:
         {
-            
-            
-            //显示获得的星座
+             //第一次日记的效果
+            int age20= UserDefault::getInstance()->getIntegerForKey("20", 1);
+            if (age20==1)
+            {
+                
+                UserDefault::getInstance()->setIntegerForKey("20", 0);
+                
+                auto bookMarkSprite25=Sprite::create("mark20.png");
+                auto bookMarkSprite25_s=Sprite::create("mark20.png");
+                bookMarkSprite25_s->setScale(1.2);
+                
+                auto markButton25=MenuItemSprite::create(bookMarkSprite25, bookMarkSprite25_s, CC_CALLBACK_1(StarBookLayer::label25Callback, this));
+                markButton25->runAction(Sequence::create(ScaleTo::create(0, 0),
+                                                         DelayTime::create(2.0f),
+                                                         ScaleTo::create(0.1, 0.8),
+                                                         
+                                                         ScaleTo::create(0.1, 1.6),
+                                                         ScaleTo::create(0.1, 2.0),
+                                                        ScaleTo::create(0.1, 1.6),
+                                                         ScaleTo::create(0.1, 1),
+
+                                                         NULL));
+                markButton25->setPosition(Point(889,296));
+                auto menu=Menu::create(markButton25, NULL);
+                menu->setPosition(0,0);
+                this->addChild(menu,markIndex-1,54);
+                
+                //大透明背景
+                //日记打字效果
+                auto bg2=Sprite::create("bg2.png");
+                bg2->setPosition(size.width/2,size.height/2);
+                this->addChild(bg2,markIndex+10);
+                bg2->setOpacity(100);
+                bg2->runAction(Sequence::create(DelayTime::create(10.0),RemoveSelf::create(), NULL));
+                dirayString=age20String;
+                labelText->setPosition(size.width/2+50,size.height/2);
+                labelText->setScale(1.5);
+                labelText->runAction(Sequence::create(DelayTime::create(10.0),Spawn::create(MoveTo::create(1.0f, Point(size.width/4+50,size.height/2)), ScaleTo::create(1.0f, 1.0f),NULL), NULL));
+               // this->addChild(labelText,markIndex+11);
+                
+                this->schedule(schedule_selector(StarBookLayer::textOut), 0.05);
+                
+            }
+            else
+            {
+            //显示获得的星座和相应日记
             if (bookMarkIndex==20)
             {
                 setGetedConsent(20);
+                 labelText->setString(age20String);
             }
-           /*
-            //book mark
-            auto bookMarkSprite20=Sprite::create("mark_gree.png");
-            bookMarkSprite20->setPosition(Point(889,296));
-            this->addChild(bookMarkSprite20,2);
-            
-            
-            //age label
-            auto label20=Label::createWithSystemFont("20", "Marker Felt.ttf", 30);
-            auto menuLabel20=MenuItemLabel::create(label20,CC_CALLBACK_1(StarBookLayer::label20Callback, this));
-            menuLabel20->setPosition(0,0);
-            
-            menu=Menu::create(menuLabel20, NULL);
-            menu->setPosition(bookMarkSprite20->getContentSize().width/2,bookMarkSprite20->getContentSize().height/2);
-            bookMarkSprite20->addChild(menu,100);
-            */
             
             auto bookMarkSprite20=Sprite::create("mark20.png");
             auto bookMarkSprite20_s=Sprite::create("mark20.png");
@@ -218,44 +313,65 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
             markButton20->setPosition(Point(889,296));
             auto menu=Menu::create(markButton20, NULL);
             menu->setPosition(0,0);
-            this->addChild(menu,markIndex--,53);
+            this->addChild(menu,markIndex-1,53);
 
-            
-            //如果是当前mark，则显示其内容
-            if (bookMarkIndex==20)
-            {
-                diary=Sprite::create("diary0.png");
-                diary->setPosition(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height/2);
-                this->addChild(diary,markIndex--);
-            }
+          }
         }
             
             case 15:
         {
-            
-        
+             //第一次日记的效果
+            int age15= UserDefault::getInstance()->getIntegerForKey("15", 1);
+            if (age15==1)
+            {
+                
+                UserDefault::getInstance()->setIntegerForKey("15", 0);
+                
+                auto bookMarkSprite25=Sprite::create("mark15.png");
+                auto bookMarkSprite25_s=Sprite::create("mark15.png");
+                bookMarkSprite25_s->setScale(1.2);
+                
+                auto markButton25=MenuItemSprite::create(bookMarkSprite25, bookMarkSprite25_s, CC_CALLBACK_1(StarBookLayer::label25Callback, this));
+                markButton25->runAction(Sequence::create(ScaleTo::create(0, 0),
+                                                         DelayTime::create(2.0f),
+                                                         ScaleTo::create(0.1, 0.8),
+                                                         
+                                                         ScaleTo::create(0.1, 1.6),
+                                                         ScaleTo::create(0.1, 2.0),
+                                                         ScaleTo::create(0.1, 1.6),
+                                                         ScaleTo::create(0.1, 1),
+
+                                                         NULL));
+                markButton25->setPosition(Point(889,379));
+                auto menu=Menu::create(markButton25, NULL);
+                menu->setPosition(0,0);
+                this->addChild(menu,markIndex-2,54);
+                
+                
+                
+                //大透明背景
+                //日记打字效果
+                auto bg2=Sprite::create("bg2.png");
+                bg2->setPosition(size.width/2,size.height/2);
+                this->addChild(bg2,markIndex+10);
+                bg2->setOpacity(100);
+                bg2->runAction(Sequence::create(DelayTime::create(10.0),RemoveSelf::create(), NULL));
+                dirayString=age15String;
+                labelText->setPosition(size.width/2+50,size.height/2);
+                labelText->setScale(1.5);
+                labelText->runAction(Sequence::create(DelayTime::create(10.0),Spawn::create(MoveTo::create(1.0f, Point(size.width/4+50,size.height/2)), ScaleTo::create(1.0f, 1.0f),NULL), NULL));
+                //this->addChild(labelText,markIndex+11);
+                
+                this->schedule(schedule_selector(StarBookLayer::textOut), 0.05);
+            }
+            else
+            {
             //显示获得的星座
             if (bookMarkIndex==15)
             {
                 setGetedConsent(15);
+                labelText->setString(age15String);
             }
-            /*
-            //book mark
-            auto bookMarkSprite15=Sprite::create("mark_gree.png");
-            bookMarkSprite15->setPosition(Point(889,379));
-            this->addChild(bookMarkSprite15,2);
-            
-            
-            //age label
-            auto label15=Label::createWithSystemFont("15", "Marker Felt.ttf", 30);
-            auto menuLabel15=MenuItemLabel::create(label15,CC_CALLBACK_1(StarBookLayer::label15Callback, this));
-            menuLabel15->setPosition(0,0);
-            
-            menu=Menu::create(menuLabel15, NULL);
-            menu->setPosition(bookMarkSprite15->getContentSize().width/2,bookMarkSprite15->getContentSize().height/2);
-            bookMarkSprite15->addChild(menu,100);
-            */
-            
             auto bookMarkSprite15=Sprite::create("mark15.png");
           auto bookMarkSprite15_s=Sprite::create("mark15.png");
             bookMarkSprite15_s->setScale(1.2);
@@ -263,15 +379,16 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
             markButton15->setPosition(Point(889,379));
             auto menu=Menu::create(markButton15, NULL);
             menu->setPosition(0,0);
-           this->addChild(menu,markIndex--,52);
-
+           this->addChild(menu,markIndex-2,52);
+          
             //如果是当前mark，则显示其内容
             if (bookMarkIndex==15)
             {
-                diary=Sprite::create("diary0.png");
-                diary->setPosition(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height/2);
-                this->addChild(diary,markIndex--);
+                
+              
+                 //this->addChild(labelText,markIndex-2);
             }
+        }
         }
             
             
@@ -279,28 +396,60 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
             //age=10
         case 10:
         {
+             //第一次日记的效果
+            int age10= UserDefault::getInstance()->getIntegerForKey("10", 1);
+            if (age10==1)
+            {
+                
+                UserDefault::getInstance()->setIntegerForKey("10", 0);
+                
+                auto bookMarkSprite25=Sprite::create("mark10.png");
+                auto bookMarkSprite25_s=Sprite::create("mark10.png");
+                bookMarkSprite25_s->setScale(1.2);
+                
+                auto markButton25=MenuItemSprite::create(bookMarkSprite25, bookMarkSprite25_s, CC_CALLBACK_1(StarBookLayer::label25Callback, this));
+                markButton25->runAction(Sequence::create(ScaleTo::create(0, 0),
+                                                         DelayTime::create(2.0f),
+                                                         ScaleTo::create(0.1, 0.8),
+                                                         
+                                                         ScaleTo::create(0.1, 1.6),
+                                                         ScaleTo::create(0.1, 2.0),
+                                                         ScaleTo::create(0.1, 1.6),
+                                                         ScaleTo::create(0.1, 1),
+
+                                                         NULL));
+                markButton25->setPosition(Point(889,462));
+                auto menu=Menu::create(markButton25, NULL);
+                menu->setPosition(0,0);
+                this->addChild(menu,markIndex-3,54);
+                
+                
+                //大透明背景
+                //日记打字效果
+                auto bg2=Sprite::create("bg2.png");
+                bg2->setPosition(size.width/2,size.height/2);
+                this->addChild(bg2,markIndex+10);
+                bg2->setOpacity(100);
+                bg2->runAction(Sequence::create(DelayTime::create(10.0),RemoveSelf::create(), NULL));
+                
+                dirayString=age10String;
+                labelText->setPosition(size.width/2+50,size.height/2);
+                labelText->setScale(1.5);
+                labelText->runAction(Sequence::create(DelayTime::create(10.0),Spawn::create(MoveTo::create(1.0f, Point(size.width/4+50,size.height/2)), ScaleTo::create(1.0f, 1.0f),NULL), NULL));
+                
+                this->schedule(schedule_selector(StarBookLayer::textOut), 0.05);
+                
+                
+                         }
+            else
+            {
             //显示获得的星座
             if (bookMarkIndex==10)
             {
                   setGetedConsent(10);
-            }
-          /*
-            //book mark
-            auto bookMarkSprite10=Sprite::create("mark_gree.png");
-            bookMarkSprite10->setPosition(Point(889,462));
-            this->addChild(bookMarkSprite10,2);
-            
-            
-            //age label
-            auto label10=Label::createWithSystemFont("10", "Marker Felt.ttf", 30);
-            auto menuLabel10=MenuItemLabel::create(label10,CC_CALLBACK_1(StarBookLayer::label10Callback, this));
-            menuLabel10->setPosition(0,0);
+                labelText->setString(age10String);
 
-            menu=Menu::create(menuLabel10, NULL);
-            menu->setPosition(bookMarkSprite10->getContentSize().width/2,bookMarkSprite10->getContentSize().height/2);
-            bookMarkSprite10->addChild(menu,100);
-*/
-            
+            }
             auto bookMarkSprite10=Sprite::create("mark10.png");
             auto bookMarkSprite10_2=Sprite::create("mark10.png");
             bookMarkSprite10_2->setScale(1.2);
@@ -311,16 +460,9 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
           
             auto menu=Menu::create(markButton10, NULL);
             menu->setPosition(0,0);
-            this->addChild(menu,markIndex--,51);
-
-            //如果是当前mark，则显示其内容
-            if (bookMarkIndex==10)
-            {
-                diary=Sprite::create("diary0.png");
-               diary->setPosition(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height/2);
-                this->addChild(diary,markIndex--);
-            }
-            
+            this->addChild(menu,markIndex-3,51);
+           
+        }
         
         }
             
@@ -334,22 +476,6 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
                 setGetedConsent(0);
             }
             
-            /*
-            //book mark
-            auto bookMarkSprite0=Sprite::create("mark_red.png");
-            bookMarkSprite0->setPosition(Point(889,545));
-            this->addChild(bookMarkSprite0,1);
-            
-            //age label
-            auto label0=Label::createWithSystemFont("0", "Marker Felt.ttf", 30);
-            auto menuLabel0=MenuItemLabel::create(label0,CC_CALLBACK_1(StarBookLayer::label0Callback, this));
-            menuLabel0->setPosition(0,0);
-            
-            menu=Menu::create(menuLabel0, NULL);
-            menu->setPosition(bookMarkSprite0->getContentSize().width/2,bookMarkSprite0->getContentSize().height/2);
-            bookMarkSprite0->addChild(menu,100);
-            
-             */
             
             
             auto bookMarkSprite0=Sprite::create("mark0.png");
@@ -361,29 +487,21 @@ void  StarBookLayer::BookMark(int bookMarkIndex)
            
             auto menu=Menu::create(markButton0, NULL);
             menu->setPosition(0,0);
-            this->addChild(menu,markIndex--,50);
-            
-            
-            
-            
-        
+            this->addChild(menu,markIndex-4,50);
             
             if (bookMarkIndex==0)
             {
-                diary=Sprite::create("diary0.png");
-                diary->setPosition(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height/2);
-                this->addChild(diary,markIndex--);
+//
+                labelText->setString(age0String);
+                
             }
-            
-
-            
             
             
         }
 
     }
 
-
+ 
 
 }
 // 显示获得的星座
@@ -591,8 +709,9 @@ void StarBookLayer::label0Callback(cocos2d::Ref *pSender)
     
     
     setGetedConsent(0);
-    diary->setTexture("diary0.png");
-    this->reorderChild(this->getChildByTag(50),++markIndex);
+    labelText->setString(age0String);
+    
+    this->reorderChild(this->getChildByTag(50),markIndex);
     
     
     
@@ -605,8 +724,8 @@ void StarBookLayer::label10Callback(cocos2d::Ref *pSender)
 {
     
     setGetedConsent(10);
-    diary->setTexture("diary0.png");
-     this->reorderChild(this->getChildByTag(51),++markIndex);
+    labelText->setString(age10String);
+     this->reorderChild(this->getChildByTag(51),markIndex);
    
 }
 
@@ -614,8 +733,8 @@ void StarBookLayer::label15Callback(cocos2d::Ref *pSender)
 {
 
     setGetedConsent(15);
-    diary->setTexture("diary0.png");
-  this->reorderChild(this->getChildByTag(52),++markIndex);
+    labelText->setString(age15String);
+  this->reorderChild(this->getChildByTag(52),markIndex);
 
 }
 
@@ -623,17 +742,16 @@ void StarBookLayer::label20Callback(cocos2d::Ref *pSender)
 {
     
     setGetedConsent(20);
-    diary->setTexture("diary0.png");
-    this->reorderChild(this->getChildByTag(53),++markIndex);
+    labelText->setString(age20String);
+    this->reorderChild(this->getChildByTag(53),markIndex);
     
 }
 
 void StarBookLayer::label25Callback(cocos2d::Ref *pSender)
 {
     
-    //setGetedConsent(20);
-    diary->setTexture("diary0.png");
-    this->reorderChild(this->getChildByTag(54),++markIndex);
+    labelText->setString(age25String);
+    this->reorderChild(this->getChildByTag(54),markIndex);
     
 }
 
@@ -665,4 +783,25 @@ void StarBookLayer::shopCallBack(cocos2d::Ref *pSender)
    
 
 
+}
+
+
+
+//打字效果回调
+void StarBookLayer::textOut(float dt)
+{
+    if (textStr==dirayString)
+    {
+        textIndex=0;
+        unschedule(schedule_selector(StarBookLayer::textOut));
+        
+    }
+    else
+    {
+
+    textStr= dirayString.substr(0,textIndex);
+    textIndex++;
+    labelText->setString(textStr);
+    
+    }
 }

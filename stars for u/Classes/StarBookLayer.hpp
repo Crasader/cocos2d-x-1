@@ -57,7 +57,8 @@ public:
     void startGame();
     //书签的menu
     Menu* menu;
-    Sprite* diary;
+   // Sprite* diary;
+    Label* labelText;
     
     //获得的星座
     void setGetedConsent(int i);
@@ -70,6 +71,16 @@ public:
     //按钮显示优先级
     int markIndex=50;
     
+    //日记打字效果回调
+    void  textOut(float dt);
+    int textIndex=0;
+    std::string dirayString="";
+    std::string  textStr;
+    std::string age0String;
+    std::string age10String;
+    std::string age15String;
+    std::string age20String;
+    std::string age25String;
     
      
 };
