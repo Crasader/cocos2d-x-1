@@ -90,6 +90,9 @@ void gameOverLayer::labelOverCallback()
     int growth=UserDefault::getInstance()->getIntegerForKey("GROWTH", 0);
     int relation=UserDefault::getInstance()->getIntegerForKey("RELATION", 0);
     int age=UserDefault::getInstance()->getIntegerForKey("age", 0);
+    //清除growth age.
+     UserDefault::getInstance()->setIntegerForKey("GROWTH", 0);
+     UserDefault::getInstance()->setIntegerForKey("age", 0);
     
     int EXAM=UserDefault::getInstance()->getIntegerForKey("EXAM", 0);
     int FAMILY=UserDefault::getInstance()->getIntegerForKey("FAMILY", 0);
@@ -119,8 +122,17 @@ void gameOverLayer::labelOverCallback()
     std::string friendsStr1="他身边有一群要好的朋友。他们都很喜欢和他相处。";
     std::string friendsStr2="但是他总是孤身一人。或许他小的时候应该多跟他聊聊与他人交往方面的。";
     
+    //如果第一的点数小于10
+    if (arr[3]<10)
+    {
+        
+        
+        labelString="你对他关心太少了。。。。。。";
+        
+    }
+    
     //学习第一
-    if (arr[3]==EXAM)
+   else if (arr[3]==EXAM&&arr[2]>0)
     {
         labelString="他的梦想实现了，他成了一名大学教授。";
         
@@ -164,7 +176,7 @@ void gameOverLayer::labelOverCallback()
     }
     
        //家庭第一
-    else if(arr[3]==FAMILY)
+    else if(arr[3]==FAMILY&&arr[2]>0)
     {
          labelString="他在外漂泊了几年之后，他仍然觉得家庭是最重要的。他回到了故乡，过着和我一样的生活。";
         
@@ -174,7 +186,7 @@ void gameOverLayer::labelOverCallback()
             {
               labelString+=examStr1;
             }
-            else
+            else if(EXAM)
             {
             
             labelString+=examStr2;
@@ -211,7 +223,7 @@ void gameOverLayer::labelOverCallback()
     }
     
     //爱好第一
-    else if (arr[3]==HOBBY)
+    else if (arr[3]==HOBBY&&arr[2]>0)
     {
         labelString="他从小就喜欢电脑，现在他成了一名电脑工程师，找到了他喜欢做的事情。";
         if (arr[2]==EXAM)
@@ -259,7 +271,7 @@ void gameOverLayer::labelOverCallback()
     }
     
     //社交第一
-    else if (arr[3]==FRIENDS)
+    else if (arr[3]==FRIENDS&&arr[2]>0)
     {
     
        labelString="他很擅于和人打交道。所以他去做销售了。很棒。";
@@ -310,7 +322,7 @@ void gameOverLayer::labelOverCallback()
     }
     stringLabel->runAction(FadeIn::create(0.1));
     stringLabel->setDimensions(size.width/2-20, size.height*0.8);
-    stringLabel->setPosition(size.width/4,size.height/2);
+    stringLabel->setPosition(size.width/4+10,size.height/2);
     this->schedule(schedule_selector(gameOverLayer::labelUpdate), 0.05);
     
    

@@ -154,11 +154,11 @@ void laderLayer::goBackCallBack(cocos2d::Ref *pSender)
 
     //结束游戏
     int gameOver=UserDefault::getInstance()->getIntegerForKey("GROWTH", 0);
-    //结束需要的成长值///////////////////////
-    if (gameOver>=22)
+    //结束需要的成长值////////////////////////////////////////////////////////////
+    if (gameOver>=2)
     {
         gsm->goGameOverLayer();
-        UserDefault::getInstance()->setIntegerForKey("GROWTH", 0);
+       
         
         
     }

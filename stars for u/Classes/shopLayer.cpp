@@ -65,7 +65,7 @@ bool shopLayer::init()
     sprintf(pointBuf, "亲密值:%d",relation);
      pointLabel=Label::createWithTTF(pointBuf, "fonts/china.ttf", 30);
     pointLabel->setColor(Color3B::RED);
-    pointLabel->setPosition(pointLabel->getContentSize().width-20,bg->getContentSize().height*0.85);
+    pointLabel->setPosition(pointLabel->getContentSize().width+10,bg->getContentSize().height*0.85);
     bg->addChild(pointLabel);
   
     //talk
