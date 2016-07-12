@@ -262,7 +262,7 @@ void laderLayer::fail()
     auto growthLabel=Label::createWithTTF(buf, "fonts/china.ttf", 40);
     growthLabel->setColor(Color3B::RED);
     growthLabel->setPosition(Point(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height-100));
-    bookSprite->addChild(growthLabel);
+    //bookSprite->addChild(growthLabel);
     
     
     sprintf(buf, "亲密值:%d",relation);
@@ -286,10 +286,10 @@ void laderLayer::fail()
     bookSprite->addChild(menu);
     
     //失败提示
-    auto failLabel=Label::createWithTTF("看来我已经老了。。", "fonts/china.ttf", 25);
+    auto failLabel=Label::createWithTTF("失败\n看来我已经老了。。", "fonts/china.ttf", 25);
      failLabel->setColor(Color3B::RED);
     failLabel->setPosition(Point(3*bookSprite->getContentSize().width/4+10,bookSprite->getContentSize().height-100));
-    failLabel->runAction(Sequence::create(FadeOut::create(0.0),DelayTime::create(0.50),FadeIn::create(2.0f), NULL));
+    failLabel->runAction(Sequence::create(FadeOut::create(0.0),FadeIn::create(2.0f), NULL));
     bookSprite->addChild(failLabel);
     
     
@@ -321,7 +321,7 @@ void laderLayer::win()
     auto growthLabel=Label::createWithTTF(buf, "fonts/china.ttf", 40);
     growthLabel->setColor(Color3B::RED);
     growthLabel->setPosition(Point(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height-100));
-    bookSprite->addChild(growthLabel);
+    //bookSprite->addChild(growthLabel);
     
     sprintf(buf, "亲密值:%d",relation);
     auto relationLabel=Label::createWithTTF(buf, "fonts/china.ttf", 40);
@@ -345,10 +345,10 @@ void laderLayer::win()
     
     
     //win提示
-    auto winLabel=Label::createWithTTF("看来我还可以为他做点什么！", "fonts/china.ttf", 25);
+    auto winLabel=Label::createWithTTF("成功!\n看来我还可以为他做点什么！", "fonts/china.ttf", 25);
     winLabel->setColor(Color3B::RED);
     winLabel->setPosition(Point(3*bookSprite->getContentSize().width/4+10,bookSprite->getContentSize().height-100));
-    winLabel->runAction(Sequence::create(FadeOut::create(0.0),DelayTime::create(1.0),FadeIn::create(2.0f), NULL));
+    winLabel->runAction(Sequence::create(FadeOut::create(0.0),FadeIn::create(2.0f), NULL));
     bookSprite->addChild(winLabel);
     
 

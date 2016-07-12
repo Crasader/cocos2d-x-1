@@ -39,7 +39,9 @@ public:
     void  footballCallBack(Ref* pSender);
     void familyCallBack(Ref* pSender);
     
-    
+    //提示
+    Label* tipsLabel;
+    void tipsLabelAction();
     
     EventListenerTouchOneByOne* lisetener;
     

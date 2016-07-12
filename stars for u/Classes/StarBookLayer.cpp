@@ -571,8 +571,28 @@ void StarBookLayer::startGame()
     switch (age) {
         case 0:
         {//第一关，1颗星星
-            gsm->goinfoLayer(4, 0, 1);
-           // gsm->goLadderLayer(1,1);
+            //首次进入教学
+            bool firstTime=UserDefault::getInstance()->getBoolForKey("INFO", true);
+            if (firstTime)
+            {
+                gsm->goinfoLayer(4, 0, 1);
+
+            }
+            else
+            {
+                int starNum=random(4, 5);
+                int shinNum=random(2, 4);
+                
+                //星座概率出现
+                //方便设置标记已获取的星座，就不再出现
+                getAllgetedConsetn();
+                int conNum=random(0, 20);
+                //getedCon前12个元素为1-12,其余为0，获取了号星座为0, 防止重复出现
+                gsm->goMenuLayer(starNum, shinNum,getedCon[conNum]);
+
+            
+            }
+        
             break;
         }
         case 10:
@@ -620,12 +640,12 @@ void StarBookLayer::startGame()
             
         case 25:
         {//梯子关
-            bool firstTime=UserDefault::getInstance()->getBoolForKey("LADDER", false);
+            bool firstTime=UserDefault::getInstance()->getBoolForKey("LADDER", true);
             if (firstTime)
             {
                 gsm->goLadderLayer(1, 1);
                 
-                UserDefault::getInstance()->setBoolForKey("LADDER", true);
+                UserDefault::getInstance()->setBoolForKey("LADDER", false);
             }
             else
             {

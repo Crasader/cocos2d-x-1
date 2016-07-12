@@ -148,7 +148,7 @@ void gameOverLayer::labelOverCallback()
             }
             
         }
-        if (arr[2]==HOBBY)
+      else  if (arr[2]==HOBBY)
         {
             if (HOBBY>=10)
             {
@@ -160,7 +160,7 @@ void gameOverLayer::labelOverCallback()
             }
             
         }
-        if (arr[2]==FRIENDS)
+       else if (arr[2]==FRIENDS)
         {
             if (FRIENDS>=10)
             {
@@ -194,7 +194,7 @@ void gameOverLayer::labelOverCallback()
             }
             
         }
-        if (arr[2]==HOBBY)
+       else if (arr[2]==HOBBY)
         {
             if (HOBBY>=10)
             {
@@ -207,7 +207,7 @@ void gameOverLayer::labelOverCallback()
             }
             
         }
-        if (arr[2]==FRIENDS)
+       else if (arr[2]==FRIENDS)
         {
             if (FRIENDS>=10)
             {
@@ -240,7 +240,7 @@ void gameOverLayer::labelOverCallback()
             }
 
         }
-        if (arr[2]==FRIENDS)
+      else  if (arr[2]==FRIENDS)
         {
             if (FRIENDS>=10)
             {
@@ -253,7 +253,7 @@ void gameOverLayer::labelOverCallback()
             }
         }
 
-        if (arr[2]==FAMILY)
+      else  if (arr[2]==FAMILY)
         {
             if (FAMILY>=10)
             {
@@ -291,7 +291,7 @@ void gameOverLayer::labelOverCallback()
             
         }
         
-        if (arr[2]==FAMILY)
+      else  if (arr[2]==FAMILY)
         {
             if (FAMILY>=10)
             {
@@ -303,7 +303,7 @@ void gameOverLayer::labelOverCallback()
             }
             
         }
-        if (arr[2]==HOBBY)
+      else  if (arr[2]==HOBBY)
         {
             if (HOBBY>=10)
             {

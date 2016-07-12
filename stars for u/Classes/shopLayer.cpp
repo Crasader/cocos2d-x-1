@@ -25,7 +25,7 @@ bool shopLayer::init()
     
     //测试用//////////////////
     
-  //  UserDefault::getInstance()->setIntegerForKey("RELATION", 1000);
+  UserDefault::getInstance()->setIntegerForKey("RELATION", 1000);
     
     //测试用
     
@@ -72,12 +72,15 @@ bool shopLayer::init()
     auto talkLabel=Label::createWithTTF("和他聊个天 ", "fonts/china.ttf", 40);
     talkLabel->setColor(Color3B::RED);
     auto talkButton=MenuItemLabel::create(talkLabel, CC_CALLBACK_1(shopLayer::talkCallBack, this));
-    talkButton->setPosition(bg->getContentSize().width*0.2+40,bg->getContentSize().height*0.7);
+    talkButton->setPosition(bg->getContentSize().width*0.2+60,bg->getContentSize().height*0.7);
     
     
     
-    
-    
+    //提示信息
+    tipsLabel=Label::createWithTTF("", "fonts/china.ttf", 30);
+    tipsLabel->setColor(Color3B::RED);
+    tipsLabel->setPosition(bg->getPosition().x,70);
+    this->addChild(tipsLabel);
     
     auto menu=Menu::create(talkButton,NULL);
     menu->setPosition(0,0);
@@ -120,7 +123,7 @@ void shopLayer::onExit()
 void shopLayer::talkCallBack(cocos2d::Ref *pSender)
 {
     
-    log("asdasd");
+
     auto talkingBox=Sprite::create("talkingBox_LL.png");
     talkingBox->setScale(0);
     talkingBox->setPosition(bg->getContentSize().width/2,bg->getContentSize().height/3+30);
@@ -171,34 +174,39 @@ void shopLayer::talkCallBack(cocos2d::Ref *pSender)
 
 }
 
+//提示动作
+void shopLayer::tipsLabelAction()
+{   tipsLabel->stopAllActions();
+    tipsLabel->setPosition(bg->getPosition().x,60);
+    tipsLabel->runAction(Sequence::create(FadeIn::create(0),DelayTime::create(1.0),Spawn::create(MoveBy::create(2.0, Point(0,50)),FadeOut::create(2.0), NULL),NULL));
+
+}
 
 //考试
 void shopLayer::examCallBack(cocos2d::Ref *pSender)
 {
+    tipsLabel->setPosition(bg->getPosition().x,70);
     int relation=UserDefault::getInstance()->getIntegerForKey("RELATION", 0);
     
     //不够提示
     if ((relation-2)<0)
     {
-        auto tipLabel=Label::createWithTTF("亲密值不足", "fonts/china.ttf", 30);
-        
-        tipLabel->setColor(Color3B::RED);
-        tipLabel->setPosition(bg->getPosition().x,60);
-        tipLabel->runAction(Sequence::create(Spawn::create(MoveBy::create(2.0, Point(0,50)),FadeOut::create(2.0), NULL),RemoveSelf::create(),NULL));
-        this->addChild(tipLabel);
-        
-        
-        
+//        auto tipLabel=Label::createWithTTF("亲密值不足", "fonts/china.ttf", 30);
+//        
+//        tipLabel->setColor(Color3B::RED);
+//        tipLabel->setPosition(bg->getPosition().x,60);
+//        tipLabel->runAction(Sequence::create(Spawn::create(MoveBy::create(2.0, Point(0,50)),FadeOut::create(2.0), NULL),RemoveSelf::create(),NULL));
+//        this->addChild(tipLabel);
+              std::string buf="亲密值不足 ";
+        tipsLabel->setString(buf);
+        tipsLabelAction();
     }
     
     else
     {
         
         
-        //提示信息
-        Label* tipsLabel=Label::createWithTTF("", "fonts/china.ttf", 30);
-        tipsLabel->setColor(Color3B::RED);
-        tipsLabel->setPosition(bg->getPosition().x,60);
+      
         
         
         //随机反应
@@ -295,8 +303,8 @@ void shopLayer::examCallBack(cocos2d::Ref *pSender)
         }
     
 
-        tipsLabel->runAction(Sequence::create( DelayTime::create(2), Spawn::create(MoveBy::create(2.0, Point(0,50)),FadeOut::create(2.0), NULL),RemoveSelf::create(),NULL));
-        this->addChild(tipsLabel);
+       tipsLabelAction();
+        //this->addChild(tipsLabel);
 
         
     }
@@ -311,15 +319,16 @@ void shopLayer::friendsCallBack(cocos2d::Ref *pSender)
     //不够提示
     if ((relation-2)<0)
     {
-        auto tipLabel=Label::createWithTTF("亲密值不足!", "fonts/china.ttf", 30);
+//        auto tipLabel=Label::createWithTTF("亲密值不足!", "fonts/china.ttf", 30);
+//        
+//        tipLabel->setColor(Color3B::RED);
+//        tipLabel->setPosition(bg->getPosition().x,60);
+//        tipLabel->runAction(Sequence::create(Spawn::create(MoveBy::create(2.0, Point(0,50)),FadeOut::create(2.0), NULL),RemoveSelf::create(),NULL));
+//        this->addChild(tipLabel);
         
-        tipLabel->setColor(Color3B::RED);
-        tipLabel->setPosition(bg->getPosition().x,60);
-        tipLabel->runAction(Sequence::create(Spawn::create(MoveBy::create(2.0, Point(0,50)),FadeOut::create(2.0), NULL),RemoveSelf::create(),NULL));
-        this->addChild(tipLabel);
-        
-        
-        
+        std::string buf="亲密值不足 ";
+        tipsLabel->setString(buf);
+       tipsLabelAction();
     }
     
     else
@@ -334,10 +343,10 @@ void shopLayer::friendsCallBack(cocos2d::Ref *pSender)
         int FRIENDS=UserDefault::getInstance()->getIntegerForKey("FRIENDS", 0);
         
         
-        //提示信息
-        Label* tipsLabel=Label::createWithTTF("", "fonts/china.ttf", 30);
-        tipsLabel->setColor(Color3B::RED);
-         tipsLabel->setPosition(bg->getPosition().x,60);
+//        //提示信息
+//        Label* tipsLabel=Label::createWithTTF("", "fonts/china.ttf", 30);
+//        tipsLabel->setColor(Color3B::RED);
+//         tipsLabel->setPosition(bg->getPosition().x,60);
 
         
         switch (index[react])
@@ -428,8 +437,8 @@ void shopLayer::friendsCallBack(cocos2d::Ref *pSender)
                 break;
         }
         
-        tipsLabel->runAction(Sequence::create( DelayTime::create(2), Spawn::create(MoveBy::create(2.0, Point(0,50)),FadeOut::create(2.0), NULL),RemoveSelf::create(),NULL));
-        this->addChild(tipsLabel);
+        tipsLabelAction();
+        //        this->addChild(tipsLabel);
         
         
     }
@@ -446,15 +455,16 @@ void shopLayer::footballCallBack(cocos2d::Ref *pSender)
     //不够提示
     if ((relation-5)<0)
     {
-        auto tipLabel=Label::createWithTTF("亲密值不足！", "fonts/china.ttf", 30);
+//        auto tipLabel=Label::createWithTTF("亲密值不足！", "fonts/china.ttf", 30);
+//        
+//        tipLabel->setColor(Color3B::RED);
+//        tipLabel->setPosition(bg->getPosition().x,60);
+//        tipLabel->runAction(Sequence::create(Spawn::create(MoveBy::create(2.0, Point(0,50)),FadeOut::create(2.0), NULL),RemoveSelf::create(),NULL));
+//        this->addChild(tipLabel);
         
-        tipLabel->setColor(Color3B::RED);
-        tipLabel->setPosition(bg->getPosition().x,60);
-        tipLabel->runAction(Sequence::create(Spawn::create(MoveBy::create(2.0, Point(0,50)),FadeOut::create(2.0), NULL),RemoveSelf::create(),NULL));
-        this->addChild(tipLabel);
-        
-        
-        
+        std::string buf="亲密值不足 ";
+        tipsLabel->setString(buf);
+        tipsLabelAction();
     }
     
     else
@@ -468,10 +478,10 @@ void shopLayer::footballCallBack(cocos2d::Ref *pSender)
         
         int HOBBY=UserDefault::getInstance()->getIntegerForKey("HOBBY", 0);
         
-        //提示信息
-        auto tipsLabel=Label::createWithSystemFont("", "Marker Felt.ttf", 30);
-        tipsLabel->setColor(Color3B::RED);
-        tipsLabel->setPosition(bg->getPosition().x,60);
+//        //提示信息
+//        auto tipsLabel=Label::createWithSystemFont("", "Marker Felt.ttf", 30);
+//        tipsLabel->setColor(Color3B::RED);
+//        tipsLabel->setPosition(bg->getPosition().x,60);
         
         
         switch (index[react])
@@ -517,10 +527,7 @@ void shopLayer::footballCallBack(cocos2d::Ref *pSender)
                 break;
         }
         
-        
-        tipsLabel->runAction(Sequence::create( DelayTime::create(2), Spawn::create(MoveBy::create(2.0, Point(0,50)),FadeOut::create(2.0), NULL),RemoveSelf::create(),NULL));
-        this->addChild(tipsLabel);
-
+        tipsLabelAction();
         
     }
 
@@ -538,14 +545,15 @@ void shopLayer::familyCallBack(cocos2d::Ref *pSender)
     //不够提示
     if ((relation-1)<0)
     {
-        auto tipLabel=Label::createWithTTF("亲密值不足！", "fonts/china.ttf", 30);
-        
-        tipLabel->setColor(Color3B::RED);
-        tipLabel->setPosition(bg->getPosition().x,60);
-        tipLabel->runAction(Sequence::create(Spawn::create(MoveBy::create(2.0, Point(0,50)),FadeOut::create(2.0), NULL),RemoveSelf::create(),NULL));
-        this->addChild(tipLabel);
-        
-        
+//        auto tipLabel=Label::createWithTTF("亲密值不足！", "fonts/china.ttf", 30);
+//        
+//        tipLabel->setColor(Color3B::RED);
+//        tipLabel->setPosition(bg->getPosition().x,60);
+// tipLabel->runAction(Sequence::create(Spawn::create(MoveBy::create(2.0, Point(0,50)),FadeOut::create(2.0), NULL),RemoveSelf::create(),NULL));
+//        this->addChild(tipLabel);
+        std::string buf="亲密值不足 ";
+        tipsLabel->setString(buf);
+       tipsLabelAction();
         
     }
     
@@ -559,11 +567,11 @@ void shopLayer::familyCallBack(cocos2d::Ref *pSender)
         
         int FAMILY=UserDefault::getInstance()->getIntegerForKey("FAMILY", 0);
         
-        //提示信息
-        auto tipsLabel=Label::createWithTTF("", "fonts/china.ttf", 30);
-        tipsLabel->setColor(Color3B::RED);
-        tipsLabel->setPosition(bg->getPosition().x,60);
-        
+//        //提示信息
+//        auto tipsLabel=Label::createWithTTF("", "fonts/china.ttf", 30);
+//        tipsLabel->setColor(Color3B::RED);
+//        tipsLabel->setPosition(bg->getPosition().x,60);
+//        
         
         //家庭值++
             UserDefault::getInstance()->setIntegerForKey("FAMILY", ++FAMILY);
@@ -579,8 +587,8 @@ void shopLayer::familyCallBack(cocos2d::Ref *pSender)
                 tipsLabel->setString(buf);
                 
         
-        tipsLabel->runAction(Sequence::create( DelayTime::create(2), Spawn::create(MoveBy::create(2.0, Point(0,50)),FadeOut::create(2.0), NULL),RemoveSelf::create(),NULL));
-        this->addChild(tipsLabel);
+       tipsLabelAction();
+       
         
         
     }

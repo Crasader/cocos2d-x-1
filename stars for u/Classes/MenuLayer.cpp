@@ -97,9 +97,10 @@ bool MenuLayer::init()
     talkingLabel->setPosition(talkingBox->getContentSize().width/2,talkingBox->getContentSize().height/3);
     talkingLabel->setColor(Color3B::WHITE);
     talkingBox->addChild(talkingLabel,3);
+    talkingLabel->setString(talkingString);
    
-    //schdule（）函数实现打字效果
-    this->schedule(schedule_selector(MenuLayer::talkingBoxFunc), 0.05f);
+//    //schdule（）函数实现打字效果
+//    this->schedule(schedule_selector(MenuLayer::talkingBoxFunc), 0.05f);
     
     //说完话隐藏
     talkingBox->runAction(Sequence::create(DelayTime::create(5),Hide::create(), NULL));
@@ -151,21 +152,21 @@ bool MenuLayer::init()
 
 //talkingBox打字效果回调
 
-void MenuLayer::talkingBoxFunc(float dt)
-{
-    if (talkingString==talkingStr)
-    {
-        index=0;
-       
-       // unschedule(schedule_selector(MenuLayer::talkingBoxFunc));
-    }
-    else
-    {
-    talkingStr=talkingString.substr(0,index);
-    index++;
-    talkingLabel->setString(talkingStr.c_str());
-    }
-}
+//void MenuLayer::talkingBoxFunc(float dt)
+//{
+//    if (talkingString==talkingStr)
+//    {
+//        index=0;
+//       
+//       unschedule(schedule_selector(MenuLayer::talkingBoxFunc));
+//    }
+//    else
+//    {
+//    talkingStr=talkingString.substr(0,index);
+//    index++;
+//    talkingLabel->setString(talkingStr.c_str());
+//    }
+//}
 
 //触摸监控
 bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
@@ -205,7 +206,8 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
             
             //错误提示效果
             talkingString="不是那个～";
-            talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(5),Hide::create(),NULL));
+            talkingLabel->setString(talkingString);
+            talkingBox->runAction(Sequence::create(Show::create(),DelayTime::create(2),Hide::create(),NULL));
             auto act1=ScaleTo::create(0.3, 2.5);
             auto act2=ScaleTo::create(0.3, 1.5);
             stars->starsVector.at(i)->runAction(Sequence::create(act1,act2, NULL));
@@ -400,8 +402,8 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                     default:
                         break;
                 }
-
-                
+                //星座对话
+                talkingLabel->setString(talkingString);
                 
                
                 auto collact1=DelayTime::create(2.0f);
@@ -548,26 +550,46 @@ void MenuLayer::writToPlist()
     __String ActionNum;
     
     
-    if (starNum<5)
+//    if (starNum<5)
+//    {
+//        ActionNum="A0";
+//    }
+//    
+//    
+//   else if (starNum>5&&starNum<=10)
+//    {
+//        ActionNum="A10";
+//    }
+//   else if (starNum>10&&starNum<=15)
+//    {
+//        ActionNum="A15";
+//    }
+//   else if (starNum>15&&starNum<=20)
+//    {
+//        ActionNum="A20";
+//    }
+
+    int age=UserDefault::getInstance()->getIntegerForKey("age", 0);
+    
+    if (age==0)
     {
         ActionNum="A0";
     }
     
     
-   else if (starNum>5&&starNum<=10)
+    else if (age==10)
     {
         ActionNum="A10";
     }
-   else if (starNum>10&&starNum<=15)
+    else if (age==15)
     {
         ActionNum="A15";
     }
-   else if (starNum>15&&starNum<=20)
+    else if (age==20)
     {
         ActionNum="A20";
     }
 
-    
     
     
     std::  string writaBle=FileUtils::getInstance()->getWritablePath();
@@ -675,7 +697,7 @@ void MenuLayer::timeOver()
     auto growtLabel=Label::createWithTTF(scoreBuf, "fonts/china.ttf", 30);
     growtLabel->setColor(Color3B::RED);
     growtLabel->setPosition(Point(bookSprite->getContentSize().width/4,bookSprite->getContentSize().height-50-50-50));
-    bookSprite->addChild(growtLabel);
+    //bookSprite->addChild(growtLabel);
     
     
     
