@@ -63,7 +63,7 @@ public:
     //获得的星座
     void setGetedConsent(int i);
     void getAllgetedConsetn();
-    int getedCon[20]={0};
+    int getedCon[30]={0};
     //所有的星座在book上的精灵
     Vector<Sprite*> conllenVecetor;
 
@@ -82,7 +82,14 @@ public:
     std::string age20String;
     std::string age25String;
     
-     
+    //触摸
+    bool onTouchBegan(Touch* touch,Event *event);
+    int touchArr[12];
+    void useCallBack(Ref* pSender);
+    void okCallBack(Ref* pSender);
+    int  showCon;
+    Sprite* conllentSpriteShow;
+ 
 };
 
 #endif /* StarBookLayer_hpp */

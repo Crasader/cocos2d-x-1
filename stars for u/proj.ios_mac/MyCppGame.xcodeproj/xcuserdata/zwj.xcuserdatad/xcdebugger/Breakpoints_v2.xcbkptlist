@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/MenuLayer.cpp"
-            timestampString = "489980961.335846"
+            timestampString = "490070477.116584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "522"
-            endingLineNumber = "522"
+            startingLineNumber = "543"
+            endingLineNumber = "543"
             landmarkName = "MenuLayer::pointToStar()"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/StarBookLayer.cpp"
-            timestampString = "489922072.651575"
+            timestampString = "490066925.780897"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "537"
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/MenuLayer.cpp"
-            timestampString = "489980961.335846"
+            timestampString = "490070477.116584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "456"
-            endingLineNumber = "456"
+            startingLineNumber = "477"
+            endingLineNumber = "477"
             landmarkName = "MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/StarBookLayer.cpp"
-            timestampString = "489979990.885125"
+            timestampString = "490072427.805843"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "600"
-            endingLineNumber = "600"
+            startingLineNumber = "609"
+            endingLineNumber = "609"
             landmarkName = "StarBookLayer::startGame()"
             landmarkType = "5">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/StarBookLayer.cpp"
-            timestampString = "489979990.885125"
+            timestampString = "490072427.805843"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "606"
-            endingLineNumber = "606"
+            startingLineNumber = "615"
+            endingLineNumber = "615"
             landmarkName = "StarBookLayer::startGame()"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/StarBookLayer.cpp"
-            timestampString = "489979990.885125"
+            timestampString = "490072427.805843"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "700"
-            endingLineNumber = "700"
+            startingLineNumber = "736"
+            endingLineNumber = "736"
             landmarkName = "StarBookLayer::getAllgetedConsetn()"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/MenuLayer.cpp"
-            timestampString = "489980961.335846"
+            timestampString = "490070477.116584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "602"
-            endingLineNumber = "602"
+            startingLineNumber = "623"
+            endingLineNumber = "623"
             landmarkName = "MenuLayer::writToPlist()"
             landmarkType = "5">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/MenuLayer.cpp"
-            timestampString = "489980961.335846"
+            timestampString = "490070477.116584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "606"
-            endingLineNumber = "606"
+            startingLineNumber = "627"
+            endingLineNumber = "627"
             landmarkName = "MenuLayer::writToPlist()"
             landmarkType = "5">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/MenuLayer.cpp"
-            timestampString = "489980961.335846"
+            timestampString = "490070477.116584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "605"
-            endingLineNumber = "605"
+            startingLineNumber = "626"
+            endingLineNumber = "626"
             landmarkName = "MenuLayer::writToPlist()"
             landmarkType = "5">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/MenuLayer.cpp"
-            timestampString = "489980961.335846"
+            timestampString = "490070477.116584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "602"
-            endingLineNumber = "602"
+            startingLineNumber = "623"
+            endingLineNumber = "623"
             landmarkName = "MenuLayer::writToPlist()"
             landmarkType = "5">
          </BreakpointContent>
@@ -250,11 +250,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/StarBookLayer.cpp"
-            timestampString = "489979990.885125"
+            timestampString = "490072427.805843"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "678"
-            endingLineNumber = "678">
+            startingLineNumber = "714"
+            endingLineNumber = "714"
+            landmarkName = "StarBookLayer::startGame()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -264,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/OpeningLayer.cpp"
-            timestampString = "488465178.002634"
+            timestampString = "490070658.988458"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "OpeningLayer::createPlist()"
             landmarkType = "5">
          </BreakpointContent>
@@ -280,7 +282,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/StarBookLayer.cpp"
-            timestampString = "489922072.651575"
+            timestampString = "490066925.780897"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "532"
@@ -296,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/MenuLayer.cpp"
-            timestampString = "489980961.335846"
+            timestampString = "490070477.116584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "603"
-            endingLineNumber = "603"
+            startingLineNumber = "624"
+            endingLineNumber = "624"
             landmarkName = "MenuLayer::writToPlist()"
             landmarkType = "5">
          </BreakpointContent>
@@ -312,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/MenuLayer.cpp"
-            timestampString = "489980961.335846"
+            timestampString = "490070477.116584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "604"
-            endingLineNumber = "604"
+            startingLineNumber = "625"
+            endingLineNumber = "625"
             landmarkName = "MenuLayer::writToPlist()"
             landmarkType = "5">
          </BreakpointContent>
@@ -328,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/MenuLayer.cpp"
-            timestampString = "489980961.335846"
+            timestampString = "490070477.116584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
             landmarkName = "MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -344,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/MenuLayer.cpp"
-            timestampString = "489980961.335846"
+            timestampString = "490070477.116584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "599"
-            endingLineNumber = "599"
+            startingLineNumber = "620"
+            endingLineNumber = "620"
             landmarkName = "MenuLayer::writToPlist()"
             landmarkType = "5">
          </BreakpointContent>
@@ -360,7 +362,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/StarBookLayer.cpp"
-            timestampString = "489922072.651575"
+            timestampString = "490066925.780897"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "519"
@@ -376,7 +378,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/StarBookLayer.cpp"
-            timestampString = "489922072.651575"
+            timestampString = "490066925.780897"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "520"
@@ -392,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/StarBookLayer.cpp"
-            timestampString = "489979990.885125"
+            timestampString = "490072427.805843"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "620"
-            endingLineNumber = "620"
+            startingLineNumber = "638"
+            endingLineNumber = "638"
             landmarkName = "StarBookLayer::startGame()"
             landmarkType = "5">
          </BreakpointContent>
@@ -408,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/StarBookLayer.cpp"
-            timestampString = "489979990.885125"
+            timestampString = "490072427.805843"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "636"
-            endingLineNumber = "636"
+            startingLineNumber = "672"
+            endingLineNumber = "672"
             landmarkName = "StarBookLayer::startGame()"
             landmarkType = "5">
          </BreakpointContent>
@@ -424,11 +426,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/StarBookLayer.cpp"
-            timestampString = "489979990.885125"
+            timestampString = "490072427.805843"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "637"
-            endingLineNumber = "637"
+            startingLineNumber = "673"
+            endingLineNumber = "673"
             landmarkName = "StarBookLayer::startGame()"
             landmarkType = "5">
          </BreakpointContent>
@@ -646,11 +648,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/MenuLayer.cpp"
-            timestampString = "489980961.335846"
+            timestampString = "490070477.116584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
             landmarkName = "MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -662,11 +664,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/StarBookLayer.cpp"
-            timestampString = "489922072.651575"
+            timestampString = "490065475.308363"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "429"
-            endingLineNumber = "429"
+            startingLineNumber = "425"
+            endingLineNumber = "425"
             landmarkName = "StarBookLayer::BookMark(int bookMarkIndex)"
             landmarkType = "5">
          </BreakpointContent>
@@ -678,11 +680,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/StarBookLayer.cpp"
-            timestampString = "489922072.651575"
+            timestampString = "490065475.308363"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "497"
-            endingLineNumber = "497"
+            startingLineNumber = "493"
+            endingLineNumber = "493"
             landmarkName = "StarBookLayer::BookMark(int bookMarkIndex)"
             landmarkType = "5">
          </BreakpointContent>
@@ -694,11 +696,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/StarBookLayer.cpp"
-            timestampString = "489922072.651575"
+            timestampString = "490065475.308363"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "452"
-            endingLineNumber = "452"
+            startingLineNumber = "448"
+            endingLineNumber = "448"
             landmarkName = "StarBookLayer::BookMark(int bookMarkIndex)"
             landmarkType = "5">
          </BreakpointContent>
@@ -732,6 +734,118 @@
             startingLineNumber = "179"
             endingLineNumber = "179"
             landmarkName = "gameOverLayer::labelOverCallback()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/StarBookLayer.cpp"
+            timestampString = "490072712.896466"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "619"
+            endingLineNumber = "619"
+            landmarkName = "StarBookLayer::startGame()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/StarBookLayer.cpp"
+            timestampString = "490072714.008357"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "617"
+            endingLineNumber = "617"
+            landmarkName = "StarBookLayer::startGame()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/StarBookLayer.cpp"
+            timestampString = "490072742.465324"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "663"
+            endingLineNumber = "663"
+            landmarkName = "StarBookLayer::startGame()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/StarBookLayer.cpp"
+            timestampString = "490072744.434447"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "640"
+            endingLineNumber = "640"
+            landmarkName = "StarBookLayer::startGame()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/StarBookLayer.cpp"
+            timestampString = "490072795.284901"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "661"
+            endingLineNumber = "661"
+            landmarkName = "StarBookLayer::startGame()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/StarBookLayer.cpp"
+            timestampString = "490072799.042911"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "657"
+            endingLineNumber = "657"
+            landmarkName = "StarBookLayer::startGame()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/StarBookLayer.cpp"
+            timestampString = "490072800.643576"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "643"
+            endingLineNumber = "643"
+            landmarkName = "StarBookLayer::startGame()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

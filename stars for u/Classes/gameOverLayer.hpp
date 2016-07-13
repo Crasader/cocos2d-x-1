@@ -44,5 +44,8 @@ public:
     
     //
    Size size;
+    
+    //收集12个星座回调
+    void dragon();
 };
 #endif /* gameOverLayer_hpp */

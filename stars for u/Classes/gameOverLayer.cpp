@@ -417,7 +417,7 @@ void gameOverLayer::labelOverCallback()
         root[chapter[j]]=arr;
         FileUtils::getInstance()->writeToFile(root, fullpath.c_str());
     }
-    
+    int dragon=0;
     int k=0;
     int j=0;
     for (int i=0; i<12; i++)
@@ -433,6 +433,7 @@ void gameOverLayer::labelOverCallback()
                                                              ScaleTo::create(0.15, 1.0),
                                                              NULL));
             k++;
+            dragon++;
             
             if (k%3==0)
             {
@@ -449,9 +450,34 @@ void gameOverLayer::labelOverCallback()
     
     auto sprite=Sprite::create();
     sprite->runAction(Sequence::create(DelayTime::create(5.0f),CallFunc::create(CC_CALLBACK_0(gameOverLayer::labelOverCallback2, this)), NULL));
+    
+    //收集12个星座后
+    if (dragon==12)
+    {
+        
+        gameOverLayer::dragon();
+        
+    }
+
+}
+//dragon
+
+void gameOverLayer::dragon()
+{
+
+    for (int i=0; i<12; i++)
+    {
+        
+    }
+
 
 }
 
+
+
+
+
+//
 
 void gameOverLayer::labelOverCallback2()
 {

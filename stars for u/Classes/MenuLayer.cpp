@@ -127,16 +127,23 @@ bool MenuLayer::init()
     pointToStar();
 
     
-    
-    
     //timer
     auto moon=Sprite::create("moon_2.png");
     moon->setPosition(Point(moon->getContentSize().width,490));
     moon->setAnchorPoint(Point(0,0));
     moon->setTag(10);
     this->addChild(moon,0);
-    this->schedule(schedule_selector(MenuLayer::timerFunc), 0.1f);
-    
+
+    //con0星座能力
+    bool con0=UserDefault::getInstance()->getBoolForKey("CON0", false);
+    if (con0==true)
+    {
+        this->schedule(schedule_selector(MenuLayer::timerFunc), 0.15f);
+    }
+    else
+    {
+        this->schedule(schedule_selector(MenuLayer::timerFunc), 0.1f);
+    }
     
     //开启触摸
     setTouchEnabled(true);
@@ -193,6 +200,21 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                 lineNum++;
             }
             
+            //con1能力，2次提示
+            if (UserDefault::getInstance()->getBoolForKey("CON1", false))
+            {
+                if (lineNum>=2&&lineShow==false)
+                {
+                    //提示线条
+                    line=DrawNode::create();
+                    line->drawLine(Point(215,95),  (stars->starsVector.back())->getPosition(), Color4F::WHITE);
+                    this->addChild(line,2);
+                    lineNum=0;
+                    lineShow=true;
+                }
+            }
+            else
+            {
             if (lineNum>=3&&lineShow==false)
             {
                 //提示线条
@@ -202,8 +224,7 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                 lineNum=0;
                 lineShow=true;
             }
-            
-            
+            }
             //错误提示效果
             talkingString="不是那个～";
             talkingLabel->setString(talkingString);

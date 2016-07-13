@@ -127,6 +127,7 @@ void OpeningLayer::createPlist()
     std::string path=FileUtils::getInstance()->getWritablePath();
     
     std::string fullPath=path+"List.plist";
+    log("%s",fullPath.c_str());
     if ( !FileUtils::getInstance()->isFileExist(fullPath.c_str()))
     {
         ValueMap root;
