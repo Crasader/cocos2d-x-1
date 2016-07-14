@@ -118,8 +118,30 @@ bool laderLayer::init()
     windDirLabel->setPosition(windDirLabel->getContentSize().width/2+5,size.height-pasueButton->getContentSize().height-100);
     this->addChild(windDirLabel,300);
 
+    cloudPlace();
     
-       //随机出现的云
+   
+    // //CON10技能提示
+    if (UserDefault::getInstance()->getBoolForKey("CON10", false))
+    {
+        auto size=Director::getInstance()->getVisibleSize();
+        auto tipsLabel=Label::createWithTTF("风力减小了！", "fonts/china.ttf", 30);
+        tipsLabel->setColor(Color3B::RED);
+        tipsLabel->setPosition(size.width/2,size.height-tipsLabel->getContentSize().height);
+        tipsLabel->runAction(Sequence::create(DelayTime::create(3.0),EaseSineIn::create( Spawn::create(MoveBy::create(1.0f, Point(0,-50)), FadeOut::create(1.0f),NULL)), RemoveSelf::create(),NULL));
+        this->addChild(tipsLabel,100);
+    }
+   
+    
+    
+  
+    return  true;
+}
+//随机出现的云
+void laderLayer::cloudPlace()
+{
+
+    //随机出现的云
 //    for (int i=0; i<cloud; i++)
 //    {
 //        auto cloud_s=Sprite::create("cloud_S.png");
@@ -145,29 +167,36 @@ bool laderLayer::init()
 //        cloudFix.friction=0.1;
 //        cloudFix.restitution=0;
 //        cloudBody->CreateFixture(&cloudFix);
-//
+//        
 //    }
-    
-   
-    // //CON10技能提示
-    if (UserDefault::getInstance()->getBoolForKey("CON10", false))
+      cloudIndex=400;
+    for (int i=0; i<cloud; i++)
     {
-        auto size=Director::getInstance()->getVisibleSize();
-        auto tipsLabel=Label::createWithTTF("风力减小了！", "fonts/china.ttf", 30);
-        tipsLabel->setColor(Color3B::RED);
-        tipsLabel->setPosition(size.width/2,size.height-tipsLabel->getContentSize().height);
-        tipsLabel->runAction(Sequence::create(DelayTime::create(3.0),EaseSineIn::create( Spawn::create(MoveBy::create(1.0f, Point(0,-50)), FadeOut::create(1.0f),NULL)), RemoveSelf::create(),NULL));
-        this->addChild(tipsLabel,100);
+      
+        auto cloud_s=Sprite::create("cloud_S.png");
+        cloud_s->setTag(1000);
+        float x=random(100, 800);
+        float y=random(250, 500);
+        lx=random(-10, 10);
+        ly=random(-1, 1);
+        cloud_s->runAction(RepeatForever::create(Sequence::create(MoveBy::create(1.0, Point(lx,ly)),CallFunc::create(CC_CALLBACK_0(laderLayer::randomColoud, this)),MoveBy::create(1.0,Point(lx,ly) ), CallFunc::create(CC_CALLBACK_0(laderLayer::randomColoud, this)),NULL)));
+        cloud_s->setPosition(x,y);
+        cloud_s->setTag(cloudIndex);
+        cloudIndex+=1;
+        this->addChild(cloud_s);
+
     }
-   
-    
-    
-  
-    return  true;
+
+}
+//cloudRandom
+void laderLayer::randomColoud()
+{
+    lx=random(-10, 10);
+    ly=random(-1, 1);
+
 }
 
-
-//
+//update
 
 void laderLayer::ladderUpdate(float dt)
 {
@@ -204,7 +233,7 @@ void laderLayer::ladderUpdate(float dt)
             win();
         }
         
-        if (winNum<3)
+        if (reBuildNum<3)
         {
         auto sprite =(Sprite*)this->getChildByTag(ladderNum);
         Point point=sprite->getPosition();
@@ -227,30 +256,39 @@ void laderLayer::ladderUpdate(float dt)
                             b->SetUserData(NULL);
                             log("sprite Tag%d",sprite->getTag());
                             ladderStatus=true;
-                            sprite->runAction( Sequence::create(MoveBy::create(0.5, Point(0,-300)), RemoveSelf::create(),NULL) );
+                            sprite->runAction( Sequence::create(MoveBy::create(0.8, Point(0,-300)), RemoveSelf::create(),NULL) );
                             
                             
                         }
                     }
                 }
             }
-            bodyVector.back()->SetLinearVelocity(b2Vec2(0,-20));
+            bodyVector.back()->SetLinearVelocity(b2Vec2(0,-15));
             auto node =(Node*) bodyVector.back()->GetUserData();
             node->setTag(1);
             printf("indexFor==%d\n",ladderIndex);
             ladderNum=1;
-            winNum++;
+            reBuildNum++;
             
             Vector<b2Body*>::iterator iter;
             for (iter=bodyToDelete.begin(); iter!=bodyToDelete.end(); iter++)
             {
                 world->DestroyBody((*iter));
-                log("deleted...");
+               
                 
             }
             bodyToDelete.clear();
             ladderStatus=false;
             setTouchEnabled(false);
+            
+            //云的动作
+            for (int i=400; i<(399+cloud); i++)
+            {
+                this->getChildByTag(i)->runAction(Sequence::create(MoveTo::create(1.0, Point(this->getChildByTag(i)->getPosition()+Point(0,-700))), RemoveSelf::create(),NULL));
+            }
+            
+            this->getChildByTag(399+cloud)->runAction(Sequence::create(MoveTo::create(1.0, Point(this->getChildByTag(i)->getPosition()+Point(0,-700))),RemoveSelf::create(),CallFunc::create(CC_CALLBACK_0(laderLayer::cloudPlace, this)), NULL));
+            
             
         }
     }
@@ -504,6 +542,7 @@ void laderLayer::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event)
 void laderLayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
 {
 
+    log("rebuild==%d\n",reBuildNum);
     //放大提示
     
 //    for (int i=1; i<=k; i++)
@@ -531,17 +570,18 @@ void laderLayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
     b2Body* body=world->CreateBody(&bodyDef);
     bodyVector.push_back(body);
     //5层以上有随机外力
-    if (ladderNum>=5&&ladderNum<8)
+    if (ladderNum>=4&&reBuildNum==0)
     {
-//        //引入风向
-//        body->ApplyLinearImpulse(b2Vec2(1, 0), body->GetPosition(), true);
-//        int x=random(50,60)*wind;
-//  
-//        bodyVector.at(k/2)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(k/2)->GetPosition(), true);
-//        bodyVector.at(k/2-1)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(k/2-1)->GetPosition(), true);
-//        bodyVector.at(k/2+1)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(k/2+1)->GetPosition(), true);
+        //引入风向
+       // body->ApplyLinearImpulse(b2Vec2(1, 0), body->GetPosition(), true);
+        int x=random(50,60)*wind;
+        
+       
+        bodyVector.at(ladderNum/2)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(ladderNum/2)->GetPosition(), true);
+        bodyVector.at(ladderNum/2-1)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(ladderNum/2-1)->GetPosition(), true);
+        //bodyVector.at(ladderNum/2+1)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(ladderNum/2+1)->GetPosition(), true);
     }
-    if (ladderNum>=8)
+   else if (ladderNum>=1&&reBuildNum==1)
     {
         int x=0;
        
@@ -556,18 +596,95 @@ void laderLayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
             x=random(30,50)*wind;
         
         }
-//         //引入风向
-//       // body->ApplyLinearImpulse(b2Vec2(1, 0), body->GetPosition(), true);
-//        
-//        
-//        bodyVector.at(k/2)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(k/2)->GetPosition(), true);
-//        bodyVector.at(k/2-1)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(k/2-1)->GetPosition(), true);
-//        bodyVector.at(k/2+1)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(k/2+1)->GetPosition(), true);
-//        bodyVector.at(1)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(1)->GetPosition(), true);
-//        bodyVector.at(2)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(2)->GetPosition(), true);
-//        bodyVector.at(3)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(3)->GetPosition(), true);
-//        //bodyVector.at(k)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(3)->GetPosition(), true);
+         //引入风向
+        Vector<b2Body*>::iterator iter;
+        for (iter=bodyVector.begin(); ; iter++)
+        {
+            if ((*iter)!=bodyVector.back())
+            {
+                (*iter)->ApplyLinearImpulse(b2Vec2(x,0), (*iter)->GetPosition(), true);
+            }
+            else
+            {
+                break;
+            }
+            
+        }
+
     }
+   else if (ladderNum>=1&&reBuildNum==2)
+   {
+       int x=0;
+       
+       //con10技能,风力减小
+       if (UserDefault::getInstance()->getBoolForKey("CON10", false))
+       {
+           x=random(80,100)*wind;
+           
+       }
+       else
+       {
+           x=random(40,50)*wind;
+           
+       }
+       //引入风向
+       Vector<b2Body*>::iterator iter;
+       for (iter=bodyVector.begin(); ; iter++)
+       {
+           
+           if ((*iter)!=bodyVector.back())
+           {
+               (*iter)->ApplyLinearImpulse(b2Vec2(x,0), (*iter)->GetPosition(), true);
+           }
+           else
+           {
+               break;
+           }
+           
+       }
+
+   }
+   else if (ladderNum>=1&&reBuildNum==3)
+   {
+       int x=0;
+       
+       //con10技能,风力减小
+       if (UserDefault::getInstance()->getBoolForKey("CON10", false))
+       {
+           x=random(80,100)*wind;
+           
+       }
+       else
+       {
+           x=random(40,50)*wind;
+           
+       }
+       //引入风向
+       
+       Vector<b2Body*>::iterator iter;
+       for (iter=bodyVector.begin(); ; iter++)
+       {
+           
+           if ((*iter)!=bodyVector.back())
+           {
+               (*iter)->ApplyLinearImpulse(b2Vec2(x,0), (*iter)->GetPosition(), true);
+           }
+           else
+           {
+               break;
+           }
+
+          
+       }
+       
+//       bodyVector.front()->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.front()->GetPosition(), true);
+//       bodyVector.at(ladderNum/2)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(ladderNum/2)->GetPosition(), true);
+//       bodyVector.at(ladderNum/2-1)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(ladderNum/2-1)->GetPosition(), true);
+//       bodyVector.at(1)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(1)->GetPosition(), true);
+//       //bodyVector.at(ladderNum/2+1)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(ladderNum/2+1)->GetPosition(), true);
+//       //bodyVector.at(k)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(3)->GetPosition(), true);
+   }
+
 
     
     body->SetUserData(this->getChildByTag(ladderNum));

@@ -62,7 +62,14 @@ public:
     void ladderUpdate(float dt);
     bool touchBool=false;
     
-    int winNum=0;
+    int reBuildNum=0;
+    
+    //cloud
+    void cloudPlace();
+    int lx=0;
+    int ly=0;
+    Vector<Sprite*> cloudVector;
+    void randomColoud();
     
     
     
