@@ -133,6 +133,8 @@ bool StarBookLayer::init()
     age=UserDefault::getInstance()->getIntegerForKey("age", 0);
     //生成书签页数量
     //age传入
+    //测试用。......................
+    age=25;//测试用。......................
     BookMark(age);
 
     
@@ -568,6 +570,7 @@ void StarBookLayer::setGetedConsent(int i)
 //////////////
 void StarBookLayer::startGame()
 {
+    
     getAllgetedConsetn();
     switch (age) {
         case 0:
@@ -923,7 +926,7 @@ bool StarBookLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                         textLabel->setString(textString);
                         break;
                     case 2:
-                        textString="谈话成功率增加";
+                        textString="谈论学习话题的成功率增加";
                         textLabel->setString(textString);
                         break;
                     case 3:
@@ -935,19 +938,19 @@ bool StarBookLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                         textLabel->setString(textString);
                         break;
                     case 5:
-                        textString="学习得到的值增加";
+                        textString="谈论学习话题的成功率增加";
                         textLabel->setString(textString);
                         break;
                     case 6:
-                        textString="社交得到的值增加";
+                        textString="谈论社交话题的成功率增加";
                         textLabel->setString(textString);
                         break;
                     case 7:
-                        textString="爱好得到的值增加！";
+                        textString="谈论爱好话题的成功率增加";
                         textLabel->setString(textString);
                         break;
                     case 8:
-                        textString="家庭得到的值增加！";
+                        textString="谈论家庭得到的值增加！";
                         textLabel->setString(textString);
                         break;
                     case 9:
@@ -1076,28 +1079,34 @@ void StarBookLayer::useCallBack(cocos2d::Ref *pSender)
             //学习得到的值增加
         case 5:
         {
-            log("55");
+            
+            conllentSpriteShow->setTexture("C6.png");
+            UserDefault::getInstance()->setBoolForKey("CON5", true);
          
             break;
         }
             //社交得到的值增加
         case 6:
         {
-            log("6");
+            conllentSpriteShow->setTexture("C7.png");
+            UserDefault::getInstance()->setBoolForKey("CON6", true);
+
             
             break;
         }
             //爱好得到的值增加
         case 7:
-        {
-            log("77");
+        { conllentSpriteShow->setTexture("C8.png");
+            UserDefault::getInstance()->setBoolForKey("CON7", true);
             
             break;
         }
             //家庭得到的值增加
         case 8:
         {
-            log("88");
+            conllentSpriteShow->setTexture("C9.png");
+            UserDefault::getInstance()->setBoolForKey("CON8", true);
+
             
             break;
         }
@@ -1105,14 +1114,16 @@ void StarBookLayer::useCallBack(cocos2d::Ref *pSender)
             //一定概率星星的到的亲密值增加
         case 9:
         {
-            log("99");
+            conllentSpriteShow->setTexture("C10.png");
+            UserDefault::getInstance()->setBoolForKey("CON9", true);
             
             break;
         }
             //梯子关风力减小
         case 10:
         {
-            log("10");
+            conllentSpriteShow->setTexture("C11.png");
+            UserDefault::getInstance()->setBoolForKey("CON10", true);
             
             break;
         }

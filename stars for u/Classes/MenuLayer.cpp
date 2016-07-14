@@ -467,7 +467,28 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
             //得分
             score++;
             //亲密值增加
+            //CON9技能
+            if (UserDefault::getInstance()->getBoolForKey("CON9", false))
+            {
+                //概率增加2
+                int i=random(0, 2);
+              
+                if (i==1)
+                {
+                    Relation+=2;
+                    auto tipsLabel=Label::createWithTTF("亲密值增加2！", "fonts/china.ttf", 30);
+                    tipsLabel->setColor(Color3B::RED);
+                    tipsLabel->setPosition(size.width/2,size.height-tipsLabel->getContentSize().height);
+                    tipsLabel->runAction(Sequence::create(EaseSineIn::create( Spawn::create(MoveBy::create(3.0f, Point(0,-50)), FadeOut::create(3.0f),NULL)), RemoveSelf::create(),NULL));
+                    this->addChild(tipsLabel,100);
+                }
+                
+                
+            }
+            else
+            {
             Relation++;
+            }
             UserDefault::getInstance()->setIntegerForKey("RELATION", Relation);
             
       

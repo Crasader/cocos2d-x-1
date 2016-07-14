@@ -206,13 +206,32 @@ void shopLayer::examCallBack(cocos2d::Ref *pSender)
     {
         
         
-      
+        int index[5];
+        int react;
+        //CON5技能,学习值增加概率变大
+        if (UserDefault::getInstance()->getBoolForKey("CON5", false))
+        {
+            index[0]=0;
+            index[1]=0;
+            index[2]=0;
+            index[3]=1;
+            index[4]=2;
+            react= random(0, 4);
+            
+        }
         
         
+        else
+        {
+            index[0]=0;
+            index[1]=0;
+            index[2]=1;
+            index[3]=2;
+            index[4]=2;
+        react= random(0, 4);
+        }
         //随机反应
-        //喜欢的概率50， 不喜欢25，没反应25
-        int index[4]={0,0,1,2};
-        int react=random(0, 3);
+      
         relation=relation-2;
          UserDefault::getInstance()->setIntegerForKey("RELATION", relation);
         
@@ -328,15 +347,37 @@ void shopLayer::friendsCallBack(cocos2d::Ref *pSender)
         
         std::string buf="亲密值不足 ";
         tipsLabel->setString(buf);
-       tipsLabelAction();
+        tipsLabelAction();
     }
     
     else
     {
-        //随机反应
-        //喜欢的概率50， 不喜欢25，没反应25
-        int index[5]={0,0,0,1,2};
-        int react=random(0, 4);
+        
+        
+        int index[5];
+        int react;
+        //CON6技能,社交值增加概率变大
+        if (UserDefault::getInstance()->getBoolForKey("CON6", false))
+        {
+            index[0]=0;
+            index[1]=0;
+            index[2]=0;
+            index[3]=1;
+            index[4]=2;
+            react= random(0, 4);
+            
+        }
+        
+        
+        else
+        {
+            index[0]=0;
+            index[1]=0;
+            index[2]=1;
+            index[3]=2;
+            index[4]=2;
+            react= random(0, 4);
+        }
         relation-=2;
         UserDefault::getInstance()->setIntegerForKey("RELATION", relation);
         
@@ -469,10 +510,31 @@ void shopLayer::footballCallBack(cocos2d::Ref *pSender)
     
     else
     {
-        //随机反应
-        //喜欢的概率75，没反应25
-        int index[3]={0,0,1};
-        int react=random(0, 2);
+        int index[5];
+        int react;
+        //CON6技能,社交值增加概率变大
+        if (UserDefault::getInstance()->getBoolForKey("CON7", false))
+        {
+            index[0]=0;
+            index[1]=0;
+            index[2]=0;
+            index[3]=1;
+            index[4]=0;
+            react= random(0, 4);
+            
+        }
+        
+        
+        else
+        {
+            index[0]=0;
+            index[1]=0;
+            index[2]=1;
+            index[3]=1;
+            index[4]=1;
+            react= random(0, 4);
+        }
+
         relation-=5;
         UserDefault::getInstance()->setIntegerForKey("RELATION", relation);
         
@@ -574,15 +636,29 @@ void shopLayer::familyCallBack(cocos2d::Ref *pSender)
 //        
         
         //家庭值++
-            UserDefault::getInstance()->setIntegerForKey("FAMILY", ++FAMILY);
-                
+        std::string buf;
+        if (UserDefault::getInstance()->getBoolForKey("CON8", false))
+        {
+            FAMILY+=2;
+            UserDefault::getInstance()->setIntegerForKey("FAMILY", FAMILY);
+            //消费提示
+            buf="他好像明白了什么。 \n 家庭值大大增加了！";
+            
+
+        }
+        else
+        {   FAMILY+=1;
+            UserDefault::getInstance()->setIntegerForKey("FAMILY", FAMILY);
+            //消费提示
+            buf="他好像明白了什么。 \n 家庭值增加了！";
+        }
+        
                 //pointLabel
                 char pointBuf[128];
                 sprintf(pointBuf, "亲密值:%d",relation);
                 pointLabel->setString(pointBuf);
                 
-                //消费提示
-                std::string buf="他好像明白了什么。 \n 家庭值增加了！";
+        
                 
                 tipsLabel->setString(buf);
                 

@@ -101,52 +101,165 @@ bool laderLayer::init()
     {
         dirBuf="风向: 右";
     }
+    if (wind==0)
+    {
+       dirBuf="";
+    }
     
     //风力
     auto windLabel=Label::createWithTTF(windBuf, "fonts/china.ttf", 40);
     windLabel->setColor(Color3B::RED);
     windLabel->setPosition(windLabel->getContentSize().width/2+5,size.height-pasueButton->getContentSize().height-50);
-    this->addChild(windLabel);
+    this->addChild(windLabel,300);
     
     //风向
     auto windDirLabel=Label::createWithTTF(dirBuf, "fonts/china.ttf", 40);
     windDirLabel->setColor(Color3B::RED);
     windDirLabel->setPosition(windDirLabel->getContentSize().width/2+5,size.height-pasueButton->getContentSize().height-100);
-    this->addChild(windDirLabel);
+    this->addChild(windDirLabel,300);
 
-    //随机出现的云
-    for (int i=0; i<cloud; i++)
-    {
-        auto cloud_s=Sprite::create("cloud_S.png");
-        cloud_s->setTag(1000);
-        float x=random(100, 800);
-        float y=random(250, 500);
-        cloud_s->setPosition(x,y);
-        this->addChild(cloud_s);
-        b2BodyDef cloudBodyDef;
-        cloudBodyDef.type=b2_dynamicBody;
-        cloudBodyDef.position.Set(x/PTM_RATIO, y/PTM_RATIO);
-        b2Body* cloudBody=world->CreateBody(&cloudBodyDef);
-        cloudBody->SetUserData(cloud_s);
-        int Impluse=random(-2, 2);
-        cloudBody->ApplyLinearImpulse(b2Vec2(Impluse, 0), cloudBody->GetPosition(), true);
-        cloudBody->SetGravityScale(0);
-        b2PolygonShape cloudBox;
-        cloudBox.SetAsBox(2, 1);
-        b2FixtureDef cloudFix;
-        cloudFix.shape=&cloudBox;
-        cloudFix.density=50;
-        cloudFix.friction=0.1;
-        cloudFix.restitution=0;
-        cloudBody->CreateFixture(&cloudFix);
-
-    }
+    
+       //随机出现的云
+//    for (int i=0; i<cloud; i++)
+//    {
+//        auto cloud_s=Sprite::create("cloud_S.png");
+//        cloud_s->setTag(1000);
+//        float x=random(100, 800);
+//        float y=random(250, 500);
+//        cloud_s->setPosition(x,y);
+//        cloud_s->setTag(cloudIndex++);
+//        this->addChild(cloud_s);
+//        b2BodyDef cloudBodyDef;
+//        cloudBodyDef.type=b2_dynamicBody;
+//        cloudBodyDef.position.Set(x/PTM_RATIO, y/PTM_RATIO);
+//        b2Body* cloudBody=world->CreateBody(&cloudBodyDef);
+//        cloudBody->SetUserData(cloud_s);
+//        int Impluse=random(-2, 2);
+//        cloudBody->ApplyLinearImpulse(b2Vec2(Impluse, 0), cloudBody->GetPosition(), true);
+//        cloudBody->SetGravityScale(0);
+//        b2PolygonShape cloudBox;
+//        cloudBox.SetAsBox(2, 1);
+//        b2FixtureDef cloudFix;
+//        cloudFix.shape=&cloudBox;
+//        cloudFix.density=50;
+//        cloudFix.friction=0.1;
+//        cloudFix.restitution=0;
+//        cloudBody->CreateFixture(&cloudFix);
+//
+//    }
     
    
+    // //CON10技能提示
+    if (UserDefault::getInstance()->getBoolForKey("CON10", false))
+    {
+        auto size=Director::getInstance()->getVisibleSize();
+        auto tipsLabel=Label::createWithTTF("风力减小了！", "fonts/china.ttf", 30);
+        tipsLabel->setColor(Color3B::RED);
+        tipsLabel->setPosition(size.width/2,size.height-tipsLabel->getContentSize().height);
+        tipsLabel->runAction(Sequence::create(DelayTime::create(3.0),EaseSineIn::create( Spawn::create(MoveBy::create(1.0f, Point(0,-50)), FadeOut::create(1.0f),NULL)), RemoveSelf::create(),NULL));
+        this->addChild(tipsLabel,100);
+    }
+   
+    
     
   
     return  true;
 }
+
+
+//
+
+void laderLayer::ladderUpdate(float dt)
+{
+ setTouchEnabled(true);
+    //胜利判断
+    int i =ladderNum;
+    int index=0;
+    if (ladderStatus==true)
+    {
+        
+    }
+    else
+    {
+        
+        while(i>1)
+        {
+            //每个箱子都想接
+            if (this->getChildByTag(i)->getBoundingBox().intersectsRect(this->getChildByTag(i-1)->getBoundingBox()))
+            {
+                index++;
+                
+                
+            }
+            i--;
+            
+        }
+    }
+    
+    if ( index==ladderNum-1  &&ladderNum>1)
+    {
+        if (this->getChildByTag(ladderNum)->getBoundingBox().intersectsRect(star->getBoundingBox()))
+        {
+            this->pause();
+            win();
+        }
+        
+        if (winNum<3)
+        {
+        auto sprite =(Sprite*)this->getChildByTag(ladderNum);
+        Point point=sprite->getPosition();
+        if (point.y>=200)
+        {
+            
+            log("yibanle");
+            
+            for (b2Body* b=world->GetBodyList(); b; b=b->GetNext())
+            {
+                
+                if (b->GetUserData()!=nullptr)
+                {
+                    auto sprite=(Sprite*)b->GetUserData();
+                    if (sprite->getTag()>0)
+                    {
+                        if (sprite->getTag()!=ladderNum)
+                        {
+                            bodyToDelete.push_back(b);
+                            b->SetUserData(NULL);
+                            log("sprite Tag%d",sprite->getTag());
+                            ladderStatus=true;
+                            sprite->runAction( Sequence::create(MoveBy::create(0.5, Point(0,-300)), RemoveSelf::create(),NULL) );
+                            
+                            
+                        }
+                    }
+                }
+            }
+            bodyVector.back()->SetLinearVelocity(b2Vec2(0,-20));
+            auto node =(Node*) bodyVector.back()->GetUserData();
+            node->setTag(1);
+            printf("indexFor==%d\n",ladderIndex);
+            ladderNum=1;
+            winNum++;
+            
+            Vector<b2Body*>::iterator iter;
+            for (iter=bodyToDelete.begin(); iter!=bodyToDelete.end(); iter++)
+            {
+                world->DestroyBody((*iter));
+                log("deleted...");
+                
+            }
+            bodyToDelete.clear();
+            ladderStatus=false;
+            setTouchEnabled(false);
+            
+        }
+    }
+         }
+
+    }
+   // }
+    
+
 
 //返回
 void laderLayer::goBackCallBack(cocos2d::Ref *pSender)
@@ -155,7 +268,8 @@ void laderLayer::goBackCallBack(cocos2d::Ref *pSender)
     //结束游戏
     int gameOver=UserDefault::getInstance()->getIntegerForKey("GROWTH", 0);
     //结束需要的成长值////////////////////////////////////////////////////////////
-    if (gameOver>=2)
+    //测试用。......................
+    if (gameOver>=200)
     {
         gsm->goGameOverLayer();
        
@@ -170,7 +284,8 @@ else
 //box2d的update
 void laderLayer::update(float dt)
 {
-
+    
+    
     float timeStep = 0.03f;
     int32 velocityIterations = 8;
     int32 positionIterations =1;
@@ -178,64 +293,41 @@ void laderLayer::update(float dt)
     
     world->Step(timeStep, velocityIterations, positionIterations);
     
-    //sprite移动
+    
+    
+    // sprite移动
     for (b2Body* b = world->GetBodyList(); b; b = b->GetNext())
     {
         if (b->GetUserData() != nullptr) {
             Sprite* sprite = (Sprite*)b->GetUserData();
             sprite->setPosition( Vec2( b->GetPosition().x *
                                       PTM_RATIO, b->GetPosition().y * PTM_RATIO) );
-           
-           // sprite->setRotation( -1 * CC_RADIANS_TO_DEGREES(b->GetAngle()) );
-             //失败判断，有两个的位置低于箱子高度
-            if (sprite->getPosition().y<=sprite->getContentSize().height/2)
-            {
-                i1++;
-              
-            }
-                    }
+            
+             sprite->setRotation( -1 * CC_RADIANS_TO_DEGREES(b->GetAngle()) );
+                         //失败判断，有两个的位置低于箱子高度
+                        if (sprite->getPosition().y<=sprite->getContentSize().height/2)
+                        {
+                            i1++;
+            
+                        }
+                }
+        
+        
     }
+
+
+
+
+
+//
     //失败
     if (i1>=2)
     {
         this->pause();
         fail();
     }
-    
-    //胜利判断
-    int i =k;
-    int index=0;
-        
-        while(i>1)
-        {
-            //每个箱子都想接
-            if (this->getChildByTag(i)->getBoundingBox().intersectsRect(this->getChildByTag(i-1)->getBoundingBox()))
-            {
-                index++;
-               
-                
-            }
-            i--;
-            
-        }
-        
-    
-    
-    
-    if ( index==k-1  &&k>2)
-    {
-        if (this->getChildByTag(k)->getBoundingBox().intersectsRect(star->getBoundingBox()))
-        {
-            this->pause();
-            win();
-            
-            
-            
-        }
-        
-    }
+//
    
-
 }
 //fail
 
@@ -345,7 +437,7 @@ void laderLayer::win()
     
     
     //win提示
-    auto winLabel=Label::createWithTTF("成功!\n看来我还可以为他做点什么！", "fonts/china.ttf", 25);
+    auto winLabel=Label::createWithTTF("成功!\n看来\n我还可以为他做点什么！", "fonts/china.ttf", 25);
     winLabel->setColor(Color3B::RED);
     winLabel->setPosition(Point(3*bookSprite->getContentSize().width/4+10,bookSprite->getContentSize().height-100));
     winLabel->runAction(Sequence::create(FadeOut::create(0.0),FadeIn::create(2.0f), NULL));
@@ -361,7 +453,7 @@ void laderLayer::win()
 bool laderLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
 {
     
-    k++;
+    
     auto size=Director::getInstance()->getVisibleSize();
     auto ladderbacthnode=SpriteBatchNode::create("ladder_s.png");
     
@@ -372,7 +464,8 @@ bool laderLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
     //ladder
     auto ladder=Sprite::createWithTexture(ladderbacthnode->getTexture());
     ladder->setPosition(touch->getLocation());
-    ladder->setTag(k);
+    ladder->setTag(111);
+   // log("touch ladder=%d\n",ladderNum);
     this->addChild(ladder);
     
     
@@ -393,15 +486,15 @@ void laderLayer::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event)
 {
 
    
-    this->getChildByTag(k)->setPosition(touch->getLocation());
+    this->getChildByTag(111)->setPosition(touch->getLocation());
  
-    //放大提示
-    for (int i=1; i<=k; i++)
-        
-    {
-        this->getChildByTag(i)->setScale(1.5);
-        
-    }
+//    //放大提示
+//    for (int i=1; i<=k; i++)
+//        
+//    {
+//        this->getChildByTag(i)->setScale(1.5);
+//        
+//    }
     
 
 
@@ -413,14 +506,22 @@ void laderLayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
 
     //放大提示
     
-    for (int i=1; i<=k; i++)
-        
-    {
-        this->getChildByTag(i)->setScale(1.0);
-        
-    }
-
+//    for (int i=1; i<=k; i++)
+//        
+//    {
+//        this->getChildByTag(i)->setScale(1.0);
+//        
+//    }
+    ladderNum++;
+    auto ladderbacthnode=SpriteBatchNode::create("ladder_s.png");
+    auto ladder=Sprite::createWithTexture(ladderbacthnode->getTexture());
    
+    ladder->setPosition(this->getChildByTag(111)->getPosition());
+     this->removeChildByTag(111);
+    ladder->setTag(ladderNum);
+    // log("touch ladder=%d\n",ladderNum);
+    this->addChild(ladder);
+
     //wuliqingying
     b2BodyDef bodyDef;
     bodyDef.type=b2_dynamicBody;
@@ -428,35 +529,48 @@ void laderLayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
     float32 y=touch->getLocation().y;
     bodyDef.position.Set(x/PTM_RATIO,y/PTM_RATIO);
     b2Body* body=world->CreateBody(&bodyDef);
-    
     bodyVector.push_back(body);
     //5层以上有随机外力
-    if (k>=5&&k<8)
+    if (ladderNum>=5&&ladderNum<8)
     {
-        //引入风向
-        body->ApplyLinearImpulse(b2Vec2(1, 0), body->GetPosition(), true);
-        int x=random(50,60)*wind;
-        log("x=%d",x);
-        bodyVector.at(k/2)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(k/2)->GetPosition(), true);
-        bodyVector.at(k/2-1)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(k/2-1)->GetPosition(), true);
-        bodyVector.at(k/2+1)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(k/2+1)->GetPosition(), true);
+//        //引入风向
+//        body->ApplyLinearImpulse(b2Vec2(1, 0), body->GetPosition(), true);
+//        int x=random(50,60)*wind;
+//  
+//        bodyVector.at(k/2)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(k/2)->GetPosition(), true);
+//        bodyVector.at(k/2-1)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(k/2-1)->GetPosition(), true);
+//        bodyVector.at(k/2+1)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(k/2+1)->GetPosition(), true);
     }
-    if (k>=8)
+    if (ladderNum>=8)
     {
-        //引入风向
-        body->ApplyLinearImpulse(b2Vec2(1, 0), body->GetPosition(), true);
-        int x=random(60,80)*wind;
-        log("x=%d",x);
-        bodyVector.at(k/2)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(k/2)->GetPosition(), true);
-        bodyVector.at(k/2-1)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(k/2-1)->GetPosition(), true);
-        bodyVector.at(k/2+1)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(k/2+1)->GetPosition(), true);
-        bodyVector.at(1)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(1)->GetPosition(), true);
-        bodyVector.at(2)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(2)->GetPosition(), true);
-        bodyVector.at(3)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(3)->GetPosition(), true);
+        int x=0;
+       
+        //con10技能,风力减小
+        if (UserDefault::getInstance()->getBoolForKey("CON10", false))
+        {
+            x=random(60,100)*wind;
+            
+        }
+        else
+        {
+            x=random(30,50)*wind;
+        
+        }
+//         //引入风向
+//       // body->ApplyLinearImpulse(b2Vec2(1, 0), body->GetPosition(), true);
+//        
+//        
+//        bodyVector.at(k/2)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(k/2)->GetPosition(), true);
+//        bodyVector.at(k/2-1)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(k/2-1)->GetPosition(), true);
+//        bodyVector.at(k/2+1)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(k/2+1)->GetPosition(), true);
+//        bodyVector.at(1)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(1)->GetPosition(), true);
+//        bodyVector.at(2)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(2)->GetPosition(), true);
+//        bodyVector.at(3)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(3)->GetPosition(), true);
+//        //bodyVector.at(k)->ApplyLinearImpulse(b2Vec2(x, 0), bodyVector.at(3)->GetPosition(), true);
     }
 
     
-    body->SetUserData(this->getChildByTag(k));
+    body->SetUserData(this->getChildByTag(ladderNum));
     
     b2PolygonShape dynamicBox;
     dynamicBox.SetAsBox(0.8, 0.8);
@@ -471,12 +585,19 @@ void laderLayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
     //tanxing
     fixtureDef.restitution=0;
     
-    
-    
-    body->CreateFixture(&fixtureDef);
-    
+   
+  body->CreateFixture(&fixtureDef);
+        
 
+    
+  
+    if (touchBool==false)
+    {
+    touchBool=true;
 
+        this->schedule(schedule_selector(laderLayer::ladderUpdate), 1.0);
+   
+    }
 }
 
 

@@ -24,7 +24,7 @@ public:
     static laderLayer* create(int windNum, int cloudNum);
     GameSceneManager* gsm;
     //提子数量
-    int k=0;
+    int ladderNum=0;
     Sprite* star;
     
     //风力 负表示朝左边，正表示朝右
@@ -47,11 +47,22 @@ public:
     
     //bodyVector
     std::vector<b2Body*> bodyVector;
+   std::vector<b2Body*> bodyToDelete;
     
     laderLayer(int windNum, int cloudNum);
     
     void win();
     void fail();
+    
+    int ladderIndex=100;
+    int cloudIndex=200;
+    bool ladderStatus=false;
+   
+    
+    void ladderUpdate(float dt);
+    bool touchBool=false;
+    
+    int winNum=0;
     
     
     
