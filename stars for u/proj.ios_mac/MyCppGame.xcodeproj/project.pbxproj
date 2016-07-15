@@ -110,6 +110,7 @@
 		FF968A4A1D1BEC7F00643012 /* C11.png in Resources */ = {isa = PBXBuildFile; fileRef = FF968A491D1BEC7F00643012 /* C11.png */; };
 		FF968A4C1D1BEE1200643012 /* C10.png in Resources */ = {isa = PBXBuildFile; fileRef = FF968A4B1D1BEE1200643012 /* C10.png */; };
 		FF968A521D1BEE8500643012 /* C9.png in Resources */ = {isa = PBXBuildFile; fileRef = FF968A511D1BEE8500643012 /* C9.png */; };
+		FF9DD4AE1D388C2E0084B09F /* bigsky_2.png in Resources */ = {isa = PBXBuildFile; fileRef = FF9DD4AD1D388C2E0084B09F /* bigsky_2.png */; };
 		FFD605CE1D225E53009304F8 /* moon.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD605CD1D225E53009304F8 /* moon.png */; };
 		FFD605D01D226CF3009304F8 /* bg_2.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD605CF1D226CF3009304F8 /* bg_2.png */; };
 		FFD605D41D227766009304F8 /* moon_2.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD605D31D227766009304F8 /* moon_2.png */; };
@@ -286,6 +287,7 @@
 		FF968A491D1BEC7F00643012 /* C11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = C11.png; sourceTree = "<group>"; };
 		FF968A4B1D1BEE1200643012 /* C10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = C10.png; sourceTree = "<group>"; };
 		FF968A511D1BEE8500643012 /* C9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = C9.png; sourceTree = "<group>"; };
+		FF9DD4AD1D388C2E0084B09F /* bigsky_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigsky_2.png; sourceTree = "<group>"; };
 		FFD605CD1D225E53009304F8 /* moon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moon.png; sourceTree = "<group>"; };
 		FFD605CF1D226CF3009304F8 /* bg_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_2.png; sourceTree = "<group>"; };
 		FFD605D31D227766009304F8 /* moon_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moon_2.png; sourceTree = "<group>"; };
@@ -465,6 +467,7 @@
 				FF4678221D24FCE30037774D /* mark0.png */,
 				FFE526861D118B03002ABED9 /* hand.png */,
 				FF5750A41D213F6C00796C95 /* boy-hand.png */,
+				FF9DD4AD1D388C2E0084B09F /* bigsky_2.png */,
 				FFD605D31D227766009304F8 /* moon_2.png */,
 				FF46782F1D2510B80037774D /* ladder_s.png */,
 				FFD606071D23D501009304F8 /* info3.png */,
@@ -754,6 +757,7 @@
 				FF968A461D1BEC7800643012 /* C8.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				FF7B87E71D2A3D1D00BE5C8F /* intertack.png in Resources */,
+				FF9DD4AE1D388C2E0084B09F /* bigsky_2.png in Resources */,
 				FF968A3C1D1BEC5400643012 /* C6.png in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				FF968A4A1D1BEC7F00643012 /* C11.png in Resources */,

@@ -23,6 +23,8 @@ public:
     virtual bool init();
     static laderLayer* create(int windNum, int cloudNum);
     GameSceneManager* gsm;
+    
+    Sprite* bg;
     //提子数量
     int ladderNum=0;
     Sprite* star;

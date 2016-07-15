@@ -47,8 +47,9 @@ bool laderLayer::init()
     auto size=Director::getInstance()->getVisibleSize();
     
 //bg
-    auto bg=Sprite::create("bg_L.png");
-    bg->setPosition(Point(size.width/2,size.height/2));
+     bg=Sprite::create("bigsky_2.png");
+    bg->setAnchorPoint(Point(0,0));
+    bg->setPosition(Point(0 ,0));
     this->addChild(bg);
     
     bodyVector.resize(100);
@@ -58,7 +59,7 @@ bool laderLayer::init()
     this->initPhysic();
 
 
-    auto ladderbacthnode=SpriteBatchNode::create("ladder_s.png");
+    //auto ladderbacthnode=SpriteBatchNode::create("ladder_s.png");
 
     
     scheduleUpdate();
@@ -254,19 +255,19 @@ void laderLayer::ladderUpdate(float dt)
                         {
                             bodyToDelete.push_back(b);
                             b->SetUserData(NULL);
-                            log("sprite Tag%d",sprite->getTag());
+                         
                             ladderStatus=true;
-                            sprite->runAction( Sequence::create(MoveBy::create(0.8, Point(0,-300)), RemoveSelf::create(),NULL) );
+                            sprite->runAction( Sequence::create(MoveBy::create(0.5, Point(0,-300)), RemoveSelf::create(),NULL) );
                             
                             
                         }
                     }
                 }
             }
-            bodyVector.back()->SetLinearVelocity(b2Vec2(0,-15));
-            auto node =(Node*) bodyVector.back()->GetUserData();
+            //最高的梯子下降
+            bodyVector.back()->SetLinearVelocity(b2Vec2(0,-25));
+            auto node =(Sprite*) bodyVector.back()->GetUserData();
             node->setTag(1);
-            printf("indexFor==%d\n",ladderIndex);
             ladderNum=1;
             reBuildNum++;
             
@@ -280,6 +281,9 @@ void laderLayer::ladderUpdate(float dt)
             bodyToDelete.clear();
             ladderStatus=false;
             setTouchEnabled(false);
+          
+            //背景移动
+            bg->runAction(MoveBy::create(1.0, Point(0,-640)));
             
             //云的动作
             for (int i=400; i<(399+cloud); i++)
@@ -307,7 +311,7 @@ void laderLayer::goBackCallBack(cocos2d::Ref *pSender)
     int gameOver=UserDefault::getInstance()->getIntegerForKey("GROWTH", 0);
     //结束需要的成长值////////////////////////////////////////////////////////////
     //测试用。......................
-    if (gameOver>=200)
+    if (gameOver>=25)
     {
         gsm->goGameOverLayer();
        
