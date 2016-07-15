@@ -90,9 +90,13 @@ void gameOverLayer::labelOverCallback()
     int growth=UserDefault::getInstance()->getIntegerForKey("GROWTH", 0);
     int relation=UserDefault::getInstance()->getIntegerForKey("RELATION", 0);
     int age=UserDefault::getInstance()->getIntegerForKey("age", 0);
+    int zhouMu=UserDefault::getInstance()->getIntegerForKey("ZHOUMU",1);
+        zhouMu++;
+    
     //清除growth age.
      UserDefault::getInstance()->setIntegerForKey("GROWTH", 0);
      UserDefault::getInstance()->setIntegerForKey("age", 0);
+    UserDefault::getInstance()->setIntegerForKey("ZHOUMU", zhouMu);
     
     int EXAM=UserDefault::getInstance()->getIntegerForKey("EXAM", 0);
     int FAMILY=UserDefault::getInstance()->getIntegerForKey("FAMILY", 0);

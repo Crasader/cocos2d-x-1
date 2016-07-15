@@ -587,7 +587,8 @@ void StarBookLayer::startGame()
             {
                 int starNum=random(4, 5);
                 int shinNum=random(2, 4);
-                
+                //n周目
+                int zhouMu=UserDefault::getInstance()->getIntegerForKey("ZHOUMU", 1);
                 //星座概率出现
                 //方便设置标记已获取的星座，就不再出现
                 getAllgetedConsetn();
@@ -601,7 +602,7 @@ void StarBookLayer::startGame()
                  conNum=random(0, 30);
                 }
                 //getedCon前12个元素为1-12,其余为0，获取了号星座为0, 防止重复出现
-                gsm->goMenuLayer(starNum, shinNum,getedCon[conNum]);
+                gsm->goMenuLayer(starNum*zhouMu, shinNum,getedCon[conNum]);
 
             
             }
@@ -609,7 +610,11 @@ void StarBookLayer::startGame()
             break;
         }
         case 10:
-        {//设置关卡数据
+        {
+            //n周目
+            int zhouMu=UserDefault::getInstance()->getIntegerForKey("ZHOUMU", 1);
+
+            //设置关卡数据
             int starNum=random(6, 10);
             int shinNum=random(2, 5);
             
@@ -627,12 +632,15 @@ void StarBookLayer::startGame()
             }
 
          //getedCon前12个元素为1-12,其余为0，获取了号星座为0, 防止重复出现
-            gsm->goMenuLayer(starNum, shinNum,getedCon[conNum]);
+            gsm->goMenuLayer(starNum*zhouMu, shinNum,getedCon[conNum]);
             
             break;
         }
         case 15:
-        {//设置关卡数据
+        {
+            //n周目
+            int zhouMu=UserDefault::getInstance()->getIntegerForKey("ZHOUMU", 1);
+            //设置关卡数据
             int starNum=random(11, 15);
             int shinNum=random(5, 8);
             
@@ -650,12 +658,15 @@ void StarBookLayer::startGame()
             }
 
             //getedCon前12个元素为1-12,其余为0，获取了号星座为0, 防止重复出现
-            gsm->goMenuLayer(starNum, shinNum,getedCon[conNum]);
+            gsm->goMenuLayer(starNum*zhouMu, shinNum,getedCon[conNum]);
             
             break;
         }
         case 20:
-        {//设置关卡数据
+        {
+            //n周目
+            int zhouMu=UserDefault::getInstance()->getIntegerForKey("ZHOUMU", 1);
+            //设置关卡数据
             int starNum=random(16, 20);
             int shinNum=random(10, 15);
             
@@ -673,7 +684,7 @@ void StarBookLayer::startGame()
             }
 
             //getedCon前12个元素为1-12,其余为0，获取了号星座为0, 防止重复出现
-            gsm->goMenuLayer(starNum, shinNum,getedCon[conNum]);
+            gsm->goMenuLayer(starNum*zhouMu, shinNum,getedCon[conNum]);
             
             break;
         }
@@ -889,29 +900,139 @@ bool StarBookLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                 //背景
                 auto bg=Sprite::create("bg2.png");
                 bg->setPosition(size.width/2,size.height/2);
+                bg->setScale(0);
+                bg->runAction(Sequence::create(
+                                                           ScaleTo::create(0.1, 0.4),
+                                                           ScaleTo::create(0.1, 0.8),
+                                                           ScaleTo::create(0.1, 1.2),
+                                                           ScaleTo::create(0.1, 1),
+                                                           
+                                                           NULL));
+
                 this->addChild(bg,100,123);
                 auto conllentSprite=Sprite::create();
                 conllentSprite->setPosition(size.width/4,3*size.height/4);
                 
-                //生成相应星座
+                //生成点击相应星座
                 char touchBuf[128];
                 sprintf(touchBuf, "C%d.png",(i+1));
                 conllentSprite->setTexture(touchBuf);
                
-                conllentSprite->runAction(Sequence::create( ScaleTo::create(0, 0),
-                                                            ScaleTo::create(0.1, 0.4),
-                                                            ScaleTo::create(0.1, 0.8),
-                                                            ScaleTo::create(0.1, 1.2),
-                                                            ScaleTo::create(0.1, 1),
-                                                            
-                                                            NULL));
+//                conllentSprite->runAction(Sequence::create( ScaleTo::create(0, 0),
+//                                                            ScaleTo::create(0.1, 0.4),
+//                                                            ScaleTo::create(0.1, 0.8),
+//                                                            ScaleTo::create(0.1, 1.2),
+//                                                            ScaleTo::create(0.1, 1),
+//                                                            
+//                                                            NULL));
                 bg->addChild(conllentSprite,10);
                 
+                // //显示当前装备的星座
+                conllentSpriteShow=Sprite::create();
+                conllentSpriteShow->setPosition(3*size.width/4,3*size.height/4);
+                
+//                conllentSpriteShow->runAction(Sequence::create( ScaleTo::create(0, 0),
+//                                                           ScaleTo::create(0.1, 0.4),
+//                                                           ScaleTo::create(0.1, 0.8),
+//                                                           ScaleTo::create(0.1, 1.2),
+//                                                           ScaleTo::create(0.1, 1),
+//                                                           
+//                                                           NULL));
+
+                bg->addChild(conllentSpriteShow);
                 //
-                //说明
+                auto equipLabel=Label::createWithTTF("当前使用的星座", "fonts/china.ttf", 30);
+                equipLabel->setColor(Color3B::RED);
+                equipLabel->setPosition(conllentSpriteShow->getPosition()+Point(0,80));
+                bg->addChild(equipLabel);
+                
+                //
+               etextLabel=Label::createWithTTF("", "fonts/china.ttf", 30);
+                etextLabel->setColor(Color3B::RED);
+                //textLabel->setDimensions(size.width/2, size.width/3);
+                etextLabel->setPosition(conllentSpriteShow->getPosition()+Point(0,-80));
+                bg->addChild(etextLabel);
+               
+
+                
+                
+                char bufForCon[128];
+                int equipIndex=100;
+                for (int i=0; i<12; i++)
+                {
+                    sprintf(bufForCon, "CON%d",i);
+                    if (UserDefault::getInstance()->getBoolForKey(bufForCon))
+                    {
+                        sprintf(bufForCon, "C%d.png",(i+1));
+                        equipIndex=i;
+                        
+                        conllentSpriteShow->setTexture(bufForCon);
+                        
+                    }
+                    
+                }
+                switch (equipIndex)
+                {
+                    case 0:
+                        etextString="减缓时间的流动！";
+                       
+                        break;
+                    case 1:
+                        etextString="帮助线只需2次错误即可";
+                       
+                        break;
+                    case 2:
+                        etextString="";
+                        
+                        break;
+                    case 3:
+                        etextString="";
+                        
+                        break;
+                    case 4:
+                        etextString="星座出现几率增加";
+                        
+                        break;
+                    case 5:
+                        etextString="谈论学习话题的成功率增加";
+                       
+                        break;
+                    case 6:
+                        etextString="谈论社交话题的成功率增加";
+                      
+                        break;
+                    case 7:
+                        etextString="谈论爱好话题的成功率增加";
+                      
+                        break;
+                    case 8:
+                        etextString="谈论家庭得到的值增加！";
+                   
+                        break;
+                    case 9:
+                        etextString="一定概率使星星的到的亲密值增加";
+                      
+                        break;
+                    case 10:
+                        etextString="梯子关风力减小";
+                      
+                        break;
+                    case 11:
+                        etextString="召唤神龙";
+                      
+                        break;
+                        
+                    default:
+                        break;
+                }
+                etextLabel->setString(etextString);
+            // //显示当前装备的星座
+                
+                //
+                //点击的星座说明
                 auto textLabel=Label::createWithTTF("", "fonts/china.ttf", 30);
                 textLabel->setColor(Color3B::RED);
-                textLabel->setDimensions(size.width/3, size.width/3);
+                //textLabel->setDimensions(size.width/2, size.width/3);
                 textLabel->setPosition(conllentSprite->getPosition()+Point(0,-80));
                 bg->addChild(textLabel);
                 std::string textString;
@@ -926,11 +1047,11 @@ bool StarBookLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                         textLabel->setString(textString);
                         break;
                     case 2:
-                        textString="谈论学习话题的成功率增加";
+                        textString="";
                         textLabel->setString(textString);
                         break;
                     case 3:
-                        textString="可装备额外2个星座";
+                        textString="";
                         textLabel->setString(textString);
                         break;
                     case 4:
@@ -991,24 +1112,7 @@ bool StarBookLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                 bg->addChild(menu);
                 
                 
-                //显示当前装备的星座
-                 conllentSpriteShow=Sprite::create();
-                conllentSpriteShow->setPosition(3*size.width/4,size.height/2);
-                bg->addChild(conllentSpriteShow);
-                char bufForCon[128];
-                for (int i=0; i<12; i++)
-                {
-                    sprintf(bufForCon, "CON%d",i);
-                    if (UserDefault::getInstance()->getBoolForKey(bufForCon))
-                    {
-                        sprintf(bufForCon, "C%d.png",(i+1));
-                        
-                        conllentSpriteShow->setTexture(bufForCon);
-                        
-                    }
-                    
-                }
-
+               
             }
         }
         
@@ -1039,14 +1143,20 @@ void StarBookLayer::useCallBack(cocos2d::Ref *pSender)
         case 0:
         {
             //设置
+       
+            etextString="减缓时间的流动！";
+        
             conllentSpriteShow->setTexture("C1.png");
-            UserDefault::getInstance()->setBoolForKey("CON0", true); 
+            UserDefault::getInstance()->setBoolForKey("CON0", true);
+           
             break;
         }
             
         //帮助线只需2次错误即可
         case 1:
         {
+            etextString="帮助线只需2次错误即可";
+
             conllentSpriteShow->setTexture("C2.png");
             UserDefault::getInstance()->setBoolForKey("CON1", true);
             
@@ -1056,6 +1166,7 @@ void StarBookLayer::useCallBack(cocos2d::Ref *pSender)
             //.......
         case 2:
         {
+            etextString="";
             conllentSpriteShow->setTexture("C3.png");
             UserDefault::getInstance()->setBoolForKey("CON2", true);
 
@@ -1064,6 +1175,7 @@ void StarBookLayer::useCallBack(cocos2d::Ref *pSender)
             //.......
             case 3:
         {
+            etextString="";
             conllentSpriteShow->setTexture("C4.png");
             UserDefault::getInstance()->setBoolForKey("CON3", true);
             break;
@@ -1071,6 +1183,11 @@ void StarBookLayer::useCallBack(cocos2d::Ref *pSender)
             //星座出现几率增加
             case 4:
         {
+           
+            
+            
+            etextString="星座出现几率增加";
+           
             conllentSpriteShow->setTexture("C5.png");
             UserDefault::getInstance()->setBoolForKey("CON4", true);
 
@@ -1080,6 +1197,9 @@ void StarBookLayer::useCallBack(cocos2d::Ref *pSender)
         case 5:
         {
             
+            etextString="谈论学习话题的成功率增加";
+            
+           
             conllentSpriteShow->setTexture("C6.png");
             UserDefault::getInstance()->setBoolForKey("CON5", true);
          
@@ -1088,6 +1208,16 @@ void StarBookLayer::useCallBack(cocos2d::Ref *pSender)
             //社交得到的值增加
         case 6:
         {
+            
+            
+            
+            
+            
+            etextString="谈论社交话题的成功率增加";
+            
+            
+           
+
             conllentSpriteShow->setTexture("C7.png");
             UserDefault::getInstance()->setBoolForKey("CON6", true);
 
@@ -1096,7 +1226,12 @@ void StarBookLayer::useCallBack(cocos2d::Ref *pSender)
         }
             //爱好得到的值增加
         case 7:
-        { conllentSpriteShow->setTexture("C8.png");
+        {
+            etextString="谈论爱好话题的成功率增加";
+            
+            
+            
+            conllentSpriteShow->setTexture("C8.png");
             UserDefault::getInstance()->setBoolForKey("CON7", true);
             
             break;
@@ -1104,6 +1239,10 @@ void StarBookLayer::useCallBack(cocos2d::Ref *pSender)
             //家庭得到的值增加
         case 8:
         {
+            etextString="谈论家庭得到的值增加！";
+            
+            
+           
             conllentSpriteShow->setTexture("C9.png");
             UserDefault::getInstance()->setBoolForKey("CON8", true);
 
@@ -1114,6 +1253,10 @@ void StarBookLayer::useCallBack(cocos2d::Ref *pSender)
             //一定概率星星的到的亲密值增加
         case 9:
         {
+            etextString="一定概率使星星的到的亲密值增加";
+            
+            
+            
             conllentSpriteShow->setTexture("C10.png");
             UserDefault::getInstance()->setBoolForKey("CON9", true);
             
@@ -1122,6 +1265,10 @@ void StarBookLayer::useCallBack(cocos2d::Ref *pSender)
             //梯子关风力减小
         case 10:
         {
+            etextString="梯子关风力减小";
+            
+            
+            
             conllentSpriteShow->setTexture("C11.png");
             UserDefault::getInstance()->setBoolForKey("CON10", true);
             
@@ -1130,7 +1277,10 @@ void StarBookLayer::useCallBack(cocos2d::Ref *pSender)
             //召唤神龙
         case 11:
         {
-            log("11");
+            etextString="召唤神龙";
+            conllentSpriteShow->setTexture("C12.png");
+            UserDefault::getInstance()->setBoolForKey("CON11", true);
+
             
             break;
         }
@@ -1143,7 +1293,7 @@ void StarBookLayer::useCallBack(cocos2d::Ref *pSender)
             break;
     }
 
-
+ etextLabel->setString(etextString);
 
 }
 

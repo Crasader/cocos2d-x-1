@@ -237,8 +237,28 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
             if (Relation>0)
             {
                 --Relation;
+                 UserDefault::getInstance()-> setIntegerForKey("RELATION", Relation);
+                if (Relation>0)
+                {
+                    auto tipsLabel=Label::createWithTTF("亲密值降低1！", "fonts/china.ttf", 30);
+                    tipsLabel->setColor(Color3B::YELLOW);
+                    tipsLabel->setPosition(size.width/2,size.height-tipsLabel->getContentSize().height);
+                    tipsLabel->runAction(Sequence::create(EaseSineIn::create( Spawn::create(MoveBy::create(1.0f, Point(0,-50)), FadeOut::create(1.0f),NULL)), RemoveSelf::create(),NULL));
+                    this->addChild(tipsLabel,100);
+                   
+                    
+                }
                 
-                UserDefault::getInstance()-> setIntegerForKey("RELATION", Relation);
+                
+                if (Relation==0)
+                {
+                    auto tipsLabel=Label::createWithTTF("亲密值已经0了！", "fonts/china.ttf", 30);
+                    tipsLabel->setColor(Color3B::YELLOW);
+                    tipsLabel->setPosition(size.width/2,size.height-tipsLabel->getContentSize().height);
+                    tipsLabel->runAction(Sequence::create(EaseSineIn::create( Spawn::create(MoveBy::create(1.0f, Point(0,-50)), FadeOut::create(1.0f),NULL)), RemoveSelf::create(),NULL));
+                    this->addChild(tipsLabel,100);
+
+                }
                 
             }
             
@@ -479,7 +499,17 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
                     auto tipsLabel=Label::createWithTTF("亲密值增加2！", "fonts/china.ttf", 30);
                     tipsLabel->setColor(Color3B::RED);
                     tipsLabel->setPosition(size.width/2,size.height-tipsLabel->getContentSize().height);
-                    tipsLabel->runAction(Sequence::create(EaseSineIn::create( Spawn::create(MoveBy::create(3.0f, Point(0,-50)), FadeOut::create(3.0f),NULL)), RemoveSelf::create(),NULL));
+                    tipsLabel->runAction(Sequence::create(ScaleTo::create(0.1, 1.2),ScaleTo::create(0.1, 1.4),EaseSineIn::create( Spawn::create(MoveBy::create(3.0f, Point(0,-50)), FadeOut::create(3.0f),NULL)), RemoveSelf::create(),NULL));
+                    this->addChild(tipsLabel,100);
+                }
+                else
+                {
+                //没双倍
+                    Relation++;
+                    auto tipsLabel=Label::createWithTTF("亲密值增加1！", "fonts/china.ttf", 30);
+                    tipsLabel->setColor(Color3B::RED);
+                    tipsLabel->setPosition(size.width/2,size.height-tipsLabel->getContentSize().height);
+                    tipsLabel->runAction(Sequence::create(EaseSineIn::create( Spawn::create(MoveBy::create(1.5f, Point(0,-50)), FadeOut::create(1.5f),NULL)), RemoveSelf::create(),NULL));
                     this->addChild(tipsLabel,100);
                 }
                 
@@ -487,7 +517,13 @@ bool MenuLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
             }
             else
             {
-            Relation++;
+                Relation++;
+                auto tipsLabel=Label::createWithTTF("亲密值增加1！", "fonts/china.ttf", 30);
+                tipsLabel->setColor(Color3B::RED);
+                tipsLabel->setPosition(size.width/2,size.height-tipsLabel->getContentSize().height);
+                tipsLabel->runAction(Sequence::create(EaseSineIn::create( Spawn::create(MoveBy::create(1.5f, Point(0,-50)), FadeOut::create(1.5f),NULL)), RemoveSelf::create(),NULL));
+                this->addChild(tipsLabel,100);
+
             }
             UserDefault::getInstance()->setIntegerForKey("RELATION", Relation);
             

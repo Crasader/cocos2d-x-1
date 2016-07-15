@@ -59,3 +59,8 @@ item1: 金牛    case 2
 int exam=UserDefault::getInstance()->getIntegerForKey("EXAM", 0);
 
  int FRIENDS=UserDefault::getInstance()->getIntegerForKey("FRIENDS", 0);
+
+
+ bool firstTime=UserDefault::getInstance()->getBoolForKey("LADDER", true);
+ bool firstTime=UserDefault::getInstance()->getBoolForKey("INFO", true);
+    int zhouMu=UserDefault::getInstance()->getIntegerForKey("ZHOUMU", 1);

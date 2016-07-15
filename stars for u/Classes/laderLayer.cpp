@@ -8,6 +8,7 @@
 
 #include "laderLayer.hpp"
 #define PTM_RATIO 32
+#define GAMEOVER 25
 
 
 laderLayer::laderLayer(int windNum, int cloudNum)
@@ -243,27 +244,39 @@ void laderLayer::ladderUpdate(float dt)
             
             log("yibanle");
             
-            for (b2Body* b=world->GetBodyList(); b; b=b->GetNext())
+//            for (b2Body* b=world->GetBodyList(); b; b=b->GetNext())
+//            {
+//                
+//                if (b->GetUserData()!=nullptr)
+//                {
+//                    auto sprite=(Sprite*)b->GetUserData();
+//                    if (sprite->getTag()>0)
+//                    {
+//                        if (sprite->getTag()!=ladderNum)
+//                        {
+//                            bodyToDelete.push_back(b);
+//                           
+//                         
+//                            ladderStatus=true;
+//                            sprite->runAction( Sequence::create(MoveBy::create(0.5, Point(0,-300)), RemoveSelf::create(),NULL) );
+//                             b->SetUserData(NULL);
+//                            
+//                        }
+//                    }
+//                }
+//            }
+             Vector<b2Body*>::iterator bodyIter;
+            for (bodyIter=bodyVector.begin(); (*bodyIter)!=bodyVector.back(); bodyIter++)
             {
+                ladderStatus=true;
+                bodyToDelete.push_back((*bodyIter));
+                auto sprite=(Sprite*)(*bodyIter)->GetUserData();
+                sprite->runAction( Sequence::create(MoveBy::create(0.5, Point(0,-300)), RemoveSelf::create(),NULL) );
+                (*bodyIter)->SetUserData(NULL);
                 
-                if (b->GetUserData()!=nullptr)
-                {
-                    auto sprite=(Sprite*)b->GetUserData();
-                    if (sprite->getTag()>0)
-                    {
-                        if (sprite->getTag()!=ladderNum)
-                        {
-                            bodyToDelete.push_back(b);
-                            b->SetUserData(NULL);
-                         
-                            ladderStatus=true;
-                            sprite->runAction( Sequence::create(MoveBy::create(0.5, Point(0,-300)), RemoveSelf::create(),NULL) );
-                            
-                            
-                        }
-                    }
-                }
             }
+        
+            
             //最高的梯子下降
             bodyVector.back()->SetLinearVelocity(b2Vec2(0,-25));
             auto node =(Sprite*) bodyVector.back()->GetUserData();
@@ -279,6 +292,20 @@ void laderLayer::ladderUpdate(float dt)
                 
             }
             bodyToDelete.clear();
+            
+            iter=bodyVector.begin();
+            //bodyvector清零，保留最高号
+            while ((*iter)!=bodyVector.back())
+            {
+                bodyVector.erase(iter);
+                
+            }
+            if (this->getChildByTag(111))
+            {
+                this->removeChildByTag(111);
+            }
+            
+           
             ladderStatus=false;
             setTouchEnabled(false);
           
@@ -311,7 +338,7 @@ void laderLayer::goBackCallBack(cocos2d::Ref *pSender)
     int gameOver=UserDefault::getInstance()->getIntegerForKey("GROWTH", 0);
     //结束需要的成长值////////////////////////////////////////////////////////////
     //测试用。......................
-    if (gameOver>=25)
+    if (gameOver>=GAMEOVER)
     {
         gsm->goGameOverLayer();
        
@@ -560,7 +587,7 @@ void laderLayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
     auto ladder=Sprite::createWithTexture(ladderbacthnode->getTexture());
    
     ladder->setPosition(this->getChildByTag(111)->getPosition());
-     this->removeChildByTag(111);
+    this->removeChildByTag(111);
     ladder->setTag(ladderNum);
     // log("touch ladder=%d\n",ladderNum);
     this->addChild(ladder);
@@ -604,7 +631,7 @@ void laderLayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
         Vector<b2Body*>::iterator iter;
         for (iter=bodyVector.begin(); ; iter++)
         {
-            if ((*iter)!=bodyVector.back())
+           if ((*iter)!=bodyVector.back()&&(*iter)!=bodyVector.front())
             {
                 (*iter)->ApplyLinearImpulse(b2Vec2(x,0), (*iter)->GetPosition(), true);
             }
@@ -636,7 +663,7 @@ void laderLayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
        for (iter=bodyVector.begin(); ; iter++)
        {
            
-           if ((*iter)!=bodyVector.back())
+          if ((*iter)!=bodyVector.back()&&(*iter)!=bodyVector.front())
            {
                (*iter)->ApplyLinearImpulse(b2Vec2(x,0), (*iter)->GetPosition(), true);
            }
@@ -669,7 +696,7 @@ void laderLayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
        for (iter=bodyVector.begin(); ; iter++)
        {
            
-           if ((*iter)!=bodyVector.back())
+           if ((*iter)!=bodyVector.back()&&(*iter)!=bodyVector.front())
            {
                (*iter)->ApplyLinearImpulse(b2Vec2(x,0), (*iter)->GetPosition(), true);
            }

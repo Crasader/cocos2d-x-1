@@ -89,6 +89,8 @@ public:
     void okCallBack(Ref* pSender);
     int  showCon;
     Sprite* conllentSpriteShow;
+     std::string etextString;
+    Label*etextLabel;
  
 };
 
